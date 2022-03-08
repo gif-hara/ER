@@ -1340,49 +1340,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -157.69}
---- !u!1 &1010976292 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3422317872696174039, guid: 999fa980601dac246b43b82e9034f405, type: 3}
-  m_PrefabInstance: {fileID: 227512197627361896}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1010976293
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1010976292}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!320 &1010976294
-PlayableDirector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1010976292}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: bce47db135e2997499c3b87b670a8f66, type: 2}
-  m_InitialState: 1
-  m_WrapMode: 2
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: 9082821767534926584, guid: bce47db135e2997499c3b87b670a8f66, type: 2}
-    value: {fileID: 1010976293}
-  m_ExposedReferences:
-    m_References: []
 --- !u!1 &1800779163
 GameObject:
   m_ObjectHideFlags: 0
