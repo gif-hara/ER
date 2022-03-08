@@ -10,8 +10,11 @@ namespace ER
     /// <summary>
     /// 
     /// </summary>
-    public sealed class PlayerController : MonoBehaviour, IActor
+    public sealed class PlayerController : MonoBehaviour
     {
+        [SerializeField]
+        private Actor actor = default;
+
         [SerializeField]
         private float moveSpeed = default;
 
@@ -28,26 +31,15 @@ namespace ER
 
         private RaycastHit2D[] cachedRaycastHit2Ds = new RaycastHit2D[32];
 
-        private EquipmentController currentRightEquipment;
-
-        public IObservable<Unit> OnBeginRightEquipmentAsObservable() => Observable.FromEvent<InputAction.CallbackContext>(
-            x => this.inputAction.Player.Fire.started += x,
-            x => this.inputAction.Player.Fire.started -= x
-            )
-            .AsUnitObservable();
-
-        public IObservable<Unit> OnEndRightEquipmentAsObservable() => Observable.FromEvent<InputAction.CallbackContext>(
-            x => this.inputAction.Player.Fire.canceled += x,
-            x => this.inputAction.Player.Fire.canceled -= x
-            )
-            .AsUnitObservable();
-
         private void Awake()
         {
             this.inputAction = new ERInputAction();
             this.inputAction.Enable();
 
-            this.currentRightEquipment = this.rightEquipmentPrefab.Attach(this);
+            this.inputAction.Player.Fire.performed += OnPerformedBeginRightEquipment;
+            this.inputAction.Player.Fire.canceled += OnCanceledBeginRightEquipment;
+
+            this.actor.SetRightEquipment(this.rightEquipmentPrefab);
         }
 
         private void Update()
@@ -74,6 +66,16 @@ namespace ER
             {
                 t.localPosition += new Vector3(direction.x, direction.y, 0) * Time.deltaTime * moveSpeed;
             }
+        }
+
+        private void OnPerformedBeginRightEquipment(InputAction.CallbackContext callback)
+        {
+            this.actor.InvokeBeginRightEquipment();
+        }
+
+        private void OnCanceledBeginRightEquipment(InputAction.CallbackContext callback)
+        {
+            this.actor.InvokeEndRightEquipment();
         }
     }
 }
