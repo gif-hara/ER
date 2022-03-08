@@ -4,6 +4,8 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UniRx.Triggers;
+using UnityEngine.Playables;
+using System.Linq;
 
 namespace ER
 {
@@ -12,6 +14,9 @@ namespace ER
     /// </summary>
     public sealed class BulletController : MonoBehaviour
     {
+        [SerializeField]
+        private PlayableDirector playableDirector = default;
+
         [SerializeField]
         private List<ERBehaviour.Behaviour> behaviours = default;
 
@@ -31,6 +36,9 @@ namespace ER
             clone.gameObject.SetLayerRecursive(equipmentController.gameObject.layer);
 
             clone.Power = power;
+
+            var binding = clone.playableDirector.playableAsset.outputs.First(c => c.streamName == "ActorAnimation");
+            clone.playableDirector.SetGenericBinding(binding.sourceObject, actor.Animator);
 
             clone.OnCollisionEnter2DAsObservable()
                 .Subscribe(x =>

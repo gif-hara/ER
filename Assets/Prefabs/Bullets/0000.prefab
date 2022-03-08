@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e63729877c0b104f9e7dc9cde4eb528, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playableDirector: {fileID: 4729823890885389064}
   behaviours:
   - trigger:
       id: 0
@@ -80,6 +81,8 @@ PlayableDirector:
     value: {fileID: 8277594740470840330}
   - key: {fileID: 0}
     value: {fileID: 8695087977740911813}
+  - key: {fileID: -1935603194271161550, guid: 4e3dc0d37e76f884bb0ff92b825a8805, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!50 &8147738840862263108

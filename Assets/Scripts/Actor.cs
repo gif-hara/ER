@@ -17,9 +17,16 @@ namespace ER
 
         private EquipmentController rightEquipment;
 
+        public Animator Animator { get; private set; }
+
         public IObservable<Unit> OnBeginRightEquipmentAsObservable() => this.beginRightEquipmentSubject;
 
         public IObservable<Unit> OnEndRightEquipmentAsObservable() => this.endRightEquipmentSubject;
+
+        void Awake()
+        {
+            this.Animator = this.GetComponent<Animator>();
+        }
 
         public void InvokeBeginRightEquipment()
         {
