@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UniRx.Triggers;
 
 namespace ER
 {
@@ -22,6 +23,14 @@ namespace ER
             clone.transform.localPosition = Vector3.zero;
             clone.transform.localRotation = Quaternion.identity;
             clone.gameObject.SetLayerRecursive(equipmentController.gameObject.layer);
+
+            clone.OnCollisionEnter2DAsObservable()
+                .Subscribe(x =>
+                {
+                    Debug.Log(x);
+                })
+                .AddTo(disposable);
+
             var behaviourData = new BulletBehaviourData
             {
                 GameObject = clone.gameObject
@@ -39,7 +48,7 @@ namespace ER
 
         private void OnDestroy()
         {
-            this.disposable.Dispose();
+            disposable.Dispose();
         }
     }
 }
