@@ -1,3 +1,4 @@
+using ER.EquipmentSystems;
 using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
@@ -15,11 +16,12 @@ namespace ER
 
         private CompositeDisposable disposable = new CompositeDisposable();
 
-        public BulletController Instantiate(IActor actor)
+        public BulletController Instantiate(IActor actor, EquipmentController equipmentController)
         {
-            var clone = Instantiate(this, actor.transform);
+            var clone = Instantiate(this, equipmentController.transform);
             clone.transform.localPosition = Vector3.zero;
             clone.transform.localRotation = Quaternion.identity;
+            clone.gameObject.SetLayerRecursive(equipmentController.gameObject.layer);
             var behaviourData = new BulletBehaviourData
             {
                 GameObject = clone.gameObject

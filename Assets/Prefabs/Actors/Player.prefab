@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1790918889885452235}
   - component: {fileID: 3091960546065113835}
   - component: {fileID: 3259955469010148225}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,9 +69,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1790918889885452235}
     m_Modifications:
+    - target: {fileID: 1425752642508070264, guid: f25adb7c0910fd34ab56b68321eecece, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3591566806632247617, guid: f25adb7c0910fd34ab56b68321eecece, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3591566806632247617, guid: f25adb7c0910fd34ab56b68321eecece, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4043516610771091224, guid: f25adb7c0910fd34ab56b68321eecece, type: 3}
       propertyPath: m_RootOrder

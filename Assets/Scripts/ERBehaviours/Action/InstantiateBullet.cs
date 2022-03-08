@@ -17,10 +17,10 @@ namespace ER.ERBehaviour
         {
             return Observable.Defer(() =>
             {
-                var actorHolder = data as IActorHolder;
-                Assert.IsNotNull(actorHolder);
+                var actorHolder = data.Cast<IActorHolder>();
+                var equipmentControllerHolder = data.Cast<IEquipmentControllerHolder>();
 
-                this.bulletPrefab.Instantiate(actorHolder.Actor);
+                this.bulletPrefab.Instantiate(actorHolder.Actor, equipmentControllerHolder.EquipmentController);
 
                 return Observable.ReturnUnit();
             });

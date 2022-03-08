@@ -22,9 +22,11 @@ namespace ER.EquipmentSystems
             var clone = Instantiate(this, actor.transform);
             clone.transform.localPosition = Vector3.zero;
             clone.transform.localRotation = Quaternion.identity;
+            clone.gameObject.SetLayerRecursive(GetLayerIndex(actor.gameObject.layer));
             var behaviourData = new EquipmentBehaviourData
             {
-                Actor = actor
+                Actor = actor,
+                EquipmentController = clone,
             };
 
             foreach(var behaviour in clone.data.behaviours)
@@ -41,6 +43,20 @@ namespace ER.EquipmentSystems
         {
             Destroy(this.gameObject);
             this.activeDisposable.Dispose();
+        }
+
+        private static int GetLayerIndex(int ownerLayerIndex)
+        {
+            switch(ownerLayerIndex)
+            {
+                case Layer.Index.Player:
+                    return Layer.Index.PlayerBullet;
+                case Layer.Index.Enemy:
+                    return Layer.Index.EnemyBullet;
+                default:
+                    Assert.IsTrue(false, $"{ownerLayerIndex}は未対応です");
+                    return 0;
+            }
         }
     }
 }

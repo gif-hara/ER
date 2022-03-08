@@ -9,9 +9,10 @@ namespace ER
     /// </summary>
     public static class BehaviourDataExtensions
     {
-        public static T Cast<T>(this IBehaviourData self)
+        public static T Cast<T>(this IBehaviourData self) where T : class
         {
-            var result = (T)self;
+            var result = self as T;
+            Assert.IsNotNull(result, $"{self.GetType()}に{typeof(T)}はありません");
 
             return result;
         }

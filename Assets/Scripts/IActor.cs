@@ -21,5 +21,7 @@ namespace ER
         IObservable<Unit> OnEndRightEquipmentAsObservable();
 
         Transform transform { get; }
+
+        GameObject gameObject { get; }
     }
 }
