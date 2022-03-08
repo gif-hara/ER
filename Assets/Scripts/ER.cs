@@ -43,6 +43,14 @@ namespace ER
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Avoidance"",
+                    ""type"": ""Button"",
+                    ""id"": ""66fa8855-1e93-4117-b7cf-f590a785df12"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -263,6 +271,28 @@ namespace ER
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""58badd94-a4d1-4878-b5ce-15f2f9986675"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Avoidance"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7578d607-f196-41f3-9521-9e129879bedc"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Avoidance"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -843,6 +873,7 @@ namespace ER
             m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
             m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
             m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
+            m_Player_Avoidance = m_Player.FindAction("Avoidance", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -907,6 +938,7 @@ namespace ER
         private readonly InputAction m_Player_Move;
         private readonly InputAction m_Player_Look;
         private readonly InputAction m_Player_Fire;
+        private readonly InputAction m_Player_Avoidance;
         public struct PlayerActions
         {
             private @ERInputAction m_Wrapper;
@@ -914,6 +946,7 @@ namespace ER
             public InputAction @Move => m_Wrapper.m_Player_Move;
             public InputAction @Look => m_Wrapper.m_Player_Look;
             public InputAction @Fire => m_Wrapper.m_Player_Fire;
+            public InputAction @Avoidance => m_Wrapper.m_Player_Avoidance;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -932,6 +965,9 @@ namespace ER
                     @Fire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
                     @Fire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
                     @Fire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
+                    @Avoidance.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAvoidance;
+                    @Avoidance.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAvoidance;
+                    @Avoidance.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAvoidance;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
@@ -945,6 +981,9 @@ namespace ER
                     @Fire.started += instance.OnFire;
                     @Fire.performed += instance.OnFire;
                     @Fire.canceled += instance.OnFire;
+                    @Avoidance.started += instance.OnAvoidance;
+                    @Avoidance.performed += instance.OnAvoidance;
+                    @Avoidance.canceled += instance.OnAvoidance;
                 }
             }
         }
@@ -1104,6 +1143,7 @@ namespace ER
             void OnMove(InputAction.CallbackContext context);
             void OnLook(InputAction.CallbackContext context);
             void OnFire(InputAction.CallbackContext context);
+            void OnAvoidance(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {

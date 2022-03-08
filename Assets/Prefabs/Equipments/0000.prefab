@@ -58,3 +58,4 @@ MonoBehaviour:
       type: {class: InstantiateBullet, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         bulletPrefab: {fileID: 8717843733696729411, guid: 8a34325ef4dccca4b89be094d44b9926, type: 3}
+        power: 10

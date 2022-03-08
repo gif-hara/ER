@@ -13,6 +13,9 @@ namespace ER.ERBehaviour
         [SerializeField]
         private BulletController bulletPrefab = default;
 
+        [SerializeField]
+        private int power = default;
+
         public IObservable<Unit> AsObservable(IBehaviourData data)
         {
             return Observable.Defer(() =>
@@ -20,7 +23,11 @@ namespace ER.ERBehaviour
                 var actorHolder = data.Cast<IActorHolder>();
                 var equipmentControllerHolder = data.Cast<IEquipmentControllerHolder>();
 
-                this.bulletPrefab.Instantiate(actorHolder.Actor, equipmentControllerHolder.EquipmentController);
+                this.bulletPrefab.Instantiate(
+                    actorHolder.Actor,
+                    equipmentControllerHolder.EquipmentController,
+                    this.power
+                    );
 
                 return Observable.ReturnUnit();
             });

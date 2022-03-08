@@ -15,19 +15,31 @@ namespace ER
         [SerializeField]
         private List<ERBehaviour.Behaviour> behaviours = default;
 
+        public int Power { get; private set; }
+
         private CompositeDisposable disposable = new CompositeDisposable();
 
-        public BulletController Instantiate(IActor actor, EquipmentController equipmentController)
+        public BulletController Instantiate(
+            IActor actor,
+            EquipmentController equipmentController,
+            int power
+            )
         {
             var clone = Instantiate(this, equipmentController.transform);
             clone.transform.localPosition = Vector3.zero;
             clone.transform.localRotation = Quaternion.identity;
             clone.gameObject.SetLayerRecursive(equipmentController.gameObject.layer);
 
+            clone.Power = power;
+
             clone.OnCollisionEnter2DAsObservable()
                 .Subscribe(x =>
                 {
-                    Debug.Log(x);
+                    var hitActor = x.rigidbody.GetComponent<IActor>();
+                    if (hitActor != null)
+                    {
+                        hitActor.OnCollisionBullet(this);
+                    }
                 })
                 .AddTo(disposable);
 

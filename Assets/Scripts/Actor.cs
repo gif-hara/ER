@@ -35,5 +35,10 @@ namespace ER
         {
             this.rightEquipment = equipmentPrefab.Attach(this);
         }
+
+        public void OnCollisionBullet(BulletController bulletController)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

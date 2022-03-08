@@ -23,5 +23,10 @@ namespace ER
         Transform transform { get; }
 
         GameObject gameObject { get; }
+
+        /// <summary>
+        /// 弾が衝突した際の処理
+        /// </summary>
+        void OnCollisionBullet(BulletController bulletController);
     }
 }
