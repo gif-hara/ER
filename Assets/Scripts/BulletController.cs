@@ -6,6 +6,7 @@ using UnityEngine.Assertions;
 using UniRx.Triggers;
 using UnityEngine.Playables;
 using System.Linq;
+using System;
 
 namespace ER
 {
@@ -21,6 +22,8 @@ namespace ER
         private List<ERBehaviour.Behaviour> behaviours = default;
 
         public int Power { get; private set; }
+
+        public IObservable<Unit> OnCompleteAsObservable() => this.OnDestroyAsObservable();
 
         private CompositeDisposable disposable = new CompositeDisposable();
 

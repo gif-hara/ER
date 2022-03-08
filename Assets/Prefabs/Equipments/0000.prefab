@@ -59,3 +59,15 @@ MonoBehaviour:
       data:
         bulletPrefab: {fileID: 8717843733696729411, guid: 8a34325ef4dccca4b89be094d44b9926, type: 3}
         power: 10
+        onInstantiateActions:
+        - id: 2
+        onCompleteActions:
+        - id: 3
+    00000002:
+      type: {class: Log, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        message: Start
+    00000003:
+      type: {class: Log, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        message: Complete
