@@ -7,6 +7,7 @@ using UniRx.Triggers;
 using UnityEngine.Playables;
 using System.Linq;
 using System;
+using ER.ActorControllers;
 
 namespace ER
 {

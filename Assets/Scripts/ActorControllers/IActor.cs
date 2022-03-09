@@ -3,7 +3,7 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace ER
+namespace ER.ActorControllers
 {
     /// <summary>
     /// 

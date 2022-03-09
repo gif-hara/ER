@@ -17,6 +17,8 @@ namespace ER
             public const int Enemy = 8;
 
             public const int EnemyBullet = 9;
+
+            public const int Stage = 10;
         }
 
         public static class Mask
@@ -28,6 +30,8 @@ namespace ER
             public const int Enemy = 1 << Index.Enemy;
 
             public const int EnemyBullet = 1 << Index.EnemyBullet;
+
+            public const int Stage = 1 << Index.Stage;
         }
     }
 }

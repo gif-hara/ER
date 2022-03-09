@@ -1,3 +1,4 @@
+using ER.ActorControllers;
 using ER.EquipmentSystems;
 using System;
 using UniRx;
@@ -51,10 +52,16 @@ namespace ER
                 t.localRotation = Quaternion.Euler(0.0f, 0.0f, -90.0f + Mathf.Atan2(angle.y, angle.x) * Mathf.Rad2Deg);
             }
 
-            // ひとまず完成
             var direction = this.inputAction.Player.Move.ReadValue<Vector2>();
             var velocity = direction * Time.deltaTime * this.moveSpeed;
-            var hitNumber = Physics2D.CircleCastNonAlloc(t.localPosition, this.radius, direction, this.cachedRaycastHit2Ds, velocity.magnitude);
+            var hitNumber = Physics2D.CircleCastNonAlloc(
+                t.localPosition,
+                this.radius,
+                direction,
+                this.cachedRaycastHit2Ds,
+                velocity.magnitude,
+                Layer.Mask.Stage
+                );
 
             if (hitNumber > 0)
             {

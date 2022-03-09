@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 905518334}
   - component: {fileID: 905518333}
   - component: {fileID: 905518332}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Closed Sprite Shape (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -785,7 +785,7 @@ GameObject:
   - component: {fileID: 967247828}
   - component: {fileID: 967247827}
   - component: {fileID: 967247826}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Closed Sprite Shape (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1409,7 +1409,7 @@ GameObject:
   - component: {fileID: 1800779166}
   - component: {fileID: 1800779165}
   - component: {fileID: 1800779164}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Closed Sprite Shape (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
