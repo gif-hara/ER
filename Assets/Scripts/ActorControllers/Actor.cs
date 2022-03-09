@@ -28,6 +28,11 @@ namespace ER.ActorControllers
             this.Animator = this.GetComponent<Animator>();
         }
 
+        void OnAnimatorMove()
+        {
+            this.transform.position = this.Animator.rootPosition;
+        }
+
         public void InvokeBeginRightEquipment()
         {
             this.beginRightEquipmentSubject.OnNext(Unit.Default);
@@ -43,7 +48,7 @@ namespace ER.ActorControllers
             this.rightEquipment = equipmentPrefab.Attach(this);
         }
 
-        public void OnCollisionBullet(BulletController bulletController)
+        public void OnCollisionOpponentAttack(EquipmentController equipmentController)
         {
             Destroy(this.gameObject);
         }

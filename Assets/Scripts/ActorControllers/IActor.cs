@@ -1,3 +1,4 @@
+using ER.EquipmentSystems;
 using System;
 using UniRx;
 using UnityEngine;
@@ -27,8 +28,8 @@ namespace ER.ActorControllers
         Animator Animator { get; }
 
         /// <summary>
-        /// 弾が衝突した際の処理
+        /// 敵の攻撃が衝突した際の処理
         /// </summary>
-        void OnCollisionBullet(BulletController bulletController);
+        void OnCollisionOpponentAttack(EquipmentController equipmentController);
     }
 }

@@ -3,8 +3,10 @@ using ER.ERBehaviour;
 using System;
 using System.Collections.Generic;
 using UniRx;
+using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Playables;
 
 namespace ER.EquipmentSystems
 {
@@ -14,29 +16,22 @@ namespace ER.EquipmentSystems
     public sealed class EquipmentController : MonoBehaviour, IDisposable, IBehaviourData
     {
         [SerializeField]
-        private EquipmentData data;
+        private PlayableDirector playableDirector = default;
+
+        [SerializeField]
+        private PlayableAsset defaultPlayableAsset = default;
+
+        [SerializeField]
+        public List<ERBehaviour.Behaviour> behaviours = default;
+
+        public PlayableDirector PlayableDirector => this.playableDirector;
 
         private CompositeDisposable activeDisposable = new CompositeDisposable();
 
         public EquipmentController Attach(IActor actor)
         {
             var clone = Instantiate(this, actor.transform);
-            clone.transform.localPosition = Vector3.zero;
-            clone.transform.localRotation = Quaternion.identity;
-            clone.gameObject.SetLayerRecursive(GetLayerIndex(actor.gameObject.layer));
-            var behaviourData = new EquipmentBehaviourData
-            {
-                Actor = actor,
-                EquipmentController = clone,
-            };
-
-            foreach(var behaviour in clone.data.behaviours)
-            {
-                behaviour.AsObservable(behaviourData)
-                    .Subscribe()
-                    .AddTo(this.activeDisposable);
-            }
-
+            clone.AttachInternal(actor);
             return clone;
         }
 
@@ -44,6 +39,45 @@ namespace ER.EquipmentSystems
         {
             Destroy(this.gameObject);
             this.activeDisposable.Dispose();
+        }
+
+        private void AttachInternal(IActor actor)
+        {
+            this.transform.localPosition = Vector3.zero;
+            this.transform.localRotation = Quaternion.identity;
+            this.gameObject.SetLayerRecursive(GetLayerIndex(actor.gameObject.layer));
+            var behaviourData = new EquipmentBehaviourData
+            {
+                Actor = actor,
+                EquipmentController = this,
+            };
+
+            this.OnCollisionEnter2DAsObservable()
+            .Subscribe(x =>
+            {
+                var hitActor = x.rigidbody.GetComponent<IActor>();
+                if (hitActor != null)
+                {
+                    hitActor.OnCollisionOpponentAttack(this);
+                }
+            })
+            .AddTo(this.activeDisposable);
+
+
+            foreach (var behaviour in this.behaviours)
+            {
+                behaviour.AsObservable(behaviourData)
+                    .Subscribe()
+                    .AddTo(this.activeDisposable);
+            }
+
+            this.PlayDefaultPlayableAsset();
+        }
+
+        private void PlayDefaultPlayableAsset()
+        {
+            this.playableDirector.extrapolationMode = DirectorWrapMode.Loop;
+            this.playableDirector.Play(this.defaultPlayableAsset);
         }
 
         private static int GetLayerIndex(int ownerLayerIndex)

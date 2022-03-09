@@ -14,6 +14,5 @@ namespace ER.EquipmentSystems
     {
         public float coolTime;
 
-        public List<ERBehaviour.Behaviour> behaviours;
     }
 }

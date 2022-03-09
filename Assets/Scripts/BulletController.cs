@@ -44,16 +44,16 @@ namespace ER
             var binding = clone.playableDirector.playableAsset.outputs.First(c => c.streamName == "ActorAnimation");
             clone.playableDirector.SetGenericBinding(binding.sourceObject, actor.Animator);
 
-            clone.OnCollisionEnter2DAsObservable()
-                .Subscribe(x =>
-                {
-                    var hitActor = x.rigidbody.GetComponent<IActor>();
-                    if (hitActor != null)
-                    {
-                        hitActor.OnCollisionBullet(this);
-                    }
-                })
-                .AddTo(disposable);
+            //clone.OnCollisionEnter2DAsObservable()
+            //    .Subscribe(x =>
+            //    {
+            //        var hitActor = x.rigidbody.GetComponent<IActor>();
+            //        if (hitActor != null)
+            //        {
+            //            hitActor.OnCollisionBullet(this);
+            //        }
+            //    })
+            //    .AddTo(disposable);
 
             var behaviourData = new BulletBehaviourData
             {
