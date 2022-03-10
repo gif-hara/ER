@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4311177486490712205}
   - component: {fileID: -5223219104144271367}
   m_Layer: 0
-  m_Name: Equipment
+  m_Name: Equipment.0000
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,6 +62,7 @@ MonoBehaviour:
       data:
         playableAsset: {fileID: 11400000, guid: 4e3dc0d37e76f884bb0ff92b825a8805, type: 2}
         wrapMode: 2
+        power: 10
 --- !u!320 &4311177486490712205
 PlayableDirector:
   m_ObjectHideFlags: 0

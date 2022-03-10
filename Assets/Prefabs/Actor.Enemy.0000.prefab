@@ -7,9 +7,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3240392672265994588, guid: fa424eeca9000434681b647bc0d889f7, type: 3}
+      propertyPath: status.magic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3240392672265994588, guid: fa424eeca9000434681b647bc0d889f7, type: 3}
+      propertyPath: status.spirit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3240392672265994588, guid: fa424eeca9000434681b647bc0d889f7, type: 3}
+      propertyPath: status.physical
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3240392672265994588, guid: fa424eeca9000434681b647bc0d889f7, type: 3}
+      propertyPath: status.strength
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3240392672265994588, guid: fa424eeca9000434681b647bc0d889f7, type: 3}
+      propertyPath: status.endurance
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5062621093894177797, guid: fa424eeca9000434681b647bc0d889f7, type: 3}
       propertyPath: m_Name
-      value: Actor.Enemy
+      value: Actor.Enemy.0000
       objectReference: {fileID: 0}
     - target: {fileID: 5062621093894177797, guid: fa424eeca9000434681b647bc0d889f7, type: 3}
       propertyPath: m_Layer

@@ -18,6 +18,9 @@ namespace ER.ERBehaviour
         [SerializeField]
         private DirectorWrapMode wrapMode = default;
 
+        [SerializeField]
+        private int power = default;
+
         public IObservable<Unit> AsObservable(IBehaviourData data)
         {
             return Observable.Defer(() =>
@@ -31,6 +34,8 @@ namespace ER.ERBehaviour
 
                 playableDirector.Play();
                 playableDirector.SetGenericBinding(binding.sourceObject, behaviourData.Actor.Animator);
+
+                behaviourData.EquipmentController.Power = this.power;
 
 
                 return Observable.ReturnUnit();

@@ -18,10 +18,5 @@ namespace ER.ActorControllers
         GameObject gameObject { get; }
 
         Animator Animator { get; }
-
-        /// <summary>
-        /// 敵の攻撃が衝突した際の処理
-        /// </summary>
-        void OnCollisionOpponentAttack(EquipmentController equipmentController);
     }
 }

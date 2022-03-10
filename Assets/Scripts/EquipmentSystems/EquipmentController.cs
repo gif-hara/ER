@@ -24,6 +24,11 @@ namespace ER.EquipmentSystems
         [SerializeField]
         public List<ERBehaviour.Behaviour> behaviours = default;
 
+        /// <summary>
+        /// 攻撃した際のダメージ係数
+        /// </summary>
+        public int Power { get; set; }
+
         public PlayableDirector PlayableDirector => this.playableDirector;
 
         private CompositeDisposable activeDisposable = new CompositeDisposable();
@@ -58,7 +63,7 @@ namespace ER.EquipmentSystems
                 var hitActor = x.rigidbody.GetComponent<IActor>();
                 if (hitActor != null)
                 {
-                    hitActor.OnCollisionOpponentAttack(this);
+                    hitActor.Event.OnHitOpponentAttackSubject().OnNext(this);
                 }
             })
             .AddTo(this.activeDisposable);

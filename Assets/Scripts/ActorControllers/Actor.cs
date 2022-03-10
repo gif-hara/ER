@@ -23,17 +23,27 @@ namespace ER.ActorControllers
 
         public ActorEvent Event { get; private set; }
 
+        private readonly CompositeDisposable disposable = new CompositeDisposable();
+
         void Awake()
         {
             this.Animator = this.GetComponent<Animator>();
             this.Event = new ActorEvent();
-            this.statusController.Setup(this.status);
+            this.statusController.Setup(this, this.status, this.disposable);
 
             this.OnDestroyAsObservable()
                 .Subscribe(_ =>
                 {
+                    this.disposable.Dispose();
                     this.Event.Dispose();
                 });
+
+            this.Event.OnDeadSubject()
+                .Subscribe(_ =>
+                {
+                    Destroy(this.gameObject);
+                })
+                .AddTo(this.disposable);
         }
 
         void OnAnimatorMove()
@@ -44,11 +54,6 @@ namespace ER.ActorControllers
         public void SetRightEquipment(EquipmentController equipmentPrefab)
         {
             this.rightEquipment = equipmentPrefab.Attach(this);
-        }
-
-        public void OnCollisionOpponentAttack(EquipmentController equipmentController)
-        {
-            Destroy(this.gameObject);
         }
     }
 }
