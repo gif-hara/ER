@@ -18,5 +18,7 @@ namespace ER.ActorControllers
         GameObject gameObject { get; }
 
         Animator Animator { get; }
+
+        ActorAnimationParameter AnimationParameter { get; }
     }
 }

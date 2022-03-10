@@ -15,6 +15,9 @@ namespace ER.ActorControllers
         [SerializeField]
         private ActorStatus status = default;
 
+        [SerializeField]
+        private ActorAnimationParameter animationParameter = default;
+
         private readonly ActorStatusController statusController = new ActorStatusController();
 
         private EquipmentController rightEquipment;
@@ -22,6 +25,8 @@ namespace ER.ActorControllers
         public Animator Animator { get; private set; }
 
         public ActorEvent Event { get; private set; }
+
+        public ActorAnimationParameter AnimationParameter => this.animationParameter;
 
         private readonly CompositeDisposable disposable = new CompositeDisposable();
 
