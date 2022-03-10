@@ -13,9 +13,11 @@ namespace ER.ActorControllers
         private ActorMotionData motionData;
 
         /// <summary>
-        /// 移動する咆哮
+        /// 移動する方向
         /// </summary>
         private Vector2 moveDirection;
+
+        private float angle;
 
         private RaycastHit2D[] cachedRaycastHit2Ds = new RaycastHit2D[32];
 
@@ -26,6 +28,7 @@ namespace ER.ActorControllers
                 .Subscribe(_ =>
                 {
                     UpdatePosition(actor);
+                    UpdateRotation(actor);
                 })
                 .AddTo(disposable);
         }
@@ -33,6 +36,16 @@ namespace ER.ActorControllers
         public void Move(Vector2 moveDirection)
         {
             this.moveDirection = moveDirection;
+        }
+
+        public void Rotate(float angle)
+        {
+            this.angle = angle;
+        }
+
+        public void Rotate(Vector2 angle)
+        {
+            this.Rotate(-90.0f + Mathf.Atan2(angle.y, angle.x) * Mathf.Rad2Deg);
         }
 
         private void UpdatePosition(IActor actor)
@@ -61,6 +74,11 @@ namespace ER.ActorControllers
             }
 
             this.moveDirection = Vector2.zero;
+        }
+
+        private void UpdateRotation(IActor actor)
+        {
+            actor.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, angle);
         }
     }
 }

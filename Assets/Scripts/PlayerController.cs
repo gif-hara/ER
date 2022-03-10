@@ -17,20 +17,12 @@ namespace ER
         private Actor actor = default;
 
         [SerializeField]
-        private float moveSpeed = default;
-
-        [SerializeField]
         private float angleThreshold = default;
-
-        [SerializeField]
-        private float radius = default;
 
         [SerializeField]
         private EquipmentController rightEquipmentPrefab = default;
 
         private ERInputAction inputAction;
-
-        private RaycastHit2D[] cachedRaycastHit2Ds = new RaycastHit2D[32];
 
         private void Start()
         {
@@ -49,7 +41,7 @@ namespace ER
             var angle = this.inputAction.Player.Look.ReadValue<Vector2>();
             if (angle.sqrMagnitude > this.angleThreshold * this.angleThreshold)
             {
-                t.localRotation = Quaternion.Euler(0.0f, 0.0f, -90.0f + Mathf.Atan2(angle.y, angle.x) * Mathf.Rad2Deg);
+                this.actor.MotionController.Rotate(angle);
             }
 
             var direction = this.inputAction.Player.Move.ReadValue<Vector2>();
