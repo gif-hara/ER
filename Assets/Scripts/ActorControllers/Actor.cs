@@ -1,6 +1,7 @@
 using ER.EquipmentSystems;
 using System;
 using UniRx;
+using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -16,37 +17,28 @@ namespace ER.ActorControllers
 
         private readonly ActorStatusController statusController = new ActorStatusController();
 
-        private readonly Subject<Unit> beginRightEquipmentSubject = new Subject<Unit>();
-
-        private readonly Subject<Unit> endRightEquipmentSubject = new Subject<Unit>();
-
         private EquipmentController rightEquipment;
 
         public Animator Animator { get; private set; }
 
-        public IObservable<Unit> OnBeginRightEquipmentAsObservable() => this.beginRightEquipmentSubject;
-
-        public IObservable<Unit> OnEndRightEquipmentAsObservable() => this.endRightEquipmentSubject;
+        public ActorEvent Event { get; private set; }
 
         void Awake()
         {
             this.Animator = this.GetComponent<Animator>();
+            this.Event = new ActorEvent();
             this.statusController.Setup(this.status);
+
+            this.OnDestroyAsObservable()
+                .Subscribe(_ =>
+                {
+                    this.Event.Dispose();
+                });
         }
 
         void OnAnimatorMove()
         {
             this.transform.position = this.Animator.rootPosition;
-        }
-
-        public void InvokeBeginRightEquipment()
-        {
-            this.beginRightEquipmentSubject.OnNext(Unit.Default);
-        }
-
-        public void InvokeEndRightEquipment()
-        {
-            this.endRightEquipmentSubject.OnNext(Unit.Default);
         }
 
         public void SetRightEquipment(EquipmentController equipmentPrefab)

@@ -13,10 +13,13 @@ namespace ER.ERBehaviour
     {
         public IObservable<Unit> AsObservable(IBehaviourData data)
         {
-            var actorHolder = data as IActorHolder;
-            Assert.IsNotNull(actorHolder);
+            return Observable.Defer(() =>
+            {
+                var actorHolder = data as IActorHolder;
+                Assert.IsNotNull(actorHolder);
 
-            return actorHolder.Actor.OnBeginRightEquipmentAsObservable();
+                return actorHolder.Actor.Event.OnBeginRightEquipmentSubject();
+            });
         }
     }
 }

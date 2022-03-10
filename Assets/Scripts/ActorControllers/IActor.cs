@@ -11,15 +11,7 @@ namespace ER.ActorControllers
     /// </summary>
     public interface IActor
     {
-        /// <summary>
-        /// 右手装備品の使用を開始した際のイベント
-        /// </summary>
-        IObservable<Unit> OnBeginRightEquipmentAsObservable();
-
-        /// <summary>
-        /// 右手装備品の使用を完了した際のイベント
-        /// </summary>
-        IObservable<Unit> OnEndRightEquipmentAsObservable();
+        ActorEvent Event { get; }
 
         Transform transform { get; }
 

@@ -32,7 +32,7 @@ namespace ER
 
         private RaycastHit2D[] cachedRaycastHit2Ds = new RaycastHit2D[32];
 
-        private void Awake()
+        private void Start()
         {
             this.inputAction = new ERInputAction();
             this.inputAction.Enable();
@@ -77,12 +77,12 @@ namespace ER
 
         private void OnPerformedBeginRightEquipment(InputAction.CallbackContext callback)
         {
-            this.actor.InvokeBeginRightEquipment();
+            this.actor.Event.OnBeginRightEquipmentSubject().OnNext(Unit.Default);
         }
 
         private void OnCanceledBeginRightEquipment(InputAction.CallbackContext callback)
         {
-            this.actor.InvokeEndRightEquipment();
+            this.actor.Event.OnEndRightEquipmentSubject().OnNext(Unit.Default);
         }
     }
 }
