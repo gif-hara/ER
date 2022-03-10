@@ -11,6 +11,11 @@ namespace ER.ActorControllers
     /// </summary>
     public sealed class Actor : MonoBehaviour, IActor
     {
+        [SerializeField]
+        private ActorStatus status = default;
+
+        private readonly ActorStatusController statusController = new ActorStatusController();
+
         private readonly Subject<Unit> beginRightEquipmentSubject = new Subject<Unit>();
 
         private readonly Subject<Unit> endRightEquipmentSubject = new Subject<Unit>();
@@ -26,6 +31,7 @@ namespace ER.ActorControllers
         void Awake()
         {
             this.Animator = this.GetComponent<Animator>();
+            this.statusController.Setup(this.status);
         }
 
         void OnAnimatorMove()

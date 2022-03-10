@@ -1347,18 +1347,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 597535563829354477, guid: b824b1baeb29aa54a820c4ef96e50bbb, type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 597535563829354477, guid: b824b1baeb29aa54a820c4ef96e50bbb, type: 3}
-      propertyPath: m_Simulated
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 597535563829354477, guid: b824b1baeb29aa54a820c4ef96e50bbb, type: 3}
-      propertyPath: m_Constraints
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 1790918889885452235, guid: b824b1baeb29aa54a820c4ef96e50bbb, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -1406,10 +1394,6 @@ PrefabInstance:
     - target: {fileID: 3422317872696174039, guid: b824b1baeb29aa54a820c4ef96e50bbb, type: 3}
       propertyPath: m_Name
       value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 4373781929585532116, guid: b824b1baeb29aa54a820c4ef96e50bbb, type: 3}
-      propertyPath: m_UpdateMode
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b824b1baeb29aa54a820c4ef96e50bbb, type: 3}
@@ -1654,10 +1638,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 794506868, guid: 999fa980601dac246b43b82e9034f405, type: 3}
-      propertyPath: m_UpdateMode
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1790918889885452235, guid: 999fa980601dac246b43b82e9034f405, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1705,18 +1685,6 @@ PrefabInstance:
     - target: {fileID: 3422317872696174039, guid: 999fa980601dac246b43b82e9034f405, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5633572760295081714, guid: 999fa980601dac246b43b82e9034f405, type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5633572760295081714, guid: 999fa980601dac246b43b82e9034f405, type: 3}
-      propertyPath: m_Constraints
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5633572760295081714, guid: 999fa980601dac246b43b82e9034f405, type: 3}
-      propertyPath: m_GravityScale
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 999fa980601dac246b43b82e9034f405, type: 3}

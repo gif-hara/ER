@@ -47,6 +47,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff35d0a4550b95a4797ac46549b6380c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  status:
+    physical: 10
+    strength: 10
+    magic: 10
+    endurance: 10
+    spirit: 10
 --- !u!114 &3259955469010148225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,7 +85,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
