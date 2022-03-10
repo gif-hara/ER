@@ -16,6 +16,9 @@ namespace ER.ActorControllers
         private ActorStatus status = default;
 
         [SerializeField]
+        private ActorMotionData motionData = default;
+
+        [SerializeField]
         private ActorAnimationParameter animationParameter = default;
 
         private readonly ActorStatusController statusController = new ActorStatusController();
@@ -28,6 +31,8 @@ namespace ER.ActorControllers
 
         public ActorAnimationParameter AnimationParameter => this.animationParameter;
 
+        public ActorMotionController MotionController { get; private set; }
+
         private readonly CompositeDisposable disposable = new CompositeDisposable();
 
         void Awake()
@@ -35,6 +40,8 @@ namespace ER.ActorControllers
             this.Animator = this.GetComponent<Animator>();
             this.Event = new ActorEvent();
             this.statusController.Setup(this, this.status, this.disposable);
+            this.MotionController = new ActorMotionController();
+            this.MotionController.Setup(this, this.motionData, this.disposable);
 
             this.OnDestroyAsObservable()
                 .Subscribe(_ =>

@@ -20,5 +20,7 @@ namespace ER.ActorControllers
         Animator Animator { get; }
 
         ActorAnimationParameter AnimationParameter { get; }
+
+        ActorMotionController MotionController { get; }
     }
 }

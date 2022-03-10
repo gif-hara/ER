@@ -81,6 +81,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3240392672265994588, guid: fa424eeca9000434681b647bc0d889f7, type: 3}
+      propertyPath: motionData.radius
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3240392672265994588, guid: fa424eeca9000434681b647bc0d889f7, type: 3}
+      propertyPath: motionData.moveSpeed
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 5062621093894177797, guid: fa424eeca9000434681b647bc0d889f7, type: 3}
       propertyPath: m_Name
       value: Actor.Player

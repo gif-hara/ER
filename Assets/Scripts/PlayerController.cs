@@ -53,26 +53,7 @@ namespace ER
             }
 
             var direction = this.inputAction.Player.Move.ReadValue<Vector2>();
-            var velocity = direction * Time.deltaTime * this.moveSpeed;
-            var hitNumber = Physics2D.CircleCastNonAlloc(
-                t.localPosition,
-                this.radius,
-                direction,
-                this.cachedRaycastHit2Ds,
-                velocity.magnitude,
-                Layer.Mask.Stage
-                );
-
-            if (hitNumber > 0)
-            {
-                var hitinfo = this.cachedRaycastHit2Ds[0];
-                t.localPosition = hitinfo.point + hitinfo.normal * this.radius;
-
-            }
-            else
-            {
-                t.localPosition += new Vector3(direction.x, direction.y, 0) * Time.deltaTime * moveSpeed;
-            }
+            this.actor.MotionController.Move(direction);
         }
 
         private void OnPerformedBeginRightEquipment(InputAction.CallbackContext callback)
