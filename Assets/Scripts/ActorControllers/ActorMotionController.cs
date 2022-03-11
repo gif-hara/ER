@@ -51,6 +51,14 @@ namespace ER.ActorControllers
                 .Where(_ => actor.StateController.CurrentState == ActorStateController.StateType.Movable)
                 .Subscribe(x =>
                 {
+                    // 入力が無い場合はバックステップする
+                    if(x == Vector2.zero)
+                    {
+                        x = -actor.transform.up;
+                    }
+
+                    x = x.normalized;
+
                     actor.DirectorController.PlayOneShotAsync(motionData.avoidanceAsset)
                     .Subscribe(_ =>
                     {
