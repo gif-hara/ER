@@ -14,7 +14,7 @@ namespace ER.ActorControllers
     public sealed class Actor : MonoBehaviour, IActor
     {
         [SerializeField]
-        private ActorStatus status = default;
+        private ActorStatusData statusData = default;
 
         [SerializeField]
         private ActorMotionData motionData = default;
@@ -48,7 +48,7 @@ namespace ER.ActorControllers
             this.Animator = this.GetComponent<Animator>();
             this.Event = new ActorEvent();
             this.StateController.Setup(this, this.disposable);
-            this.statusController.Setup(this, this.status, this.disposable);
+            this.statusController.Setup(this, this.statusData, this.disposable);
             this.MotionController = new ActorMotionController();
             this.MotionController.Setup(this, this.motionData, this.disposable);
             this.DirectorController.Setup(this, this.director);

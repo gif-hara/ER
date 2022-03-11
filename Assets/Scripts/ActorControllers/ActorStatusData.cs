@@ -8,7 +8,7 @@ namespace ER.ActorControllers
     /// 
     /// </summary>
     [Serializable]
-    public sealed class ActorStatus
+    public sealed class ActorStatusData
     {
         /// <summary>
         /// 体力

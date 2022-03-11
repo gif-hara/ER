@@ -11,7 +11,7 @@ namespace ER.ActorControllers
     {
         private IActor actor;
 
-        private ActorStatus baseStatus = default;
+        private ActorStatusData baseStatus = default;
 
         private bool isAlreadyDead = false;
 
@@ -19,7 +19,7 @@ namespace ER.ActorControllers
 
         public int HitPoint { get; private set; }
 
-        public void Setup(IActor actor, ActorStatus status, CompositeDisposable disposable)
+        public void Setup(IActor actor, ActorStatusData status, CompositeDisposable disposable)
         {
             this.actor = actor;
             this.baseStatus = status;
