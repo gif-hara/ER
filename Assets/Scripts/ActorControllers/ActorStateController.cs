@@ -15,9 +15,12 @@ namespace ER.ActorControllers
             Invalid,
             Movable,
             Attack,
+            Avoidance,
         }
 
         private StateController<StateType> stateController = new StateController<StateType>(StateType.Invalid);
+
+        public StateType CurrentState => this.stateController.CurrentState;
 
         public void Setup(IActor actor, CompositeDisposable disposables)
         {
@@ -34,6 +37,8 @@ namespace ER.ActorControllers
                     this.stateController.Update();
                 })
                 .AddTo(disposables);
+
+            this.ChangeRequest(StateType.Movable);
         }
 
         public void ChangeRequest(StateType stateType)

@@ -37,6 +37,11 @@ namespace ER.ActorControllers
         private readonly Subject<ActorStateController.StateType> onChangedStateType = new Subject<ActorStateController.StateType>();
 
         /// <summary>
+        /// 回避をリクエストするイベント
+        /// </summary>
+        private readonly Subject<Vector2> onRequestAvoidance = new Subject<Vector2>();
+
+        /// <summary>
         /// <inheritdoc cref="beginRightEquipmentSubject"/>
         /// </summary>
         public ISubject<Unit> OnBeginRightEquipmentSubject() => this.beginRightEquipmentSubject;
@@ -61,6 +66,11 @@ namespace ER.ActorControllers
         /// </summary>
         public ISubject<ActorStateController.StateType> OnChangedStateSubject() => this.onChangedStateType;
 
+        /// <summary>
+        /// <inheritdoc cref="onRequestAvoidance"/>
+        /// </summary>
+        public ISubject<Vector2> OnRequestAvoidanceSubject() => this.onRequestAvoidance;
+
         public void Dispose()
         {
             this.beginRightEquipmentSubject.Dispose();
@@ -68,6 +78,7 @@ namespace ER.ActorControllers
             this.onHitOpponentAttack.Dispose();
             this.onDead.Dispose();
             this.onChangedStateType.Dispose();
+            this.onRequestAvoidance.Dispose();
         }
     }
 }

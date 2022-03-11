@@ -276,17 +276,6 @@ namespace ER
                 },
                 {
                     ""name"": """",
-                    ""id"": ""58badd94-a4d1-4878-b5ce-15f2f9986675"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Avoidance"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""7578d607-f196-41f3-9521-9e129879bedc"",
                     ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",

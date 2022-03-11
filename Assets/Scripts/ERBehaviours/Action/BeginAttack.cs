@@ -31,10 +31,8 @@ namespace ER.ERBehaviour
 
                 director.extrapolationMode = this.wrapMode;
                 director.playableAsset = this.playableAsset;
-                var binding = director.playableAsset.outputs.First(c => c.streamName == "ActorAnimation");
-
+                director.SetGenericBinding("ActorAnimation", behaviourData.Actor.Animator);
                 director.Play();
-                director.SetGenericBinding(binding.sourceObject, behaviourData.Actor.Animator);
 
                 behaviourData.EquipmentController.Power = this.power;
 

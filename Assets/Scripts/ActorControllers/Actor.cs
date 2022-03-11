@@ -4,6 +4,7 @@ using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Playables;
 
 namespace ER.ActorControllers
 {
@@ -21,9 +22,14 @@ namespace ER.ActorControllers
         [SerializeField]
         private ActorAnimationParameter animationParameter = default;
 
+        [SerializeField]
+        private PlayableDirector director = default;
+
         private readonly ActorStatusController statusController = new ActorStatusController();
 
         public ActorStateController StateController { get; } = new ActorStateController();
+
+        public ActorDirectorController DirectorController { get; } = new ActorDirectorController();
 
         private EquipmentController rightEquipment;
 
@@ -45,6 +51,7 @@ namespace ER.ActorControllers
             this.statusController.Setup(this, this.status, this.disposable);
             this.MotionController = new ActorMotionController();
             this.MotionController.Setup(this, this.motionData, this.disposable);
+            this.DirectorController.Setup(this, this.director);
 
             this.OnDestroyAsObservable()
                 .Subscribe(_ =>

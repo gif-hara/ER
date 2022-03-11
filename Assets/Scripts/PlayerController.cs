@@ -31,12 +31,21 @@ namespace ER
 
             this.inputAction.Player.Fire.performed += OnPerformedBeginRightEquipment;
             this.inputAction.Player.Fire.canceled += OnCanceledBeginRightEquipment;
+            this.inputAction.Player.Avoidance.performed += callback =>
+            {
+                var direction = this.inputAction.Player.Move.ReadValue<Vector2>();
+                this.actor.Event.OnRequestAvoidanceSubject().OnNext(direction);
+            };
 
             this.actor.SetRightEquipment(this.rightEquipmentPrefab);
         }
 
         private void Update()
         {
+            if(this.actor.StateController.CurrentState != ActorStateController.StateType.Movable)
+            {
+                return;
+            }
             var t = this.transform;
             var angle = this.inputAction.Player.Look.ReadValue<Vector2>();
             if (angle.sqrMagnitude > this.angleThreshold * this.angleThreshold)

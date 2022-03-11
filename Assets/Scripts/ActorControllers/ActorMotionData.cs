@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Playables;
 
 namespace ER.ActorControllers
 {
@@ -19,5 +20,10 @@ namespace ER.ActorControllers
         /// 衝突用の半径
         /// </summary>
         public float radius = default;
+
+        /// <summary>
+        /// 回避を行う<see cref="PlayableAsset"/>
+        /// </summary>
+        public PlayableAsset avoidanceAsset = default;
     }
 }

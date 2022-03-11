@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1747911066581499898}
   - component: {fileID: 7022896992796212799}
   - component: {fileID: 6164939204574264582}
+  - component: {fileID: 4614482006976423406}
   m_Layer: 0
   m_Name: Actor.Base
   m_TagString: Untagged
@@ -53,7 +54,12 @@ MonoBehaviour:
     magic: 0
     endurance: 0
     spirit: 0
+  motionData:
+    moveSpeed: 0
+    radius: 0
+    avoidanceAsset: {fileID: 11400000, guid: c54bb4588527889499dbfb08e97751c4, type: 2}
   animationParameter: {fileID: 1747911066581499898}
+  director: {fileID: 4614482006976423406}
 --- !u!114 &1747911066581499898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,6 +113,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!320 &4614482006976423406
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5062621093894177797}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 0}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings: []
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &5270965214482992192
 GameObject:
   m_ObjectHideFlags: 0

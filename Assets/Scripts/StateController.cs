@@ -20,7 +20,7 @@ namespace ER
 
         private Dictionary<Enum, StateInfo> states = new Dictionary<Enum, StateInfo>();
 
-        private T currentState;
+        public T CurrentState { get; private set; }
 
         private T nextState;
 
@@ -39,7 +39,7 @@ namespace ER
         public StateController(T invalidState)
         {
             this.invalidState = invalidState;
-            this.currentState = invalidState;
+            this.CurrentState = invalidState;
             this.nextState = invalidState;
         }
 
@@ -70,21 +70,21 @@ namespace ER
         private void Change()
         {
             Assert.AreNotEqual(this.nextState, this.invalidState);
-            var previousState = this.currentState;
-            if(this.states.ContainsKey(this.currentState))
+            var previousState = this.CurrentState;
+            if(this.states.ContainsKey(this.CurrentState))
             {
-                this.states[this.currentState].onExit?.Invoke(this.nextState);
+                this.states[this.CurrentState].onExit?.Invoke(this.nextState);
             }
 
-            this.currentState = this.nextState;
+            this.CurrentState = this.nextState;
 
-            if(this.states.ContainsKey(this.currentState))
+            if(this.states.ContainsKey(this.CurrentState))
             {
-                this.states[this.currentState].onEnter?.Invoke(previousState);
+                this.states[this.CurrentState].onEnter?.Invoke(previousState);
             }
             this.nextState = this.invalidState;
 
-            this.onChangedState.OnNext(currentState);
+            this.onChangedState.OnNext(CurrentState);
         }
 
         public void Dispose()

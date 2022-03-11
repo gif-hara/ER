@@ -282,6 +282,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Actor.Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3381006727495723139, guid: d4d76e2c587d4724ab5a9601e4eb3ca1, type: 3}
+      propertyPath: m_PlayableAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: c54bb4588527889499dbfb08e97751c4, type: 2}
+    - target: {fileID: 3381006727495723139, guid: d4d76e2c587d4724ab5a9601e4eb3ca1, type: 3}
+      propertyPath: m_SceneBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3381006727495723139, guid: d4d76e2c587d4724ab5a9601e4eb3ca1, type: 3}
+      propertyPath: m_SceneBindings.Array.data[0].key
+      value: 
+      objectReference: {fileID: -3140158847642730933, guid: c54bb4588527889499dbfb08e97751c4, type: 2}
     - target: {fileID: 4763258836534807601, guid: d4d76e2c587d4724ab5a9601e4eb3ca1, type: 3}
       propertyPath: m_Enabled
       value: 1

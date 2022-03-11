@@ -3,6 +3,7 @@ using System;
 using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Playables;
 
 namespace ER.ActorControllers
 {
@@ -24,5 +25,7 @@ namespace ER.ActorControllers
         ActorMotionController MotionController { get; }
 
         ActorStateController StateController { get; }
+
+        ActorDirectorController DirectorController { get; }
     }
 }
