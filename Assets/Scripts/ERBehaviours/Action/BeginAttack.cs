@@ -28,21 +28,27 @@ namespace ER.ERBehaviour
             {
                 var behaviourData = data.Cast<EquipmentBehaviourData>();
                 var director = behaviourData.EquipmentController.PlayableDirector;
+                var actor = behaviourData.Actor;
+
+                if(actor.StateController.CurrentState != ActorStateController.StateType.Movable)
+                {
+                    return Observable.ReturnUnit();
+                }
 
                 director.extrapolationMode = this.wrapMode;
                 director.playableAsset = this.playableAsset;
-                director.SetGenericBinding("ActorAnimation", behaviourData.Actor.Animator);
+                director.SetGenericBinding("ActorAnimation", actor.Animator);
                 director.Play();
 
                 behaviourData.EquipmentController.Power = this.power;
 
-                behaviourData.Actor.StateController.ChangeRequest(ActorStateController.StateType.Attack);
+                actor.StateController.ChangeRequest(ActorStateController.StateType.Attack);
 
                 Observable.FromEvent<PlayableDirector>(x => director.stopped += x, x => director.stopped -= x)
                 .Take(1)
                 .Subscribe(_ =>
                 {
-                    behaviourData.Actor.StateController.ChangeRequest(ActorStateController.StateType.Movable);
+                    actor.StateController.ChangeRequest(ActorStateController.StateType.Movable);
                 });
 
                 return Observable.ReturnUnit();
