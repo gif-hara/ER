@@ -23,6 +23,8 @@ namespace ER.ActorControllers
 
         private readonly ActorStatusController statusController = new ActorStatusController();
 
+        public ActorStateController StateController { get; } = new ActorStateController();
+
         private EquipmentController rightEquipment;
 
         public Animator Animator { get; private set; }
@@ -39,6 +41,7 @@ namespace ER.ActorControllers
         {
             this.Animator = this.GetComponent<Animator>();
             this.Event = new ActorEvent();
+            this.StateController.Setup(this, this.disposable);
             this.statusController.Setup(this, this.status, this.disposable);
             this.MotionController = new ActorMotionController();
             this.MotionController.Setup(this, this.motionData, this.disposable);

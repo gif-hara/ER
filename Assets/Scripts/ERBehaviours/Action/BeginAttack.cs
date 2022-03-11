@@ -1,3 +1,4 @@
+using ER.ActorControllers;
 using System;
 using System.Linq;
 using UniRx;
@@ -26,17 +27,25 @@ namespace ER.ERBehaviour
             return Observable.Defer(() =>
             {
                 var behaviourData = data.Cast<EquipmentBehaviourData>();
-                var playableDirector = behaviourData.EquipmentController.PlayableDirector;
+                var director = behaviourData.EquipmentController.PlayableDirector;
 
-                playableDirector.extrapolationMode = this.wrapMode;
-                playableDirector.playableAsset = this.playableAsset;
-                var binding = playableDirector.playableAsset.outputs.First(c => c.streamName == "ActorAnimation");
+                director.extrapolationMode = this.wrapMode;
+                director.playableAsset = this.playableAsset;
+                var binding = director.playableAsset.outputs.First(c => c.streamName == "ActorAnimation");
 
-                playableDirector.Play();
-                playableDirector.SetGenericBinding(binding.sourceObject, behaviourData.Actor.Animator);
+                director.Play();
+                director.SetGenericBinding(binding.sourceObject, behaviourData.Actor.Animator);
 
                 behaviourData.EquipmentController.Power = this.power;
 
+                behaviourData.Actor.StateController.ChangeRequest(ActorStateController.StateType.Attack);
+
+                Observable.FromEvent<PlayableDirector>(x => director.stopped += x, x => director.stopped -= x)
+                .Take(1)
+                .Subscribe(_ =>
+                {
+                    behaviourData.Actor.StateController.ChangeRequest(ActorStateController.StateType.Movable);
+                });
 
                 return Observable.ReturnUnit();
             });

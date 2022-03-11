@@ -31,7 +31,7 @@ namespace ER.EquipmentSystems
 
         public PlayableDirector PlayableDirector => this.playableDirector;
 
-        private CompositeDisposable activeDisposable = new CompositeDisposable();
+        private CompositeDisposable disposables = new CompositeDisposable();
 
         public EquipmentController Attach(IActor actor)
         {
@@ -43,7 +43,7 @@ namespace ER.EquipmentSystems
         public void Dispose()
         {
             Destroy(this.gameObject);
-            this.activeDisposable.Dispose();
+            this.disposables.Dispose();
         }
 
         private void AttachInternal(IActor actor)
@@ -66,17 +66,27 @@ namespace ER.EquipmentSystems
                     hitActor.Event.OnHitOpponentAttackSubject().OnNext(this);
                 }
             })
-            .AddTo(this.activeDisposable);
+            .AddTo(this.disposables);
 
 
             foreach (var behaviour in this.behaviours)
             {
                 behaviour.AsObservable(behaviourData)
                     .Subscribe()
-                    .AddTo(this.activeDisposable);
+                    .AddTo(this.disposables);
             }
 
             this.PlayDefaultPlayableAsset();
+
+            actor.Event.OnChangedStateSubject()
+                .Subscribe(x =>
+                {
+                    if (x == ActorStateController.StateType.Movable)
+                    {
+                        this.PlayDefaultPlayableAsset();
+                    }
+                })
+                .AddTo(this.disposables);
         }
 
         private void PlayDefaultPlayableAsset()

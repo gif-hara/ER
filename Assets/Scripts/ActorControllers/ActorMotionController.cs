@@ -31,6 +31,16 @@ namespace ER.ActorControllers
                     UpdateRotation(actor);
                 })
                 .AddTo(disposable);
+
+            actor.Event.OnChangedStateSubject()
+                .Subscribe(x =>
+                {
+                    if (x == ActorStateController.StateType.Movable)
+                    {
+                        actor.AnimationParameter.moveSpeedRate = 1.0f;
+                    }
+                })
+                .AddTo(disposable);
         }
 
         public void Move(Vector2 moveDirection)
@@ -52,7 +62,7 @@ namespace ER.ActorControllers
         {
             var t = actor.transform;
             var direction = this.moveDirection.normalized;
-            var velocity = this.moveDirection * Time.deltaTime * this.motionData.moveSpeed;
+            var velocity = this.moveDirection * Time.deltaTime * this.motionData.moveSpeed * actor.AnimationParameter.moveSpeedRate;
             var hitNumber = Physics2D.CircleCastNonAlloc(
                 t.localPosition,
                 this.motionData.radius,

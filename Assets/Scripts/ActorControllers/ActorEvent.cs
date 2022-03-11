@@ -32,6 +32,11 @@ namespace ER.ActorControllers
         private readonly Subject<Unit> onDead = new Subject<Unit>();
 
         /// <summary>
+        /// ステートが切り替わった際のイベント
+        /// </summary>
+        private readonly Subject<ActorStateController.StateType> onChangedStateType = new Subject<ActorStateController.StateType>();
+
+        /// <summary>
         /// <inheritdoc cref="beginRightEquipmentSubject"/>
         /// </summary>
         public ISubject<Unit> OnBeginRightEquipmentSubject() => this.beginRightEquipmentSubject;
@@ -51,12 +56,18 @@ namespace ER.ActorControllers
         /// </summary>
         public ISubject<Unit> OnDeadSubject() => this.onDead;
 
+        /// <summary>
+        /// <inheritdoc cref="onChangedStateType"/>
+        /// </summary>
+        public ISubject<ActorStateController.StateType> OnChangedStateSubject() => this.onChangedStateType;
+
         public void Dispose()
         {
             this.beginRightEquipmentSubject.Dispose();
             this.endRightEquipmentSubject.Dispose();
             this.onHitOpponentAttack.Dispose();
             this.onDead.Dispose();
+            this.onChangedStateType.Dispose();
         }
     }
 }
