@@ -11,7 +11,7 @@ namespace ER.ERBehaviour
     /// 
     /// </summary>
     [Serializable]
-    public sealed class ConcatTrigger : ITrigger
+    public sealed class SequenceTrigger : ITrigger
     {
         [SerializeReference, SubclassSelector(typeof(ITrigger))]
         private List<ITrigger> triggers = default;
