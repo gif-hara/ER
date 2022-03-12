@@ -152,7 +152,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4043516610771091224}
   m_Layer: 0
-  m_Name: Model
+  m_Name: Model.Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

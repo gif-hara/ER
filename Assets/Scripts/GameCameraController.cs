@@ -1,6 +1,7 @@
 using Cinemachine;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UniRx;
 
 namespace ER
 {
@@ -14,6 +15,17 @@ namespace ER
 
         [SerializeField]
         private CinemachineVirtualCamera defaultVirtualCamera = default;
+
+        private void Awake()
+        {
+            GameEvent.OnSpawnedActorSubject()
+                .Where(x => x.tag == "Player")
+                .Subscribe(x =>
+                {
+                    SetDefaultVirtualCameraTarget(x.transform);
+                })
+                .AddTo(this);
+        }
 
         public void SetDefaultVirtualCameraTarget(Transform target)
         {

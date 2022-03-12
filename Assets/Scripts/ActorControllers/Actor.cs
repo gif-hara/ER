@@ -68,6 +68,11 @@ namespace ER.ActorControllers
                 .AddTo(this.disposable);
         }
 
+        void Start()
+        {
+            GameEvent.OnSpawnedActorSubject().OnNext(this);
+        }
+
         void OnAnimatorMove()
         {
             this.transform.position = this.Animator.rootPosition;

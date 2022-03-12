@@ -20,10 +20,14 @@ namespace ER
 
         private void Awake()
         {
-            var gameCameraController = Instantiate(gameCameraControllerPrefab);
+            GameEvent.Initialize();
+            Instantiate(gameCameraControllerPrefab);
             var player = Instantiate(this.playerPrefab, this.playerSpawnPoint.localPosition, this.playerSpawnPoint.localRotation);
+        }
 
-            gameCameraController.SetDefaultVirtualCameraTarget(player.transform);
+        private void OnDestroy()
+        {
+            GameEvent.Clear();
         }
     }
 }
