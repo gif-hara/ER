@@ -24,7 +24,14 @@ namespace ER.ActorControllers
 
         private float angle;
 
+        private Transform lookAtTarget;
+
         private RaycastHit2D[] cachedRaycastHit2Ds = new RaycastHit2D[32];
+
+        /// <summary>
+        /// 注視しているか返す
+        /// </summary>
+        public bool IsLookAt => this.lookAtTarget != null;
 
         public void Setup(IActor actor, ActorMotionData motionData, CompositeDisposable disposable)
         {
@@ -97,6 +104,16 @@ namespace ER.ActorControllers
             this.Rotate(-90.0f + Mathf.Atan2(angle.y, angle.x) * Mathf.Rad2Deg);
         }
 
+        public void BeginLookAt(Transform target)
+        {
+            this.lookAtTarget = target;
+        }
+
+        public void EndLookAt()
+        {
+            this.lookAtTarget = null;
+        }
+
         private void UpdatePosition(IActor actor)
         {
             var t = actor.transform;
@@ -130,6 +147,12 @@ namespace ER.ActorControllers
 
         private void UpdateRotation(IActor actor)
         {
+            if(this.IsLookAt)
+            {
+                var direction = (this.lookAtTarget.position - actor.transform.position).normalized;
+                angle = -90.0f + Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            }
+
             actor.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, angle);
         }
     }

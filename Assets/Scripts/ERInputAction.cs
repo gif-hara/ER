@@ -51,6 +51,14 @@ namespace ER
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""LookAt"",
+                    ""type"": ""Button"",
+                    ""id"": ""ca15b2df-afbc-4546-82a2-8e0cfd9061b3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -260,6 +268,17 @@ namespace ER
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Avoidance"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b22dd62e-4ae6-415e-88fd-4b5e4f8bb747"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""LookAt"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -841,6 +860,7 @@ namespace ER
             m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
             m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
             m_Player_Avoidance = m_Player.FindAction("Avoidance", throwIfNotFound: true);
+            m_Player_LookAt = m_Player.FindAction("LookAt", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -906,6 +926,7 @@ namespace ER
         private readonly InputAction m_Player_Look;
         private readonly InputAction m_Player_Fire;
         private readonly InputAction m_Player_Avoidance;
+        private readonly InputAction m_Player_LookAt;
         public struct PlayerActions
         {
             private @ERInputAction m_Wrapper;
@@ -914,6 +935,7 @@ namespace ER
             public InputAction @Look => m_Wrapper.m_Player_Look;
             public InputAction @Fire => m_Wrapper.m_Player_Fire;
             public InputAction @Avoidance => m_Wrapper.m_Player_Avoidance;
+            public InputAction @LookAt => m_Wrapper.m_Player_LookAt;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -935,6 +957,9 @@ namespace ER
                     @Avoidance.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAvoidance;
                     @Avoidance.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAvoidance;
                     @Avoidance.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAvoidance;
+                    @LookAt.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLookAt;
+                    @LookAt.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLookAt;
+                    @LookAt.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLookAt;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
@@ -951,6 +976,9 @@ namespace ER
                     @Avoidance.started += instance.OnAvoidance;
                     @Avoidance.performed += instance.OnAvoidance;
                     @Avoidance.canceled += instance.OnAvoidance;
+                    @LookAt.started += instance.OnLookAt;
+                    @LookAt.performed += instance.OnLookAt;
+                    @LookAt.canceled += instance.OnLookAt;
                 }
             }
         }
@@ -1111,6 +1139,7 @@ namespace ER
             void OnLook(InputAction.CallbackContext context);
             void OnFire(InputAction.CallbackContext context);
             void OnAvoidance(InputAction.CallbackContext context);
+            void OnLookAt(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {

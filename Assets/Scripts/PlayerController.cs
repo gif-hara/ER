@@ -36,6 +36,17 @@ namespace ER
                 var direction = this.inputAction.Player.Move.ReadValue<Vector2>();
                 this.actor.Event.OnRequestAvoidanceSubject().OnNext(direction);
             };
+            this.inputAction.Player.LookAt.performed += callback =>
+            {
+                if(!this.actor.MotionController.IsLookAt)
+                {
+                    this.actor.MotionController.BeginLookAt(Actor.Enemies[0].transform);
+                }
+                else
+                {
+                    this.actor.MotionController.EndLookAt();
+                }
+            };
 
             this.actor.SetRightEquipment(this.rightEquipmentPrefab);
         }

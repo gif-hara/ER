@@ -36,6 +36,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "LookAt",
+                    "type": "Button",
+                    "id": "ca15b2df-afbc-4546-82a2-8e0cfd9061b3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -245,6 +253,17 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Avoidance",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b22dd62e-4ae6-415e-88fd-4b5e4f8bb747",
+                    "path": "<Gamepad>/rightStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "LookAt",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
