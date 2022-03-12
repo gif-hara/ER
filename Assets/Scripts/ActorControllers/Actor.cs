@@ -1,5 +1,6 @@
 using ER.EquipmentSystems;
 using System;
+using System.Collections.Generic;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
@@ -43,6 +44,21 @@ namespace ER.ActorControllers
 
         private readonly CompositeDisposable disposable = new CompositeDisposable();
 
+        /// <summary>
+        /// シーンに存在する<see cref="Actor"/>
+        /// </summary>
+        public static readonly List<Actor> Actors = new List<Actor>();
+
+        /// <summary>
+        /// シーンに存在するプレイヤーリスト
+        /// </summary>
+        public static readonly List<Actor> Players = new List<Actor>();
+
+        /// <summary>
+        /// シーンに存在する敵リスト
+        /// </summary>
+        public static readonly List<Actor> Enemies = new List<Actor>();
+
         void Awake()
         {
             this.Animator = this.GetComponent<Animator>();
@@ -70,7 +86,40 @@ namespace ER.ActorControllers
 
         void Start()
         {
+            Actors.Add(this);
+
+            if(this.gameObject.layer == Layer.Index.Player)
+            {
+                Players.Add(this);
+            }
+            else if(this.gameObject.layer == Layer.Index.Enemy)
+            {
+                Enemies.Add(this);
+            }
+            else
+            {
+                Debug.LogWarning($"{this.name}.{nameof(this.gameObject.layer)}はどの{typeof(Actor)}にも属していません");
+            }
+
             GameEvent.OnSpawnedActorSubject().OnNext(this);
+        }
+
+        void OnDestroy()
+        {
+            Actors.Remove(this);
+
+            if (this.gameObject.layer == Layer.Index.Player)
+            {
+                Players.Remove(this);
+            }
+            else if (this.gameObject.layer == Layer.Index.Enemy)
+            {
+                Enemies.Remove(this);
+            }
+            else
+            {
+                Debug.LogWarning($"{this.name}.{nameof(this.gameObject.layer)}はどの{typeof(Actor)}にも属していません");
+            }
         }
 
         void OnAnimatorMove()

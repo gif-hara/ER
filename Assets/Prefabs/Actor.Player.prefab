@@ -22,9 +22,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 646681530448301843}
     m_Modifications:
+    - target: {fileID: 1425752642508070264, guid: f25adb7c0910fd34ab56b68321eecece, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3591566806632247617, guid: f25adb7c0910fd34ab56b68321eecece, type: 3}
       propertyPath: m_Name
       value: Model.Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3591566806632247617, guid: f25adb7c0910fd34ab56b68321eecece, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4043516610771091224, guid: f25adb7c0910fd34ab56b68321eecece, type: 3}
       propertyPath: m_RootOrder
@@ -94,10 +102,6 @@ PrefabInstance:
     - target: {fileID: 5062621093894177797, guid: fa424eeca9000434681b647bc0d889f7, type: 3}
       propertyPath: m_Layer
       value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5062621093894177797, guid: fa424eeca9000434681b647bc0d889f7, type: 3}
-      propertyPath: m_TagString
-      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5270965214482992192, guid: fa424eeca9000434681b647bc0d889f7, type: 3}
       propertyPath: m_Layer

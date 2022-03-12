@@ -19,7 +19,7 @@ namespace ER
         private void Awake()
         {
             GameEvent.OnSpawnedActorSubject()
-                .Where(x => x.tag == "Player")
+                .Where(x => x.gameObject.layer == Layer.Index.Player)
                 .Subscribe(x =>
                 {
                     SetDefaultVirtualCameraTarget(x.transform);

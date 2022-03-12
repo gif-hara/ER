@@ -19,6 +19,11 @@ namespace ER
             public const int EnemyBullet = 9;
 
             public const int Stage = 10;
+
+            public static bool IsMatch(GameObject gameObject, int layer)
+            {
+                return gameObject.layer == layer;
+            }
         }
 
         public static class Mask
