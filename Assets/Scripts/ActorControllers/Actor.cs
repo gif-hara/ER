@@ -26,7 +26,7 @@ namespace ER.ActorControllers
         [SerializeField]
         private PlayableDirector director = default;
 
-        private readonly ActorStatusController statusController = new ActorStatusController();
+        public ActorStatusController StatusController { get; } = new ActorStatusController();
 
         public ActorStateController StateController { get; } = new ActorStateController();
 
@@ -42,7 +42,7 @@ namespace ER.ActorControllers
 
         public ActorMotionController MotionController { get; private set; }
 
-        private readonly CompositeDisposable disposable = new CompositeDisposable();
+        public CompositeDisposable Disposables { get; } = new CompositeDisposable();
 
         /// <summary>
         /// シーンに存在する<see cref="Actor"/>
@@ -63,16 +63,16 @@ namespace ER.ActorControllers
         {
             this.Animator = this.GetComponent<Animator>();
             this.Event = new ActorEvent();
-            this.StateController.Setup(this, this.disposable);
-            this.statusController.Setup(this, this.statusData, this.disposable);
+            this.StateController.Setup(this);
+            this.StatusController.Setup(this, this.statusData);
             this.MotionController = new ActorMotionController();
-            this.MotionController.Setup(this, this.motionData, this.disposable);
+            this.MotionController.Setup(this, this.motionData);
             this.DirectorController.Setup(this, this.director);
 
             this.OnDestroyAsObservable()
                 .Subscribe(_ =>
                 {
-                    this.disposable.Dispose();
+                    this.Disposables.Dispose();
                     this.Event.Dispose();
                 });
         }

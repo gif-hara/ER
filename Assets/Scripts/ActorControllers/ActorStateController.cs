@@ -22,28 +22,28 @@ namespace ER.ActorControllers
 
         public StateType CurrentState => this.stateController.CurrentState;
 
-        public void Setup(IActor actor, CompositeDisposable disposables)
+        public void Setup(IActor actor)
         {
             this.stateController.OnChangedStateAsObservable()
                 .Subscribe(x =>
                 {
                     actor.Event.OnChangedStateSubject().OnNext(x);
                 })
-                .AddTo(disposables);
+                .AddTo(actor.Disposables);
 
             actor.gameObject.UpdateAsObservable()
                 .Subscribe(_ =>
                 {
                     this.stateController.Update();
                 })
-                .AddTo(disposables);
+                .AddTo(actor.Disposables);
 
             actor.Event.OnRespawnedSubject()
                 .Subscribe(_ =>
                 {
                     this.ChangeRequest(StateType.Movable);
                 })
-                .AddTo(disposables);
+                .AddTo(actor.Disposables);
 
             this.ChangeRequest(StateType.Movable);
         }

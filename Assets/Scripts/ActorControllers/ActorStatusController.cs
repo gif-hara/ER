@@ -19,7 +19,7 @@ namespace ER.ActorControllers
 
         public int HitPoint { get; private set; }
 
-        public void Setup(IActor actor, ActorStatusData status, CompositeDisposable disposable)
+        public void Setup(IActor actor, ActorStatusData status)
         {
             this.actor = actor;
             this.baseStatus = status;
@@ -32,7 +32,7 @@ namespace ER.ActorControllers
                 {
                     this.TakeDamage(x.Power);
                 })
-                .AddTo(disposable);
+                .AddTo(actor.Disposables);
 
             actor.Event.OnRespawnedSubject()
                 .Subscribe(_ =>
@@ -40,7 +40,7 @@ namespace ER.ActorControllers
                     this.HitPoint = this.HitPointMax;
                     this.isAlreadyDead = false;
                 })
-                .AddTo(disposable);
+                .AddTo(actor.Disposables);
         }
 
         private void TakeDamage(int damage)

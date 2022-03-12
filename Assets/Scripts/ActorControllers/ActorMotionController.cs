@@ -35,7 +35,7 @@ namespace ER.ActorControllers
         /// </summary>
         public bool IsLookAt { get; private set; }
 
-        public void Setup(IActor actor, ActorMotionData motionData, CompositeDisposable disposable)
+        public void Setup(IActor actor, ActorMotionData motionData)
         {
             this.actor = actor;
             this.motionData = motionData;
@@ -45,7 +45,7 @@ namespace ER.ActorControllers
                     UpdatePosition(actor);
                     UpdateRotation(actor);
                 })
-                .AddTo(disposable);
+                .AddTo(actor.Disposables);
 
             actor.Event.OnChangedStateSubject()
                 .Subscribe(x =>
@@ -56,7 +56,7 @@ namespace ER.ActorControllers
                         actor.AnimationParameter.invisible = false;
                     }
                 })
-                .AddTo(disposable);
+                .AddTo(actor.Disposables);
 
             actor.Event.OnRequestAvoidanceSubject()
                 .Where(_ => actor.StateController.CurrentState == ActorStateController.StateType.Movable)
@@ -75,7 +75,8 @@ namespace ER.ActorControllers
                     {
                         actor.StateController.ChangeRequest(ActorStateController.StateType.Movable);
                     })
-                    .AddTo(disposable);
+                    .AddTo(actor.Disposables);
+
                     actor.StateController.ChangeRequest(ActorStateController.StateType.Avoidance);
                     actor.gameObject.UpdateAsObservable()
                     .TakeUntil(actor.Event.OnChangedStateSubject().Where(nextState => nextState != ActorStateController.StateType.Avoidance))
@@ -83,9 +84,9 @@ namespace ER.ActorControllers
                     {
                         this.Move(x);
                     })
-                    .AddTo(disposable);
+                    .AddTo(actor.Disposables);
                 })
-                .AddTo(disposable);
+                .AddTo(actor.Disposables);
 
             actor.Event.OnRespawnedSubject()
                 .Subscribe(_ =>
@@ -95,7 +96,7 @@ namespace ER.ActorControllers
                         EndLookAt();
                     }
                 })
-                .AddTo(disposable);
+                .AddTo(actor.Disposables);
         }
 
         public void Move(Vector2 moveDirection)

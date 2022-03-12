@@ -12,6 +12,8 @@ namespace ER.ActorControllers
     /// </summary>
     public interface IActor
     {
+        CompositeDisposable Disposables { get; }
+
         ActorEvent Event { get; }
 
         Transform transform { get; }
@@ -29,5 +31,7 @@ namespace ER.ActorControllers
         ActorDirectorController DirectorController { get; }
 
         EquipmentController GetEquipmentController(HandType handType);
+
+        ActorStatusController StatusController { get; }
     }
 }
