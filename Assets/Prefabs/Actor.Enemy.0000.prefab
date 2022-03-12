@@ -55,6 +55,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Actor.Enemy.0000
       objectReference: {fileID: 0}
+    - target: {fileID: 5003387275646208275, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: motionData.moveSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.size
       value: 4
@@ -186,7 +190,7 @@ PrefabInstance:
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.data[3].behaviours.Array.data[0].action.playableAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 4e3dc0d37e76f884bb0ff92b825a8805, type: 2}
+      objectReference: {fileID: 11400000, guid: 679b92cd0b950f740810daaaffbf0b5d, type: 2}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.data[0].behaviours.Array.data[0].trigger.distanceThreshold
       value: 15

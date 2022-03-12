@@ -94,6 +94,10 @@ PrefabInstance:
       value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 3240392672265994588, guid: fa424eeca9000434681b647bc0d889f7, type: 3}
+      propertyPath: statusData.physical
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3240392672265994588, guid: fa424eeca9000434681b647bc0d889f7, type: 3}
       propertyPath: motionData.moveSpeed
       value: 9
       objectReference: {fileID: 0}

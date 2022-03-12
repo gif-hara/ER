@@ -73,7 +73,7 @@ PlayableDirector:
   m_GameObject: {fileID: 4608228154354743509}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 0e92d3a4cc7d0ed41a6f70c84d5b23e5, type: 2}
+  m_PlayableAsset: {fileID: 0}
   m_InitialState: 0
   m_WrapMode: 1
   m_DirectorUpdateMode: 1
@@ -87,6 +87,12 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: -3140158847642730933, guid: 0e92d3a4cc7d0ed41a6f70c84d5b23e5, type: 2}
     value: {fileID: 6817020702216351253}
+  - key: {fileID: -3140158847642730933, guid: 679b92cd0b950f740810daaaffbf0b5d, type: 2}
+    value: {fileID: 6817020702216351253}
+  - key: {fileID: 226853102563252438, guid: 679b92cd0b950f740810daaaffbf0b5d, type: 2}
+    value: {fileID: 6119873786565449434}
+  - key: {fileID: -1935603194271161550, guid: 679b92cd0b950f740810daaaffbf0b5d, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!50 &-5223219104144271367
@@ -119,7 +125,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 655392272305158409, guid: 6183565eed251a4469039bf658a61b11, type: 3}
       propertyPath: m_DynamicOccludee
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3474046909495799082, guid: 6183565eed251a4469039bf658a61b11, type: 3}
       propertyPath: m_RootOrder
