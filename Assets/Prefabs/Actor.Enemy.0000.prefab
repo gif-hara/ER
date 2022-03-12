@@ -26,12 +26,26 @@ MonoBehaviour:
         id: 2
       action:
         id: 3
-  - aiName: Wait
+  - aiName: ChasePlayer
     behaviours:
     - trigger:
         id: 4
       action:
         id: 5
+    - trigger:
+        id: 6
+      action:
+        id: 7
+  - aiName: Attack
+    behaviours:
+    - trigger:
+        id: 8
+      action:
+        id: 9
+    - trigger:
+        id: 10
+      action:
+        id: 11
   initialAiName: Idle
   rightEquipmentPrefab: {fileID: 4608228154354743508, guid: b12d6f23289132a449f58ef17eff3410, type: 3}
   references:
@@ -51,22 +65,50 @@ MonoBehaviour:
       type: {class: SequenceAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         actions:
-        - id: 6
-        - id: 7
+        - id: 12
+        - id: 13
     00000004:
       type: {class: EveryUpdate, ns: ER.ERBehaviour, asm: Assembly-CSharp}
     00000005:
-      type: {class: Log, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      type: {class: ActorMove, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
-        message: Wait
+        offsetAngle: 0
+        moveSpeed: 1
     00000006:
-      type: {class: LookAtActor, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      type: {class: DistancePlayer, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
-        actorType: 1
+        distanceThreshold: 3
+        isIn: 1
     00000007:
       type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
-        aiName: Wait
+        aiName: Attack
+    00000008:
+      type: {class: EveryUpdate, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+    00000009:
+      type: {class: BeginAttack, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        playableAsset: {fileID: 11400000, guid: 4e3dc0d37e76f884bb0ff92b825a8805, type: 2}
+        wrapMode: 2
+        power: 10
+        handType: 1
+    0000000A:
+      type: {class: DistancePlayer, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        distanceThreshold: 5
+        isIn: 0
+    0000000B:
+      type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        aiName: ChasePlayer
+    0000000C:
+      type: {class: LookAtActor, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        actorType: 1
+    0000000D:
+      type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        aiName: ChasePlayer
 --- !u!1001 &7608749932872960079
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -97,6 +139,10 @@ PrefabInstance:
     - target: {fileID: 3240392672265994588, guid: fa424eeca9000434681b647bc0d889f7, type: 3}
       propertyPath: motionData.radius
       value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3240392672265994588, guid: fa424eeca9000434681b647bc0d889f7, type: 3}
+      propertyPath: motionData.moveSpeed
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5062621093894177797, guid: fa424eeca9000434681b647bc0d889f7, type: 3}
       propertyPath: m_Name
