@@ -33,6 +33,8 @@ namespace ER.EquipmentSystems
 
         private CompositeDisposable disposables = new CompositeDisposable();
 
+        private List<Collider2D> colliders = null;
+
         public EquipmentController Attach(IActor actor)
         {
             var clone = Instantiate(this, actor.transform);
@@ -76,6 +78,8 @@ namespace ER.EquipmentSystems
                     .AddTo(this.disposables);
             }
 
+            this.colliders = new List<Collider2D>(this.GetComponentsInChildren<Collider2D>());
+
             this.PlayDefaultPlayableAsset();
 
             actor.Event.OnChangedStateSubject()
@@ -93,6 +97,11 @@ namespace ER.EquipmentSystems
         {
             this.playableDirector.extrapolationMode = DirectorWrapMode.Loop;
             this.playableDirector.Play(this.defaultPlayableAsset);
+
+            foreach(var i in this.colliders)
+            {
+                i.gameObject.SetActive(false);
+            }
         }
 
         private static int GetLayerIndex(int ownerLayerIndex)
