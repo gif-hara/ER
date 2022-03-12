@@ -15,10 +15,58 @@ MonoBehaviour:
   actor: {fileID: 5003387275646208275}
   elements:
   - aiName: Idle
-    behaviours: []
-  initialiAiName: Idle
+    behaviours:
+    - trigger:
+        id: 0
+      action:
+        id: 1
+  - aiName: ChasePlayer
+    behaviours:
+    - trigger:
+        id: 2
+      action:
+        id: 3
+  - aiName: Wait
+    behaviours:
+    - trigger:
+        id: 4
+      action:
+        id: 5
+  initialAiName: Idle
+  rightEquipmentPrefab: {fileID: 4608228154354743508, guid: b12d6f23289132a449f58ef17eff3410, type: 3}
   references:
     version: 1
+    00000000:
+      type: {class: DistancePlayer, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        distanceThreshold: 15
+        isIn: 1
+    00000001:
+      type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        aiName: ChasePlayer
+    00000002:
+      type: {class: EveryUpdate, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+    00000003:
+      type: {class: SequenceAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        actions:
+        - id: 6
+        - id: 7
+    00000004:
+      type: {class: EveryUpdate, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+    00000005:
+      type: {class: Log, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        message: Wait
+    00000006:
+      type: {class: LookAtActor, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        actorType: 1
+    00000007:
+      type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        aiName: Wait
 --- !u!1001 &7608749932872960079
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -64,11 +112,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8207273531949983257, guid: fa424eeca9000434681b647bc0d889f7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 17.02
       objectReference: {fileID: 0}
     - target: {fileID: 8207273531949983257, guid: fa424eeca9000434681b647bc0d889f7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 20.95
       objectReference: {fileID: 0}
     - target: {fileID: 8207273531949983257, guid: fa424eeca9000434681b647bc0d889f7, type: 3}
       propertyPath: m_LocalPosition.z

@@ -1,3 +1,4 @@
+using ER.EquipmentSystems;
 using System;
 using System.Collections.Generic;
 using UniRx;
@@ -18,7 +19,10 @@ namespace ER.ActorControllers
         private List<AIElement> elements = default;
 
         [SerializeField]
-        private string initialiAiName = default;
+        private string initialAiName = default;
+
+        [SerializeField]
+        private EquipmentController rightEquipmentPrefab = default;
 
         private readonly Dictionary<string, AIElement> runtimeElements = new Dictionary<string, AIElement>();
 
@@ -33,7 +37,8 @@ namespace ER.ActorControllers
                 this.runtimeElements.Add(i.aiName, i);
             }
 
-            this.ChangeRequest(this.initialiAiName);
+            this.ChangeRequest(this.initialAiName);
+            this.actor.SetRightEquipment(this.rightEquipmentPrefab);
         }
 
         private void Update()

@@ -27,5 +27,7 @@ namespace ER.ActorControllers
         ActorStateController StateController { get; }
 
         ActorDirectorController DirectorController { get; }
+
+        EquipmentController GetEquipmentController(HandType handType);
     }
 }

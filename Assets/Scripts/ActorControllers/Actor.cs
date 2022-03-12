@@ -131,5 +131,19 @@ namespace ER.ActorControllers
         {
             this.rightEquipment = equipmentPrefab.Attach(this);
         }
+
+        public EquipmentController GetEquipmentController(HandType handType)
+        {
+            switch(handType)
+            {
+                case HandType.Left:
+                    throw new NotImplementedException();
+                case HandType.Right:
+                    return this.rightEquipment;
+                default:
+                    Assert.IsTrue(false, $"{handType}は未実装です");
+                    return null;
+            }
+        }
     }
 }

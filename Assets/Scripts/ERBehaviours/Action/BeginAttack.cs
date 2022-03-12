@@ -22,12 +22,16 @@ namespace ER.ERBehaviour
         [SerializeField]
         private int power = default;
 
+        [SerializeField]
+        private HandType handType = default;
+
         public IObservable<Unit> AsObservable(IBehaviourData data)
         {
             return Observable.Defer(() =>
             {
-                var behaviourData = data.Cast<EquipmentBehaviourData>();
-                var director = behaviourData.EquipmentController.PlayableDirector;
+                var behaviourData = data.Cast<IActorHolder>();
+                var equipmentController = behaviourData.Actor.GetEquipmentController(this.handType);
+                var director = equipmentController.PlayableDirector;
                 var actor = behaviourData.Actor;
 
                 if(actor.StateController.CurrentState != ActorStateController.StateType.Movable)
@@ -40,7 +44,7 @@ namespace ER.ERBehaviour
                 director.SetGenericBinding("ActorAnimation", actor.Animator);
                 director.Play();
 
-                behaviourData.EquipmentController.Power = this.power;
+                equipmentController.Power = this.power;
 
                 actor.StateController.ChangeRequest(ActorStateController.StateType.Attack);
 

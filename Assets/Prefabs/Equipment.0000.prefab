@@ -63,6 +63,7 @@ MonoBehaviour:
         playableAsset: {fileID: 11400000, guid: 4e3dc0d37e76f884bb0ff92b825a8805, type: 2}
         wrapMode: 2
         power: 10
+        handType: 1
 --- !u!320 &4311177486490712205
 PlayableDirector:
   m_ObjectHideFlags: 0
