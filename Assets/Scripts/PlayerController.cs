@@ -1,6 +1,7 @@
 using ER.ActorControllers;
 using ER.EquipmentSystems;
 using System;
+using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -22,6 +23,18 @@ namespace ER
         [SerializeField]
         private EquipmentController rightEquipmentPrefab = default;
 
+        /// <summary>
+        /// ロックオン可能な距離の閾値
+        /// </summary>
+        [SerializeField]
+        private float lookAtDistanceThreshold = default;
+
+        /// <summary>
+        /// ロックオン可能な角度の閾値
+        /// </summary>
+        [SerializeField]
+        private float lookAtAngleThreshold = default;
+
         private ERInputAction inputAction;
 
         private void Start()
@@ -38,9 +51,14 @@ namespace ER
             };
             this.inputAction.Player.LookAt.performed += callback =>
             {
-                if(!this.actor.MotionController.IsLookAt)
+                if (!this.actor.MotionController.IsLookAt)
                 {
-                    this.actor.MotionController.BeginLookAt(Actor.Enemies[0].transform);
+                    var target = FindLookAtTargetEnemy();
+                    if (target == null)
+                    {
+                        return;
+                    }
+                    this.actor.MotionController.BeginLookAt(target.transform);
                 }
                 else
                 {
@@ -68,6 +86,27 @@ namespace ER
             this.actor.MotionController.Move(direction);
         }
 
+        private void OnDrawGizmosSelected()
+        {
+            var currentAngle = this.transform.rotation.eulerAngles.z;
+            var from = this.transform.position;
+            var min = (90 + currentAngle - this.lookAtAngleThreshold) * Mathf.Deg2Rad;
+            var max = (90 + currentAngle + this.lookAtAngleThreshold) * Mathf.Deg2Rad;
+
+            var tempColor = Gizmos.color;
+            Gizmos.DrawWireSphere(from, this.lookAtDistanceThreshold);
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(
+                from,
+                from + new Vector3(Mathf.Cos(min), Mathf.Sin(min), 0.0f) * this.lookAtDistanceThreshold
+                );
+            Gizmos.DrawLine(
+                from,
+                from + new Vector3(Mathf.Cos(max), Mathf.Sin(max), 0.0f) * this.lookAtDistanceThreshold
+                );
+            Gizmos.color = tempColor;
+        }
+
         private void OnPerformedBeginRightEquipment(InputAction.CallbackContext callback)
         {
             this.actor.Event.OnBeginRightEquipmentSubject().OnNext(Unit.Default);
@@ -76,6 +115,35 @@ namespace ER
         private void OnCanceledBeginRightEquipment(InputAction.CallbackContext callback)
         {
             this.actor.Event.OnEndRightEquipmentSubject().OnNext(Unit.Default);
+        }
+
+        /// <summary>
+        /// ロックオン可能な敵を返す
+        /// </summary>
+        private Actor FindLookAtTargetEnemy()
+        {
+            Actor result = null;
+            var minDistance = float.MaxValue;
+            var minAngle = float.MaxValue;
+            foreach(var i in Actor.Enemies)
+            {
+                var diff = i.transform.position - actor.transform.position;
+                var distance = diff.magnitude;
+
+                if (distance <= this.lookAtDistanceThreshold && distance <= minDistance)
+                {
+                    minDistance = distance;
+
+                    var angle = Vector2.Angle(actor.transform.up, diff.normalized);
+                    if(angle <= this.lookAtAngleThreshold && angle <= minAngle)
+                    {
+                        minAngle = angle;
+                        result = i;
+                    }
+                }
+            }
+
+            return result;
         }
     }
 }

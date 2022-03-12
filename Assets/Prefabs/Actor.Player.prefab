@@ -15,6 +15,8 @@ MonoBehaviour:
   actor: {fileID: 4763258836534807601}
   angleThreshold: 0.1
   rightEquipmentPrefab: {fileID: 4608228154354743508, guid: b12d6f23289132a449f58ef17eff3410, type: 3}
+  lookAtDistanceThreshold: 26
+  lookAtAngleThreshold: 90
 --- !u!1001 &5971326975675396639
 PrefabInstance:
   m_ObjectHideFlags: 0
