@@ -11,7 +11,7 @@ namespace ER.ActorControllers
     /// </summary>
     public sealed class ActorAIBehaviourData : IBehaviourData, IActorHolder
     {
-        public IActor Actor { get; set; }
+        public Actor Actor { get; set; }
 
         public ActorAIController AIController { get; set; }
     }

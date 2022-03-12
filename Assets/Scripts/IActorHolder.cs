@@ -9,6 +9,6 @@ namespace ER
     /// </summary>
     public interface IActorHolder
     {
-        IActor Actor { get; }
+        Actor Actor { get; }
     }
 }

@@ -11,7 +11,7 @@ namespace ER
     /// </summary>
     public sealed class EquipmentBehaviourData : IBehaviourData, IActorHolder, IEquipmentControllerHolder
     {
-        public IActor Actor { get; set; }
+        public Actor Actor { get; set; }
 
         public EquipmentController EquipmentController { get; set; }
     }

@@ -1,5 +1,6 @@
 using System;
 using UniRx;
+using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -15,9 +16,9 @@ namespace ER.ERBehaviour
         {
             return Observable.Defer(() =>
             {
-                return Observable
-                .EveryGameObjectUpdate()
-                .AsUnitObservable();
+                return data
+                .Cast<IActorHolder>().Actor.gameObject
+                .UpdateAsObservable();
             });
         }
     }

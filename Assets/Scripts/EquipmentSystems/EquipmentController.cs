@@ -35,7 +35,7 @@ namespace ER.EquipmentSystems
 
         private List<Collider2D> colliders = null;
 
-        public EquipmentController Attach(IActor actor)
+        public EquipmentController Attach(Actor actor)
         {
             var clone = Instantiate(this, actor.transform);
             clone.AttachInternal(actor);
@@ -48,7 +48,7 @@ namespace ER.EquipmentSystems
             this.disposables.Dispose();
         }
 
-        private void AttachInternal(IActor actor)
+        private void AttachInternal(Actor actor)
         {
             this.transform.localPosition = Vector3.zero;
             this.transform.localRotation = Quaternion.identity;
