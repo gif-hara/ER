@@ -38,6 +38,13 @@ namespace ER.ActorControllers
                 })
                 .AddTo(disposables);
 
+            actor.Event.OnRespawnedSubject()
+                .Subscribe(_ =>
+                {
+                    this.ChangeRequest(StateType.Movable);
+                })
+                .AddTo(disposables);
+
             this.ChangeRequest(StateType.Movable);
         }
 

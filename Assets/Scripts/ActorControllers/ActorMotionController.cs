@@ -86,6 +86,16 @@ namespace ER.ActorControllers
                     .AddTo(disposable);
                 })
                 .AddTo(disposable);
+
+            actor.Event.OnRespawnedSubject()
+                .Subscribe(_ =>
+                {
+                    if(IsLookAt)
+                    {
+                        EndLookAt();
+                    }
+                })
+                .AddTo(disposable);
         }
 
         public void Move(Vector2 moveDirection)

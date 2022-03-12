@@ -18,6 +18,19 @@ MonoBehaviour:
   rightEquipmentPrefab: {fileID: 4608228154354743508, guid: b12d6f23289132a449f58ef17eff3410, type: 3}
   references:
     version: 1
+--- !u!114 &6089989143199464571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3446870888645774410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77a9588c69b9f0c4fa02727fa2bb53ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actor: {fileID: 5003387275646208275}
 --- !u!1001 &7608749932872960079
 PrefabInstance:
   m_ObjectHideFlags: 0

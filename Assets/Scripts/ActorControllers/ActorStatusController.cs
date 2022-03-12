@@ -33,6 +33,14 @@ namespace ER.ActorControllers
                     this.TakeDamage(x.Power);
                 })
                 .AddTo(disposable);
+
+            actor.Event.OnRespawnedSubject()
+                .Subscribe(_ =>
+                {
+                    this.HitPoint = this.HitPointMax;
+                    this.isAlreadyDead = false;
+                })
+                .AddTo(disposable);
         }
 
         private void TakeDamage(int damage)

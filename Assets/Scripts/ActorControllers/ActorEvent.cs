@@ -52,6 +52,11 @@ namespace ER.ActorControllers
         private readonly Subject<Transform> onEndLookAt = new Subject<Transform>();
 
         /// <summary>
+        /// リスポーンされた際のイベント
+        /// </summary>
+        private readonly Subject<Unit> onRespawned = new Subject<Unit>();
+
+        /// <summary>
         /// <inheritdoc cref="beginRightEquipmentSubject"/>
         /// </summary>
         public ISubject<Unit> OnBeginRightEquipmentSubject() => this.beginRightEquipmentSubject;
@@ -91,6 +96,11 @@ namespace ER.ActorControllers
         /// </summary>
         public ISubject<Transform> OnEndLookAtSubject() => this.onEndLookAt;
 
+        /// <summary>
+        /// <inheritdoc cref="onRespawned"/>
+        /// </summary>
+        public ISubject<Unit> OnRespawnedSubject() => this.onRespawned;
+
         public void Dispose()
         {
             this.beginRightEquipmentSubject.Dispose();
@@ -101,6 +111,7 @@ namespace ER.ActorControllers
             this.onRequestAvoidance.Dispose();
             this.onBeginLookAt.Dispose();
             this.onEndLookAt.Dispose();
+            this.onRespawned.Dispose();
         }
     }
 }

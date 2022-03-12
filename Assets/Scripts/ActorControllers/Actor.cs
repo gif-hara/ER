@@ -75,13 +75,6 @@ namespace ER.ActorControllers
                     this.disposable.Dispose();
                     this.Event.Dispose();
                 });
-
-            this.Event.OnDeadSubject()
-                .Subscribe(_ =>
-                {
-                    Destroy(this.gameObject);
-                })
-                .AddTo(this.disposable);
         }
 
         void Start()
