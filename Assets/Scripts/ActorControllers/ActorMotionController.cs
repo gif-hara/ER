@@ -10,6 +10,8 @@ namespace ER.ActorControllers
     /// </summary>
     public sealed class ActorMotionController
     {
+        private IActor actor;
+
         private ActorMotionData motionData;
 
         /// <summary>
@@ -31,10 +33,11 @@ namespace ER.ActorControllers
         /// <summary>
         /// 注視しているか返す
         /// </summary>
-        public bool IsLookAt => this.lookAtTarget != null;
+        public bool IsLookAt { get; private set; }
 
         public void Setup(IActor actor, ActorMotionData motionData, CompositeDisposable disposable)
         {
+            this.actor = actor;
             this.motionData = motionData;
             actor.gameObject.UpdateAsObservable()
                 .Subscribe(_ =>
@@ -107,11 +110,20 @@ namespace ER.ActorControllers
         public void BeginLookAt(Transform target)
         {
             this.lookAtTarget = target;
+            Assert.IsNotNull(this.lookAtTarget);
+            this.IsLookAt = true;
+
+            this.actor.Event.OnBeginLookAtSubject().OnNext(this.lookAtTarget);
         }
 
         public void EndLookAt()
         {
+            Assert.IsTrue(this.IsLookAt);
+            var tempTransform = this.lookAtTarget;
             this.lookAtTarget = null;
+            this.IsLookAt = false;
+
+            this.actor.Event.OnEndLookAtSubject().OnNext(tempTransform);
         }
 
         private void UpdatePosition(IActor actor)
@@ -149,8 +161,15 @@ namespace ER.ActorControllers
         {
             if(this.IsLookAt)
             {
-                var direction = (this.lookAtTarget.position - actor.transform.position).normalized;
-                angle = -90.0f + Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                if(this.lookAtTarget == null)
+                {
+                    this.EndLookAt();
+                }
+                else
+                {
+                    var direction = (this.lookAtTarget.position - actor.transform.position).normalized;
+                    angle = -90.0f + Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                }
             }
 
             actor.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, angle);

@@ -42,6 +42,16 @@ namespace ER.ActorControllers
         private readonly Subject<Vector2> onRequestAvoidance = new Subject<Vector2>();
 
         /// <summary>
+        /// ロックオンを開始した際のイベント
+        /// </summary>
+        private readonly Subject<Transform> onBeginLookAt = new Subject<Transform>();
+
+        /// <summary>
+        /// ロックオンを終了した際のイベント
+        /// </summary>
+        private readonly Subject<Transform> onEndLookAt = new Subject<Transform>();
+
+        /// <summary>
         /// <inheritdoc cref="beginRightEquipmentSubject"/>
         /// </summary>
         public ISubject<Unit> OnBeginRightEquipmentSubject() => this.beginRightEquipmentSubject;
@@ -71,6 +81,16 @@ namespace ER.ActorControllers
         /// </summary>
         public ISubject<Vector2> OnRequestAvoidanceSubject() => this.onRequestAvoidance;
 
+        /// <summary>
+        /// <inheritdoc cref="onBeginLookAt"/>
+        /// </summary>
+        public ISubject<Transform> OnBeginLookAtSubject() => this.onBeginLookAt;
+
+        /// <summary>
+        /// <inheritdoc cref="onEndLookAt"/>
+        /// </summary>
+        public ISubject<Transform> OnEndLookAtSubject() => this.onEndLookAt;
+
         public void Dispose()
         {
             this.beginRightEquipmentSubject.Dispose();
@@ -79,6 +99,8 @@ namespace ER.ActorControllers
             this.onDead.Dispose();
             this.onChangedStateType.Dispose();
             this.onRequestAvoidance.Dispose();
+            this.onBeginLookAt.Dispose();
+            this.onEndLookAt.Dispose();
         }
     }
 }

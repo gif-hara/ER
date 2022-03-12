@@ -2,6 +2,7 @@ using Cinemachine;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UniRx;
+using ER.ActorControllers;
 
 namespace ER
 {
@@ -16,13 +17,24 @@ namespace ER
         [SerializeField]
         private CinemachineVirtualCamera defaultVirtualCamera = default;
 
+        [SerializeField]
+        private CinemachineVirtualCamera lookAtVirtualCamera = default;
+
+        /// <summary>
+        /// ロックオン時のFollowデータを持つクラス
+        /// </summary>
+        [SerializeField]
+        private CinemachineTargetGroup lookAtTargetGroup = default;
+
         private void Awake()
         {
             GameEvent.OnSpawnedActorSubject()
                 .Where(x => x.gameObject.layer == Layer.Index.Player)
                 .Subscribe(x =>
                 {
-                    SetDefaultVirtualCameraTarget(x.transform);
+                    this.SetActiveVirtualCamera(this.defaultVirtualCamera);
+                    this.SetDefaultVirtualCameraTarget(x.transform);
+                    this.RegisterActorEvent(x);
                 })
                 .AddTo(this);
         }
@@ -31,6 +43,32 @@ namespace ER
         {
             this.defaultVirtualCamera.Follow = target;
             this.defaultVirtualCamera.LookAt = target;
+        }
+
+        private void RegisterActorEvent(IActor actor)
+        {
+            actor.Event.OnBeginLookAtSubject()
+                .Subscribe(x =>
+                {
+                    SetActiveVirtualCamera(this.lookAtVirtualCamera);
+                    this.lookAtTargetGroup.AddMember(actor.transform, 1.0f, 1.0f);
+                    this.lookAtTargetGroup.AddMember(x, 1.0f, 1.0f);
+                })
+                .AddTo(this);
+
+            actor.Event.OnEndLookAtSubject()
+                .Subscribe(x =>
+                {
+                    SetActiveVirtualCamera(this.defaultVirtualCamera);
+                    this.lookAtTargetGroup.RemoveMember(x);
+                })
+                .AddTo(this);
+        }
+
+        private void SetActiveVirtualCamera(CinemachineVirtualCamera virtualCamera)
+        {
+            this.defaultVirtualCamera.enabled = this.defaultVirtualCamera == virtualCamera;
+            this.lookAtVirtualCamera.enabled = this.lookAtVirtualCamera == virtualCamera;
         }
     }
 }
