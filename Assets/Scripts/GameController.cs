@@ -10,6 +10,9 @@ namespace ER
     public sealed class GameController : MonoBehaviour
     {
         [SerializeField]
+        private GameCameraController gameCameraControllerPrefab = default;
+
+        [SerializeField]
         private Actor playerPrefab = default;
 
         [SerializeField]
@@ -17,7 +20,10 @@ namespace ER
 
         private void Awake()
         {
-            Instantiate(this.playerPrefab, this.playerSpawnPoint.localPosition, this.playerSpawnPoint.localRotation);
+            var gameCameraController = Instantiate(gameCameraControllerPrefab);
+            var player = Instantiate(this.playerPrefab, this.playerSpawnPoint.localPosition, this.playerSpawnPoint.localRotation);
+
+            gameCameraController.SetDefaultVirtualCameraTarget(player.transform);
         }
     }
 }
