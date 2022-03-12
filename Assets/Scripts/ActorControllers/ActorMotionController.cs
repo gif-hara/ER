@@ -139,7 +139,7 @@ namespace ER.ActorControllers
                 direction,
                 this.cachedRaycastHit2Ds,
                 velocity.magnitude,
-                Layer.Mask.Stage
+                GetUpdatePositionLayerMask()
                 );
 
             if (hitNumber > 0)
@@ -173,6 +173,21 @@ namespace ER.ActorControllers
             }
 
             actor.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, angle);
+        }
+
+        private int GetUpdatePositionLayerMask()
+        {
+            var result = Layer.Mask.Stage;
+            if(this.actor.gameObject.layer == Layer.Index.Player)
+            {
+                result |= Layer.Mask.Enemy;
+            }
+            else if(this.actor.gameObject.layer == Layer.Index.Enemy)
+            {
+                result |= Layer.Mask.Player;
+            }
+
+            return result;
         }
     }
 }
