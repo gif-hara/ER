@@ -13,102 +13,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actor: {fileID: 5003387275646208275}
-  elements:
-  - aiName: Idle
-    behaviours:
-    - trigger:
-        id: 0
-      action:
-        id: 1
-  - aiName: BeginLookAtPlayer
-    behaviours:
-    - trigger:
-        id: 2
-      action:
-        id: 3
-  - aiName: ChasePlayer
-    behaviours:
-    - trigger:
-        id: 4
-      action:
-        id: 5
-    - trigger:
-        id: 6
-      action:
-        id: 7
-  - aiName: Attack
-    behaviours:
-    - trigger:
-        id: 8
-      action:
-        id: 9
-    - trigger:
-        id: 10
-      action:
-        id: 11
+  elements: []
   initialAiName: Idle
   rightEquipmentPrefab: {fileID: 4608228154354743508, guid: b12d6f23289132a449f58ef17eff3410, type: 3}
   references:
     version: 1
-    00000000:
-      type: {class: DistancePlayer, ns: ER.ERBehaviour, asm: Assembly-CSharp}
-      data:
-        distanceThreshold: 15
-        isIn: 1
-    00000001:
-      type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
-      data:
-        aiName: BeginLookAtPlayer
-    00000002:
-      type: {class: EveryUpdate, ns: ER.ERBehaviour, asm: Assembly-CSharp}
-    00000003:
-      type: {class: SequenceAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
-      data:
-        actions:
-        - id: 12
-        - id: 13
-    00000004:
-      type: {class: EveryUpdate, ns: ER.ERBehaviour, asm: Assembly-CSharp}
-    00000005:
-      type: {class: ActorMove, ns: ER.ERBehaviour, asm: Assembly-CSharp}
-      data:
-        offsetAngle: 0
-        moveSpeed: 1
-    00000006:
-      type: {class: DistancePlayer, ns: ER.ERBehaviour, asm: Assembly-CSharp}
-      data:
-        distanceThreshold: 3
-        isIn: 1
-    00000007:
-      type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
-      data:
-        aiName: Attack
-    00000008:
-      type: {class: EveryUpdate, ns: ER.ERBehaviour, asm: Assembly-CSharp}
-    00000009:
-      type: {class: BeginAttack, ns: ER.ERBehaviour, asm: Assembly-CSharp}
-      data:
-        playableAsset: {fileID: 11400000, guid: 4e3dc0d37e76f884bb0ff92b825a8805, type: 2}
-        wrapMode: 2
-        power: 10
-        handType: 1
-    0000000A:
-      type: {class: DistancePlayer, ns: ER.ERBehaviour, asm: Assembly-CSharp}
-      data:
-        distanceThreshold: 5
-        isIn: 0
-    0000000B:
-      type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
-      data:
-        aiName: ChasePlayer
-    0000000C:
-      type: {class: LookAtActor, ns: ER.ERBehaviour, asm: Assembly-CSharp}
-      data:
-        actorType: 1
-    0000000D:
-      type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
-      data:
-        aiName: ChasePlayer
 --- !u!1001 &7608749932872960079
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -146,7 +55,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5062621093894177797, guid: fa424eeca9000434681b647bc0d889f7, type: 3}
       propertyPath: m_Name
-      value: Actor.Enemy.0000
+      value: Actor.Enemy.Base
       objectReference: {fileID: 0}
     - target: {fileID: 5062621093894177797, guid: fa424eeca9000434681b647bc0d889f7, type: 3}
       propertyPath: m_Layer
