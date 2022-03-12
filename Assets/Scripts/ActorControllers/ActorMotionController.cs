@@ -53,6 +53,7 @@ namespace ER.ActorControllers
                     if (x == ActorStateController.StateType.Movable)
                     {
                         actor.AnimationParameter.moveSpeedRate = 1.0f;
+                        actor.AnimationParameter.invisible = false;
                     }
                 })
                 .AddTo(disposable);

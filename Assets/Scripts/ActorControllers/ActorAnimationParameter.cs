@@ -12,5 +12,10 @@ namespace ER.ActorControllers
         /// 移動速度の係数
         /// </summary>
         public float moveSpeedRate = 1.0f;
+
+        /// <summary>
+        /// 無敵
+        /// </summary>
+        public bool invisible = false;
     }
 }

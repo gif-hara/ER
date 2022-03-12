@@ -27,6 +27,7 @@ namespace ER.ActorControllers
             this.HitPoint = this.HitPointMax;
 
             actor.Event.OnHitOpponentAttackSubject()
+                .Where(_ => this.CanTakeDamage())
                 .Subscribe(x =>
                 {
                     this.TakeDamage(x.Power);
@@ -47,6 +48,11 @@ namespace ER.ActorControllers
                 this.isAlreadyDead = true;
                 this.actor.Event.OnDeadSubject().OnNext(Unit.Default);
             }
+        }
+
+        private bool CanTakeDamage()
+        {
+            return !this.actor.AnimationParameter.invisible;
         }
     }
 }
