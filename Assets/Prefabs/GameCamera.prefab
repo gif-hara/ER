@@ -194,8 +194,8 @@ MonoBehaviour:
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
-  m_XDamping: 2
-  m_YDamping: 2
+  m_XDamping: 0.5
+  m_YDamping: 0.5
   m_ZDamping: 1
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
@@ -348,7 +348,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6514451745157427976}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 96, z: -120}
+  m_LocalPosition: {x: 0, y: 264, z: -330}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1612913668200297066}
@@ -420,7 +420,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7892883162705558627}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 144, z: -180}
+  m_LocalPosition: {x: 0, y: 1944, z: -2430}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7892883164347362974}
@@ -464,7 +464,7 @@ MonoBehaviour:
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
-    m_Time: 1
+    m_Time: 0.5
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
