@@ -20,7 +20,7 @@ MonoBehaviour:
         id: 0
       action:
         id: 1
-  - aiName: ChasePlayer
+  - aiName: BeginLookAtPlayer
     behaviours:
     - trigger:
         id: 2
@@ -44,7 +44,7 @@ MonoBehaviour:
     00000001:
       type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
-        aiName: ChasePlayer
+        aiName: BeginLookAtPlayer
     00000002:
       type: {class: EveryUpdate, ns: ER.ERBehaviour, asm: Assembly-CSharp}
     00000003:
@@ -93,6 +93,10 @@ PrefabInstance:
     - target: {fileID: 3240392672265994588, guid: fa424eeca9000434681b647bc0d889f7, type: 3}
       propertyPath: status.endurance
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3240392672265994588, guid: fa424eeca9000434681b647bc0d889f7, type: 3}
+      propertyPath: motionData.radius
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 5062621093894177797, guid: fa424eeca9000434681b647bc0d889f7, type: 3}
       propertyPath: m_Name
