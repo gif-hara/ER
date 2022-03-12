@@ -35,6 +35,6 @@ namespace ER.ActorControllers
         /// </summary>
         public int spirit = default;
 
-        public int HitPoint => this.physical * 3;
+        public int HitPoint => this.physical * 10;
     }
 }
