@@ -14,7 +14,7 @@ namespace ER.StageControllers
 
         private Vector2Int currentIndex;
 
-        private StageLoader stageLoader = new StageLoader();
+        private StageLoader stageLoader = new StageLoader(1);
 
         private void Awake()
         {

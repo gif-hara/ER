@@ -21,6 +21,29 @@ namespace ER.StageControllers
 
         public const int SplitSize = 40;
 
+        /// <summary>
+        /// 読み込む周りのステージの数
+        /// </summary>
+        /// <remarks>
+        /// e.g.) 1の場合・・・
+        /// ooo
+        /// oxo
+        /// ooo
+        /// 
+        /// e.g.) 2の場合・・・
+        /// ooooo
+        /// ooooo
+        /// ooxoo
+        /// ooooo
+        /// ooooo
+        /// </remarks>
+        private int range;
+
+        public StageLoader(int range)
+        {
+            this.range = range;
+        }
+
         public IObservable<Unit> LoadAsync(Vector3 position)
         {
             return Observable.Defer(() =>
@@ -29,9 +52,9 @@ namespace ER.StageControllers
                 var centerX = Mathf.FloorToInt(position.x / SplitSize);
                 var centerY = Mathf.FloorToInt(position.y / SplitSize);
 
-                for (var y = centerY - 1; y <= centerY + 1; y++)
+                for (var y = centerY - this.range; y <= centerY + this.range; y++)
                 {
-                    for (var x = centerX - 1; x <= centerX + 1; x++)
+                    for (var x = centerX - this.range; x <= centerX + this.range; x++)
                     {
                         loadRequestIndexies.Add(new StageInfo
                         {
