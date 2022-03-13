@@ -21,35 +21,39 @@ MonoBehaviour:
     m_Address: Assets/Prefabs/Stage.Chunk(0,0,0).prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: be9e03e047b3a2b44a4f70f805697729
+  - m_GUID: 77ce652068f3a9e48ba47f2f0e5d0ccb
     m_Address: Assets/Prefabs/Stage.Chunk(-1,0,0).prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: c2c87771ccc717d4cb90903e7672be0b
-    m_Address: Assets/Prefabs/Stage.Chunk(1,0,0).prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: d3d8353b995a1a24595a8f68569e313f
-    m_Address: Assets/Prefabs/Stage.Chunk(-1,-1,0).prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 8a3067530bba6374dafb0191d7b2385e
-    m_Address: Assets/Prefabs/Stage.Chunk(-1,1,0).prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: eee13a174e09d334f8cff798a9fd56b3
-    m_Address: Assets/Prefabs/Stage.Chunk(0,-1,0).prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: f075e6533b44e294aacddaa2caa1aa56
+  - m_GUID: aad86716dde630d40a20219183abbb9d
     m_Address: Assets/Prefabs/Stage.Chunk(0,1,0).prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 0cb5356af493b19439ed1c7077d1b99b
+  - m_GUID: 617cbc803a133be48bbf1dd0032e067e
+    m_Address: Assets/Prefabs/Stage.Chunk(0,0,0).prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 45cd3b8a48ead204f87f810d97abd9f0
+    m_Address: Assets/Prefabs/Stage.Chunk(1,0,0).prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d3a7a51b1e0d2ba47bebfb44b15a67e5
+    m_Address: Assets/Prefabs/Stage.Chunk(-1,-1,0).prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3c3bd88f7f8b0ab4b87760a8fdd0c540
+    m_Address: Assets/Prefabs/Stage.Chunk(-1,1,0).prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6a12e428c98920c43919aa39da5c4b0b
     m_Address: Assets/Prefabs/Stage.Chunk(1,-1,0).prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: e6d01868368b59846abddfb5c34b6647
+  - m_GUID: 0f611cc413278484193e087faab607ed
+    m_Address: Assets/Prefabs/Stage.Chunk(0,-1,0).prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 376037b79faa6f246bf7a10f5d186a49
     m_Address: Assets/Prefabs/Stage.Chunk(1,1,0).prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
