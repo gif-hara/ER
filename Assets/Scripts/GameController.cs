@@ -1,4 +1,7 @@
 using ER.ActorControllers;
+using ER.StageControllers;
+using UniRx.Triggers;
+using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -23,6 +26,15 @@ namespace ER
             GameEvent.Initialize();
             Instantiate(gameCameraControllerPrefab);
             var player = Instantiate(this.playerPrefab, this.playerSpawnPoint.localPosition, this.playerSpawnPoint.localRotation);
+
+            var stageLoader = new StageLoader();
+            stageLoader.LoadAsync(player.transform.position)
+            .Subscribe();
+
+            this.UpdateAsObservable()
+                .Subscribe(_ =>
+                {
+                });
         }
 
         private void OnDestroy()
