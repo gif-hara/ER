@@ -19,7 +19,7 @@ namespace ER.StageControllers
 
         private readonly List<StageInfo> removeRequestIndexies = new List<StageInfo>();
 
-        public const int SplitSize = 20;
+        public const int SplitSize = 40;
 
         public IObservable<Unit> LoadAsync(Vector3 position)
         {
@@ -91,13 +91,19 @@ namespace ER.StageControllers
                     .Do(x =>
                     {
                         stageInfo.stage = UnityEngine.Object.Instantiate(x);
-                        stageInfo.stage.transform.localPosition = new Vector3(index.x * SplitSize * 2, index.y * SplitSize * 2, 0);
+                        stageInfo.stage.transform.localPosition = new Vector3(index.x * SplitSize, index.y * SplitSize, 0);
+                        this.loadedIndexies.Add(stageInfo);
                     });
                     loadStreams.Add(stream);
                 }
 
                 return Observable.WhenAll(loadStreams).AsUnitObservable();
             });
+        }
+
+        public static Vector2Int GetIndex(Vector3 position)
+        {
+            return new Vector2Int(Mathf.FloorToInt(position.x / SplitSize), Mathf.FloorToInt(position.y / SplitSize));
         }
 
         private struct StageInfo : IEquatable<StageInfo>

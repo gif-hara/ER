@@ -17,44 +17,8 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 379c894b6f27d9e49a3fa1d735164271
   m_SerializeEntries:
-  - m_GUID: 2546e3a53baad8148bf7434a53a5ea5d
-    m_Address: Assets/Prefabs/Stage.Chunk(0,0,0).prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 77ce652068f3a9e48ba47f2f0e5d0ccb
-    m_Address: Assets/Prefabs/Stage.Chunk(-1,0,0).prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: aad86716dde630d40a20219183abbb9d
-    m_Address: Assets/Prefabs/Stage.Chunk(0,1,0).prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 617cbc803a133be48bbf1dd0032e067e
-    m_Address: Assets/Prefabs/Stage.Chunk(0,0,0).prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 45cd3b8a48ead204f87f810d97abd9f0
-    m_Address: Assets/Prefabs/Stage.Chunk(1,0,0).prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: d3a7a51b1e0d2ba47bebfb44b15a67e5
-    m_Address: Assets/Prefabs/Stage.Chunk(-1,-1,0).prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 3c3bd88f7f8b0ab4b87760a8fdd0c540
-    m_Address: Assets/Prefabs/Stage.Chunk(-1,1,0).prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 6a12e428c98920c43919aa39da5c4b0b
-    m_Address: Assets/Prefabs/Stage.Chunk(1,-1,0).prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 0f611cc413278484193e087faab607ed
-    m_Address: Assets/Prefabs/Stage.Chunk(0,-1,0).prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 376037b79faa6f246bf7a10f5d186a49
-    m_Address: Assets/Prefabs/Stage.Chunk(1,1,0).prefab
+  - m_GUID: 22ada17f9ab71534986b6c6cd9da54d7
+    m_Address: Assets/Prefabs
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
