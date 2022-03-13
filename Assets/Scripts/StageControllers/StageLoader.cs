@@ -39,9 +39,15 @@ namespace ER.StageControllers
         /// </remarks>
         private int range;
 
-        public StageLoader(int range)
+        /// <summary>
+        /// ステージの親オブジェクト
+        /// </summary>
+        private Transform stageParent;
+
+        public StageLoader(int range, Transform stageParent)
         {
             this.range = range;
+            this.stageParent = stageParent;
         }
 
         public IObservable<Unit> LoadAsync(Vector3 position)
@@ -113,7 +119,7 @@ namespace ER.StageControllers
                     .Select(x => x.Result)
                     .Do(x =>
                     {
-                        stageInfo.stage = UnityEngine.Object.Instantiate(x);
+                        stageInfo.stage = UnityEngine.Object.Instantiate(x, this.stageParent);
                         stageInfo.stage.transform.localPosition = new Vector3(index.x * SplitSize, index.y * SplitSize, 0);
                         this.loadedIndexies.Add(stageInfo);
                     });

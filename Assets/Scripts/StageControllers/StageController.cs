@@ -14,10 +14,12 @@ namespace ER.StageControllers
 
         private Vector2Int currentIndex;
 
-        private StageLoader stageLoader = new StageLoader(1);
+        private StageLoader stageLoader;
 
         private void Awake()
         {
+            this.stageLoader = new StageLoader(1, this.transform);
+
             GameEvent.OnSpawnedActorSubject()
                 .Where(x => x.gameObject.layer == Layer.Index.Player)
                 .Subscribe(x =>
