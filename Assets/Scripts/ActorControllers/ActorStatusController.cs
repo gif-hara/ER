@@ -1,3 +1,4 @@
+using System;
 using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -15,16 +16,26 @@ namespace ER.ActorControllers
 
         private bool isAlreadyDead = false;
 
-        public int HitPointMax { get; private set; }
+        private readonly ReactiveProperty<int> hitPointMax = new ReactiveProperty<int>();
 
-        public int HitPoint { get; private set; }
+        private readonly ReactiveProperty<int> hitPoint = new ReactiveProperty<int>();
+
+        public IObservable<int> HitPointMaxAsObservable() => this.hitPointMax;
+
+        public IObservable<int> HitPointAsObservable() => this.hitPoint;
+
+        public int HitPointMax => this.hitPointMax.Value;
+
+        public int HitPoint => this.hitPoint.Value;
+
+        public float HitPointRate => (float)this.HitPoint / this.HitPointMax;
 
         public void Setup(IActor actor, ActorStatusData status)
         {
             this.actor = actor;
             this.baseStatus = status;
-            this.HitPointMax = this.baseStatus.HitPoint;
-            this.HitPoint = this.HitPointMax;
+            this.hitPointMax.Value = this.baseStatus.HitPoint;
+            this.hitPoint.Value = this.HitPointMax;
 
             actor.Event.OnHitOpponentAttackSubject()
                 .Where(_ => this.CanTakeDamage())
@@ -37,7 +48,7 @@ namespace ER.ActorControllers
             actor.Event.OnRespawnedSubject()
                 .Subscribe(_ =>
                 {
-                    this.HitPoint = this.HitPointMax;
+                    this.hitPoint.Value = this.HitPointMax;
                     this.isAlreadyDead = false;
                 })
                 .AddTo(actor.Disposables);
@@ -50,7 +61,7 @@ namespace ER.ActorControllers
                 return;
             }
 
-            this.HitPoint -= damage;
+            this.hitPoint.Value -= damage;
             if(this.HitPoint <= 0)
             {
                 this.isAlreadyDead = true;

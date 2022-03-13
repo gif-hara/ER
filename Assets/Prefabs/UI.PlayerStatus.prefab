@@ -372,8 +372,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0aad484f136cb54283728a328723887, type: 3}
+--- !u!1 &4547881018961641762 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3055922801828814495, guid: b0aad484f136cb54283728a328723887, type: 3}
+  m_PrefabInstance: {fileID: 1546282956626501565}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &2032532085812160497 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 666674589477926988, guid: b0aad484f136cb54283728a328723887, type: 3}
   m_PrefabInstance: {fileID: 1546282956626501565}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &700385080831993344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4547881018961641762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08ed06ecbea73724188ccb061aafadaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitPointSlider: {fileID: 4392835250480959333}
