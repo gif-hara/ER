@@ -20,7 +20,7 @@ namespace ER.ERBehaviour
             {
                 var actorHolder = data.Cast<IActorHolder>();
                 var actor = actorHolder.Actor;
-                actor.MotionController.BeginLookAt(ActorUtility.GetNearActor(this.actorType, actor.transform.position).transform);
+                actor.MotionController.BeginLookAt(ActorUtility.GetNearActor(this.actorType, actor.transform.position));
 
                 return Observable.ReturnUnit();
             });

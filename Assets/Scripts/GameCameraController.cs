@@ -26,6 +26,8 @@ namespace ER
         [SerializeField]
         private CinemachineTargetGroup lookAtTargetGroup = default;
 
+        public Camera ControlledCamera => this.controlledCamera;
+
         private void Awake()
         {
             GameEvent.OnSpawnedActorSubject()
@@ -37,6 +39,11 @@ namespace ER
                     this.RegisterActorEvent(x);
                 })
                 .AddTo(this);
+        }
+
+        private void Start()
+        {
+            GameEvent.OnSpawnedGameCameraController().OnNext(this);
         }
 
         public void SetDefaultVirtualCameraTarget(Transform target)
@@ -52,7 +59,7 @@ namespace ER
                 {
                     SetActiveVirtualCamera(this.lookAtVirtualCamera);
                     this.lookAtTargetGroup.AddMember(actor.transform, 1.0f, 1.0f);
-                    this.lookAtTargetGroup.AddMember(x, 1.0f, 1.0f);
+                    this.lookAtTargetGroup.AddMember(x.transform, 1.0f, 1.0f);
                 })
                 .AddTo(this);
 
@@ -60,7 +67,10 @@ namespace ER
                 .Subscribe(x =>
                 {
                     SetActiveVirtualCamera(this.defaultVirtualCamera);
-                    this.lookAtTargetGroup.RemoveMember(x);
+                    if(x != null)
+                    {
+                        this.lookAtTargetGroup.RemoveMember(x.transform);
+                    }
                 })
                 .AddTo(this);
         }

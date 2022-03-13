@@ -44,12 +44,12 @@ namespace ER.ActorControllers
         /// <summary>
         /// ロックオンを開始した際のイベント
         /// </summary>
-        private readonly Subject<Transform> onBeginLookAt = new Subject<Transform>();
+        private readonly Subject<Actor> onBeginLookAt = new Subject<Actor>();
 
         /// <summary>
         /// ロックオンを終了した際のイベント
         /// </summary>
-        private readonly Subject<Transform> onEndLookAt = new Subject<Transform>();
+        private readonly Subject<Actor> onEndLookAt = new Subject<Actor>();
 
         /// <summary>
         /// リスポーンされた際のイベント
@@ -89,12 +89,12 @@ namespace ER.ActorControllers
         /// <summary>
         /// <inheritdoc cref="onBeginLookAt"/>
         /// </summary>
-        public ISubject<Transform> OnBeginLookAtSubject() => this.onBeginLookAt;
+        public ISubject<Actor> OnBeginLookAtSubject() => this.onBeginLookAt;
 
         /// <summary>
         /// <inheritdoc cref="onEndLookAt"/>
         /// </summary>
-        public ISubject<Transform> OnEndLookAtSubject() => this.onEndLookAt;
+        public ISubject<Actor> OnEndLookAtSubject() => this.onEndLookAt;
 
         /// <summary>
         /// <inheritdoc cref="onRespawned"/>

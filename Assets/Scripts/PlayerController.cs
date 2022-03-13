@@ -58,7 +58,7 @@ namespace ER
                     {
                         return;
                     }
-                    this.actor.MotionController.BeginLookAt(target.transform);
+                    this.actor.MotionController.BeginLookAt(target);
                 }
                 else
                 {
