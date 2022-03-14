@@ -50,7 +50,13 @@ namespace ER.StageControllers
             this.stageParent = stageParent;
         }
 
-        public IObservable<Unit> LoadAsync(Vector3 position)
+        /// <summary>
+        /// 非同期で読み込みを開始する
+        /// </summary>
+        /// <remarks>
+        /// 返り値には新規で生成した<see cref="StageInfo"/>のリストを返す
+        /// </remarks>
+        public IObservable<StageInfo[]> LoadAsync(Vector3 position)
         {
             return Observable.Defer(() =>
             {
@@ -83,7 +89,7 @@ namespace ER.StageControllers
 
                     foreach (var i in this.removeRequestIndexies)
                     {
-                        UnityEngine.Object.Destroy(i.stage);
+                        UnityEngine.Object.Destroy(i.stage.gameObject);
                         this.loadedIndexies.Remove(i);
                     }
                 }
@@ -105,7 +111,7 @@ namespace ER.StageControllers
                     }
                 }
 
-                var loadStreams = new List<IObservable<GameObject>>();
+                var loadStreams = new List<IObservable<StageInfo>>();
                 foreach (var i in this.loadRequestIndexies)
                 {
                     var stageInfo = i;
@@ -119,14 +125,15 @@ namespace ER.StageControllers
                     .Select(x => x.Result)
                     .Do(x =>
                     {
-                        stageInfo.stage = UnityEngine.Object.Instantiate(x, this.stageParent);
+                        stageInfo.stage = UnityEngine.Object.Instantiate(x, this.stageParent).GetComponent<StageChunk>();
                         stageInfo.stage.transform.localPosition = new Vector3(index.x * SplitSize, index.y * SplitSize, 0);
                         this.loadedIndexies.Add(stageInfo);
-                    });
+                    })
+                    .Select(_ => stageInfo);
                     loadStreams.Add(stream);
                 }
 
-                return Observable.WhenAll(loadStreams).AsUnitObservable();
+                return Observable.WhenAll(loadStreams);
             });
         }
 
@@ -135,11 +142,11 @@ namespace ER.StageControllers
             return new Vector2Int(Mathf.FloorToInt(position.x / SplitSize), Mathf.FloorToInt(position.y / SplitSize));
         }
 
-        private struct StageInfo : IEquatable<StageInfo>
+        public struct StageInfo : IEquatable<StageInfo>
         {
             public Vector2Int index;
 
-            public GameObject stage;
+            public StageChunk stage;
 
             public bool Equals(StageInfo other)
             {

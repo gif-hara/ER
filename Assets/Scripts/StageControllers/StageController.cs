@@ -16,6 +16,8 @@ namespace ER.StageControllers
 
         private StageLoader stageLoader;
 
+        public StageGimmickSpawnManager GimmickSpawnManager { get; } = new StageGimmickSpawnManager();
+
         private void Awake()
         {
             this.stageLoader = new StageLoader(1, this.transform);
@@ -51,7 +53,13 @@ namespace ER.StageControllers
         {
             this.currentIndex = StageLoader.GetIndex(this.actor.transform.position);
             this.stageLoader.LoadAsync(this.actor.transform.position)
-            .Subscribe();
+            .Subscribe(x =>
+            {
+                foreach(var i in x)
+                {
+                    i.stage.SetupGimmicks(this);
+                }
+            });
         }
     }
 }

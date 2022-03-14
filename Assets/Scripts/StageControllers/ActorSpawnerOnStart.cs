@@ -7,14 +7,19 @@ namespace ER.StageControllers
     /// <summary>
     /// 
     /// </summary>
-    public sealed class ActorSpawnerOnStart : MonoBehaviour
+    public sealed class ActorSpawnerOnStart : MonoBehaviour, IStageGimmick
     {
         [SerializeField]
         private Actor actorPrefab = default;
 
-        private void Start()
+        public void Setup(StageController stageController)
         {
-            Instantiate(this.actorPrefab, this.transform.position, this.transform.rotation);
+            string id;
+            if(stageController.GimmickSpawnManager.CanSpawnEnemy(this.transform, out id))
+            {
+                stageController.GimmickSpawnManager.AddSpawnedEnemy(id);
+                Instantiate(this.actorPrefab, this.transform.position, this.transform.rotation);
+            }
         }
     }
 }

@@ -9,8 +9,8 @@ namespace ER.StageControllers
     public sealed class StageChunk : MonoBehaviour
     {
 #if UNITY_EDITOR
-        [ContextMenu("Test")]
-        private void Test()
+        [ContextMenu("SetPositionFromId")]
+        private void SetPositionFromId()
         {
             var name = this.name;
             var startIndex = name.IndexOf("(");
@@ -29,5 +29,13 @@ namespace ER.StageControllers
             UnityEditor.EditorUtility.SetDirty(this);
         }
 #endif
+
+        public void SetupGimmicks(StageController stageController)
+        {
+            foreach(var i in this.GetComponentsInChildren<IStageGimmick>())
+            {
+                i.Setup(stageController);
+            }
+        }
     }
 }
