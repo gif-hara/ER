@@ -8,7 +8,7 @@ namespace ER.StageControllers
     /// <summary>
     /// ステージ内のギミックを生成したか管理するクラス
     /// </summary>
-    public sealed class StageGimmickSpawnManager : MonoBehaviour
+    public sealed class StageGimmickSpawnManager
     {
         private readonly HashSet<string> spawnedEnemyIds = new HashSet<string>();
 
