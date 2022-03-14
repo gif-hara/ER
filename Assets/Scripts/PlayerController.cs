@@ -66,6 +66,11 @@ namespace ER
                 }
             };
 
+            this.inputAction.Player.Interact.performed += callback =>
+            {
+                this.actor.InteractableStageGimmickController.BeginInteract();
+            };
+
             this.actor.SetRightEquipment(this.rightEquipmentPrefab);
         }
 

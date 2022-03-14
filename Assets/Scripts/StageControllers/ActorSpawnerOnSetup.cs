@@ -14,6 +14,8 @@ namespace ER.StageControllers
 
         public void Setup(StageController stageController)
         {
+            Assert.IsNotNull(this.actorPrefab, $"{nameof(this.actorPrefab)}がNullです");
+
             string id;
             if(stageController.GimmickSpawnManager.CanSpawnEnemy(this.transform, out id))
             {

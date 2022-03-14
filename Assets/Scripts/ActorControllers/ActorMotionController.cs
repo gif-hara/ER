@@ -31,6 +31,11 @@ namespace ER.ActorControllers
         private RaycastHit2D[] cachedRaycastHit2Ds = new RaycastHit2D[32];
 
         /// <summary>
+        /// チェックポイント
+        /// </summary>
+        public Vector3 CheckPoint { get; set; }
+
+        /// <summary>
         /// 注視しているか返す
         /// </summary>
         public bool IsLookAt { get; private set; }
@@ -39,6 +44,7 @@ namespace ER.ActorControllers
         {
             this.actor = actor;
             this.motionData = motionData;
+            this.CheckPoint = this.actor.transform.position;
             actor.gameObject.UpdateAsObservable()
                 .Subscribe(_ =>
                 {

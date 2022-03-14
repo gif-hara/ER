@@ -13,16 +13,12 @@ namespace ER.ActorControllers
         [SerializeField]
         private Actor actor = default;
 
-        private Vector3 checkPoint;
-
         private void Start()
         {
             this.actor.Event.OnDeadSubject()
                 .SelectMany(_ => this.PlayDeadEffectAsync())
                 .Subscribe()
                 .AddTo(this);
-
-            this.checkPoint = this.actor.transform.position;
         }
 
         private IObservable<Unit> PlayDeadEffectAsync()
@@ -35,7 +31,7 @@ namespace ER.ActorControllers
                 .Timer(TimeSpan.FromSeconds(2.0f))
                 .Do(_ =>
                 {
-                    this.actor.transform.position = this.checkPoint;
+                    this.actor.transform.position = this.actor.MotionController.CheckPoint;
                     this.actor.gameObject.SetActive(true);
                     this.actor.Event.OnRespawnedSubject().OnNext(Unit.Default);
                 })

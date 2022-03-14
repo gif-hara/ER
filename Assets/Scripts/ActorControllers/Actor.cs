@@ -28,6 +28,8 @@ namespace ER.ActorControllers
 
         public ActorStatusController StatusController { get; } = new ActorStatusController();
 
+        public ActorInteractableStageGimmickController InteractableStageGimmickController { get; } = new ActorInteractableStageGimmickController();
+
         public ActorStateController StateController { get; } = new ActorStateController();
 
         public ActorDirectorController DirectorController { get; } = new ActorDirectorController();
@@ -65,6 +67,7 @@ namespace ER.ActorControllers
             this.Event = new ActorEvent();
             this.StateController.Setup(this);
             this.StatusController.Setup(this, this.statusData);
+            this.InteractableStageGimmickController.Setup(this);
             this.MotionController = new ActorMotionController();
             this.MotionController.Setup(this, this.motionData);
             this.DirectorController.Setup(this, this.director);

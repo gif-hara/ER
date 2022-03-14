@@ -1,4 +1,5 @@
 using ER.EquipmentSystems;
+using ER.StageControllers;
 using System;
 using UniRx;
 using UnityEngine;
@@ -57,6 +58,16 @@ namespace ER.ActorControllers
         private readonly Subject<Unit> onRespawned = new Subject<Unit>();
 
         /// <summary>
+        /// <see cref="IInteractableGimmick"/>のエリア内に入った際のイベント
+        /// </summary>
+        private readonly Subject<IInteractableStageGimmick> onEnterInteractableStageGimmick = new Subject<IInteractableStageGimmick>();
+
+        /// <summary>
+        /// <see cref="IInteractableGimmick"/>のエリアから出た際のイベント
+        /// </summary>
+        private readonly Subject<IInteractableStageGimmick> onExitInteractableStageGimmick = new Subject<IInteractableStageGimmick>();
+
+        /// <summary>
         /// <inheritdoc cref="beginRightEquipmentSubject"/>
         /// </summary>
         public ISubject<Unit> OnBeginRightEquipmentSubject() => this.beginRightEquipmentSubject;
@@ -101,6 +112,16 @@ namespace ER.ActorControllers
         /// </summary>
         public ISubject<Unit> OnRespawnedSubject() => this.onRespawned;
 
+        /// <summary>
+        /// <inheritdoc cref="onEnterInteractableStageGimmick"/>
+        /// </summary>
+        public ISubject<IInteractableStageGimmick> OnEnterInteractableStageGimmickSubject() => this.onEnterInteractableStageGimmick;
+
+        /// <summary>
+        /// <inheritdoc cref="onExitInteractableStageGimmick"/>
+        /// </summary>
+        public ISubject<IInteractableStageGimmick> OnExitInteractableStageGimmickSubject() => this.onExitInteractableStageGimmick;
+
         public void Dispose()
         {
             this.beginRightEquipmentSubject.Dispose();
@@ -112,6 +133,8 @@ namespace ER.ActorControllers
             this.onBeginLookAt.Dispose();
             this.onEndLookAt.Dispose();
             this.onRespawned.Dispose();
+            this.onEnterInteractableStageGimmick.Dispose();
+            this.onExitInteractableStageGimmick.Dispose();
         }
     }
 }
