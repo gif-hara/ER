@@ -38,7 +38,7 @@ namespace ER.ActorControllers
             }
 
             this.ChangeRequest(this.initialAiName);
-            this.actor.SetRightEquipment(this.rightEquipmentPrefab);
+            this.actor.EquipmentController.SetRightEquipment(this.rightEquipmentPrefab);
         }
 
         private void Update()

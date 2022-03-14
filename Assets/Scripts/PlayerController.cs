@@ -71,7 +71,7 @@ namespace ER
                 this.actor.InteractableStageGimmickController.BeginInteract();
             };
 
-            this.actor.SetRightEquipment(this.rightEquipmentPrefab);
+            this.actor.EquipmentController.SetRightEquipment(this.rightEquipmentPrefab);
         }
 
         private void Update()

@@ -30,11 +30,11 @@ namespace ER.ActorControllers
 
         public ActorInteractableStageGimmickController InteractableStageGimmickController { get; } = new ActorInteractableStageGimmickController();
 
+        public ActorEquipmentController EquipmentController { get; } = new ActorEquipmentController();
+
         public ActorStateController StateController { get; } = new ActorStateController();
 
         public ActorDirectorController DirectorController { get; } = new ActorDirectorController();
-
-        private EquipmentController rightEquipment;
 
         public Animator Animator { get; private set; }
 
@@ -68,6 +68,7 @@ namespace ER.ActorControllers
             this.StateController.Setup(this);
             this.StatusController.Setup(this, this.statusData);
             this.InteractableStageGimmickController.Setup(this);
+            this.EquipmentController.Setup(this);
             this.MotionController = new ActorMotionController();
             this.MotionController.Setup(this, this.motionData);
             this.DirectorController.Setup(this, this.director);
@@ -84,11 +85,11 @@ namespace ER.ActorControllers
         {
             Actors.Add(this);
 
-            if(this.gameObject.layer == Layer.Index.Player)
+            if (this.gameObject.layer == Layer.Index.Player)
             {
                 Players.Add(this);
             }
-            else if(this.gameObject.layer == Layer.Index.Enemy)
+            else if (this.gameObject.layer == Layer.Index.Enemy)
             {
                 Enemies.Add(this);
             }
@@ -121,25 +122,6 @@ namespace ER.ActorControllers
         void OnAnimatorMove()
         {
             this.transform.position = this.Animator.rootPosition;
-        }
-
-        public void SetRightEquipment(EquipmentController equipmentPrefab)
-        {
-            this.rightEquipment = equipmentPrefab.Attach(this);
-        }
-
-        public EquipmentController GetEquipmentController(HandType handType)
-        {
-            switch(handType)
-            {
-                case HandType.Left:
-                    throw new NotImplementedException();
-                case HandType.Right:
-                    return this.rightEquipment;
-                default:
-                    Assert.IsTrue(false, $"{handType}は未実装です");
-                    return null;
-            }
         }
     }
 }

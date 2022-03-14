@@ -30,7 +30,7 @@ namespace ER.ERBehaviour
             return Observable.Defer(() =>
             {
                 var behaviourData = data.Cast<IActorHolder>();
-                var equipmentController = behaviourData.Actor.GetEquipmentController(this.handType);
+                var equipmentController = behaviourData.Actor.EquipmentController.GetEquipmentController(this.handType);
                 var director = equipmentController.PlayableDirector;
                 var actor = behaviourData.Actor;
 

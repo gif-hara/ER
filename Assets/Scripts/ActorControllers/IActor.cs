@@ -30,10 +30,10 @@ namespace ER.ActorControllers
 
         ActorDirectorController DirectorController { get; }
 
-        EquipmentController GetEquipmentController(HandType handType);
-
         ActorStatusController StatusController { get; }
 
         ActorInteractableStageGimmickController InteractableStageGimmickController { get; }
+
+        ActorEquipmentController EquipmentController { get; }
     }
 }
