@@ -2066,18 +2066,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1703219133321234919, guid: 376037b79faa6f246bf7a10f5d186a49, type: 3}
-      propertyPath: m_DynamicOccludee
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4627467606113370550, guid: 376037b79faa6f246bf7a10f5d186a49, type: 3}
-      propertyPath: m_DynamicOccludee
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6191820469723636353, guid: 376037b79faa6f246bf7a10f5d186a49, type: 3}
-      propertyPath: m_DynamicOccludee
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 9006012059919752818, guid: 376037b79faa6f246bf7a10f5d186a49, type: 3}
       propertyPath: m_Name
       value: Stage.Chunk(1,1,0)
