@@ -245,7 +245,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a129b704421da694a8afd370943f8619, type: 3}
---- !u!1001 &7247284303376329519
+--- !u!1001 &8506116540637359344
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -254,7 +254,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 657117828284441884, guid: ea341b812338cfe45a9e8d9d75c91ead, type: 3}
       propertyPath: m_Name
-      value: Stage.ActorSpawnOnStart
+      value: Stage.Gimmick.ActorSpawnOnSetup
       objectReference: {fileID: 0}
     - target: {fileID: 5080786863182183036, guid: ea341b812338cfe45a9e8d9d75c91ead, type: 3}
       propertyPath: m_RootOrder
@@ -262,11 +262,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5080786863182183036, guid: ea341b812338cfe45a9e8d9d75c91ead, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.4
+      value: 19.7
       objectReference: {fileID: 0}
     - target: {fileID: 5080786863182183036, guid: ea341b812338cfe45a9e8d9d75c91ead, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 19.3
+      value: 19.2
       objectReference: {fileID: 0}
     - target: {fileID: 5080786863182183036, guid: ea341b812338cfe45a9e8d9d75c91ead, type: 3}
       propertyPath: m_LocalPosition.z
@@ -300,9 +300,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7132403566962195079, guid: ea341b812338cfe45a9e8d9d75c91ead, type: 3}
-      propertyPath: actorPrefab
-      value: 
-      objectReference: {fileID: 9119910791474521852, guid: 67df0cd4baa71fe4ca1bef38d82a3659, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea341b812338cfe45a9e8d9d75c91ead, type: 3}

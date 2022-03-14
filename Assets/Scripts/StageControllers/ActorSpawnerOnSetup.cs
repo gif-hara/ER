@@ -7,7 +7,7 @@ namespace ER.StageControllers
     /// <summary>
     /// 
     /// </summary>
-    public sealed class ActorSpawnerOnStart : MonoBehaviour, IStageGimmick
+    public sealed class ActorSpawnerOnSetup : MonoBehaviour, IStageGimmick
     {
         [SerializeField]
         private Actor actorPrefab = default;
