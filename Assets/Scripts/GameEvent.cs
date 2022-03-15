@@ -11,6 +11,11 @@ namespace ER
     public static class GameEvent
     {
         /// <summary>
+        /// ゲームを開始出来る状態か
+        /// </summary>
+        public static ReactiveProperty<bool> IsGameReady { get; private set; }
+
+        /// <summary>
         /// <see cref="Actor"/>が生成された際のイベント
         /// </summary>
         private static Subject<Actor> onSpawnedActor;
@@ -32,14 +37,19 @@ namespace ER
 
         public static void Initialize()
         {
+            IsGameReady = new ReactiveProperty<bool>(false);
             onSpawnedActor = new Subject<Actor>();
             onSpawnedGameCameraController = new Subject<GameCameraController>();
         }
 
         public static void Clear()
         {
+            IsGameReady.Dispose();
+            IsGameReady = null;
             onSpawnedActor.Dispose();
             onSpawnedActor = null;
+            onSpawnedGameCameraController.Dispose();
+            onSpawnedGameCameraController = null;
         }
     }
 }

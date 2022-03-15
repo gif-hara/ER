@@ -21,6 +21,10 @@ MonoBehaviour:
     m_Address: Assets/Prefabs
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 5b84292b42a42b54fa1601ed5847d48f
+    m_Address: Assets/MasterData/WeaponData.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: cb0326dc49394e84e95308327196031b, type: 2}
   m_SchemaSet:

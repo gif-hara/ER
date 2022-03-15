@@ -1,5 +1,9 @@
 using ER.ActorControllers;
+using ER.MasterDataSystem;
+using System.Collections;
+using UniRx;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace ER
 {
@@ -19,14 +23,26 @@ namespace ER
 
         private void Awake()
         {
-            GameEvent.Initialize();
-            Instantiate(gameCameraControllerPrefab);
-            var player = Instantiate(this.playerPrefab, this.playerSpawnPoint.localPosition, this.playerSpawnPoint.localRotation);
+            StartCoroutine(this.SetupCoroutine());
         }
 
         private void OnDestroy()
         {
             GameEvent.Clear();
+        }
+
+        private IEnumerator SetupCoroutine()
+        {
+            GameEvent.Initialize();
+
+            yield return MasterData.SetupAsync().ToYieldInstruction();
+
+            Instantiate(gameCameraControllerPrefab);
+            var player = Instantiate(this.playerPrefab, this.playerSpawnPoint.localPosition, this.playerSpawnPoint.localRotation);
+
+            GameEvent.IsGameReady.Value = true;
+
+            yield break;
         }
     }
 }
