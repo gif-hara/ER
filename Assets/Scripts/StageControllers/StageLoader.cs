@@ -116,13 +116,7 @@ namespace ER.StageControllers
                 {
                     var stageInfo = i;
                     var index = i.index;
-                    var handler = Addressables.LoadAssetAsync<GameObject>($"Assets/Prefabs/Stage.Chunk({index.x},{index.y},0).prefab");
-                    var stream = Observable.FromEvent<AsyncOperationHandle<GameObject>>(
-                        x => handler.Completed += x,
-                        x => handler.Completed -= x
-                        )
-                    .First()
-                    .Select(x => x.Result)
+                    var stream = AssetLoader.LoadAsync<GameObject>($"Assets/Prefabs/Stage.Chunk({index.x},{index.y},0).prefab")
                     .Do(x =>
                     {
                         stageInfo.stage = UnityEngine.Object.Instantiate(x, this.stageParent).GetComponent<StageChunk>();
