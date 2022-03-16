@@ -25,6 +25,14 @@ MonoBehaviour:
       - TestItem
       Flags: 0000
       Languages_Touch: []
+    - Term: Item/Name010000
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u6575\u6B66\u5668"
+      - 
+      Flags: 0000
+      Languages_Touch: []
     - Term: Item/Name010101
       TermType: 0
       Description: 
@@ -201,6 +209,14 @@ MonoBehaviour:
       - 
       Flags: 0000
       Languages_Touch: []
+    - Term: Item/Name080101
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u9244\u306E\u76FE"
+      - 
+      Flags: 0000
+      Languages_Touch: []
     CaseInsensitiveTerms: 0
     OnMissingTranslation: 1
     mTerm_AppName: 
@@ -216,7 +232,7 @@ MonoBehaviour:
     Google_WebServiceURL: https://script.google.com/macros/s/AKfycbyF0yeaJl5TfgY6r059oCUDjbulYEndJLFNq6Q7/exec
     Google_SpreadsheetKey: 1UKcNrFW7zKUH617RzHOCnP1JoEKPtbbJkPmgc0Hgkso
     Google_SpreadsheetName: I2Loc ER Localization
-    Google_LastUpdatedVersion: 1647351604952
+    Google_LastUpdatedVersion: 1647467554245
     Google_Password: change_this
     GoogleUpdateFrequency: 1
     GoogleInEditorCheckFrequency: 1
