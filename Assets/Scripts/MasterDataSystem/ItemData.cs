@@ -1,6 +1,7 @@
 using I2.Loc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -40,7 +41,10 @@ namespace ER.MasterDataSystem
         private async void Test()
         {
             // https://www.ka-net.org/blog/?p=12258
-            var request = UnityWebRequest.Get("https://script.google.com/macros/s/AKfycbz9HjKdDEXiKBignjUiHdzL8MsKMJcg87pn3zdp826E_hJl_As8zXSTKFmURdqxuDA5/exec?mode=ItemData");
+            var sheetUrl = File.ReadAllText("masterdata_sheet_url.txt");
+            var bearer = File.ReadAllText("bearer.txt");
+            var request = UnityWebRequest.Get($"{sheetUrl}?mode=ItemData");
+            request.SetRequestHeader("Authorization", $"Bearer {bearer}");
             var operation = request.SendWebRequest();
             while (!operation.isDone)
             {
