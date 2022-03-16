@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WeaponData
   m_EditorClassIdentifier: 
   records:
-  - id: 0
+  - id: Item/Name010101
     physics:
       minAttack: 0
       maxAttack: 0

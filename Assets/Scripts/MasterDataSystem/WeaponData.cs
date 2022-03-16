@@ -1,3 +1,4 @@
+using I2.Loc;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,11 +15,22 @@ namespace ER.MasterDataSystem
         [SerializeField]
         private List<Record> records = default;
 
+        public HashSet<string> IdHashSet { get; } = new HashSet<string>();
+
+        protected override void OnSetupped()
+        {
+            base.OnSetupped();
+            foreach(var i in this.records)
+            {
+                this.IdHashSet.Add(i.Id);
+            }
+        }
+
         [Serializable]
         public class Record
         {
-            [SerializeField]
-            private int id;
+            [SerializeField, TermsPopup]
+            private string id;
 
             [SerializeField]
             private AttackElement physics = default;
@@ -44,7 +56,7 @@ namespace ER.MasterDataSystem
             [SerializeField]
             private AttackElement dark = default;
 
-            public int Id => this.id;
+            public string Id => this.id;
 
             public AttackElement Physics => this.physics;
 

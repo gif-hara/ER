@@ -21,8 +21,8 @@ MonoBehaviour:
     m_Address: Assets/Prefabs
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 5b84292b42a42b54fa1601ed5847d48f
-    m_Address: Assets/MasterData/WeaponData.asset
+  - m_GUID: 5c2559e8e1031ef479fa5e52002503d6
+    m_Address: Assets/MasterData
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

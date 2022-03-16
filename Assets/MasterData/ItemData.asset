@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f752b507e1893804f8ef0f4f30f33172, type: 3}
+  m_Name: ItemData
+  m_EditorClassIdentifier: 
+  records:
+  - id: Item/Name000000
+    stackable: 0
+  - id: Item/Name010101
+    stackable: 0
+  - id: Item/Name020101
+    stackable: 0
+  - id: Item/Name030101
+    stackable: 0
+  - id: Item/Name040101
+    stackable: 0
+  - id: Item/Name050101
+    stackable: 0
+  - id: Item/Name060101
+    stackable: 0
+  - id: Item/Name070101
+    stackable: 0
+  - id: Item/Name070102
+    stackable: 0
+  - id: Item/Name070103
+    stackable: 0
+  - id: Item/Name070104
+    stackable: 0
+  - id: Item/Name070105
+    stackable: 0

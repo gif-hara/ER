@@ -16,20 +16,210 @@ MonoBehaviour:
     UserAgreesToHaveItOnTheScene: 0
     UserAgreesToHaveItInsideThePluginsFolder: 0
     GoogleLiveSyncIsUptoDate: 1
-    mTerms: []
+    mTerms:
+    - Term: Item/Name000000
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u30C6\u30B9\u30C8\u30A2\u30A4\u30C6\u30E0"
+      - TestItem
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Name010101
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u30ED\u30F3\u30B0\u30BD\u30FC\u30C9"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Name020101
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u9244\u306E\u515C"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Name030101
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u9244\u306E\u93A7"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Name040101
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u9244\u306E\u624B\u7532"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Name050101
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u9244\u306E\u8DB3\u7532"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Name060101
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u9244\u306E\u6307\u8F2A"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Name070101
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u7269\u653B\u306E\u9B42"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Name070102
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u9B54\u653B\u306E\u9B42"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Name070103
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u708E\u653B\u306E\u9B42"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Name070104
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u5730\u653B\u306E\u9B42"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Name070105
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u96F7\u653B\u306E\u9B42"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Name070106
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u6C34\u653B\u306E\u9B42"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Name070107
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u8056\u653B\u306E\u9B42"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Name070108
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u95C7\u653B\u306E\u9B42"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Name070109
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u7269\u9632\u306E\u9B42"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Name070110
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u9B54\u9632\u306E\u9B42"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Name070111
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u708E\u9632\u306E\u9B42"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Name070112
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u5730\u9632\u306E\u9B42"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Name070113
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u96F7\u9632\u306E\u9B42"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Name070114
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u6C34\u9632\u306E\u9B42"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Name070115
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u8056\u9632\u306E\u9B42"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Name070116
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u95C7\u9632\u306E\u9B42"
+      - 
+      Flags: 0000
+      Languages_Touch: []
     CaseInsensitiveTerms: 0
     OnMissingTranslation: 1
     mTerm_AppName: 
-    mLanguages: []
+    mLanguages:
+    - Name: Japanese
+      Code: ja
+      Flags: 0
+    - Name: English
+      Code: en
+      Flags: 0
     IgnoreDeviceLanguage: 0
     _AllowUnloadingLanguages: 0
-    Google_WebServiceURL: 
-    Google_SpreadsheetKey: 
-    Google_SpreadsheetName: 
-    Google_LastUpdatedVersion: 
+    Google_WebServiceURL: https://script.google.com/macros/s/AKfycbyF0yeaJl5TfgY6r059oCUDjbulYEndJLFNq6Q7/exec
+    Google_SpreadsheetKey: 1UKcNrFW7zKUH617RzHOCnP1JoEKPtbbJkPmgc0Hgkso
+    Google_SpreadsheetName: I2Loc ER Localization
+    Google_LastUpdatedVersion: 1647351604952
     Google_Password: change_this
-    GoogleUpdateFrequency: 3
-    GoogleInEditorCheckFrequency: 2
+    GoogleUpdateFrequency: 1
+    GoogleInEditorCheckFrequency: 1
     GoogleUpdateSynchronization: 1
     GoogleUpdateDelay: 0
     Assets: []

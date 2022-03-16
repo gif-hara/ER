@@ -13,13 +13,17 @@ namespace ER.MasterDataSystem
     {
         public static T Instance { get; private set; }
 
+        protected virtual void OnSetupped()
+        {
+        }
+
         public static IObservable<Unit> SetupAsync(string assetPath)
         {
             return AssetLoader.LoadAsync<T>(assetPath)
                 .Do(x =>
                 {
                     Instance = x;
-                    Debug.Log(x);
+                    Instance.OnSetupped();
                 })
                 .AsUnitObservable();
         }
@@ -32,6 +36,7 @@ namespace ER.MasterDataSystem
             var streams = new List<IObservable<Unit>>();
 
             return Observable.WhenAll(
+                ItemData.SetupAsync("Assets/MasterData/ItemData.asset"),
                 WeaponData.SetupAsync("Assets/MasterData/WeaponData.asset")
                 )
                 .AsUnitObservable();
