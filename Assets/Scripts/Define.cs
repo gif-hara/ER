@@ -18,4 +18,17 @@ namespace ER
         Player,
         Enemy,
     }
+
+    public enum ItemCategory
+    {
+        Unknown,
+        Weapon,
+        ArmorHead,
+        ArmorTorso,
+        ArmorArm,
+        ArmorLeg,
+        Accessory,
+        Valuable,
+        Shield,
+    }
 }

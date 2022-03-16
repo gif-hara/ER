@@ -1,8 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Threading.Tasks;
 using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Networking;
 
 namespace ER.MasterDataSystem
 {
@@ -26,6 +29,21 @@ namespace ER.MasterDataSystem
                     Instance.OnSetupped();
                 })
                 .AsUnitObservable();
+        }
+
+        protected async Task<string> DownloadFromSpreadSheet(string sheetName)
+        {
+            var sheetUrl = File.ReadAllText("masterdata_sheet_url.txt");
+            var bearer = File.ReadAllText("bearer.txt");
+            var request = UnityWebRequest.Get($"{sheetUrl}?mode={sheetName}");
+            request.SetRequestHeader("Authorization", $"Bearer {bearer}");
+            var operation = request.SendWebRequest();
+            while (!operation.isDone)
+            {
+                await Task.Delay(100);
+            }
+
+            return operation.webRequest.downloadHandler.text;
         }
     }
 
