@@ -11,24 +11,10 @@ namespace ER.MasterDataSystem
     /// 
     /// </summary>
     [CreateAssetMenu(menuName = "ER/MasterData/WeaponData")]
-    public sealed class WeaponData : MasterData<WeaponData>
+    public sealed class WeaponData : MasterData<WeaponData, WeaponData.Record>
     {
-        [SerializeField]
-        private List<Record> records = default;
-
-        public HashSet<string> IdHashSet { get; } = new HashSet<string>();
-
-        protected override void OnSetupped()
-        {
-            base.OnSetupped();
-            foreach(var i in this.records)
-            {
-                this.IdHashSet.Add(i.Id);
-            }
-        }
-
         [Serializable]
-        public class Record
+        public class Record : IIdHolder<string>
         {
             [SerializeField, TermsPopup]
             private string id;

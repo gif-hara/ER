@@ -32,6 +32,8 @@ namespace ER.ActorControllers
 
         public ActorEquipmentController EquipmentController { get; } = new ActorEquipmentController();
 
+        public ActorInventoryController InventoryController { get; } = new ActorInventoryController();
+
         public ActorStateController StateController { get; } = new ActorStateController();
 
         public ActorDirectorController DirectorController { get; } = new ActorDirectorController();

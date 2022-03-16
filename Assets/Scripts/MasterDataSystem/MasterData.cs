@@ -12,9 +12,21 @@ namespace ER.MasterDataSystem
     /// <summary>
     /// 
     /// </summary>
-    public abstract class MasterData<T> : ScriptableObject where T : MasterData<T>
+    public abstract class MasterData<TMasterData, TRecord> : ScriptableObject
+        where TMasterData : MasterData<TMasterData, TRecord>
+        where TRecord : IIdHolder<string>
     {
-        public static T Instance { get; private set; }
+        public static TMasterData Instance { get; private set; }
+
+        [SerializeField]
+        protected List<TRecord> records = default;
+
+        public Dictionary<string, TRecord> Raw = new Dictionary<string, TRecord>();
+
+        private void Setup()
+        {
+
+        }
 
         protected virtual void OnSetupped()
         {
@@ -22,7 +34,7 @@ namespace ER.MasterDataSystem
 
         public static IObservable<Unit> SetupAsync(string assetPath)
         {
-            return AssetLoader.LoadAsync<T>(assetPath)
+            return AssetLoader.LoadAsync<TMasterData>(assetPath)
                 .Do(x =>
                 {
                     Instance = x;

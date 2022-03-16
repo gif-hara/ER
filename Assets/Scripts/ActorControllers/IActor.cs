@@ -35,5 +35,7 @@ namespace ER.ActorControllers
         ActorInteractableStageGimmickController InteractableStageGimmickController { get; }
 
         ActorEquipmentController EquipmentController { get; }
+
+        ActorInventoryController InventoryController { get; }
     }
 }

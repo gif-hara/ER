@@ -10,13 +10,10 @@ namespace ER.MasterDataSystem
     /// 
     /// </summary>
     [CreateAssetMenu(menuName = "ER/MasterData/ItemData")]
-    public sealed class ItemData : MasterData<ItemData>
+    public sealed class ItemData : MasterData<ItemData, ItemData.Record>
     {
-        [SerializeField]
-        private List<Record> records = default;
-
         [Serializable]
-        public class Record
+        public class Record : IIdHolder<string>
         {
             [SerializeField, TermsPopup]
             private string id = default;
