@@ -13,76 +13,69 @@ MonoBehaviour:
   m_Name: WeaponData
   m_EditorClassIdentifier: 
   records:
-  - id: Item/Name010101
+  - id: Item/Name010000
     physics:
       minAttack: 0
       maxAttack: 0
-      growthCurve:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 0
-        m_PostInfinity: 0
-        m_RotationOrder: 0
+      growthType: 0
     magic:
       minAttack: 0
       maxAttack: 0
-      growthCurve:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 0
-        m_PostInfinity: 0
-        m_RotationOrder: 0
+      growthType: 0
     fire:
       minAttack: 0
       maxAttack: 0
-      growthCurve:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 0
-        m_PostInfinity: 0
-        m_RotationOrder: 0
+      growthType: 0
     earth:
       minAttack: 0
       maxAttack: 0
-      growthCurve:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 0
-        m_PostInfinity: 0
-        m_RotationOrder: 0
+      growthType: 0
     thunder:
       minAttack: 0
       maxAttack: 0
-      growthCurve:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 0
-        m_PostInfinity: 0
-        m_RotationOrder: 0
+      growthType: 0
     water:
       minAttack: 0
       maxAttack: 0
-      growthCurve:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 0
-        m_PostInfinity: 0
-        m_RotationOrder: 0
+      growthType: 0
     holy:
       minAttack: 0
       maxAttack: 0
-      growthCurve:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 0
-        m_PostInfinity: 0
-        m_RotationOrder: 0
+      growthType: 0
     dark:
       minAttack: 0
       maxAttack: 0
-      growthCurve:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 0
-        m_PostInfinity: 0
-        m_RotationOrder: 0
+      growthType: 0
+  - id: Item/Name010101
+    physics:
+      minAttack: 0
+      maxAttack: 100
+      growthType: 0
+    magic:
+      minAttack: 0
+      maxAttack: 100
+      growthType: 0
+    fire:
+      minAttack: 0
+      maxAttack: 100
+      growthType: 0
+    earth:
+      minAttack: 0
+      maxAttack: 100
+      growthType: 0
+    thunder:
+      minAttack: 0
+      maxAttack: 100
+      growthType: 0
+    water:
+      minAttack: 0
+      maxAttack: 100
+      growthType: 0
+    holy:
+      minAttack: 0
+      maxAttack: 100
+      growthType: 0
+    dark:
+      minAttack: 0
+      maxAttack: 100
+      growthType: 0

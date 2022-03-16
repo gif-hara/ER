@@ -31,4 +31,13 @@ namespace ER
         Valuable,
         Shield,
     }
+
+    public enum EquipmentGrowthType
+    {
+        Linear,
+        OutQuad,
+        OutCubic,
+        InQuad,
+        InCubic,
+    }
 }
