@@ -55,7 +55,10 @@ namespace ER.MasterDataSystem
                 await Task.Delay(100);
             }
 
-            return operation.webRequest.downloadHandler.text;
+            var result = operation.webRequest.downloadHandler.text;
+            Debug.Log(result);
+
+            return result;
         }
     }
 
