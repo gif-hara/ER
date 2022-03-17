@@ -34,11 +34,6 @@ namespace ER.ERBehaviour
                 var director = equipmentController.PlayableDirector;
                 var actor = behaviourData.Actor;
 
-                if(actor.StateController.CurrentState != ActorStateController.StateType.Movable)
-                {
-                    return Observable.ReturnUnit();
-                }
-
                 director.extrapolationMode = this.wrapMode;
                 director.playableAsset = this.playableAsset;
                 director.SetGenericBinding("ActorAnimation", actor.Animator);

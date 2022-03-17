@@ -17,5 +17,10 @@ namespace ER.ActorControllers
         /// 無敵
         /// </summary>
         public bool invisible = false;
+
+        /// <summary>
+        /// 先行入力が出来るか
+        /// </summary>
+        public bool advancedEntry = false;
     }
 }

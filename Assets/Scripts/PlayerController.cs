@@ -114,12 +114,33 @@ namespace ER
 
         private void OnPerformedBeginRightEquipment(InputAction.CallbackContext callback)
         {
+            if(!this.CanBeginRightEquipmentSubject())
+            {
+                return;
+            }
+
             this.actor.Event.OnBeginRightEquipmentSubject().OnNext(Unit.Default);
         }
 
         private void OnCanceledBeginRightEquipment(InputAction.CallbackContext callback)
         {
             this.actor.Event.OnEndRightEquipmentSubject().OnNext(Unit.Default);
+        }
+
+        private bool CanBeginRightEquipmentSubject()
+        {
+            var currentState = this.actor.StateController.CurrentState;
+
+            switch(currentState)
+            {
+                case ActorStateController.StateType.Movable:
+                    return true;
+                case ActorStateController.StateType.Attack:
+                case ActorStateController.StateType.Avoidance:
+                    return this.actor.AnimationParameter.advancedEntry;
+                default:
+                    return false;
+            }
         }
 
         /// <summary>

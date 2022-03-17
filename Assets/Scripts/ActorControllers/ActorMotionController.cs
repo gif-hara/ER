@@ -61,6 +61,8 @@ namespace ER.ActorControllers
                         actor.AnimationParameter.moveSpeedRate = 1.0f;
                         actor.AnimationParameter.invisible = false;
                     }
+
+                    actor.AnimationParameter.advancedEntry = false;
                 })
                 .AddTo(actor.Disposables);
 
