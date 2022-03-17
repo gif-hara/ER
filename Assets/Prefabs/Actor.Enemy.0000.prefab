@@ -141,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.data[3].behaviours.Array.data[0].trigger
-      value: Assembly-CSharp ER.ERBehaviour.EveryUpdate
+      value: Assembly-CSharp ER.ERBehaviour.CanAttack
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.data[3].behaviours.Array.data[1].trigger
@@ -208,6 +208,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[3].behaviours.Array.data[0].action.actions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.data[3].behaviours.Array.data[1].trigger.distanceThreshold
       value: 5
       objectReference: {fileID: 0}
@@ -220,12 +224,48 @@ PrefabInstance:
       value: Assembly-CSharp ER.ERBehaviour.ChangeAI
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[3].behaviours.Array.data[0].action.actions.Array.data[0]
+      value: Assembly-CSharp ER.ERBehaviour.BeginAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[3].behaviours.Array.data[0].action.actions.Array.data[1]
+      value: Assembly-CSharp ER.ERBehaviour.ChangeAI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[3].behaviours.Array.data[0].action.actions.Array.data[0].data
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[3].behaviours.Array.data[0].action.actions.Array.data[1].data
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[3].behaviours.Array.data[0].action.actions.Array.data[0].power
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.data[1].behaviours.Array.data[0].action.actions.Array.data[1].aiName
       value: ChasePlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[3].behaviours.Array.data[0].action.actions.Array.data[1].aiName
+      value: ChasePlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[3].behaviours.Array.data[0].action.actions.Array.data[0].handType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[3].behaviours.Array.data[0].action.actions.Array.data[0].wrapMode
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.data[1].behaviours.Array.data[0].action.actions.Array.data[0].actorType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[3].behaviours.Array.data[0].action.actions.Array.data[0].playableAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 4e3dc0d37e76f884bb0ff92b825a8805, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a956312de110fd64caae24e5eb263503, type: 3}
