@@ -44,7 +44,6 @@ namespace ER
 
             this.inputAction.Player.Fire.performed += callback =>
             {
-                Debug.Log(this.actor.AnimationParameter.advancedEntry);
                 if (!this.CanBeginRightEquipmentSubject())
                 {
                     return;

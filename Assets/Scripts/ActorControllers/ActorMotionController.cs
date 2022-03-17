@@ -89,6 +89,7 @@ namespace ER.ActorControllers
                     actor.StateController.ChangeRequest(ActorStateController.StateType.Avoidance);
                     actor.gameObject.UpdateAsObservable()
                     .TakeUntil(actor.Event.OnChangedStateSubject().Where(nextState => nextState != ActorStateController.StateType.Avoidance))
+                    .TakeUntil(this.actor.Event.OnRequestAvoidanceSubject())
                     .Subscribe(_ =>
                     {
                         this.Move(x);
