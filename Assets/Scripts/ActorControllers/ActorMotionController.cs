@@ -105,11 +105,23 @@ namespace ER.ActorControllers
                 .AddTo(actor.Disposables);
         }
 
+        /// <summary>
+        /// 移動量を設定する
+        /// </summary>
+        /// <remarks>
+        /// 実際の移動時に<see cref="Time.deltaTime"/>が考慮されます
+        /// </remarks>
         public void Move(Vector2 moveDirection)
         {
-            this.moveDirection = moveDirection;
+            this.moveDirection += moveDirection;
         }
 
+        /// <summary>
+        /// 移動量を設定する
+        /// </summary>
+        /// <remarks>
+        /// 実際の移動時に<see cref="Time.deltaTime"/>が考慮されません
+        /// </remarks>
         public void MoveRaw(Vector2 rawVelocity)
         {
             this.rawVelocity += rawVelocity;
@@ -147,10 +159,10 @@ namespace ER.ActorControllers
         private void UpdatePosition(IActor actor)
         {
             var t = actor.transform;
-            var direction = this.moveDirection.normalized;
+            var direction = (this.moveDirection + this.rawVelocity).normalized;
             var velocity =
                 (this.moveDirection * Time.deltaTime * this.motionData.moveSpeed * actor.AnimationParameter.moveSpeedRate)
-                + (this.rawVelocity * Time.deltaTime);
+                + this.rawVelocity;
             var hitNumber = Physics2D.CircleCastNonAlloc(
                 t.localPosition,
                 this.motionData.radius,
