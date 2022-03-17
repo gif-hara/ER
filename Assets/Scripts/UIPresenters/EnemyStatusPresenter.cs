@@ -9,7 +9,7 @@ namespace ER.UIPresenters
     /// <summary>
     /// 
     /// </summary>
-    public sealed class EnemyHitPointPresenter : UIPresenter
+    public sealed class EnemyStatusPresenter : UIPresenter
     {
         [SerializeField]
         private RectTransform canvasTransform = default;
@@ -18,7 +18,7 @@ namespace ER.UIPresenters
         private Camera uiCamera = default;
 
         [SerializeField]
-        private EnemyHitPointUIView enemyHitPointUIView = default;
+        private EnemyStatusUIView enemyHitPointUIView = default;
 
         [SerializeField]
         private Vector2 offset = default;

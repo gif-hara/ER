@@ -7,7 +7,7 @@ namespace ER.UIViews
     /// <summary>
     /// 
     /// </summary>
-    public sealed class EnemyHitPointUIView : UIView
+    public sealed class EnemyStatusUIView : UIView
     {
         [SerializeField]
         private Transform hitPointRoot = default;
