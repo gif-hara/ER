@@ -12,9 +12,15 @@ namespace ER.ActorControllers
     {
         public readonly Dictionary<string, Item> Inventory = new Dictionary<string, Item>();
 
-        public void AddItem(string itemId)
+        public void AddItem(string itemId, int number)
         {
-            //var itemData = ItemData.Instance.
+            if(!this.Inventory.ContainsKey(itemId))
+            {
+                this.Inventory.Add(itemId, new Item(itemId));
+            }
+
+            this.Inventory[itemId].AddNumber(number);
+            Debug.Log("AddItem!");
         }
     }
 }

@@ -16,8 +16,7 @@ namespace ER.StageControllers
         {
             Assert.IsNotNull(this.actorPrefab, $"{nameof(this.actorPrefab)}がNullです");
 
-            string id;
-            if(stageController.GimmickSpawnManager.CanSpawnEnemy(this.transform, out id))
+            if(stageController.GimmickSpawnManager.CanSpawnEnemy(this.transform, out var id))
             {
                 stageController.GimmickSpawnManager.AddSpawnedEnemy(id);
                 Instantiate(this.actorPrefab, this.transform.position, this.transform.rotation);

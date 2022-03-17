@@ -12,6 +12,8 @@ namespace ER.StageControllers
     {
         private readonly HashSet<string> spawnedEnemyIds = new HashSet<string>();
 
+        private readonly HashSet<string> spawnedItemIds = new HashSet<string>();
+
         private readonly StringBuilder stringBuilder = new StringBuilder();
 
         public bool CanSpawnEnemy(Transform spawner, out string id)
@@ -21,9 +23,21 @@ namespace ER.StageControllers
             return !this.spawnedEnemyIds.Contains(id);
         }
 
+        public bool CanSpawnItem(Transform item, out string id)
+        {
+            id = GetId(item);
+
+            return !this.spawnedItemIds.Contains(id);
+        }
+
         public void AddSpawnedEnemy(string id)
         {
             this.spawnedEnemyIds.Add(id);
+        }
+
+        public void AddSpawnedItem(string id)
+        {
+            this.spawnedItemIds.Add(id);
         }
 
         private string GetId(Transform t)
