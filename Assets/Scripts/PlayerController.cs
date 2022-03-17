@@ -42,10 +42,27 @@ namespace ER
             this.inputAction = new ERInputAction();
             this.inputAction.Enable();
 
-            this.inputAction.Player.Fire.performed += OnPerformedBeginRightEquipment;
-            this.inputAction.Player.Fire.canceled += OnCanceledBeginRightEquipment;
+            this.inputAction.Player.Fire.performed += callback =>
+            {
+                Debug.Log(this.actor.AnimationParameter.advancedEntry);
+                if (!this.CanBeginRightEquipmentSubject())
+                {
+                    return;
+                }
+
+                this.actor.Event.OnBeginRightEquipmentSubject().OnNext(Unit.Default);
+            };
+            this.inputAction.Player.Fire.canceled += callback =>
+            {
+                this.actor.Event.OnEndRightEquipmentSubject().OnNext(Unit.Default);
+            };
             this.inputAction.Player.Avoidance.performed += callback =>
             {
+                if(!this.CanAvoidance())
+                {
+                    return;
+                }
+
                 var direction = this.inputAction.Player.Move.ReadValue<Vector2>();
                 this.actor.Event.OnRequestAvoidanceSubject().OnNext(direction);
             };
@@ -112,26 +129,27 @@ namespace ER
             Gizmos.color = tempColor;
         }
 
-        private void OnPerformedBeginRightEquipment(InputAction.CallbackContext callback)
-        {
-            if(!this.CanBeginRightEquipmentSubject())
-            {
-                return;
-            }
-
-            this.actor.Event.OnBeginRightEquipmentSubject().OnNext(Unit.Default);
-        }
-
-        private void OnCanceledBeginRightEquipment(InputAction.CallbackContext callback)
-        {
-            this.actor.Event.OnEndRightEquipmentSubject().OnNext(Unit.Default);
-        }
-
         private bool CanBeginRightEquipmentSubject()
         {
             var currentState = this.actor.StateController.CurrentState;
 
-            switch(currentState)
+            switch (currentState)
+            {
+                case ActorStateController.StateType.Movable:
+                    return true;
+                case ActorStateController.StateType.Attack:
+                case ActorStateController.StateType.Avoidance:
+                    return this.actor.AnimationParameter.advancedEntry;
+                default:
+                    return false;
+            }
+        }
+
+        private bool CanAvoidance()
+        {
+            var currentState = this.actor.StateController.CurrentState;
+
+            switch (currentState)
             {
                 case ActorStateController.StateType.Movable:
                     return true;

@@ -67,7 +67,6 @@ namespace ER.ActorControllers
                 .AddTo(actor.Disposables);
 
             actor.Event.OnRequestAvoidanceSubject()
-                .Where(_ => actor.StateController.CurrentState == ActorStateController.StateType.Movable)
                 .Subscribe(x =>
                 {
                     // 入力が無い場合はバックステップする
@@ -79,6 +78,8 @@ namespace ER.ActorControllers
                     x = x.normalized;
 
                     actor.DirectorController.PlayOneShotAsync(motionData.avoidanceAsset)
+                    .TakeUntil(this.actor.Event.OnBeginRightEquipmentSubject())
+                    .TakeUntil(this.actor.Event.OnRequestAvoidanceSubject())
                     .Subscribe(_ =>
                     {
                         actor.StateController.ChangeRequest(ActorStateController.StateType.Movable);
