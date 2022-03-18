@@ -304,5 +304,9 @@ PrefabInstance:
       propertyPath: actorPrefab
       value: 
       objectReference: {fileID: 9119910791474521852, guid: 67df0cd4baa71fe4ca1bef38d82a3659, type: 3}
+    - target: {fileID: 7132403566962195079, guid: ea341b812338cfe45a9e8d9d75c91ead, type: 3}
+      propertyPath: actorStatusId
+      value: 20101
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea341b812338cfe45a9e8d9d75c91ead, type: 3}

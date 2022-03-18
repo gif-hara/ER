@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   records:
   - id: 10101
+    actorPrefab: {fileID: 4763258836534807601, guid: d4d76e2c587d4724ab5a9601e4eb3ca1, type: 3}
     statusData:
       name: Enemy/Name010101
       hitPoint: 100
@@ -42,6 +43,7 @@ MonoBehaviour:
       holyCutRate: 0
       darkCutRate: 0
   - id: 20101
+    actorPrefab: {fileID: 9119910791474521852, guid: 67df0cd4baa71fe4ca1bef38d82a3659, type: 3}
     statusData:
       name: Enemy/Name020200
       hitPoint: 30

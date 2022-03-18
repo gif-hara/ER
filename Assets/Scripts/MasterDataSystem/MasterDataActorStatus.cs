@@ -19,12 +19,15 @@ namespace ER.MasterDataSystem
             [SerializeField]
             private string id = default;
 
+            public Actor actorPrefab;
+
             public ActorStatusData statusData = default;
 
             public string Id => this.id;
 
             public Record(
                 string id,
+                Actor actorPrefab,
                 string name,
                 int hitPoint,
                 int physicsAttack,
@@ -54,6 +57,7 @@ namespace ER.MasterDataSystem
                 )
             {
                 this.id = id;
+                this.actorPrefab = actorPrefab;
                 this.statusData = new ActorStatusData()
                 {
                     name = name,
@@ -109,6 +113,7 @@ namespace ER.MasterDataSystem
         private class JsonElement
         {
             public string Id;
+            public string PrefabName;
             public string Name;
             public string HitPoint;
             public string PhysicsAttack;
@@ -138,6 +143,7 @@ namespace ER.MasterDataSystem
 
             public Record ToRecord() => new Record(
                 this.Id,
+                this.GetActorPrefab(),
                 $"Enemy/{this.Name}",
                 int.Parse(this.HitPoint),
                 int.Parse(this.PhysicsAttack),
@@ -165,6 +171,11 @@ namespace ER.MasterDataSystem
                 float.Parse(this.HolyCutRate),
                 float.Parse(this.DarkCutRate)
                 );
+
+            private Actor GetActorPrefab()
+            {
+                return UnityEditor.AssetDatabase.LoadAssetAtPath<Actor>($"Assets/Prefabs/Actor.{this.PrefabName}.prefab");
+            }
         }
 #endif
     }

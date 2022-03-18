@@ -37,10 +37,10 @@ namespace ER.MasterDataSystem
         {
         }
 
-        public TRecord Get(string id)
+        public static TRecord Get(string id)
         {
-            Assert.IsTrue(this.Raw.ContainsKey(id), $"{typeof(TMasterData)}に id = {id} が存在しません");
-            return this.Raw[id];
+            Assert.IsTrue(Instance.Raw.ContainsKey(id), $"{typeof(TMasterData)}に id = {id} が存在しません");
+            return Instance.Raw[id];
         }
 
         public static IObservable<Unit> SetupAsync(string assetPath)
@@ -49,7 +49,7 @@ namespace ER.MasterDataSystem
                 .Do(x =>
                 {
                     Instance = x;
-                    Instance.OnSetupped();
+                    Instance.Setup();
                 })
                 .AsUnitObservable();
         }

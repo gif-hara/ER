@@ -11,20 +11,20 @@ namespace ER.StageControllers
     public sealed class ActorSpawnerOnSetup : MonoBehaviour, IStageGimmick
     {
         [SerializeField]
-        private Actor actorPrefab = default;
-
-        [SerializeField]
         private string actorStatusId = default;
 
         public void Setup(StageController stageController)
         {
-            Assert.IsNotNull(this.actorPrefab, $"{nameof(this.actorPrefab)}がNullです");
-
             if(stageController.GimmickSpawnManager.CanSpawnEnemy(this.transform, out var id))
             {
                 stageController.GimmickSpawnManager.AddSpawnedEnemy(id);
                 var t = this.transform;
-                this.actorPrefab.Spawn(t.position, t.rotation, MasterDataActorStatus.Instance.Get(this.actorStatusId).statusData);
+                var masterDataActorStatus = MasterDataActorStatus.Get(this.actorStatusId);
+                masterDataActorStatus.actorPrefab.Spawn(
+                    t.position,
+                    t.rotation,
+                    masterDataActorStatus.statusData
+                    );
             }
         }
     }

@@ -16,10 +16,7 @@ namespace ER
         private GameCameraController gameCameraControllerPrefab = default;
 
         [SerializeField]
-        private Actor playerPrefab = default;
-
-        [SerializeField]
-        private ActorStatusData playerStatusData = default;
+        private string playerActorStatusId = default;
 
         [SerializeField]
         private Transform playerSpawnPoint = default;
@@ -41,7 +38,12 @@ namespace ER
             yield return MasterData.SetupAsync().ToYieldInstruction();
 
             Instantiate(gameCameraControllerPrefab);
-            var player = this.playerPrefab.Spawn(this.playerSpawnPoint.position, this.playerSpawnPoint.localRotation, this.playerStatusData);
+            var masterDataActorStatus = MasterDataActorStatus.Get(playerActorStatusId);
+            var player = masterDataActorStatus.actorPrefab.Spawn(
+                this.playerSpawnPoint.position,
+                this.playerSpawnPoint.localRotation,
+                masterDataActorStatus.statusData
+                );
 
             GameEvent.IsGameReady.Value = true;
 
