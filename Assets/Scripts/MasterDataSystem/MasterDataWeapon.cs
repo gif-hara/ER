@@ -10,8 +10,8 @@ namespace ER.MasterDataSystem
     /// <summary>
     /// 
     /// </summary>
-    [CreateAssetMenu(menuName = "ER/MasterData/WeaponData")]
-    public sealed class WeaponData : MasterData<WeaponData, WeaponData.Record>
+    [CreateAssetMenu(menuName = "ER/MasterData/Weapon")]
+    public sealed class MasterDataWeapon : MasterData<MasterDataWeapon, MasterDataWeapon.Record>
     {
         [Serializable]
         public class Record : IIdHolder<string>
@@ -99,7 +99,7 @@ namespace ER.MasterDataSystem
         [ContextMenu("Download")]
         private async void Download()
         {
-            var task = DownloadFromSpreadSheet(nameof(WeaponData));
+            var task = DownloadFromSpreadSheet("Weapon");
             await task;
 
             Debug.Log(task.Result);

@@ -48,12 +48,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff35d0a4550b95a4797ac46549b6380c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  status:
-    physical: 0
-    strength: 0
-    magic: 0
-    endurance: 0
-    spirit: 0
   motionData:
     moveSpeed: 0
     radius: 0
@@ -73,6 +67,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeedRate: 1
+  invisible: 0
+  advancedEntry: 0
 --- !u!50 &7022896992796212799
 Rigidbody2D:
   serializedVersion: 4

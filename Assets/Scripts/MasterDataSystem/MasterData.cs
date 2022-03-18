@@ -80,8 +80,8 @@ namespace ER.MasterDataSystem
             var streams = new List<IObservable<Unit>>();
 
             return Observable.WhenAll(
-                ItemData.SetupAsync("Assets/MasterData/ItemData.asset"),
-                WeaponData.SetupAsync("Assets/MasterData/WeaponData.asset"),
+                MasterDataItem.SetupAsync("Assets/MasterData/Item.asset"),
+                MasterDataWeapon.SetupAsync("Assets/MasterData/Weapon.asset"),
                 MasterDataActorStatus.SetupAsync("Assets/MasterData/ActorStatus.asset")
                 )
                 .AsUnitObservable();

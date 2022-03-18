@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f752b507e1893804f8ef0f4f30f33172, type: 3}
-  m_Name: ItemData
+  m_Name: Item
   m_EditorClassIdentifier: 
   records:
   - id: Item/Name000000
@@ -82,3 +82,6 @@ MonoBehaviour:
   - id: Item/Name070116
     stackable: 1
     category: 7
+  - id: Item/Name080101
+    stackable: 0
+    category: 8
