@@ -29,9 +29,7 @@ namespace ER.ActorControllers
                 this.director.SetGenericBinding("ActorAnimation", this.actor.Animator);
                 this.director.Play();
 
-                return Observable.FromEvent<PlayableDirector>(x => director.stopped += x, x => director.stopped -= x)
-                .Take(1)
-                .AsUnitObservable();
+                return this.director.OnStoppedAsObservable();
             });
         }
     }

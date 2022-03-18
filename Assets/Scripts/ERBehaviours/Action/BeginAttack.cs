@@ -43,8 +43,7 @@ namespace ER.ERBehaviour
 
                 actor.StateController.ChangeRequest(ActorStateController.StateType.Attack);
 
-                Observable.FromEvent<PlayableDirector>(x => director.stopped += x, x => director.stopped -= x)
-                .Take(1)
+                director.OnStoppedAsObservable()
                 .Subscribe(_ =>
                 {
                     actor.StateController.ChangeRequest(ActorStateController.StateType.Movable);
