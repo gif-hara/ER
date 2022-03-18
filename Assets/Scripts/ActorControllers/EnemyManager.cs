@@ -10,6 +10,6 @@ namespace ER.ActorControllers
     /// </summary>
     public sealed class EnemyManager
     {
-        private readonly Dictionary<Actor, EnemyData> enemyData = new Dictionary<Actor, EnemyData>();
+        private readonly Dictionary<Actor, MasterDataActorStatus> enemyData = new Dictionary<Actor, MasterDataActorStatus>();
     }
 }

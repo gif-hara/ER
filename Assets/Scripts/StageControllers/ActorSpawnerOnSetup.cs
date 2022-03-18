@@ -14,7 +14,7 @@ namespace ER.StageControllers
         private Actor actorPrefab = default;
 
         [SerializeField]
-        private string enemyDataId = default;
+        private string actorStatusId = default;
 
         public void Setup(StageController stageController)
         {
@@ -24,7 +24,7 @@ namespace ER.StageControllers
             {
                 stageController.GimmickSpawnManager.AddSpawnedEnemy(id);
                 var t = this.transform;
-                this.actorPrefab.Spawn(t.position, t.rotation, EnemyData.Instance.Get(this.enemyDataId).statusData);
+                this.actorPrefab.Spawn(t.position, t.rotation, MasterDataActorStatus.Instance.Get(this.actorStatusId).statusData);
             }
         }
     }

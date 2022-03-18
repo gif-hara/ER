@@ -10,8 +10,8 @@ namespace ER.MasterDataSystem
     /// <summary>
     /// 
     /// </summary>
-    [CreateAssetMenu(menuName = "ER/MasterData/EnemyData")]
-    public sealed class EnemyData : MasterData<EnemyData, EnemyData.Record>
+    [CreateAssetMenu(menuName = "ER/MasterData/ActorStatusData")]
+    public sealed class MasterDataActorStatus : MasterData<MasterDataActorStatus, MasterDataActorStatus.Record>
     {
         [Serializable]
         public class Record : IIdHolder<string>
@@ -90,7 +90,7 @@ namespace ER.MasterDataSystem
         [ContextMenu("Download")]
         private async void Download()
         {
-            var task = DownloadFromSpreadSheet(nameof(EnemyData));
+            var task = DownloadFromSpreadSheet("ActorStatus");
             await task;
 
             var result = JsonUtility.FromJson<Json>(task.Result);
