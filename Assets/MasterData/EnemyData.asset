@@ -15,8 +15,8 @@ MonoBehaviour:
   records:
   - id: 10001
     statusData:
-      name: 
-      hitPoint: 0
+      name: Enemy/Name000000
+      hitPoint: 30
       physicsAttack: 10
       magicAttack: 0
       fireAttack: 0
