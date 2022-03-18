@@ -18,7 +18,7 @@ namespace ER.UIPresenters
         private Camera uiCamera = default;
 
         [SerializeField]
-        private EnemyStatusUIView enemyHitPointUIView = default;
+        private EnemyStatusUIView enemyStatusUIView = default;
 
         [SerializeField]
         private Vector2 offset = default;
@@ -49,7 +49,7 @@ namespace ER.UIPresenters
                 })
                 .AddTo(this);
 
-            this.enemyHitPointUIView.HitPointRoot.gameObject.SetActive(false);
+            this.enemyStatusUIView.RootCanvasGroup.alpha = 0.0f;
         }
 
         private void LateUpdate()
@@ -61,7 +61,7 @@ namespace ER.UIPresenters
             Vector2 position;
             var screenPosition = RectTransformUtility.WorldToScreenPoint(this.worldCamera, this.target.transform.position);
             RectTransformUtility.ScreenPointToLocalPointInRectangle(this.canvasTransform, screenPosition, this.uiCamera, out position);
-            this.enemyHitPointUIView.HitPointRoot.localPosition = position + this.offset;
+            this.enemyStatusUIView.Root.localPosition = position + this.offset;
         }
 
         private void RegisterActorEvent(Actor actor)
@@ -70,12 +70,12 @@ namespace ER.UIPresenters
                 .Subscribe(x =>
                 {
                     this.target = x;
-                    this.enemyHitPointUIView.HitPointRoot.gameObject.SetActive(true);
+                    this.enemyStatusUIView.RootCanvasGroup.alpha = 1.0f;
 
                     this.target.StatusController.HitPointAsObservable()
                     .Subscribe(hitPoint =>
                     {
-                        this.enemyHitPointUIView.HitPointSlider.value = x.StatusController.HitPointRate;
+                        this.enemyStatusUIView.HitPointSlider.value = x.StatusController.HitPointRate;
                     })
                     .AddTo(this.hitPointDisposables);
                 })
@@ -84,7 +84,7 @@ namespace ER.UIPresenters
                 .Subscribe(_ =>
                 {
                     this.target = null;
-                    this.enemyHitPointUIView.HitPointRoot.gameObject.SetActive(false);
+                    this.enemyStatusUIView.RootCanvasGroup.alpha = 0.0f;
                     this.hitPointDisposables.Clear();
                 })
                 .AddTo(actor.Disposables);

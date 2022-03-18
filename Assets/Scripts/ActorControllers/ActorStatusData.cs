@@ -1,3 +1,4 @@
+using I2.Loc;
 using System;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -10,31 +11,59 @@ namespace ER.ActorControllers
     [Serializable]
     public sealed class ActorStatusData
     {
-        /// <summary>
-        /// 体力
-        /// </summary>
-        public int physical = default;
+        [TermsPopup]
+        public string name = default;
 
-        /// <summary>
-        /// 筋力
-        /// </summary>
-        public int strength = default;
+        public int hitPoint = default;
 
-        /// <summary>
-        /// 魔力
-        /// </summary>
-        public int magic = default;
+        public int physicsAttack = default;
 
-        /// <summary>
-        /// 忍耐力
-        /// </summary>
-        public int endurance = default;
+        public int magicAttack = default;
 
-        /// <summary>
-        /// 精神力
-        /// </summary>
-        public int spirit = default;
+        public int fireAttack = default;
 
-        public int HitPoint => this.physical * 10;
+        public int earthAttack = default;
+
+        public int thunderAttack = default;
+
+        public int waterAttack = default;
+
+        public int holyAttack = default;
+
+        public int darkAttack = default;
+
+        public int physicsDefense = default;
+
+        public int magicDefense = default;
+
+        public int fireDefense = default;
+
+        public int earthDefense = default;
+
+        public int thunderDefense = default;
+
+        public int waterDefense = default;
+
+        public int holyDefense = default;
+
+        public int darkDefense = default;
+
+        public float physicsCutRate = default;
+
+        public float magicCutRate = default;
+
+        public float fireCutRate = default;
+
+        public float earthCutRate = default;
+
+        public float thunderCutRate = default;
+
+        public float waterCutRate = default;
+
+        public float holyCutRate = default;
+
+        public float darkCutRate = default;
+
+        public string LocalizedName => LocalizationManager.GetTermTranslation(this.name);
     }
 }

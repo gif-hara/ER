@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
@@ -9,14 +10,25 @@ namespace ER.UIViews
     /// </summary>
     public sealed class EnemyStatusUIView : UIView
     {
+
         [SerializeField]
-        private Transform hitPointRoot = default;
+        private CanvasGroup rootCanvasGroup = default;
+
+        [SerializeField]
+        private Transform root = default;
 
         [SerializeField]
         private Slider hitPointSlider = default;
 
-        public Transform HitPointRoot => this.hitPointRoot;
+        [SerializeField]
+        private TextMeshProUGUI enemyName = default;
+
+        public CanvasGroup RootCanvasGroup => this.rootCanvasGroup;
+        
+        public Transform Root => this.root;
 
         public Slider HitPointSlider => this.hitPointSlider;
+
+        public TextMeshProUGUI EnemyName => this.enemyName;
     }
 }

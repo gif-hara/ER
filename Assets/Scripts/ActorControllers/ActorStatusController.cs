@@ -34,7 +34,7 @@ namespace ER.ActorControllers
         {
             this.actor = actor;
             this.baseStatus = status;
-            this.hitPointMax.Value = this.baseStatus.HitPoint;
+            this.hitPointMax.Value = this.baseStatus.hitPoint;
             this.hitPoint.Value = this.HitPointMax;
 
             actor.Event.OnHitOpponentAttackSubject()

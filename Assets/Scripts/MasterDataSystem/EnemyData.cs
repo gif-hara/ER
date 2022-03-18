@@ -1,3 +1,4 @@
+using ER.ActorControllers;
 using I2.Loc;
 using System;
 using System.Collections.Generic;
@@ -18,136 +19,14 @@ namespace ER.MasterDataSystem
             [SerializeField]
             private string id = default;
 
-            [SerializeField, TermsPopup]
-            private string name = default;
-
-            [SerializeField]
-            private int physicsAttack = default;
-
-            [SerializeField]
-            private int magicAttack = default;
-
-            [SerializeField]
-            private int fireAttack = default;
-
-            [SerializeField]
-            private int earthAttack = default;
-
-            [SerializeField]
-            private int thunderAttack = default;
-
-            [SerializeField]
-            private int waterAttack = default;
-
-            [SerializeField]
-            private int holyAttack = default;
-
-            [SerializeField]
-            private int darkAttack = default;
-
-            [SerializeField]
-            private int physicsDefense = default;
-
-            [SerializeField]
-            private int magicDefense = default;
-
-            [SerializeField]
-            private int fireDefense = default;
-
-            [SerializeField]
-            private int earthDefense = default;
-
-            [SerializeField]
-            private int thunderDefense = default;
-
-            [SerializeField]
-            private int waterDefense = default;
-
-            [SerializeField]
-            private int holyDefense = default;
-
-            [SerializeField]
-            private int darkDefense = default;
-
-            [SerializeField]
-            private float physicsCutRate = default;
-
-            [SerializeField]
-            private float magicCutRate = default;
-
-            [SerializeField]
-            private float fireCutRate = default;
-
-            [SerializeField]
-            private float earthCutRate = default;
-
-            [SerializeField]
-            private float thunderCutRate = default;
-
-            [SerializeField]
-            private float waterCutRate = default;
-
-            [SerializeField]
-            private float holyCutRate = default;
-
-            [SerializeField]
-            private float darkCutRate = default;
+            public ActorStatusData statusData = default;
 
             public string Id => this.id;
-
-            public string Name => LocalizationManager.GetTermTranslation(this.name);
-
-            public int PhysicsAttack => this.physicsAttack;
-
-            public int MagicAttack => this.magicAttack;
-
-            public int FireAttack => this.fireAttack;
-
-            public int EarthAttack => this.earthAttack;
-
-            public int ThunderAttack => this.thunderAttack;
-
-            public int WaterAttack => this.waterAttack;
-
-            public int HolyAttack => this.holyAttack;
-
-            public int DarkAttack => this.darkAttack;
-
-            public int PhysicsDefense => this.physicsDefense;
-
-            public int MagicDefense => this.magicDefense;
-
-            public int FireDefense => this.fireDefense;
-
-            public int EarthDefense => this.earthDefense;
-
-            public int ThunderDefense => this.thunderDefense;
-
-            public int WaterDefense => this.waterDefense;
-
-            public int HolyDefense => this.holyDefense;
-
-            public int DarkDefense => this.darkDefense;
-
-            public float PhysicsCutRate => this.physicsCutRate;
-
-            public float MagicCutRate => this.magicCutRate;
-
-            public float FireCutRate => this.fireCutRate;
-
-            public float EarthCutRate => this.earthCutRate;
-
-            public float ThunderCutRate => this.thunderCutRate;
-
-            public float WaterCutRate => this.waterCutRate;
-
-            public float HolyCutRate => this.holyCutRate;
-
-            public float DarkCutRate => this.darkCutRate;
 
             public Record(
                 string id,
                 string name,
+                int hitPoint,
                 int physicsAttack,
                 int magicAttack,
                 int fireAttack,
@@ -175,31 +54,35 @@ namespace ER.MasterDataSystem
                 )
             {
                 this.id = id;
-                this.name = name;
-                this.physicsAttack = physicsAttack;
-                this.magicAttack = magicAttack;
-                this.fireAttack = fireAttack;
-                this.earthAttack = earthAttack;
-                this.thunderAttack = thunderAttack;
-                this.waterAttack = waterAttack;
-                this.holyAttack = holyAttack;
-                this.darkAttack = darkAttack;
-                this.physicsDefense = physicsDefense;
-                this.magicDefense = magicDefense;
-                this.fireDefense = fireDefense;
-                this.earthDefense = earthDefense;
-                this.thunderDefense = thunderDefense;
-                this.waterDefense = waterDefense;
-                this.holyDefense = holyDefense;
-                this.darkDefense = darkDefense;
-                this.physicsCutRate = physicsCutRate;
-                this.magicCutRate = magicCutRate;
-                this.fireCutRate = fireCutRate;
-                this.earthCutRate = earthCutRate;
-                this.thunderCutRate = thunderCutRate;
-                this.waterCutRate = waterCutRate;
-                this.holyCutRate = holyCutRate;
-                this.darkCutRate = darkCutRate;
+                this.statusData = new ActorStatusData()
+                {
+                    name = name,
+                    hitPoint = hitPoint,
+                    physicsAttack = physicsAttack,
+                    magicAttack = magicAttack,
+                    fireAttack = fireAttack,
+                    earthAttack = earthAttack,
+                    thunderAttack = thunderAttack,
+                    waterAttack = waterAttack,
+                    holyAttack = holyAttack,
+                    darkAttack = darkAttack,
+                    physicsDefense = physicsDefense,
+                    magicDefense = magicDefense,
+                    fireDefense = fireDefense,
+                    earthDefense = earthDefense,
+                    thunderDefense = thunderDefense,
+                    waterDefense = waterDefense,
+                    holyDefense = holyDefense,
+                    darkDefense = darkDefense,
+                    physicsCutRate = physicsCutRate,
+                    magicCutRate = magicCutRate,
+                    fireCutRate = fireCutRate,
+                    earthCutRate = earthCutRate,
+                    thunderCutRate = thunderCutRate,
+                    waterCutRate = waterCutRate,
+                    holyCutRate = holyCutRate,
+                    darkCutRate = darkCutRate
+                };
             }
         }
 
@@ -227,6 +110,7 @@ namespace ER.MasterDataSystem
         {
             public string Id;
             public string Name;
+            public string HitPoint;
             public string PhysicsAttack;
             public string MagicAttack;
             public string FireAttack;
@@ -255,6 +139,7 @@ namespace ER.MasterDataSystem
             public Record ToRecord() => new Record(
                 this.Id,
                 $"Enemy/{this.Name}",
+                int.Parse(this.HitPoint),
                 int.Parse(this.PhysicsAttack),
                 int.Parse(this.MagicAttack),
                 int.Parse(this.FireAttack),
