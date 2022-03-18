@@ -21,15 +21,26 @@ namespace ER.MasterDataSystem
         [SerializeField]
         protected List<TRecord> records = default;
 
-        public Dictionary<string, TRecord> Raw = new Dictionary<string, TRecord>();
+        private Dictionary<string, TRecord> Raw = new Dictionary<string, TRecord>();
 
         private void Setup()
         {
+            foreach(var i in this.records)
+            {
+                this.Raw.Add(i.Id, i);
+            }
 
+            this.OnSetupped();
         }
 
         protected virtual void OnSetupped()
         {
+        }
+
+        public TRecord Get(string id)
+        {
+            Assert.IsTrue(this.Raw.ContainsKey(id), $"{typeof(TMasterData)}に id = {id} が存在しません");
+            return this.Raw[id];
         }
 
         public static IObservable<Unit> SetupAsync(string assetPath)

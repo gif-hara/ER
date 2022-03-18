@@ -169,6 +169,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameCameraControllerPrefab: {fileID: 6600700286319972123, guid: 483dc6cfc30cbb54b97b8cc57daabe8d, type: 3}
   playerPrefab: {fileID: 4763258836534807601, guid: d4d76e2c587d4724ab5a9601e4eb3ca1, type: 3}
+  playerStatusData:
+    name: 
+    hitPoint: 100
+    physicsAttack: 0
+    magicAttack: 0
+    fireAttack: 0
+    earthAttack: 0
+    thunderAttack: 0
+    waterAttack: 0
+    holyAttack: 0
+    darkAttack: 0
+    physicsDefense: 0
+    magicDefense: 0
+    fireDefense: 0
+    earthDefense: 0
+    thunderDefense: 0
+    waterDefense: 0
+    holyDefense: 0
+    darkDefense: 0
+    physicsCutRate: 0
+    magicCutRate: 0
+    fireCutRate: 0
+    earthCutRate: 0
+    thunderCutRate: 0
+    waterCutRate: 0
+    holyCutRate: 0
+    darkCutRate: 0
   playerSpawnPoint: {fileID: 859855001}
 --- !u!1 &588085729
 GameObject:
@@ -455,6 +482,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4229198792334390700, guid: dfca46382239d8140963df63e78f82bd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8289633663013715656, guid: dfca46382239d8140963df63e78f82bd, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8818611599743540800, guid: dfca46382239d8140963df63e78f82bd, type: 3}

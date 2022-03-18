@@ -15,9 +15,6 @@ namespace ER.ActorControllers
     public sealed class Actor : MonoBehaviour, IActor
     {
         [SerializeField]
-        private ActorStatusData statusData = default;
-
-        [SerializeField]
         private ActorMotionData motionData = default;
 
         [SerializeField]
@@ -63,12 +60,20 @@ namespace ER.ActorControllers
         /// </summary>
         public static readonly List<Actor> Enemies = new List<Actor>();
 
-        void Awake()
+        public Actor Spawn(Vector3 position, Quaternion rotation, ActorStatusData statusData)
+        {
+            var clone = Instantiate(this, position, rotation);
+            clone.Setup(statusData);
+
+            return clone;
+        }
+
+        private void Setup(ActorStatusData statusData)
         {
             this.Animator = this.GetComponent<Animator>();
             this.Event = new ActorEvent();
             this.StateController.Setup(this);
-            this.StatusController.Setup(this, this.statusData);
+            this.StatusController.Setup(this, statusData);
             this.InteractableStageGimmickController.Setup(this);
             this.EquipmentController.Setup(this);
             this.MotionController = new ActorMotionController();

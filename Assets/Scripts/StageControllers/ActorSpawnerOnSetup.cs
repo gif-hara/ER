@@ -1,4 +1,5 @@
 using ER.ActorControllers;
+using ER.MasterDataSystem;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -12,6 +13,9 @@ namespace ER.StageControllers
         [SerializeField]
         private Actor actorPrefab = default;
 
+        [SerializeField]
+        private string enemyDataId = default;
+
         public void Setup(StageController stageController)
         {
             Assert.IsNotNull(this.actorPrefab, $"{nameof(this.actorPrefab)}がNullです");
@@ -19,7 +23,8 @@ namespace ER.StageControllers
             if(stageController.GimmickSpawnManager.CanSpawnEnemy(this.transform, out var id))
             {
                 stageController.GimmickSpawnManager.AddSpawnedEnemy(id);
-                Instantiate(this.actorPrefab, this.transform.position, this.transform.rotation);
+                var t = this.transform;
+                this.actorPrefab.Spawn(t.position, t.rotation, EnemyData.Instance.Get(this.enemyDataId).statusData);
             }
         }
     }
