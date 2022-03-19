@@ -19,7 +19,7 @@ namespace ER.EquipmentSystems
         [SerializeField]
         private WeaponLevelData levelData = default;
 
-        public void AttachRight(Actor actor)
+        public void Attach(Actor actor)
         {
             var masterDataWeapon = MasterDataWeapon.Get(this.weaponDataId);
             var instanceData = new WeaponInstanceData(masterDataWeapon, levelData);

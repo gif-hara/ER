@@ -15,7 +15,7 @@ namespace ER.MasterDataSystem
     public sealed class MasterDataShield : MasterData<MasterDataShield, MasterDataShield.Record>
     {
         [Serializable]
-        public class Record : IIdHolder<string>
+        public class Record : IIdHolder<string>, IEquipmentData
         {
             [SerializeField, TermsPopup]
             private string id = default;
@@ -50,6 +50,8 @@ namespace ER.MasterDataSystem
             public string Id => this.id;
 
             public string Name => LocalizationManager.GetTermTranslation(this.id);
+
+            public EquipmentController EquipmentControllerPrefab => this.equipmentControllerPrefab;
 
             public float GetCutRate(AttackAttributeType attackAttributeType)
             {

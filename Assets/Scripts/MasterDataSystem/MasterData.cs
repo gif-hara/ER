@@ -82,7 +82,8 @@ namespace ER.MasterDataSystem
             return Observable.WhenAll(
                 MasterDataItem.SetupAsync("Assets/MasterData/Item.asset"),
                 MasterDataWeapon.SetupAsync("Assets/MasterData/Weapon.asset"),
-                MasterDataActorStatus.SetupAsync("Assets/MasterData/ActorStatus.asset")
+                MasterDataActorStatus.SetupAsync("Assets/MasterData/ActorStatus.asset"),
+                MasterDataShield.SetupAsync("Assets/MasterData/Shield.asset")
                 )
                 .AsUnitObservable();
         }

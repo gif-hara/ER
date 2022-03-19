@@ -12,4 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f613e7aca741a5459cac9d5cd28ba07, type: 3}
   m_Name: Shield
   m_EditorClassIdentifier: 
-  records: []
+  records:
+  - id: Item/Name080101
+    equipmentControllerPrefab: {fileID: 4608228154354743508, guid: 7600be1bbd3bd1b4eae74c2992a5ce83, type: 3}
+    physicsCutRate: 0
+    magicCutRate: 0
+    fireCutRate: 0
+    earthCutRate: 0
+    thunderCutRate: 0
+    waterCutRate: 0
+    holyCutRate: 0
+    darkCutRate: 0

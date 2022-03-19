@@ -15,6 +15,10 @@ namespace ER
     {
         public static void SetGenericBinding(this PlayableDirector self, string streamName, UnityEngine.Object value)
         {
+            if(!self.playableAsset.outputs.Any(c => c.streamName == streamName))
+            {
+                return;
+            }
             var binding = self.playableAsset.outputs.First(c => c.streamName == streamName);
             self.SetGenericBinding(binding.sourceObject, value);
         }

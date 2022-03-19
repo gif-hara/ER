@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playableDirector: {fileID: 4311177486490712205}
-  defaultPlayableAsset: {fileID: 11400000, guid: 0e92d3a4cc7d0ed41a6f70c84d5b23e5, type: 2}
+  defaultPlayableAsset: {fileID: 11400000, guid: 5bb12ac1a5c5ecb459c48ed2137796a9, type: 2}
   behaviours:
   - trigger:
       id: 0
@@ -56,14 +56,13 @@ MonoBehaviour:
   references:
     version: 1
     00000000:
-      type: {class: OnBeginRightEquipment, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      type: {class: OnBeginLeftEquipment, ns: ER.ERBehaviour, asm: Assembly-CSharp}
     00000001:
-      type: {class: BeginAttack, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      type: {class: BeginGuard, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
-        playableAsset: {fileID: 11400000, guid: 4e3dc0d37e76f884bb0ff92b825a8805, type: 2}
-        wrapMode: 2
-        power: 1
-        handType: 1
+        playableAsset: {fileID: 11400000, guid: 43310a748f997d74eb474573a3bc3922, type: 2}
+        wrapMode: 1
+        handType: 0
 --- !u!320 &4311177486490712205
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -73,26 +72,16 @@ PlayableDirector:
   m_GameObject: {fileID: 4608228154354743509}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 0}
+  m_PlayableAsset: {fileID: 11400000, guid: 5bb12ac1a5c5ecb459c48ed2137796a9, type: 2}
   m_InitialState: 0
   m_WrapMode: 1
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
-  - key: {fileID: -3140158847642730933, guid: 4e3dc0d37e76f884bb0ff92b825a8805, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: 226853102563252438, guid: 4e3dc0d37e76f884bb0ff92b825a8805, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -1935603194271161550, guid: 4e3dc0d37e76f884bb0ff92b825a8805, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -3140158847642730933, guid: 0e92d3a4cc7d0ed41a6f70c84d5b23e5, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -3140158847642730933, guid: 679b92cd0b950f740810daaaffbf0b5d, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: 226853102563252438, guid: 679b92cd0b950f740810daaaffbf0b5d, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -1935603194271161550, guid: 679b92cd0b950f740810daaaffbf0b5d, type: 2}
-    value: {fileID: 0}
+  - key: {fileID: -3140158847642730933, guid: 5bb12ac1a5c5ecb459c48ed2137796a9, type: 2}
+    value: {fileID: 1695785392338332413}
+  - key: {fileID: -3140158847642730933, guid: 43310a748f997d74eb474573a3bc3922, type: 2}
+    value: {fileID: 1695785392338332413}
   m_ExposedReferences:
     m_References: []
 --- !u!50 &-5223219104144271367
@@ -180,5 +169,10 @@ PrefabInstance:
 --- !u!4 &4882598338641228081 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3474046909495799082, guid: 0a3ce27029d244c4688b416bfa0455f6, type: 3}
+  m_PrefabInstance: {fileID: 8355358269725023259}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1695785392338332413 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7240822586996324070, guid: 0a3ce27029d244c4688b416bfa0455f6, type: 3}
   m_PrefabInstance: {fileID: 8355358269725023259}
   m_PrefabAsset: {fileID: 0}

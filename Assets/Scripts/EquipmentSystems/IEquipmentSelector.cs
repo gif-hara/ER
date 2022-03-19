@@ -10,8 +10,8 @@ namespace ER.EquipmentSystems
     public interface IEquipmentSelector
     {
         /// <summary>
-        /// <see cref="Actor"/>の右手に装備品をアタッチする
+        /// <see cref="Actor"/>に装備品をアタッチする
         /// </summary>
-        void AttachRight(Actor actor);
+        void Attach(Actor actor);
     }
 }

@@ -179,6 +179,8 @@ MonoBehaviour:
   angleThreshold: 0.1
   rightEquipmentSelector:
     id: 0
+  leftEquipmentSelector:
+    id: 1
   lookAtDistanceThreshold: 26
   lookAtAngleThreshold: 90
   references:
@@ -187,6 +189,19 @@ MonoBehaviour:
       type: {class: WeaponSelector, ns: ER.EquipmentSystems, asm: Assembly-CSharp}
       data:
         weaponDataId: Item/Name010101
+        levelData:
+          physicsLevel: 0
+          magicLevel: 0
+          fireLevel: 0
+          earthLevel: 0
+          thunderLevel: 0
+          waterLevel: 0
+          holyLevel: 0
+          darkLevel: 0
+    00000001:
+      type: {class: ShieldSelector, ns: ER.EquipmentSystems, asm: Assembly-CSharp}
+      data:
+        shieldDataId: Item/Name080101
 --- !u!114 &4561833922425830017
 MonoBehaviour:
   m_ObjectHideFlags: 0

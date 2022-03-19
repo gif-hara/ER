@@ -23,6 +23,9 @@ namespace ER
         [SerializeReference, SubclassSelector(typeof(IEquipmentSelector))]
         private IEquipmentSelector rightEquipmentSelector = default;
 
+        [SerializeReference, SubclassSelector(typeof(IEquipmentSelector))]
+        private IEquipmentSelector leftEquipmentSelector = default;
+
         /// <summary>
         /// ロックオン可能な距離の閾値
         /// </summary>
@@ -100,15 +103,12 @@ namespace ER
                 this.actor.InteractableStageGimmickController.BeginInteract();
             };
 
-            this.rightEquipmentSelector.AttachRight(this.actor);
+            this.rightEquipmentSelector.Attach(this.actor);
+            this.leftEquipmentSelector.Attach(this.actor);
         }
 
         private void Update()
         {
-            if(this.actor.StateController.CurrentState != ActorStateController.StateType.Movable)
-            {
-                return;
-            }
             var t = this.transform;
             var angle = this.inputAction.Player.Look.ReadValue<Vector2>();
             if (angle.sqrMagnitude > this.angleThreshold * this.angleThreshold)
@@ -148,6 +148,7 @@ namespace ER
             switch (currentState)
             {
                 case ActorStateController.StateType.Movable:
+                case ActorStateController.StateType.Guard:
                     return true;
                 case ActorStateController.StateType.Attack:
                 case ActorStateController.StateType.Avoidance:

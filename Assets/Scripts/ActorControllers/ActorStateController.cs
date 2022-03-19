@@ -16,6 +16,7 @@ namespace ER.ActorControllers
             Movable,
             Attack,
             Avoidance,
+            Guard,
         }
 
         private StateController<StateType> stateController = new StateController<StateType>(StateType.Invalid);

@@ -26,12 +26,17 @@ namespace ER.ActorControllers
             this.rightEquipemntContoller = equipmentPrefab.Attach(this.actor, equipmentData);
         }
 
+        public void AttachLeftEquipment(EquipmentController equipmentPrefab, IEquipmentData equipmentData)
+        {
+            this.leftEquipmentController = equipmentPrefab.Attach(this.actor, equipmentData);
+        }
+
         public EquipmentController GetEquipmentController(HandType handType)
         {
             switch (handType)
             {
                 case HandType.Left:
-                    throw new NotImplementedException();
+                    return this.leftEquipmentController;
                 case HandType.Right:
                     return this.rightEquipemntContoller;
                 default:

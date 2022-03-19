@@ -38,7 +38,7 @@ namespace ER.ActorControllers
             }
 
             this.ChangeRequest(this.initialAiName);
-            this.rightEquipmentSelector.AttachRight(this.actor);
+            this.rightEquipmentSelector.Attach(this.actor);
         }
 
         private void Update()

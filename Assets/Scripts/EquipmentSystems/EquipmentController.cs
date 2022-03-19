@@ -99,7 +99,7 @@ namespace ER.EquipmentSystems
                 .AddTo(this.disposables);
         }
 
-        private void PlayDefaultPlayableAsset()
+        public void PlayDefaultPlayableAsset()
         {
             this.playableDirector.extrapolationMode = DirectorWrapMode.Loop;
             this.playableDirector.Play(this.defaultPlayableAsset);
