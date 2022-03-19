@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ffecbb5c23a946bbadbe58fd74ee69e, type: 3}
+  m_Name: Armor
+  m_EditorClassIdentifier: 
+  records:
+  - id: Item/Name020101
+    physicsDefense: 1
+    magicDefense: 1
+    fireDefense: 1
+    earthDefense: 1
+    thunderDefense: 1
+    waterDefense: 1
+    holyDefense: 1
+    darkDefense: 1
+  - id: Item/Name030101
+    physicsDefense: 2
+    magicDefense: 2
+    fireDefense: 2
+    earthDefense: 2
+    thunderDefense: 2
+    waterDefense: 2
+    holyDefense: 2
+    darkDefense: 2
+  - id: Item/Name040101
+    physicsDefense: 1
+    magicDefense: 1
+    fireDefense: 1
+    earthDefense: 1
+    thunderDefense: 1
+    waterDefense: 1
+    holyDefense: 1
+    darkDefense: 1
+  - id: Item/Name050101
+    physicsDefense: 1
+    magicDefense: 1
+    fireDefense: 1
+    earthDefense: 1
+    thunderDefense: 1
+    waterDefense: 1
+    holyDefense: 1
+    darkDefense: 1

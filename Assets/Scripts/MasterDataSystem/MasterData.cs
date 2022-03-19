@@ -25,7 +25,7 @@ namespace ER.MasterDataSystem
 
         private void Setup()
         {
-            foreach(var i in this.records)
+            foreach (var i in this.records)
             {
                 this.Raw.Add(i.Id, i);
             }
@@ -83,7 +83,8 @@ namespace ER.MasterDataSystem
                 MasterDataItem.SetupAsync("Assets/MasterData/Item.asset"),
                 MasterDataWeapon.SetupAsync("Assets/MasterData/Weapon.asset"),
                 MasterDataActorStatus.SetupAsync("Assets/MasterData/ActorStatus.asset"),
-                MasterDataShield.SetupAsync("Assets/MasterData/Shield.asset")
+                MasterDataShield.SetupAsync("Assets/MasterData/Shield.asset"),
+                MasterDataArmor.SetupAsync("Assets/MasterData/Armor.asset")
                 )
                 .AsUnitObservable();
         }
