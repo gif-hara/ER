@@ -1,3 +1,4 @@
+using ER.EquipmentSystems;
 using System;
 using UniRx;
 using UnityEngine;
@@ -30,6 +31,8 @@ namespace ER.ActorControllers
 
         public float HitPointRate => (float)this.HitPoint / this.HitPointMax;
 
+        public ActorStatusData BaseStatus => this.baseStatus;
+
         public void Setup(IActor actor, ActorStatusData status)
         {
             this.actor = actor;
@@ -41,7 +44,7 @@ namespace ER.ActorControllers
                 .Where(_ => this.CanTakeDamage())
                 .Subscribe(x =>
                 {
-                    this.TakeDamage(x.Power);
+                    this.TakeDamage(x);
                 })
                 .AddTo(actor.Disposables);
 
@@ -54,12 +57,15 @@ namespace ER.ActorControllers
                 .AddTo(actor.Disposables);
         }
 
-        private void TakeDamage(int damage)
+        private void TakeDamage(EquipmentController equipmentController)
         {
             if(this.isAlreadyDead)
             {
                 return;
             }
+
+            var attackerStatus = equipmentController.Actor.StatusController.baseStatus;
+            var damage = (int)equipmentController.Power;
 
             this.hitPoint.Value -= damage;
             if(this.HitPoint <= 0)

@@ -27,7 +27,9 @@ namespace ER.EquipmentSystems
         /// <summary>
         /// 攻撃した際のダメージ係数
         /// </summary>
-        public int Power { get; set; }
+        public float Power { get; set; }
+
+        public Actor Actor { get; private set; }
 
         public PlayableDirector PlayableDirector => this.playableDirector;
 
@@ -50,6 +52,7 @@ namespace ER.EquipmentSystems
 
         private void AttachInternal(Actor actor)
         {
+            this.Actor = actor;
             this.transform.localPosition = Vector3.zero;
             this.transform.localRotation = Quaternion.identity;
             this.gameObject.SetLayerRecursive(GetLayerIndex(actor.gameObject.layer));

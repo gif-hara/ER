@@ -217,7 +217,15 @@ MonoBehaviour:
       - 
       Flags: 0000
       Languages_Touch: []
-    - Term: Enemy/Name000000
+    - Term: Actor/Name010101
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u30D7\u30EC\u30A4\u30E4\u30FC"
+      - Player
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Actor/Name020200
       TermType: 0
       Description: 
       Languages:
@@ -225,7 +233,7 @@ MonoBehaviour:
       - TestEnemy
       Flags: 0000
       Languages_Touch: []
-    - Term: Enemy/Name010101
+    - Term: Actor/Name020101
       TermType: 0
       Description: 
       Languages:
@@ -248,7 +256,7 @@ MonoBehaviour:
     Google_WebServiceURL: https://script.google.com/macros/s/AKfycbyF0yeaJl5TfgY6r059oCUDjbulYEndJLFNq6Q7/exec
     Google_SpreadsheetKey: 1UKcNrFW7zKUH617RzHOCnP1JoEKPtbbJkPmgc0Hgkso
     Google_SpreadsheetName: I2Loc ER Localization
-    Google_LastUpdatedVersion: 1647555029793
+    Google_LastUpdatedVersion: 1647609154780
     Google_Password: change_this
     GoogleUpdateFrequency: 1
     GoogleInEditorCheckFrequency: 1

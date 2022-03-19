@@ -16,7 +16,7 @@ MonoBehaviour:
   - id: 10101
     actorPrefab: {fileID: 4763258836534807601, guid: d4d76e2c587d4724ab5a9601e4eb3ca1, type: 3}
     statusData:
-      name: Enemy/Name010101
+      name: Actor/Name010101
       hitPoint: 100
       physicsAttack: 0
       magicAttack: 0
@@ -42,10 +42,10 @@ MonoBehaviour:
       waterCutRate: 0
       holyCutRate: 0
       darkCutRate: 0
-  - id: 20101
+  - id: 20100
     actorPrefab: {fileID: 9119910791474521852, guid: 67df0cd4baa71fe4ca1bef38d82a3659, type: 3}
     statusData:
-      name: Enemy/Name020200
+      name: Actor/Name020200
       hitPoint: 30
       physicsAttack: 10
       magicAttack: 0

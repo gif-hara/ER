@@ -71,6 +71,7 @@ namespace ER.UIPresenters
                 {
                     this.target = x;
                     this.enemyStatusUIView.RootCanvasGroup.alpha = 1.0f;
+                    this.enemyStatusUIView.EnemyName.text = this.target.StatusController.BaseStatus.LocalizedName;
 
                     this.target.StatusController.HitPointAsObservable()
                     .Subscribe(hitPoint =>

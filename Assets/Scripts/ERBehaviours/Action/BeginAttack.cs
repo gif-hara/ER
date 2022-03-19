@@ -20,7 +20,7 @@ namespace ER.ERBehaviour
         private DirectorWrapMode wrapMode = default;
 
         [SerializeField]
-        private int power = default;
+        private float power = default;
 
         [SerializeField]
         private HandType handType = default;

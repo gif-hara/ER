@@ -144,7 +144,7 @@ namespace ER.MasterDataSystem
             public Record ToRecord() => new Record(
                 this.Id,
                 this.GetActorPrefab(),
-                $"Enemy/{this.Name}",
+                $"Actor/{this.Name}",
                 int.Parse(this.HitPoint),
                 int.Parse(this.PhysicsAttack),
                 int.Parse(this.MagicAttack),
