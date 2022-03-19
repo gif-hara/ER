@@ -16,6 +16,8 @@ namespace ER.ActorControllers
 
         private EquipmentController leftEquipmentController;
 
+        public EquipmentController GuardingEquipmentController { get; private set; }
+
         public void Setup(Actor actor)
         {
             this.actor = actor;
@@ -29,6 +31,18 @@ namespace ER.ActorControllers
         public void AttachLeftEquipment(EquipmentController equipmentPrefab, IEquipmentData equipmentData)
         {
             this.leftEquipmentController = equipmentPrefab.Attach(this.actor, equipmentData);
+        }
+
+        public void BeginGuard(EquipmentController equipmentController)
+        {
+            this.GuardingEquipmentController = equipmentController;
+            Debug.Log("BeginGuard");
+        }
+
+        public void EndGuard()
+        {
+            this.GuardingEquipmentController = null;
+            Debug.Log("EndGuard");
         }
 
         public EquipmentController GetEquipmentController(HandType handType)

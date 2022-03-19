@@ -62,6 +62,12 @@ namespace ER.ActorControllers
                         actor.AnimationParameter.invisible = false;
                     }
 
+                    if (x == ActorStateController.StateType.Guard)
+                    {
+                        actor.AnimationParameter.moveSpeedRate = 0.5f;
+                        actor.AnimationParameter.invisible = false;
+                    }
+
                     actor.AnimationParameter.advancedEntry = false;
                 })
                 .AddTo(actor.Disposables);

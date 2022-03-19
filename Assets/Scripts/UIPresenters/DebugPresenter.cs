@@ -48,6 +48,10 @@ namespace ER.UIPresenters
                     this.stringBuilder.Append(actor.AnimationParameter.invisible.ToString());
                     this.stringBuilder.AppendLine();
 
+                    this.stringBuilder.Append("State = ");
+                    this.stringBuilder.Append(actor.StateController.CurrentState.ToString());
+                    this.stringBuilder.AppendLine();
+
                     this.debugUIView.Text.SetText(this.stringBuilder.ToString());
                 });
         }

@@ -36,11 +36,12 @@ namespace ER.ERBehaviour
                 director.SetGenericBinding("ActorAnimation", actor.Animator);
                 director.Play();
 
+                actor.EquipmentController.BeginGuard(equipmentController);
                 actor.StateController.ChangeRequest(ActorStateController.StateType.Guard);
 
                 actor.Event.OnEndLeftEquipmentSubject()
                 .Take(1)
-                .TakeUntil(actor.Event.OnChangedStateSubject().Where(x => x == ActorStateController.StateType.Attack))
+                .TakeUntil(actor.Event.OnChangedStateSubject().Where(x => x == ActorStateController.StateType.Attack || x == ActorStateController.StateType.Movable))
                 .Subscribe(_ =>
                 {
                     actor.StateController.ChangeRequest(ActorStateController.StateType.Movable);
@@ -49,11 +50,12 @@ namespace ER.ERBehaviour
                 .AddTo(actor.Disposables);
 
                 actor.Event.OnChangedStateSubject()
-                .Where(x => x == ActorStateController.StateType.Attack)
+                .Where(x => x == ActorStateController.StateType.Attack || x == ActorStateController.StateType.Movable)
                 .Take(1)
                 .Subscribe(_ =>
                 {
                     equipmentController.PlayDefaultPlayableAsset();
+                    actor.EquipmentController.EndGuard();
                 })
                 .AddTo(equipmentController)
                 .AddTo(actor.Disposables);

@@ -47,7 +47,16 @@ namespace ER.ERBehaviour
                 .Subscribe(_ =>
                 {
                     actor.StateController.ChangeRequest(ActorStateController.StateType.Movable);
-                });
+                })
+                .AddTo(equipmentController);
+
+                actor.Event.OnChangedStateSubject()
+                .Where(x => x == ActorStateController.StateType.Avoidance || x == ActorStateController.StateType.Guard)
+                .Subscribe(_ =>
+                {
+                    equipmentController.PlayDefaultPlayableAsset();
+                })
+                .AddTo(equipmentController);
 
                 return Observable.ReturnUnit();
             });
