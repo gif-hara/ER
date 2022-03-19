@@ -65,10 +65,18 @@ namespace ER.ActorControllers
             }
 
             var attackerStatus = equipmentController.Actor.StatusController.baseStatus;
-            var damage = (int)equipmentController.Power;
+            var damage = DamageCalculator.Calculate(
+                equipmentController.Actor.StatusController.baseStatus,
+                this.baseStatus,
+                equipmentController.Power
+                );
+            TakeDamage(damage);
+        }
 
+        private void TakeDamage(int damage)
+        {
             this.hitPoint.Value -= damage;
-            if(this.HitPoint <= 0)
+            if (this.HitPoint <= 0)
             {
                 this.isAlreadyDead = true;
                 this.actor.Event.OnDeadSubject().OnNext(Unit.Default);

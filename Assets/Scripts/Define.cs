@@ -40,4 +40,16 @@ namespace ER
         InQuad,
         InCubic,
     }
+
+    public enum AttackAttributeType
+    {
+        Physics,
+        Magic,
+        Fire,
+        Earth,
+        Thunder,
+        Water,
+        Holy,
+        Dark,
+    }
 }

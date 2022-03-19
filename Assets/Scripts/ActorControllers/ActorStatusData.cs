@@ -65,5 +65,83 @@ namespace ER.ActorControllers
         public float darkCutRate = default;
 
         public string LocalizedName => LocalizationManager.GetTermTranslation(this.name);
+
+        public int GetAttack(AttackAttributeType type)
+        {
+            switch (type)
+            {
+                case AttackAttributeType.Physics:
+                    return this.physicsAttack;
+                case AttackAttributeType.Magic:
+                    return this.magicAttack;
+                case AttackAttributeType.Fire:
+                    return this.fireAttack;
+                case AttackAttributeType.Earth:
+                    return this.earthAttack;
+                case AttackAttributeType.Thunder:
+                    return this.thunderAttack;
+                case AttackAttributeType.Water:
+                    return this.waterAttack;
+                case AttackAttributeType.Holy:
+                    return this.holyAttack;
+                case AttackAttributeType.Dark:
+                    return this.darkAttack;
+                default:
+                    Assert.IsTrue(false, $"{type}は未対応です");
+                    return 0;
+            }
+        }
+
+        public int GetDefense(AttackAttributeType type)
+        {
+            switch (type)
+            {
+                case AttackAttributeType.Physics:
+                    return this.physicsDefense;
+                case AttackAttributeType.Magic:
+                    return this.magicDefense;
+                case AttackAttributeType.Fire:
+                    return this.fireDefense;
+                case AttackAttributeType.Earth:
+                    return this.earthDefense;
+                case AttackAttributeType.Thunder:
+                    return this.thunderDefense;
+                case AttackAttributeType.Water:
+                    return this.waterDefense;
+                case AttackAttributeType.Holy:
+                    return this.holyDefense;
+                case AttackAttributeType.Dark:
+                    return this.darkDefense;
+                default:
+                    Assert.IsTrue(false, $"{type}は未対応です");
+                    return 0;
+            }
+        }
+
+        public float GetCutRate(AttackAttributeType type)
+        {
+            switch (type)
+            {
+                case AttackAttributeType.Physics:
+                    return this.physicsCutRate;
+                case AttackAttributeType.Magic:
+                    return this.magicCutRate;
+                case AttackAttributeType.Fire:
+                    return this.fireCutRate;
+                case AttackAttributeType.Earth:
+                    return this.earthCutRate;
+                case AttackAttributeType.Thunder:
+                    return this.thunderCutRate;
+                case AttackAttributeType.Water:
+                    return this.waterCutRate;
+                case AttackAttributeType.Holy:
+                    return this.holyCutRate;
+                case AttackAttributeType.Dark:
+                    return this.darkCutRate;
+                default:
+                    Assert.IsTrue(false, $"{type}は未対応です");
+                    return 0.0f;
+            }
+        }
     }
 }
