@@ -23,6 +23,16 @@ namespace ER.ActorControllers
         private readonly Subject<Unit> endRightEquipmentSubject = new Subject<Unit>();
 
         /// <summary>
+        /// 左手装備品の使用を開始した際のイベント
+        /// </summary>
+        private readonly Subject<Unit> beginLeftEquipmentSubject = new Subject<Unit>();
+        
+        /// <summary>
+        /// 左手装備品の使用を完了した際のイベント
+        /// </summary>
+        private readonly Subject<Unit> endLeftEquipmentSubject = new Subject<Unit>();
+
+        /// <summary>
         /// 相手から攻撃を受けた際のイベント
         /// </summary>
         private readonly Subject<EquipmentController> onHitOpponentAttack = new Subject<EquipmentController>();
@@ -76,6 +86,16 @@ namespace ER.ActorControllers
         /// <inheritdoc cref="endRightEquipmentSubject"/>
         /// </summary>
         public ISubject<Unit> OnEndRightEquipmentSubject() => this.endRightEquipmentSubject;
+
+        /// <summary>
+        /// <inheritdoc cref="beginLeftEquipmentSubject"/>
+        /// </summary>
+        public ISubject<Unit> OnBeginLeftEquipmentSubject() => this.beginLeftEquipmentSubject;
+
+        /// <summary>
+        /// <inheritdoc cref="endLeftEquipmentSubject"/>
+        /// </summary>
+        public ISubject<Unit> OnEndLeftEquipmentSubject() => this.endLeftEquipmentSubject;
 
         /// <summary>
         /// <inheritdoc cref="onHitOpponentAttack"/>

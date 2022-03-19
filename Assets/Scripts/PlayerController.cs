@@ -42,7 +42,7 @@ namespace ER
             this.inputAction = new ERInputAction();
             this.inputAction.Enable();
 
-            this.inputAction.Player.Fire.performed += callback =>
+            this.inputAction.Player.UseRightEquipment.performed += callback =>
             {
                 if (!this.CanBeginRightEquipmentSubject())
                 {
@@ -51,7 +51,7 @@ namespace ER
 
                 this.actor.Event.OnBeginRightEquipmentSubject().OnNext(Unit.Default);
             };
-            this.inputAction.Player.Fire.canceled += callback =>
+            this.inputAction.Player.UseRightEquipment.canceled += callback =>
             {
                 this.actor.Event.OnEndRightEquipmentSubject().OnNext(Unit.Default);
             };

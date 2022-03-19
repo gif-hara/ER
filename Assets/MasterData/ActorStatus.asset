@@ -46,7 +46,7 @@ MonoBehaviour:
     actorPrefab: {fileID: 9119910791474521852, guid: 67df0cd4baa71fe4ca1bef38d82a3659, type: 3}
     statusData:
       name: Actor/Name020200
-      hitPoint: 30
+      hitPoint: 100
       physicsAttack: 5
       magicAttack: 0
       fireAttack: 0
@@ -55,7 +55,7 @@ MonoBehaviour:
       waterAttack: 0
       holyAttack: 0
       darkAttack: 0
-      physicsDefense: 1
+      physicsDefense: 5
       magicDefense: 1
       fireDefense: 1
       earthDefense: 1

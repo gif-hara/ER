@@ -37,7 +37,7 @@ namespace ER
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Fire"",
+                    ""name"": ""UseRightEquipment"",
                     ""type"": ""Button"",
                     ""id"": ""9dc6c448-7e54-4a10-912c-0577b4db25dc"",
                     ""expectedControlType"": ""Button"",
@@ -231,7 +231,7 @@ namespace ER
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Touch"",
-                    ""action"": ""Fire"",
+                    ""action"": ""UseRightEquipment"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -242,7 +242,7 @@ namespace ER
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Joystick"",
-                    ""action"": ""Fire"",
+                    ""action"": ""UseRightEquipment"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -253,7 +253,7 @@ namespace ER
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""XR"",
-                    ""action"": ""Fire"",
+                    ""action"": ""UseRightEquipment"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -264,7 +264,7 @@ namespace ER
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Fire"",
+                    ""action"": ""UseRightEquipment"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -877,7 +877,7 @@ namespace ER
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
             m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
             m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
-            m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
+            m_Player_UseRightEquipment = m_Player.FindAction("UseRightEquipment", throwIfNotFound: true);
             m_Player_Avoidance = m_Player.FindAction("Avoidance", throwIfNotFound: true);
             m_Player_LookAt = m_Player.FindAction("LookAt", throwIfNotFound: true);
             m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
@@ -944,7 +944,7 @@ namespace ER
         private IPlayerActions m_PlayerActionsCallbackInterface;
         private readonly InputAction m_Player_Move;
         private readonly InputAction m_Player_Look;
-        private readonly InputAction m_Player_Fire;
+        private readonly InputAction m_Player_UseRightEquipment;
         private readonly InputAction m_Player_Avoidance;
         private readonly InputAction m_Player_LookAt;
         private readonly InputAction m_Player_Interact;
@@ -954,7 +954,7 @@ namespace ER
             public PlayerActions(@ERInputAction wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_Player_Move;
             public InputAction @Look => m_Wrapper.m_Player_Look;
-            public InputAction @Fire => m_Wrapper.m_Player_Fire;
+            public InputAction @UseRightEquipment => m_Wrapper.m_Player_UseRightEquipment;
             public InputAction @Avoidance => m_Wrapper.m_Player_Avoidance;
             public InputAction @LookAt => m_Wrapper.m_Player_LookAt;
             public InputAction @Interact => m_Wrapper.m_Player_Interact;
@@ -973,9 +973,9 @@ namespace ER
                     @Look.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
                     @Look.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
                     @Look.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
-                    @Fire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
-                    @Fire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
-                    @Fire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
+                    @UseRightEquipment.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseRightEquipment;
+                    @UseRightEquipment.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseRightEquipment;
+                    @UseRightEquipment.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseRightEquipment;
                     @Avoidance.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAvoidance;
                     @Avoidance.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAvoidance;
                     @Avoidance.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAvoidance;
@@ -995,9 +995,9 @@ namespace ER
                     @Look.started += instance.OnLook;
                     @Look.performed += instance.OnLook;
                     @Look.canceled += instance.OnLook;
-                    @Fire.started += instance.OnFire;
-                    @Fire.performed += instance.OnFire;
-                    @Fire.canceled += instance.OnFire;
+                    @UseRightEquipment.started += instance.OnUseRightEquipment;
+                    @UseRightEquipment.performed += instance.OnUseRightEquipment;
+                    @UseRightEquipment.canceled += instance.OnUseRightEquipment;
                     @Avoidance.started += instance.OnAvoidance;
                     @Avoidance.performed += instance.OnAvoidance;
                     @Avoidance.canceled += instance.OnAvoidance;
@@ -1165,7 +1165,7 @@ namespace ER
         {
             void OnMove(InputAction.CallbackContext context);
             void OnLook(InputAction.CallbackContext context);
-            void OnFire(InputAction.CallbackContext context);
+            void OnUseRightEquipment(InputAction.CallbackContext context);
             void OnAvoidance(InputAction.CallbackContext context);
             void OnLookAt(InputAction.CallbackContext context);
             void OnInteract(InputAction.CallbackContext context);

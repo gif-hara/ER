@@ -54,30 +54,30 @@ MonoBehaviour:
       maxAttack: 100
       growthType: 0
     magic:
-      minAttack: 10
+      minAttack: 0
       maxAttack: 100
       growthType: 0
     fire:
-      minAttack: 10
+      minAttack: 0
       maxAttack: 100
       growthType: 0
     earth:
-      minAttack: 10
+      minAttack: 0
       maxAttack: 100
       growthType: 0
     thunder:
-      minAttack: 10
+      minAttack: 0
       maxAttack: 100
       growthType: 0
     water:
-      minAttack: 10
+      minAttack: 0
       maxAttack: 100
       growthType: 0
     holy:
-      minAttack: 10
+      minAttack: 0
       maxAttack: 100
       growthType: 0
     dark:
-      minAttack: 10
+      minAttack: 0
       maxAttack: 100
       growthType: 0
