@@ -52,6 +52,10 @@ namespace ER.UIPresenters
                     this.stringBuilder.Append(actor.StateController.CurrentState.ToString());
                     this.stringBuilder.AppendLine();
 
+                    this.stringBuilder.Append("IsLeftRequest = ");
+                    this.stringBuilder.Append(actor.EquipmentController.IsLeftRequest);
+                    this.stringBuilder.AppendLine();
+
                     this.debugUIView.Text.SetText(this.stringBuilder.ToString());
                 });
         }

@@ -45,10 +45,25 @@ namespace ER
             var cutRate = defenser.StatusController.BaseStatus.GetCutRate(attackAttributeType);
 
             defense = defense == 0 ? 1 : defense;
+
+            if(defenser.EquipmentController.GuardingEquipmentController != null)
+            {
+                var guardingEquipmentController = defenser.EquipmentController.GuardingEquipmentController;
+                var diff = (attacker.transform.position - defenser.transform.position).normalized;
+                const float threshold = 90.0f;
+                var angle = Vector2.Angle(defenser.transform.up, diff);
+                if(angle <= threshold)
+                {
+                    var masterDataShield = guardingEquipmentController.EquipmentData as MasterDataShield.Record;
+                    Assert.IsNotNull(masterDataShield, $"{guardingEquipmentController.name}に{typeof(MasterDataShield)}のデータがありません");
+
+                    cutRate += masterDataShield.GetCutRate(attackAttributeType);
+                }
+            }
+            
             cutRate = cutRate > 1.0f ? 1.0f : cutRate;
 
             var result = Mathf.FloorToInt(((attack * attack * rate) / defense) * (1.0f - cutRate));
-            Debug.Log($"{attackAttributeType} = {result}");
 
             return result;
         }

@@ -2,6 +2,7 @@ using ER.EquipmentSystems;
 using System;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UniRx;
 
 namespace ER.ActorControllers
 {
@@ -18,9 +19,22 @@ namespace ER.ActorControllers
 
         public EquipmentController GuardingEquipmentController { get; private set; }
 
+        /// <summary>
+        /// 左手行動のリクエストが来ているか
+        /// </summary>
+        public bool IsLeftRequest { get; private set; }
+
         public void Setup(Actor actor)
         {
             this.actor = actor;
+
+            this.actor.Event.OnBeginLeftEquipmentSubject()
+                .Subscribe(_ => this.IsLeftRequest = true)
+                .AddTo(actor.Disposables);
+
+            this.actor.Event.OnEndLeftEquipmentSubject()
+                .Subscribe(_ => this.IsLeftRequest = false)
+                .AddTo(actor.Disposables);
         }
 
         public void AttachRightEquipment(EquipmentController equipmentPrefab, IEquipmentData equipmentData)

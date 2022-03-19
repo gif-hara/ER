@@ -23,28 +23,28 @@ namespace ER.MasterDataSystem
             [SerializeField]
             private EquipmentController equipmentControllerPrefab = default;
 
-            [SerializeField]
+            [SerializeField, Range(0.0f, 1.0f)]
             private float physicsCutRate = default;
 
-            [SerializeField]
+            [SerializeField, Range(0.0f, 1.0f)]
             private float magicCutRate = default;
 
-            [SerializeField]
+            [SerializeField, Range(0.0f, 1.0f)]
             private float fireCutRate = default;
 
-            [SerializeField]
+            [SerializeField, Range(0.0f, 1.0f)]
             private float earthCutRate = default;
 
-            [SerializeField]
+            [SerializeField, Range(0.0f, 1.0f)]
             private float thunderCutRate = default;
 
-            [SerializeField]
+            [SerializeField, Range(0.0f, 1.0f)]
             private float waterCutRate = default;
 
-            [SerializeField]
+            [SerializeField, Range(0.0f, 1.0f)]
             private float holyCutRate = default;
 
-            [SerializeField]
+            [SerializeField, Range(0.0f, 1.0f)]
             private float darkCutRate = default;
 
             public string Id => this.id;
@@ -141,14 +141,14 @@ namespace ER.MasterDataSystem
             public Record ToRecord() => new Record(
                 $"Item/{this.Id}",
                 UnityEditor.AssetDatabase.LoadAssetAtPath<EquipmentController>($"Assets/Prefabs/Equipment.Shield.{this.PrefabName}.prefab"),
-                int.Parse(this.PhysicsCutRate),
-                int.Parse(this.MagicCutRate),
-                int.Parse(this.FireCutRate),
-                int.Parse(this.EarthCutRate),
-                int.Parse(this.ThunderCutRate),
-                int.Parse(this.WaterCutRate),
-                int.Parse(this.HolyCutRate),
-                int.Parse(this.DarkCutRate)
+                float.Parse(this.PhysicsCutRate),
+                float.Parse(this.MagicCutRate),
+                float.Parse(this.FireCutRate),
+                float.Parse(this.EarthCutRate),
+                float.Parse(this.ThunderCutRate),
+                float.Parse(this.WaterCutRate),
+                float.Parse(this.HolyCutRate),
+                float.Parse(this.DarkCutRate)
                 );
         }
 #endif
