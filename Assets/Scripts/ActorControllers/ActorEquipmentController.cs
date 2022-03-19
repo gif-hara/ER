@@ -50,13 +50,11 @@ namespace ER.ActorControllers
         public void BeginGuard(EquipmentController equipmentController)
         {
             this.GuardingEquipmentController = equipmentController;
-            Debug.Log("BeginGuard");
         }
 
         public void EndGuard()
         {
             this.GuardingEquipmentController = null;
-            Debug.Log("EndGuard");
         }
 
         public EquipmentController GetEquipmentController(HandType handType)
