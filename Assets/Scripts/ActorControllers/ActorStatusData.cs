@@ -48,20 +48,28 @@ namespace ER.ActorControllers
 
         public int darkDefense = default;
 
+        [Range(0.0f, 1.0f)]
         public float physicsCutRate = default;
 
+        [Range(0.0f, 1.0f)]
         public float magicCutRate = default;
 
+        [Range(0.0f, 1.0f)]
         public float fireCutRate = default;
 
+        [Range(0.0f, 1.0f)]
         public float earthCutRate = default;
 
+        [Range(0.0f, 1.0f)]
         public float thunderCutRate = default;
 
+        [Range(0.0f, 1.0f)]
         public float waterCutRate = default;
 
+        [Range(0.0f, 1.0f)]
         public float holyCutRate = default;
 
+        [Range(0.0f, 1.0f)]
         public float darkCutRate = default;
 
         public string LocalizedName => LocalizationManager.GetTermTranslation(this.name);

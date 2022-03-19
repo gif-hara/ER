@@ -26,14 +26,14 @@ MonoBehaviour:
       waterAttack: 0
       holyAttack: 0
       darkAttack: 0
-      physicsDefense: 0
-      magicDefense: 0
-      fireDefense: 0
-      earthDefense: 0
-      thunderDefense: 0
-      waterDefense: 0
-      holyDefense: 0
-      darkDefense: 0
+      physicsDefense: 1
+      magicDefense: 1
+      fireDefense: 1
+      earthDefense: 1
+      thunderDefense: 1
+      waterDefense: 1
+      holyDefense: 1
+      darkDefense: 1
       physicsCutRate: 0
       magicCutRate: 0
       fireCutRate: 0
@@ -47,7 +47,7 @@ MonoBehaviour:
     statusData:
       name: Actor/Name020200
       hitPoint: 30
-      physicsAttack: 10
+      physicsAttack: 5
       magicAttack: 0
       fireAttack: 0
       earthAttack: 0
@@ -55,14 +55,14 @@ MonoBehaviour:
       waterAttack: 0
       holyAttack: 0
       darkAttack: 0
-      physicsDefense: 0
-      magicDefense: 0
-      fireDefense: 0
-      earthDefense: 0
-      thunderDefense: 0
-      waterDefense: 0
-      holyDefense: 0
-      darkDefense: 0
+      physicsDefense: 1
+      magicDefense: 1
+      fireDefense: 1
+      earthDefense: 1
+      thunderDefense: 1
+      waterDefense: 1
+      holyDefense: 1
+      darkDefense: 1
       physicsCutRate: 0
       magicCutRate: 0
       fireCutRate: 0

@@ -36,7 +36,10 @@ namespace ER
             defense = defense == 0 ? 1 : defense;
             cutRate = cutRate > 1.0f ? 1.0f : cutRate;
 
-            return Mathf.FloorToInt(((attack * attack * rate) / defense) * (1.0f - cutRate));
+            var result = Mathf.FloorToInt(((attack * attack * rate) / defense) * (1.0f - cutRate));
+            Debug.Log($"{attackAttributeType} = {result}");
+
+            return result;
         }
     }
 }
