@@ -1,3 +1,4 @@
+using ER.EquipmentSystems;
 using I2.Loc;
 using System;
 using System.Collections.Generic;
@@ -14,10 +15,13 @@ namespace ER.MasterDataSystem
     public sealed class MasterDataWeapon : MasterData<MasterDataWeapon, MasterDataWeapon.Record>
     {
         [Serializable]
-        public class Record : IIdHolder<string>
+        public class Record : IIdHolder<string>, IEquipmentData
         {
             [SerializeField, TermsPopup]
-            private string id;
+            private string id = default;
+
+            [SerializeField]
+            private EquipmentController equipmentControllerPrefab = default;
 
             [SerializeField]
             private AttackElement physics = default;
@@ -45,6 +49,8 @@ namespace ER.MasterDataSystem
 
             public string Id => this.id;
 
+            public EquipmentController EquipmentControllerPrefab => this.equipmentControllerPrefab;
+
             public AttackElement Physics => this.physics;
 
             public AttackElement Magic => this.magic;
@@ -63,6 +69,7 @@ namespace ER.MasterDataSystem
 
             public Record(
                 string id,
+                EquipmentController equipmentControllerPrefab,
                 AttackElement physics,
                 AttackElement magic,
                 AttackElement fire,
@@ -74,6 +81,7 @@ namespace ER.MasterDataSystem
                 )
             {
                 this.id = id;
+                this.equipmentControllerPrefab = equipmentControllerPrefab;
                 this.physics = physics;
                 this.magic = magic;
                 this.fire = fire;
@@ -119,6 +127,7 @@ namespace ER.MasterDataSystem
         private class JsonElement
         {
             public string Id;
+            public string PrefabName;
             public string PhysicsMin;
             public string PhysicsMax;
             public string PhysicsCurve;
@@ -146,6 +155,7 @@ namespace ER.MasterDataSystem
 
             public Record ToRecord() => new Record(
                 $"Item/{this.Id}",
+                UnityEditor.AssetDatabase.LoadAssetAtPath<EquipmentController>($"Assets/Prefabs/Equipment.{this.PrefabName}.prefab"),
                 new AttackElement
                 {
                     minAttack = int.Parse(this.PhysicsMin),

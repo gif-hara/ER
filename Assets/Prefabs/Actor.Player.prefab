@@ -177,9 +177,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actor: {fileID: 4763258836534807601}
   angleThreshold: 0.1
-  rightEquipmentPrefab: {fileID: 4608228154354743508, guid: b12d6f23289132a449f58ef17eff3410, type: 3}
+  rightEquipmentSelector:
+    id: 0
   lookAtDistanceThreshold: 26
   lookAtAngleThreshold: 90
+  references:
+    version: 1
+    00000000:
+      type: {class: WeaponSelector, ns: ER.EquipmentSystems, asm: Assembly-CSharp}
+      data:
+        weaponDataId: Item/Name010101
 --- !u!114 &4561833922425830017
 MonoBehaviour:
   m_ObjectHideFlags: 0

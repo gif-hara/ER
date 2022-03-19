@@ -20,8 +20,8 @@ namespace ER
         [SerializeField]
         private float angleThreshold = default;
 
-        [SerializeField]
-        private EquipmentController rightEquipmentPrefab = default;
+        [SerializeReference, SubclassSelector(typeof(IEquipmentSelector))]
+        private IEquipmentSelector rightEquipmentSelector = default;
 
         /// <summary>
         /// ロックオン可能な距離の閾値
@@ -87,7 +87,7 @@ namespace ER
                 this.actor.InteractableStageGimmickController.BeginInteract();
             };
 
-            this.actor.EquipmentController.SetRightEquipment(this.rightEquipmentPrefab);
+            this.rightEquipmentSelector.AttachRight(this.actor);
         }
 
         private void Update()

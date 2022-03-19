@@ -21,8 +21,8 @@ namespace ER.ActorControllers
         [SerializeField]
         private string initialAiName = default;
 
-        [SerializeField]
-        private EquipmentController rightEquipmentPrefab = default;
+        [SerializeReference, SubclassSelector(typeof(IEquipmentSelector))]
+        private IEquipmentSelector rightEquipmentSelector = default;
 
         private readonly Dictionary<string, AIElement> runtimeElements = new Dictionary<string, AIElement>();
 
@@ -38,7 +38,7 @@ namespace ER.ActorControllers
             }
 
             this.ChangeRequest(this.initialAiName);
-            this.actor.EquipmentController.SetRightEquipment(this.rightEquipmentPrefab);
+            this.rightEquipmentSelector.AttachRight(this.actor);
         }
 
         private void Update()

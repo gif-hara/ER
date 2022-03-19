@@ -29,6 +29,8 @@ namespace ER.EquipmentSystems
         /// </summary>
         public float Power { get; set; }
 
+        public IEquipmentData EquipmentData { get; private set; }
+
         public Actor Actor { get; private set; }
 
         public PlayableDirector PlayableDirector => this.playableDirector;
@@ -37,10 +39,10 @@ namespace ER.EquipmentSystems
 
         private List<Collider2D> colliders = null;
 
-        public EquipmentController Attach(Actor actor)
+        public EquipmentController Attach(Actor actor, IEquipmentData equipmentData)
         {
             var clone = Instantiate(this, actor.transform);
-            clone.AttachInternal(actor);
+            clone.AttachInternal(actor, equipmentData);
             return clone;
         }
 
@@ -50,9 +52,10 @@ namespace ER.EquipmentSystems
             this.disposables.Dispose();
         }
 
-        private void AttachInternal(Actor actor)
+        private void AttachInternal(Actor actor, IEquipmentData equipmentData)
         {
             this.Actor = actor;
+            this.EquipmentData = equipmentData;
             this.transform.localPosition = Vector3.zero;
             this.transform.localRotation = Quaternion.identity;
             this.gameObject.SetLayerRecursive(GetLayerIndex(actor.gameObject.layer));

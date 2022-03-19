@@ -21,9 +21,9 @@ namespace ER.ActorControllers
             this.actor = actor;
         }
 
-        public void SetRightEquipment(EquipmentController equipmentPrefab)
+        public void SetRightEquipment(EquipmentController equipmentPrefab, IEquipmentData equipmentData)
         {
-            this.rightEquipemntContoller = equipmentPrefab.Attach(this.actor);
+            this.rightEquipemntContoller = equipmentPrefab.Attach(this.actor, equipmentData);
         }
 
         public EquipmentController GetEquipmentController(HandType handType)
