@@ -16,10 +16,14 @@ namespace ER.EquipmentSystems
         [SerializeField, TermsPopup("Item/")]
         private string weaponDataId = default;
 
+        [SerializeField]
+        private WeaponLevelData levelData = default;
+
         public void AttachRight(Actor actor)
         {
-            var weaponData = MasterDataWeapon.Get(this.weaponDataId);
-            actor.EquipmentController.SetRightEquipment(weaponData.EquipmentControllerPrefab, weaponData);
+            var masterDataWeapon = MasterDataWeapon.Get(this.weaponDataId);
+            var instanceData = new WeaponInstanceData(masterDataWeapon, levelData);
+            actor.EquipmentController.SetRightEquipment(masterDataWeapon.EquipmentControllerPrefab, instanceData);
         }
     }
 }

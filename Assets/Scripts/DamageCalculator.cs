@@ -1,4 +1,6 @@
 using ER.ActorControllers;
+using ER.EquipmentSystems;
+using ER.MasterDataSystem;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -9,29 +11,38 @@ namespace ER
     /// </summary>
     public static class DamageCalculator
     {
-        public static int Calculate(ActorStatusData attackerData, ActorStatusData defenserData, float rate)
+        public static int Calculate(
+            IActor attacker,
+            EquipmentController attackerWeapon,
+            IActor defenser,
+            float rate
+            )
         {
             return
-                CalculateInternal(attackerData, defenserData, rate, AttackAttributeType.Physics)
-                + CalculateInternal(attackerData, defenserData, rate, AttackAttributeType.Magic)
-                + CalculateInternal(attackerData, defenserData, rate, AttackAttributeType.Fire)
-                + CalculateInternal(attackerData, defenserData, rate, AttackAttributeType.Earth)
-                + CalculateInternal(attackerData, defenserData, rate, AttackAttributeType.Thunder)
-                + CalculateInternal(attackerData, defenserData, rate, AttackAttributeType.Water)
-                + CalculateInternal(attackerData, defenserData, rate, AttackAttributeType.Holy)
-                + CalculateInternal(attackerData, defenserData, rate, AttackAttributeType.Dark);
+                CalculateInternal(attacker, attackerWeapon, defenser, rate, AttackAttributeType.Physics)
+                + CalculateInternal(attacker, attackerWeapon, defenser, rate, AttackAttributeType.Magic)
+                + CalculateInternal(attacker, attackerWeapon, defenser, rate, AttackAttributeType.Fire)
+                + CalculateInternal(attacker, attackerWeapon, defenser, rate, AttackAttributeType.Earth)
+                + CalculateInternal(attacker, attackerWeapon, defenser, rate, AttackAttributeType.Thunder)
+                + CalculateInternal(attacker, attackerWeapon, defenser, rate, AttackAttributeType.Water)
+                + CalculateInternal(attacker, attackerWeapon, defenser, rate, AttackAttributeType.Holy)
+                + CalculateInternal(attacker, attackerWeapon, defenser, rate, AttackAttributeType.Dark);
         }
 
         private static int CalculateInternal(
-            ActorStatusData attackerData,
-            ActorStatusData defenserData,
+            IActor attacker,
+            EquipmentController attackerWeapon,
+            IActor defenser,
             float rate,
             AttackAttributeType attackAttributeType
             )
         {
-            var attack = attackerData.GetAttack(attackAttributeType);
-            var defense = defenserData.GetDefense(attackAttributeType);
-            var cutRate = defenserData.GetCutRate(attackAttributeType);
+            var weaponData = (WeaponInstanceData)attackerWeapon.EquipmentData;
+            var attack =
+                attacker.StatusController.BaseStatus.GetAttack(attackAttributeType)
+                + weaponData.GetAttack(attackAttributeType);
+            var defense = defenser.StatusController.BaseStatus.GetDefense(attackAttributeType);
+            var cutRate = defenser.StatusController.BaseStatus.GetCutRate(attackAttributeType);
 
             defense = defense == 0 ? 1 : defense;
             cutRate = cutRate > 1.0f ? 1.0f : cutRate;

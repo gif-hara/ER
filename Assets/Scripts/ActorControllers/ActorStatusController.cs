@@ -66,8 +66,9 @@ namespace ER.ActorControllers
 
             var attackerStatus = equipmentController.Actor.StatusController.baseStatus;
             var damage = DamageCalculator.Calculate(
-                equipmentController.Actor.StatusController.baseStatus,
-                this.baseStatus,
+                equipmentController.Actor,
+                equipmentController,
+                this.actor,
                 equipmentController.Power
                 );
             TakeDamage(damage);

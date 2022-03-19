@@ -15,7 +15,7 @@ namespace ER.MasterDataSystem
     public sealed class MasterDataWeapon : MasterData<MasterDataWeapon, MasterDataWeapon.Record>
     {
         [Serializable]
-        public class Record : IIdHolder<string>, IEquipmentData
+        public class Record : IIdHolder<string>
         {
             [SerializeField, TermsPopup]
             private string id = default;
@@ -67,6 +67,32 @@ namespace ER.MasterDataSystem
 
             public AttackElement Dark => this.dark;
 
+            public AttackElement GetAttackElement(AttackAttributeType attackAttributeType)
+            {
+                switch (attackAttributeType)
+                {
+                    case AttackAttributeType.Physics:
+                        return this.physics;
+                    case AttackAttributeType.Magic:
+                        return this.magic;
+                    case AttackAttributeType.Fire:
+                        return this.fire;
+                    case AttackAttributeType.Earth:
+                        return this.earth;
+                    case AttackAttributeType.Thunder:
+                        return this.thunder;
+                    case AttackAttributeType.Water:
+                        return this.water;
+                    case AttackAttributeType.Holy:
+                        return this.holy;
+                    case AttackAttributeType.Dark:
+                        return this.dark;
+                    default:
+                        Assert.IsTrue(false, $"{attackAttributeType}は未対応です");
+                        return null;
+                }
+            }
+
             public Record(
                 string id,
                 EquipmentController equipmentControllerPrefab,
@@ -101,6 +127,11 @@ namespace ER.MasterDataSystem
             public int maxAttack = default;
 
             public EquipmentGrowthType growthType = default;
+
+            public int Evalute(float value)
+            {
+                return Mathf.FloorToInt(Mathf.Lerp(this.minAttack, this.maxAttack, Ease.Evalute(value, this.growthType)));
+            }
         }
 
 #if UNITY_EDITOR
