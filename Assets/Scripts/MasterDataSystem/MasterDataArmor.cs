@@ -21,6 +21,9 @@ namespace ER.MasterDataSystem
             private string id = default;
 
             [SerializeField]
+            private ArmorType armorType = default;
+
+            [SerializeField]
             private int physicsDefense = default;
 
             [SerializeField]
@@ -74,8 +77,11 @@ namespace ER.MasterDataSystem
 
             public string Name => LocalizationManager.GetTermTranslation(this.id);
 
+            public ArmorType ArmorType => this.armorType;
+
             public Record(
                 string id,
+                ArmorType armorType,
                 int physicsDefense,
                 int magicDefense,
                 int fireDefense,
@@ -87,6 +93,7 @@ namespace ER.MasterDataSystem
                 )
             {
                 this.id = id;
+                this.armorType = armorType;
                 this.physicsDefense = physicsDefense;
                 this.magicDefense = magicDefense;
                 this.fireDefense = fireDefense;
@@ -121,6 +128,7 @@ namespace ER.MasterDataSystem
         private class JsonElement
         {
             public string Id;
+            public string ArmorType;
             public string PhysicsDefense;
             public string MagicDefense;
             public string FireDefense;
@@ -132,6 +140,7 @@ namespace ER.MasterDataSystem
 
             public Record ToRecord() => new Record(
                 $"Item/{this.Id}",
+                (ArmorType)Enum.Parse(typeof(ArmorType), this.ArmorType),
                 int.Parse(this.PhysicsDefense),
                 int.Parse(this.MagicDefense),
                 int.Parse(this.FireDefense),

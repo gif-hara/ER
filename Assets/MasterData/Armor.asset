@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   records:
   - id: Item/Name020101
+    armorType: 0
     physicsDefense: 1
     magicDefense: 1
     fireDefense: 1
@@ -23,6 +24,7 @@ MonoBehaviour:
     holyDefense: 1
     darkDefense: 1
   - id: Item/Name030101
+    armorType: 1
     physicsDefense: 2
     magicDefense: 2
     fireDefense: 2
@@ -32,6 +34,7 @@ MonoBehaviour:
     holyDefense: 2
     darkDefense: 2
   - id: Item/Name040101
+    armorType: 2
     physicsDefense: 1
     magicDefense: 1
     fireDefense: 1
@@ -41,6 +44,7 @@ MonoBehaviour:
     holyDefense: 1
     darkDefense: 1
   - id: Item/Name050101
+    armorType: 3
     physicsDefense: 1
     magicDefense: 1
     fireDefense: 1

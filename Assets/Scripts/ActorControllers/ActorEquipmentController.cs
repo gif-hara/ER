@@ -3,6 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UniRx;
+using ER.MasterDataSystem;
 
 namespace ER.ActorControllers
 {
@@ -18,6 +19,14 @@ namespace ER.ActorControllers
         private EquipmentController leftEquipmentController;
 
         public EquipmentController GuardingEquipmentController { get; private set; }
+
+        public MasterDataArmor Head { get; private set; }
+
+        public MasterDataArmor Torso { get; private set; }
+
+        public MasterDataArmor Arm { get; private set; }
+
+        public MasterDataArmor Leg { get; private set; }
 
         /// <summary>
         /// 左手行動のリクエストが来ているか

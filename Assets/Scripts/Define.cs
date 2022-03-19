@@ -52,4 +52,12 @@ namespace ER
         Holy,
         Dark,
     }
+
+    public enum ArmorType
+    {
+        Head,
+        Torso,
+        Arm,
+        Leg
+    }
 }
