@@ -1,9 +1,8 @@
 using ER.EquipmentSystems;
-using System;
-using UnityEngine;
 using UnityEngine.Assertions;
 using UniRx;
 using ER.MasterDataSystem;
+using UnityEngine;
 
 namespace ER.ActorControllers
 {
@@ -48,11 +47,21 @@ namespace ER.ActorControllers
 
         public void AttachRightEquipment(EquipmentController equipmentPrefab, IEquipmentData equipmentData)
         {
+            if (this.rightEquipemntContoller != null)
+            {
+                Object.Destroy(this.rightEquipemntContoller.gameObject);
+            }
+
             this.rightEquipemntContoller = equipmentPrefab.Attach(this.actor, equipmentData);
         }
 
         public void AttachLeftEquipment(EquipmentController equipmentPrefab, IEquipmentData equipmentData)
         {
+            if (this.leftEquipmentController != null)
+            {
+                Object.Destroy(this.leftEquipmentController.gameObject);
+            }
+
             this.leftEquipmentController = equipmentPrefab.Attach(this.actor, equipmentData);
         }
 
