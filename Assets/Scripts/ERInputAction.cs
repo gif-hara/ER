@@ -45,6 +45,14 @@ namespace ER
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""UseLeftEquipment"",
+                    ""type"": ""Button"",
+                    ""id"": ""aa3d2610-94d5-47af-8645-bba1e0cfce1c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""Avoidance"",
                     ""type"": ""Button"",
                     ""id"": ""66fa8855-1e93-4117-b7cf-f590a785df12"",
@@ -298,6 +306,17 @@ namespace ER
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4f2f49cc-ffac-4ca5-b5e2-a44c97c9cc67"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UseLeftEquipment"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -878,6 +897,7 @@ namespace ER
             m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
             m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
             m_Player_UseRightEquipment = m_Player.FindAction("UseRightEquipment", throwIfNotFound: true);
+            m_Player_UseLeftEquipment = m_Player.FindAction("UseLeftEquipment", throwIfNotFound: true);
             m_Player_Avoidance = m_Player.FindAction("Avoidance", throwIfNotFound: true);
             m_Player_LookAt = m_Player.FindAction("LookAt", throwIfNotFound: true);
             m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
@@ -945,6 +965,7 @@ namespace ER
         private readonly InputAction m_Player_Move;
         private readonly InputAction m_Player_Look;
         private readonly InputAction m_Player_UseRightEquipment;
+        private readonly InputAction m_Player_UseLeftEquipment;
         private readonly InputAction m_Player_Avoidance;
         private readonly InputAction m_Player_LookAt;
         private readonly InputAction m_Player_Interact;
@@ -955,6 +976,7 @@ namespace ER
             public InputAction @Move => m_Wrapper.m_Player_Move;
             public InputAction @Look => m_Wrapper.m_Player_Look;
             public InputAction @UseRightEquipment => m_Wrapper.m_Player_UseRightEquipment;
+            public InputAction @UseLeftEquipment => m_Wrapper.m_Player_UseLeftEquipment;
             public InputAction @Avoidance => m_Wrapper.m_Player_Avoidance;
             public InputAction @LookAt => m_Wrapper.m_Player_LookAt;
             public InputAction @Interact => m_Wrapper.m_Player_Interact;
@@ -976,6 +998,9 @@ namespace ER
                     @UseRightEquipment.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseRightEquipment;
                     @UseRightEquipment.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseRightEquipment;
                     @UseRightEquipment.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseRightEquipment;
+                    @UseLeftEquipment.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseLeftEquipment;
+                    @UseLeftEquipment.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseLeftEquipment;
+                    @UseLeftEquipment.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseLeftEquipment;
                     @Avoidance.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAvoidance;
                     @Avoidance.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAvoidance;
                     @Avoidance.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAvoidance;
@@ -998,6 +1023,9 @@ namespace ER
                     @UseRightEquipment.started += instance.OnUseRightEquipment;
                     @UseRightEquipment.performed += instance.OnUseRightEquipment;
                     @UseRightEquipment.canceled += instance.OnUseRightEquipment;
+                    @UseLeftEquipment.started += instance.OnUseLeftEquipment;
+                    @UseLeftEquipment.performed += instance.OnUseLeftEquipment;
+                    @UseLeftEquipment.canceled += instance.OnUseLeftEquipment;
                     @Avoidance.started += instance.OnAvoidance;
                     @Avoidance.performed += instance.OnAvoidance;
                     @Avoidance.canceled += instance.OnAvoidance;
@@ -1166,6 +1194,7 @@ namespace ER
             void OnMove(InputAction.CallbackContext context);
             void OnLook(InputAction.CallbackContext context);
             void OnUseRightEquipment(InputAction.CallbackContext context);
+            void OnUseLeftEquipment(InputAction.CallbackContext context);
             void OnAvoidance(InputAction.CallbackContext context);
             void OnLookAt(InputAction.CallbackContext context);
             void OnInteract(InputAction.CallbackContext context);

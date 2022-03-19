@@ -30,6 +30,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "UseLeftEquipment",
+                    "type": "Button",
+                    "id": "aa3d2610-94d5-47af-8645-bba1e0cfce1c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "Avoidance",
                     "type": "Button",
                     "id": "66fa8855-1e93-4117-b7cf-f590a785df12",
@@ -283,6 +291,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4f2f49cc-ffac-4ca5-b5e2-a44c97c9cc67",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UseLeftEquipment",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -44,7 +44,7 @@ namespace ER
 
             this.inputAction.Player.UseRightEquipment.performed += callback =>
             {
-                if (!this.CanBeginRightEquipmentSubject())
+                if (!this.CanBeginEquipmentSubject())
                 {
                     return;
                 }
@@ -54,6 +54,19 @@ namespace ER
             this.inputAction.Player.UseRightEquipment.canceled += callback =>
             {
                 this.actor.Event.OnEndRightEquipmentSubject().OnNext(Unit.Default);
+            };
+            this.inputAction.Player.UseLeftEquipment.performed += callback =>
+            {
+                if (!this.CanBeginEquipmentSubject())
+                {
+                    return;
+                }
+
+                this.actor.Event.OnBeginLeftEquipmentSubject().OnNext(Unit.Default);
+            };
+            this.inputAction.Player.UseLeftEquipment.canceled += callback =>
+            {
+                this.actor.Event.OnEndLeftEquipmentSubject().OnNext(Unit.Default);
             };
             this.inputAction.Player.Avoidance.performed += callback =>
             {
@@ -128,7 +141,7 @@ namespace ER
             Gizmos.color = tempColor;
         }
 
-        private bool CanBeginRightEquipmentSubject()
+        private bool CanBeginEquipmentSubject()
         {
             var currentState = this.actor.StateController.CurrentState;
 
