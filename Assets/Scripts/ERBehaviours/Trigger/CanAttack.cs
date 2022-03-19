@@ -31,11 +31,13 @@ namespace ER.ERBehaviour
             switch (currentState)
             {
                 case ActorStateController.StateType.Movable:
+                case ActorStateController.StateType.Guard:
                     return true;
                 case ActorStateController.StateType.Attack:
                 case ActorStateController.StateType.Avoidance:
                     return actor.AnimationParameter.advancedEntry;
                 default:
+                    Debug.LogWarning($"{currentState}に対応しましょう");
                     return false;
             }
         }
