@@ -13,15 +13,9 @@ namespace ER.ERBehaviour
     [Serializable]
     public sealed class CanAttack : ITrigger
     {
-        public IObservable<Unit> AsObservable(IBehaviourData data)
+        public bool Evalute(IBehaviourData data)
         {
-            return Observable.Defer(() =>
-            {
-                var actor = data.Cast<IActorHolder>().Actor;
-                return actor.gameObject
-                .UpdateAsObservable()
-                .Where(_ => Evalute(actor));
-            });
+            return this.Evalute(data.Cast<IActorHolder>().Actor);
         }
 
         private bool Evalute(Actor actor)

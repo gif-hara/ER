@@ -17,17 +17,12 @@ namespace ER.ERBehaviour
         [SerializeField]
         private ActorStateController.StateType stateType = default;
 
-        public IObservable<Unit> AsObservable(IBehaviourData data)
+        public bool Evalute(IBehaviourData data)
         {
-            return Observable.Defer(() =>
-            {
-                var actorHolder = data.Cast<IActorHolder>();
-                var actor = actorHolder.Actor;
-                return actor.StateController.ObserveEveryValueChanged(x => x.CurrentState)
-                .DistinctUntilChanged()
-                .Where(x => x == this.stateType)
-                .AsUnitObservable();
-            });
+            var actorHolder = data.Cast<IActorHolder>();
+            var actor = actorHolder.Actor;
+
+            return this.stateType == actor.StateController.CurrentState;
         }
     }
 }

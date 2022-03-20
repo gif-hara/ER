@@ -17,10 +17,16 @@ namespace ER.ERBehaviour
         [SerializeReference, SubclassSelector(typeof(IAction))]
         private IAction action;
 
-        public IObservable<Unit> AsObservable(IBehaviourData data)
+        public void Invoke(IBehaviourData data, CompositeDisposable disposables)
         {
-            return this.trigger.AsObservable(data)
-                .SelectMany(_ => this.action.AsObservable(data));
+            if (!this.trigger.Evalute(data))
+            {
+                return;
+            }
+
+            this.action.AsObservable(data)
+                .Subscribe()
+                .AddTo(disposables);
         }
     }
 }

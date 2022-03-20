@@ -12,14 +12,9 @@ namespace ER.ERBehaviour
     [Serializable]
     public sealed class EveryUpdate : ITrigger
     {
-        public IObservable<Unit> AsObservable(IBehaviourData data)
+        public bool Evalute(IBehaviourData data)
         {
-            return Observable.Defer(() =>
-            {
-                return data
-                .Cast<IActorHolder>().Actor.gameObject
-                .UpdateAsObservable();
-            });
+            return true;
         }
     }
 }

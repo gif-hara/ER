@@ -13,7 +13,7 @@ namespace ER.EquipmentSystems
     /// <summary>
     /// 
     /// </summary>
-    public sealed class EquipmentController : MonoBehaviour, IDisposable, IBehaviourData
+    public sealed class EquipmentController : MonoBehaviour, IBehaviourData
     {
         [SerializeField]
         private PlayableDirector playableDirector = default;
@@ -46,9 +46,8 @@ namespace ER.EquipmentSystems
             return clone;
         }
 
-        public void Dispose()
+        void OnDestroy()
         {
-            Destroy(this.gameObject);
             this.disposables.Dispose();
         }
 
@@ -76,13 +75,14 @@ namespace ER.EquipmentSystems
             })
             .AddTo(this.disposables);
 
-
-            foreach (var behaviour in this.behaviours)
-            {
-                behaviour.AsObservable(behaviourData)
-                    .Subscribe()
-                    .AddTo(this.disposables);
-            }
+            this.UpdateAsObservable()
+                .Subscribe(_ =>
+                {
+                    foreach (var i in this.behaviours)
+                    {
+                        i.Invoke(behaviourData, this.disposables);
+                    }
+                });
 
             this.colliders = new List<Collider2D>(this.GetComponentsInChildren<Collider2D>());
 
@@ -104,7 +104,7 @@ namespace ER.EquipmentSystems
             this.playableDirector.extrapolationMode = DirectorWrapMode.Loop;
             this.playableDirector.Play(this.defaultPlayableAsset);
 
-            foreach(var i in this.colliders)
+            foreach (var i in this.colliders)
             {
                 i.gameObject.SetActive(false);
             }
@@ -112,7 +112,7 @@ namespace ER.EquipmentSystems
 
         private static int GetLayerIndex(int ownerLayerIndex)
         {
-            switch(ownerLayerIndex)
+            switch (ownerLayerIndex)
             {
                 case Layer.Index.Player:
                     return Layer.Index.PlayerBullet;

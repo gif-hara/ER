@@ -12,16 +12,12 @@ namespace ER.ERBehaviour
     [Serializable]
     public sealed class IsLeftRequest : ITrigger
     {
-        public IObservable<Unit> AsObservable(IBehaviourData data)
+        public bool Evalute(IBehaviourData data)
         {
-            return Observable.Defer(() =>
-            {
-                var actorHolder = data.Cast<IActorHolder>();
-                var actor = actorHolder.Actor;
-                return actor.UpdateAsObservable()
-                .Where(_ => actor.EquipmentController.IsLeftRequest)
-                .AsUnitObservable();
-            });
+            var actorHolder = data.Cast<IActorHolder>();
+            var actor = actorHolder.Actor;
+
+            return actor.EquipmentController.IsLeftRequest;
         }
     }
 }

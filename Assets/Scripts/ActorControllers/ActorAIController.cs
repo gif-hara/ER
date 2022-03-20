@@ -26,24 +26,39 @@ namespace ER.ActorControllers
 
         private readonly Dictionary<string, AIElement> runtimeElements = new Dictionary<string, AIElement>();
 
+        private AIElement current = null;
+
         private readonly CompositeDisposable disposables = new CompositeDisposable();
 
         private string nextAiName;
 
+        private ActorAIBehaviourData behaviourData;
+
         private void Start()
         {
-            foreach(var i in this.elements)
+            foreach (var i in this.elements)
             {
                 this.runtimeElements.Add(i.aiName, i);
             }
 
             this.ChangeRequest(this.initialAiName);
             this.rightEquipmentSelector.Attach(this.actor);
+
+            this.behaviourData = new ActorAIBehaviourData
+            {
+                Actor = this.actor,
+                AIController = this
+            };
         }
 
         private void Update()
         {
             this.ChangeInternal();
+
+            foreach (var i in this.current.behaviours)
+            {
+                i.Invoke(this.behaviourData, this.disposables);
+            }
         }
 
         public void ChangeRequest(string aiName)
@@ -53,7 +68,7 @@ namespace ER.ActorControllers
 
         private void ChangeInternal()
         {
-            if(string.IsNullOrEmpty(this.nextAiName))
+            if (string.IsNullOrEmpty(this.nextAiName))
             {
                 return;
             }
@@ -61,18 +76,7 @@ namespace ER.ActorControllers
             this.disposables.Clear();
             Assert.IsTrue(this.runtimeElements.ContainsKey(this.nextAiName), $"{this.nextAiName}というAIはありません");
 
-            var behaviourData = new ActorAIBehaviourData
-            {
-                Actor = this.actor,
-                AIController = this
-            };
-            var element = this.runtimeElements[this.nextAiName];
-            foreach(var i in element.behaviours)
-            {
-                i.AsObservable(behaviourData)
-                    .Subscribe()
-                    .AddTo(this.disposables);
-            }
+            this.current = this.runtimeElements[this.nextAiName];
             this.nextAiName = "";
         }
 

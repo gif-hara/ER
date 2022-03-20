@@ -16,15 +16,17 @@ namespace ER.ERBehaviour
         [SerializeReference, SubclassSelector(typeof(ITrigger))]
         private List<ITrigger> triggers = default;
 
-        public IObservable<Unit> AsObservable(IBehaviourData data)
+        public bool Evalute(IBehaviourData data)
         {
-            return Observable.Defer(() =>
+            foreach (var i in this.triggers)
             {
-                return this.triggers
-                .Select(x => x.AsObservable(data))
-                .ZipLatest()
-                .AsUnitObservable();
-            });
+                if (!i.Evalute(data))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }

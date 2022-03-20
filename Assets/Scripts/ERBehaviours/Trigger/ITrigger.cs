@@ -10,9 +10,6 @@ namespace ER.ERBehaviour
     /// </summary>
     public interface ITrigger
     {
-        /// <summary>
-        /// トリガーが発火された際のイベント
-        /// </summary>
-        IObservable<Unit> AsObservable(IBehaviourData data);
+        bool Evalute(IBehaviourData data);
     }
 }
