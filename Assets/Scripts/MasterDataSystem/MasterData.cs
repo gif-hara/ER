@@ -21,13 +21,13 @@ namespace ER.MasterDataSystem
         [SerializeField]
         protected List<TRecord> records = default;
 
-        private Dictionary<string, TRecord> Raw = new Dictionary<string, TRecord>();
+        private Dictionary<string, TRecord> raw = new Dictionary<string, TRecord>();
 
         private void Setup()
         {
             foreach (var i in this.records)
             {
-                this.Raw.Add(i.Id, i);
+                this.raw.Add(i.Id, i);
             }
 
             this.OnSetupped();
@@ -39,8 +39,13 @@ namespace ER.MasterDataSystem
 
         public static TRecord Get(string id)
         {
-            Assert.IsTrue(Instance.Raw.ContainsKey(id), $"{typeof(TMasterData)}に id = {id} が存在しません");
-            return Instance.Raw[id];
+            Assert.IsTrue(Instance.raw.ContainsKey(id), $"{typeof(TMasterData)}に id = {id} が存在しません");
+            return Instance.raw[id];
+        }
+
+        public static bool Contains(string id)
+        {
+            return Instance.raw.ContainsKey(id);
         }
 
         public static IObservable<Unit> SetupAsync(string assetPath)

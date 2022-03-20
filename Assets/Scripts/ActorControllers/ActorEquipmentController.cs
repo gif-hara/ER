@@ -93,8 +93,14 @@ namespace ER.ActorControllers
             }
         }
 
-        public void SetArmor(ArmorType armorType, MasterDataArmor.Record masterDataArmor)
+        public void SetArmor(ArmorType armorType, string masterDataArmorId)
         {
+            if (!MasterDataArmor.Contains(masterDataArmorId))
+            {
+                return;
+            }
+
+            var masterDataArmor = MasterDataArmor.Get(masterDataArmorId);
             switch (armorType)
             {
                 case ArmorType.Head:
@@ -113,6 +119,17 @@ namespace ER.ActorControllers
                     Assert.IsTrue(false, $"{armorType}は未対応です");
                     break;
             }
+        }
+
+        public int GetDefense(AttackAttributeType attackAttributeType)
+        {
+            var result = 0;
+            if (this.Head != null) result += this.Head.GetDefense(attackAttributeType);
+            if (this.Torso != null) result += this.Torso.GetDefense(attackAttributeType);
+            if (this.Arm != null) result += this.Arm.GetDefense(attackAttributeType);
+            if (this.Leg != null) result += this.Leg.GetDefense(attackAttributeType);
+
+            return result;
         }
 
         public EquipmentController GetEquipmentController(HandType handType)

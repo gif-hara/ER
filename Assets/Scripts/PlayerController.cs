@@ -120,10 +120,10 @@ namespace ER
             this.rightEquipmentSelector.Attach(this.actor);
             this.leftEquipmentSelector.Attach(this.actor);
 
-            this.actor.EquipmentController.SetArmor(ArmorType.Head, MasterDataArmor.Get(this.headMasterDataId));
-            this.actor.EquipmentController.SetArmor(ArmorType.Torso, MasterDataArmor.Get(this.torsoMasterDataId));
-            this.actor.EquipmentController.SetArmor(ArmorType.Arm, MasterDataArmor.Get(this.armMasterDataId));
-            this.actor.EquipmentController.SetArmor(ArmorType.Leg, MasterDataArmor.Get(this.legMasterDataId));
+            this.actor.EquipmentController.SetArmor(ArmorType.Head, this.headMasterDataId);
+            this.actor.EquipmentController.SetArmor(ArmorType.Torso, this.torsoMasterDataId);
+            this.actor.EquipmentController.SetArmor(ArmorType.Arm, this.armMasterDataId);
+            this.actor.EquipmentController.SetArmor(ArmorType.Leg, this.legMasterDataId);
         }
 
         private void Update()
