@@ -27,7 +27,6 @@ namespace ER
                 + CalculateInternal(attacker, attackerWeapon, defenser, rate, AttackAttributeType.Water)
                 + CalculateInternal(attacker, attackerWeapon, defenser, rate, AttackAttributeType.Holy)
                 + CalculateInternal(attacker, attackerWeapon, defenser, rate, AttackAttributeType.Dark);
-            Debug.Log(result);
             return result;
         }
 
