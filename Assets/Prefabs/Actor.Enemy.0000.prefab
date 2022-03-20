@@ -181,7 +181,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.data[3].behaviours.Array.data[0].trigger
-      value: Assembly-CSharp ER.ERBehaviour.CanAttack
+      value: Assembly-CSharp ER.ERBehaviour.CanAdvancedEntry
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.data[3].behaviours.Array.data[1].trigger

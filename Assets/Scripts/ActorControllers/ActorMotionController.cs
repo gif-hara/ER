@@ -60,15 +60,16 @@ namespace ER.ActorControllers
                     {
                         actor.AnimationParameter.moveSpeedRate = 1.0f;
                         actor.AnimationParameter.invisible = false;
+                        actor.AnimationParameter.advancedEntry = true;
                     }
 
                     if (x == ActorStateController.StateType.Guard)
                     {
                         actor.AnimationParameter.moveSpeedRate = 0.5f;
                         actor.AnimationParameter.invisible = false;
+                        actor.AnimationParameter.advancedEntry = true;
                     }
 
-                    actor.AnimationParameter.advancedEntry = false;
                 })
                 .AddTo(actor.Disposables);
 
@@ -76,7 +77,7 @@ namespace ER.ActorControllers
                 .Subscribe(x =>
                 {
                     // 入力が無い場合はバックステップする
-                    if(x == Vector2.zero)
+                    if (x == Vector2.zero)
                     {
                         x = -actor.transform.up;
                     }
@@ -107,7 +108,7 @@ namespace ER.ActorControllers
             actor.Event.OnRespawnedSubject()
                 .Subscribe(_ =>
                 {
-                    if(IsLookAt)
+                    if (IsLookAt)
                     {
                         this.EndLookAt();
                     }
@@ -199,9 +200,9 @@ namespace ER.ActorControllers
 
         private void UpdateRotation(IActor actor)
         {
-            if(this.IsLookAt)
+            if (this.IsLookAt)
             {
-                if(this.lookAtTarget == null)
+                if (this.lookAtTarget == null)
                 {
                     this.EndLookAt();
                 }
@@ -218,11 +219,11 @@ namespace ER.ActorControllers
         private int GetUpdatePositionLayerMask()
         {
             var result = Layer.Mask.Stage;
-            if(this.actor.gameObject.layer == Layer.Index.Player)
+            if (this.actor.gameObject.layer == Layer.Index.Player)
             {
                 result |= Layer.Mask.Enemy;
             }
-            else if(this.actor.gameObject.layer == Layer.Index.Enemy)
+            else if (this.actor.gameObject.layer == Layer.Index.Enemy)
             {
                 result |= Layer.Mask.Player;
             }

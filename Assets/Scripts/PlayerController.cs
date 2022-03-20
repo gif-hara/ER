@@ -61,11 +61,6 @@ namespace ER
 
             this.inputAction.Player.UseRightEquipment.performed += callback =>
             {
-                if (!this.CanBeginEquipmentSubject())
-                {
-                    return;
-                }
-
                 this.actor.Event.OnBeginRightEquipmentSubject().OnNext(Unit.Default);
             };
             this.inputAction.Player.UseRightEquipment.canceled += callback =>
@@ -74,11 +69,6 @@ namespace ER
             };
             this.inputAction.Player.UseLeftEquipment.performed += callback =>
             {
-                if (!this.CanBeginEquipmentSubject())
-                {
-                    return;
-                }
-
                 this.actor.Event.OnBeginLeftEquipmentSubject().OnNext(Unit.Default);
             };
             this.inputAction.Player.UseLeftEquipment.canceled += callback =>
@@ -87,7 +77,7 @@ namespace ER
             };
             this.inputAction.Player.Avoidance.performed += callback =>
             {
-                if (!this.CanAvoidance())
+                if (!this.actor.AnimationParameter.advancedEntry)
                 {
                     return;
                 }

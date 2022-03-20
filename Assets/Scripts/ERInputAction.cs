@@ -245,6 +245,17 @@ namespace ER
                 },
                 {
                     ""name"": """",
+                    ""id"": ""2629ba5a-9d3d-496d-99b5-76a2c6d0ab33"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Avoidance"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""b22dd62e-4ae6-415e-88fd-4b5e4f8bb747"",
                     ""path"": ""<Gamepad>/rightStickPress"",
                     ""interactions"": """",
