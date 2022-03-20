@@ -13,7 +13,7 @@ namespace ER.EquipmentSystems
     [Serializable]
     public sealed class WeaponSelector : IEquipmentSelector
     {
-        [SerializeField, TermsPopup("Item/")]
+        [SerializeField, TermsPopup("Weapon/")]
         private string weaponDataId = default;
 
         [SerializeField]

@@ -185,7 +185,7 @@ namespace ER.MasterDataSystem
             public string DarkCurve;
 
             public Record ToRecord() => new Record(
-                $"Item/{this.Id}",
+                $"Weapon/{this.Id}",
                 UnityEditor.AssetDatabase.LoadAssetAtPath<EquipmentController>($"Assets/Prefabs/Equipment.Weapon.{this.PrefabName}.prefab"),
                 new AttackElement
                 {
