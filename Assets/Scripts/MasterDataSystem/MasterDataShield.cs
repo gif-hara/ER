@@ -139,7 +139,7 @@ namespace ER.MasterDataSystem
             public string DarkCutRate;
 
             public Record ToRecord() => new Record(
-                $"Item/{this.Id}",
+                $"Shield/{this.Id}",
                 UnityEditor.AssetDatabase.LoadAssetAtPath<EquipmentController>($"Assets/Prefabs/Equipment.Shield.{this.PrefabName}.prefab"),
                 float.Parse(this.PhysicsCutRate),
                 float.Parse(this.MagicCutRate),

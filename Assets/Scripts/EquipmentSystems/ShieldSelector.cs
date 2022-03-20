@@ -13,7 +13,7 @@ namespace ER.EquipmentSystems
     [Serializable]
     public sealed class ShieldSelector : IEquipmentSelector
     {
-        [SerializeField, TermsPopup("Item/")]
+        [SerializeField, TermsPopup("Shield/")]
         private string shieldDataId = default;
 
         public void Attach(Actor actor)

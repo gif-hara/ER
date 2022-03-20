@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Armor
   m_EditorClassIdentifier: 
   records:
-  - id: Item/Name020101
+  - id: ArmorHead/Name010101
     armorType: 0
     physicsDefense: 1
     magicDefense: 1
@@ -23,7 +23,7 @@ MonoBehaviour:
     waterDefense: 1
     holyDefense: 1
     darkDefense: 1
-  - id: Item/Name030101
+  - id: ArmorTorso/Name010101
     armorType: 1
     physicsDefense: 2
     magicDefense: 2
@@ -33,7 +33,7 @@ MonoBehaviour:
     waterDefense: 2
     holyDefense: 2
     darkDefense: 2
-  - id: Item/Name040101
+  - id: ArmorArm/Name010101
     armorType: 2
     physicsDefense: 1
     magicDefense: 1
@@ -43,7 +43,7 @@ MonoBehaviour:
     waterDefense: 1
     holyDefense: 1
     darkDefense: 1
-  - id: Item/Name050101
+  - id: ArmorLeg/Name010101
     armorType: 3
     physicsDefense: 1
     magicDefense: 1

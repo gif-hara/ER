@@ -70,7 +70,7 @@ namespace ER.MasterDataSystem
             public string Category;
 
             public Record ToRecord() => new Record(
-                $"Item/{this.Id}",
+                this.Id,
                 bool.Parse(this.Stackable),
                 (ItemCategory)Enum.Parse(typeof(ItemCategory), this.Category)
                 );

@@ -17,62 +17,6 @@ MonoBehaviour:
     UserAgreesToHaveItInsideThePluginsFolder: 0
     GoogleLiveSyncIsUptoDate: 1
     mTerms:
-    - Term: Item/Name000000
-      TermType: 0
-      Description: 
-      Languages:
-      - "\u30C6\u30B9\u30C8\u30A2\u30A4\u30C6\u30E0"
-      - TestItem
-      Flags: 0000
-      Languages_Touch: []
-    - Term: Item/Name010000
-      TermType: 0
-      Description: 
-      Languages:
-      - "\u6575\u6B66\u5668"
-      - 
-      Flags: 0000
-      Languages_Touch: []
-    - Term: Item/Name010101
-      TermType: 0
-      Description: 
-      Languages:
-      - "\u30ED\u30F3\u30B0\u30BD\u30FC\u30C9"
-      - 
-      Flags: 0000
-      Languages_Touch: []
-    - Term: Item/Name020101
-      TermType: 0
-      Description: 
-      Languages:
-      - "\u9244\u306E\u515C"
-      - 
-      Flags: 0000
-      Languages_Touch: []
-    - Term: Item/Name030101
-      TermType: 0
-      Description: 
-      Languages:
-      - "\u9244\u306E\u93A7"
-      - 
-      Flags: 0000
-      Languages_Touch: []
-    - Term: Item/Name040101
-      TermType: 0
-      Description: 
-      Languages:
-      - "\u9244\u306E\u624B\u7532"
-      - 
-      Flags: 0000
-      Languages_Touch: []
-    - Term: Item/Name050101
-      TermType: 0
-      Description: 
-      Languages:
-      - "\u9244\u306E\u8DB3\u7532"
-      - 
-      Flags: 0000
-      Languages_Touch: []
     - Term: Item/Name060101
       TermType: 0
       Description: 
@@ -233,6 +177,46 @@ MonoBehaviour:
       - 
       Flags: 0000
       Languages_Touch: []
+    - Term: Shield/Name010101
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u9244\u306E\u76FE"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ArmorHead/Name010101
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u9244\u306E\u515C"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ArmorTorso/Name010101
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u9244\u306E\u93A7"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ArmorArm/Name010101
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u9244\u306E\u624B\u7532"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ArmorLeg/Name010101
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u9244\u306E\u8DB3\u7532"
+      - 
+      Flags: 0000
+      Languages_Touch: []
     - Term: Actor/Name010101
       TermType: 0
       Description: 
@@ -272,7 +256,7 @@ MonoBehaviour:
     Google_WebServiceURL: https://script.google.com/macros/s/AKfycbyF0yeaJl5TfgY6r059oCUDjbulYEndJLFNq6Q7/exec
     Google_SpreadsheetKey: 1UKcNrFW7zKUH617RzHOCnP1JoEKPtbbJkPmgc0Hgkso
     Google_SpreadsheetName: I2Loc ER Localization
-    Google_LastUpdatedVersion: 1647742364835
+    Google_LastUpdatedVersion: 1647743878689
     Google_Password: change_this
     GoogleUpdateFrequency: 1
     GoogleInEditorCheckFrequency: 1

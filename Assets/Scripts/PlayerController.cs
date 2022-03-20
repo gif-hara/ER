@@ -28,16 +28,16 @@ namespace ER
         [SerializeReference, SubclassSelector(typeof(IEquipmentSelector))]
         private IEquipmentSelector leftEquipmentSelector = default;
 
-        [SerializeField, TermsPopup("Item/")]
+        [SerializeField, TermsPopup("ArmorHead/")]
         private string headMasterDataId = default;
 
-        [SerializeField, TermsPopup("Item/")]
+        [SerializeField, TermsPopup("ArmorTorso/")]
         private string torsoMasterDataId = default;
 
-        [SerializeField, TermsPopup("Item/")]
+        [SerializeField, TermsPopup("ArmorArm/")]
         private string armMasterDataId = default;
 
-        [SerializeField, TermsPopup("Item/")]
+        [SerializeField, TermsPopup("ArmorLeg/")]
         private string legMasterDataId = default;
 
         /// <summary>

@@ -181,10 +181,10 @@ MonoBehaviour:
     id: 0
   leftEquipmentSelector:
     id: 1
-  headMasterDataId: Item/Name020101
-  torsoMasterDataId: Item/Name030101
-  armMasterDataId: Item/Name040101
-  legMasterDataId: Item/Name050101
+  headMasterDataId: ArmorHead/Name010101
+  torsoMasterDataId: ArmorTorso/Name010101
+  armMasterDataId: ArmorArm/Name010101
+  legMasterDataId: ArmorLeg/Name010101
   lookAtDistanceThreshold: 26
   lookAtAngleThreshold: 90
   references:
@@ -205,7 +205,7 @@ MonoBehaviour:
     00000001:
       type: {class: ShieldSelector, ns: ER.EquipmentSystems, asm: Assembly-CSharp}
       data:
-        shieldDataId: Item/Name080101
+        shieldDataId: Shield/Name010101
 --- !u!114 &4561833922425830017
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -139,7 +139,7 @@ namespace ER.MasterDataSystem
             public string DarkDefense;
 
             public Record ToRecord() => new Record(
-                $"Item/{this.Id}",
+                this.Id,
                 (ArmorType)Enum.Parse(typeof(ArmorType), this.ArmorType),
                 int.Parse(this.PhysicsDefense),
                 int.Parse(this.MagicDefense),
