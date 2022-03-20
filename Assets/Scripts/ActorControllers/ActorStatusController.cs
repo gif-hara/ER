@@ -59,7 +59,7 @@ namespace ER.ActorControllers
 
         private void TakeDamage(EquipmentController equipmentController)
         {
-            if(this.isAlreadyDead)
+            if (this.isAlreadyDead)
             {
                 return;
             }
