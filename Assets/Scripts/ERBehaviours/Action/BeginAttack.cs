@@ -25,41 +25,36 @@ namespace ER.ERBehaviour
         [SerializeField]
         private HandType handType = default;
 
-        public IObservable<Unit> AsObservable(IBehaviourData data)
+        public void Invoke(IBehaviourData data)
         {
-            return Observable.Defer(() =>
+            var behaviourData = data.Cast<IActorHolder>();
+            var equipmentController = behaviourData.Actor.EquipmentController.GetEquipmentController(this.handType);
+            var director = equipmentController.PlayableDirector;
+            var actor = behaviourData.Actor;
+
+            director.extrapolationMode = this.wrapMode;
+            director.playableAsset = this.playableAsset;
+            director.SetGenericBinding("ActorAnimation", actor.Animator);
+            director.Play();
+
+            equipmentController.Power = this.power;
+
+            actor.StateController.ChangeRequest(ActorStateController.StateType.Attack);
+
+            director.OnStoppedAsObservable()
+            .Subscribe(_ =>
             {
-                var behaviourData = data.Cast<IActorHolder>();
-                var equipmentController = behaviourData.Actor.EquipmentController.GetEquipmentController(this.handType);
-                var director = equipmentController.PlayableDirector;
-                var actor = behaviourData.Actor;
+                actor.StateController.ChangeRequest(ActorStateController.StateType.Movable);
+            })
+            .AddTo(equipmentController);
 
-                director.extrapolationMode = this.wrapMode;
-                director.playableAsset = this.playableAsset;
-                director.SetGenericBinding("ActorAnimation", actor.Animator);
-                director.Play();
-
-                equipmentController.Power = this.power;
-
-                actor.StateController.ChangeRequest(ActorStateController.StateType.Attack);
-
-                director.OnStoppedAsObservable()
-                .Subscribe(_ =>
-                {
-                    actor.StateController.ChangeRequest(ActorStateController.StateType.Movable);
-                })
-                .AddTo(equipmentController);
-
-                actor.Event.OnChangedStateSubject()
-                .Where(x => x == ActorStateController.StateType.Avoidance || x == ActorStateController.StateType.Guard)
-                .Subscribe(_ =>
-                {
-                    equipmentController.PlayDefaultPlayableAsset();
-                })
-                .AddTo(equipmentController);
-
-                return Observable.ReturnUnit();
-            });
+            actor.Event.OnChangedStateSubject()
+            .Where(x => x == ActorStateController.StateType.Avoidance || x == ActorStateController.StateType.Guard)
+            .Subscribe(_ =>
+            {
+                equipmentController.PlayDefaultPlayableAsset();
+            })
+            .AddTo(equipmentController);
         }
     }
 }

@@ -10,9 +10,6 @@ namespace ER.ERBehaviour
     /// </summary>
     public interface IAction
     {
-        /// <summary>
-        /// アクションを実行して完了までのイベント
-        /// </summary>
-        IObservable<Unit> AsObservable(IBehaviourData data);
+        void Invoke(IBehaviourData data);
     }
 }

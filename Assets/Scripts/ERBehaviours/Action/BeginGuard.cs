@@ -22,46 +22,41 @@ namespace ER.ERBehaviour
         [SerializeField]
         private HandType handType = default;
 
-        public IObservable<Unit> AsObservable(IBehaviourData data)
+        public void Invoke(IBehaviourData data)
         {
-            return Observable.Defer(() =>
+            var behaviourData = data.Cast<IActorHolder>();
+            var equipmentController = behaviourData.Actor.EquipmentController.GetEquipmentController(this.handType);
+            var director = equipmentController.PlayableDirector;
+            var actor = behaviourData.Actor;
+
+            director.extrapolationMode = this.wrapMode;
+            director.playableAsset = this.playableAsset;
+            director.SetGenericBinding("ActorAnimation", actor.Animator);
+            director.Play();
+
+            actor.EquipmentController.BeginGuard(equipmentController);
+            actor.StateController.ChangeRequest(ActorStateController.StateType.Guard);
+
+            actor.Event.OnEndLeftEquipmentSubject()
+            .Take(1)
+            .TakeUntil(actor.Event.OnChangedStateSubject().Where(x => x == ActorStateController.StateType.Attack || x == ActorStateController.StateType.Movable))
+            .Subscribe(_ =>
             {
-                var behaviourData = data.Cast<IActorHolder>();
-                var equipmentController = behaviourData.Actor.EquipmentController.GetEquipmentController(this.handType);
-                var director = equipmentController.PlayableDirector;
-                var actor = behaviourData.Actor;
+                actor.StateController.ChangeRequest(ActorStateController.StateType.Movable);
+            })
+            .AddTo(equipmentController)
+            .AddTo(actor.Disposables);
 
-                director.extrapolationMode = this.wrapMode;
-                director.playableAsset = this.playableAsset;
-                director.SetGenericBinding("ActorAnimation", actor.Animator);
-                director.Play();
-
-                actor.EquipmentController.BeginGuard(equipmentController);
-                actor.StateController.ChangeRequest(ActorStateController.StateType.Guard);
-
-                actor.Event.OnEndLeftEquipmentSubject()
-                .Take(1)
-                .TakeUntil(actor.Event.OnChangedStateSubject().Where(x => x == ActorStateController.StateType.Attack || x == ActorStateController.StateType.Movable))
-                .Subscribe(_ =>
-                {
-                    actor.StateController.ChangeRequest(ActorStateController.StateType.Movable);
-                })
-                .AddTo(equipmentController)
-                .AddTo(actor.Disposables);
-
-                actor.Event.OnChangedStateSubject()
-                .Where(x => x == ActorStateController.StateType.Attack || x == ActorStateController.StateType.Movable)
-                .Take(1)
-                .Subscribe(_ =>
-                {
-                    equipmentController.PlayDefaultPlayableAsset();
-                    actor.EquipmentController.EndGuard();
-                })
-                .AddTo(equipmentController)
-                .AddTo(actor.Disposables);
-
-                return Observable.ReturnUnit();
-            });
+            actor.Event.OnChangedStateSubject()
+            .Where(x => x == ActorStateController.StateType.Attack || x == ActorStateController.StateType.Movable)
+            .Take(1)
+            .Subscribe(_ =>
+            {
+                equipmentController.PlayDefaultPlayableAsset();
+                actor.EquipmentController.EndGuard();
+            })
+            .AddTo(equipmentController)
+            .AddTo(actor.Disposables);
         }
     }
 }

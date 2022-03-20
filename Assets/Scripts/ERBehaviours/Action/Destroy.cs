@@ -10,16 +10,11 @@ namespace ER.ERBehaviour
     /// </summary>
     public sealed class Destroy : IAction
     {
-        public IObservable<Unit> AsObservable(IBehaviourData data)
+        public void Invoke(IBehaviourData data)
         {
-            return Observable.Defer(() =>
-            {
-                var gameObjectHolder = data.Cast<IGameObjectHolder>();
+            var gameObjectHolder = data.Cast<IGameObjectHolder>();
 
-                UnityEngine.Object.Destroy(gameObjectHolder.GameObject);
-
-                return Observable.ReturnUnit();
-            });
+            UnityEngine.Object.Destroy(gameObjectHolder.GameObject);
         }
     }
 }

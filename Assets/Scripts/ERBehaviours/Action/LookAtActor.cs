@@ -14,16 +14,11 @@ namespace ER.ERBehaviour
         [SerializeField]
         private ActorType actorType = default;
 
-        public IObservable<Unit> AsObservable(IBehaviourData data)
+        public void Invoke(IBehaviourData data)
         {
-            return Observable.Defer(() =>
-            {
-                var actorHolder = data.Cast<IActorHolder>();
-                var actor = actorHolder.Actor;
-                actor.MotionController.BeginLookAt(ActorUtility.GetNearActor(this.actorType, actor.transform.position));
-
-                return Observable.ReturnUnit();
-            });
+            var actorHolder = data.Cast<IActorHolder>();
+            var actor = actorHolder.Actor;
+            actor.MotionController.BeginLookAt(ActorUtility.GetNearActor(this.actorType, actor.transform.position));
         }
     }
 }

@@ -24,9 +24,7 @@ namespace ER.ERBehaviour
                 return;
             }
 
-            this.action.AsObservable(data)
-                .Subscribe()
-                .AddTo(disposables);
+            this.action.Invoke(data);
         }
     }
 }

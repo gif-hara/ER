@@ -14,15 +14,10 @@ namespace ER.ERBehaviour
         [SerializeField]
         private string aiName = default;
 
-        public IObservable<Unit> AsObservable(IBehaviourData data)
+        public void Invoke(IBehaviourData data)
         {
-            return Observable.Defer(() =>
-            {
-                var aiBehaviourData = data.Cast<ActorAIBehaviourData>();
-                aiBehaviourData.AIController.ChangeRequest(this.aiName);
-
-                return Observable.ReturnUnit();
-            });
+            var aiBehaviourData = data.Cast<ActorAIBehaviourData>();
+            aiBehaviourData.AIController.ChangeRequest(this.aiName);
         }
     }
 }

@@ -16,19 +16,12 @@ namespace ER.ERBehaviour
         [SerializeReference, SubclassSelector(typeof(IAction))]
         private List<IAction> actions = default;
 
-        public IObservable<Unit> AsObservable(IBehaviourData data)
+        public void Invoke(IBehaviourData data)
         {
-            return Observable.Defer(() =>
+            foreach (var i in this.actions)
             {
-                var stream = this.actions[0].AsObservable(data);
-                for(var i=1; i<this.actions.Count; i++)
-                {
-                    var index = i;
-                    stream = stream.SelectMany(_ => this.actions[index].AsObservable(data));
-                }
-
-                return stream;
-            });
+                i.Invoke(data);
+            }
         }
     }
 }

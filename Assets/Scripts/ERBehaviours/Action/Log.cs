@@ -13,13 +13,9 @@ namespace ER.ERBehaviour
         [SerializeField]
         private string message;
 
-        public IObservable<Unit> AsObservable(IBehaviourData data)
+        public void Invoke(IBehaviourData data)
         {
-            return Observable.Defer(() =>
-            {
-                Debug.Log(this.message);
-                return Observable.ReturnUnit();
-            });
+            Debug.Log(this.message);
         }
     }
 }
