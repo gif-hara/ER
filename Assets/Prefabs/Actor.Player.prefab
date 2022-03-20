@@ -181,6 +181,10 @@ MonoBehaviour:
     id: 0
   leftEquipmentSelector:
     id: 1
+  headMasterDataId: Item/Name020101
+  torsoMasterDataId: Item/Name030101
+  armMasterDataId: Item/Name040101
+  legMasterDataId: Item/Name050101
   lookAtDistanceThreshold: 26
   lookAtAngleThreshold: 90
   references:

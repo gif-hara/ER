@@ -19,13 +19,13 @@ namespace ER.ActorControllers
 
         public EquipmentController GuardingEquipmentController { get; private set; }
 
-        public MasterDataArmor Head { get; private set; }
+        public MasterDataArmor.Record Head { get; private set; }
 
-        public MasterDataArmor Torso { get; private set; }
+        public MasterDataArmor.Record Torso { get; private set; }
 
-        public MasterDataArmor Arm { get; private set; }
+        public MasterDataArmor.Record Arm { get; private set; }
 
-        public MasterDataArmor Leg { get; private set; }
+        public MasterDataArmor.Record Leg { get; private set; }
 
         /// <summary>
         /// 左手行動のリクエストが来ているか
@@ -73,6 +73,46 @@ namespace ER.ActorControllers
         public void EndGuard()
         {
             this.GuardingEquipmentController = null;
+        }
+
+        public MasterDataArmor.Record GetArmor(ArmorType armorType)
+        {
+            switch (armorType)
+            {
+                case ArmorType.Head:
+                    return this.Head;
+                case ArmorType.Torso:
+                    return this.Torso;
+                case ArmorType.Arm:
+                    return this.Arm;
+                case ArmorType.Leg:
+                    return this.Leg;
+                default:
+                    Assert.IsTrue(false, $"{armorType}は未対応です");
+                    return null;
+            }
+        }
+
+        public void SetArmor(ArmorType armorType, MasterDataArmor.Record masterDataArmor)
+        {
+            switch (armorType)
+            {
+                case ArmorType.Head:
+                    this.Head = masterDataArmor;
+                    break;
+                case ArmorType.Torso:
+                    this.Torso = masterDataArmor;
+                    break;
+                case ArmorType.Arm:
+                    this.Arm = masterDataArmor;
+                    break;
+                case ArmorType.Leg:
+                    this.Leg = masterDataArmor;
+                    break;
+                default:
+                    Assert.IsTrue(false, $"{armorType}は未対応です");
+                    break;
+            }
         }
 
         public EquipmentController GetEquipmentController(HandType handType)

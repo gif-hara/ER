@@ -1,5 +1,7 @@
 using ER.ActorControllers;
 using ER.EquipmentSystems;
+using ER.MasterDataSystem;
+using I2.Loc;
 using System;
 using System.Collections.Generic;
 using UniRx;
@@ -25,6 +27,18 @@ namespace ER
 
         [SerializeReference, SubclassSelector(typeof(IEquipmentSelector))]
         private IEquipmentSelector leftEquipmentSelector = default;
+
+        [SerializeField, TermsPopup("Item/")]
+        private string headMasterDataId = default;
+
+        [SerializeField, TermsPopup("Item/")]
+        private string torsoMasterDataId = default;
+
+        [SerializeField, TermsPopup("Item/")]
+        private string armMasterDataId = default;
+
+        [SerializeField, TermsPopup("Item/")]
+        private string legMasterDataId = default;
 
         /// <summary>
         /// ロックオン可能な距離の閾値
@@ -73,7 +87,7 @@ namespace ER
             };
             this.inputAction.Player.Avoidance.performed += callback =>
             {
-                if(!this.CanAvoidance())
+                if (!this.CanAvoidance())
                 {
                     return;
                 }
@@ -105,6 +119,11 @@ namespace ER
 
             this.rightEquipmentSelector.Attach(this.actor);
             this.leftEquipmentSelector.Attach(this.actor);
+
+            this.actor.EquipmentController.SetArmor(ArmorType.Head, MasterDataArmor.Get(this.headMasterDataId));
+            this.actor.EquipmentController.SetArmor(ArmorType.Torso, MasterDataArmor.Get(this.torsoMasterDataId));
+            this.actor.EquipmentController.SetArmor(ArmorType.Arm, MasterDataArmor.Get(this.armMasterDataId));
+            this.actor.EquipmentController.SetArmor(ArmorType.Leg, MasterDataArmor.Get(this.legMasterDataId));
         }
 
         private void Update()
@@ -182,7 +201,7 @@ namespace ER
             Actor result = null;
             var minDistance = float.MaxValue;
             var minAngle = float.MaxValue;
-            foreach(var i in Actor.Enemies)
+            foreach (var i in Actor.Enemies)
             {
                 var diff = i.transform.position - actor.transform.position;
                 var distance = diff.magnitude;
@@ -192,7 +211,7 @@ namespace ER
                     minDistance = distance;
 
                     var angle = Vector2.Angle(actor.transform.up, diff.normalized);
-                    if(angle <= this.lookAtAngleThreshold && angle <= minAngle)
+                    if (angle <= this.lookAtAngleThreshold && angle <= minAngle)
                     {
                         minAngle = angle;
                         result = i;
