@@ -267,6 +267,17 @@ namespace ER
                 },
                 {
                     ""name"": """",
+                    ""id"": ""b05e35d3-3096-49fc-859f-5c682ac1e651"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LookAt"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""15bd8a2d-a5ca-48d3-b96e-255454cc64ec"",
                     ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
