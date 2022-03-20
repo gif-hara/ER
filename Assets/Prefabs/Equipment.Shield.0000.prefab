@@ -61,6 +61,7 @@ MonoBehaviour:
         triggers:
         - id: 2
         - id: 3
+        - id: 4
     00000001:
       type: {class: BeginGuard, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
@@ -68,11 +69,14 @@ MonoBehaviour:
         wrapMode: 1
         handType: 0
     00000002:
-      type: {class: ActorState, ns: ER.ERBehaviour, asm: Assembly-CSharp}
-      data:
-        stateType: 1
+      type: {class: CanNextAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
     00000003:
       type: {class: IsLeftRequest, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+    00000004:
+      type: {class: ActorState, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        stateType: 4
+        isMatch: 0
 --- !u!320 &4311177486490712205
 PlayableDirector:
   m_ObjectHideFlags: 0

@@ -17,12 +17,15 @@ namespace ER.ERBehaviour
         [SerializeField]
         private ActorStateController.StateType stateType = default;
 
+        [SerializeField]
+        private bool isMatch = true;
+
         public bool Evaluate(IBehaviourData data)
         {
             var actorHolder = data.Cast<IActorHolder>();
             var actor = actorHolder.Actor;
 
-            return this.stateType == actor.StateController.CurrentState;
+            return (this.stateType == actor.StateController.CurrentState) == this.isMatch;
         }
     }
 }

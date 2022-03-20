@@ -71,7 +71,7 @@ MonoBehaviour:
     00000002:
       type: {class: OnBeginRightEquipment, ns: ER.ERBehaviour, asm: Assembly-CSharp}
     00000003:
-      type: {class: CanAdvancedEntry, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      type: {class: CanNextAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
 --- !u!320 &4311177486490712205
 PlayableDirector:
   m_ObjectHideFlags: 0
