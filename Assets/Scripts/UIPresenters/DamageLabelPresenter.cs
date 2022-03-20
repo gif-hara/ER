@@ -31,7 +31,7 @@ namespace ER.UIPresenters
                 })
                 .AddTo(this);
 
-            GameEvent.OnSpawnedGameCameraController()
+            GameEvent.OnSpawnedGameCameraControllerSubject()
                 .Subscribe(x =>
                 {
                     this.worldCamera = x.ControlledCamera;

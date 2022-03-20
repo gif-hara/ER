@@ -26,6 +26,11 @@ namespace ER
         private static Subject<GameCameraController> onSpawnedGameCameraController;
 
         /// <summary>
+        /// ゲームメニューの表示をリクエストするイベント
+        /// </summary>
+        private static Subject<Unit> onRequestOpenIngameMenu;
+
+        /// <summary>
         /// <inheritdoc cref="onSpawnedActor"/>
         /// </summary>
         public static ISubject<Actor> OnSpawnedActorSubject() => onSpawnedActor;
@@ -33,13 +38,19 @@ namespace ER
         /// <summary>
         /// <inheritdoc cref="onSpawnedGameCameraController"/>
         /// </summary>
-        public static ISubject<GameCameraController> OnSpawnedGameCameraController() => onSpawnedGameCameraController;
+        public static ISubject<GameCameraController> OnSpawnedGameCameraControllerSubject() => onSpawnedGameCameraController;
+
+        /// <summary>
+        /// <inheritdoc cref="onRequestOpenIngameMenu"/>
+        /// </summary>
+        public static ISubject<Unit> OnRequestOpenIngameMenuSubject() => onRequestOpenIngameMenu;
 
         public static void Initialize()
         {
             IsGameReady = new ReactiveProperty<bool>(false);
             onSpawnedActor = new Subject<Actor>();
             onSpawnedGameCameraController = new Subject<GameCameraController>();
+            onRequestOpenIngameMenu = new Subject<Unit>();
         }
 
         public static void Clear()
@@ -50,6 +61,8 @@ namespace ER
             onSpawnedActor = null;
             onSpawnedGameCameraController.Dispose();
             onSpawnedGameCameraController = null;
+            onRequestOpenIngameMenu.Dispose();
+            onRequestOpenIngameMenu = null;
         }
     }
 }

@@ -75,6 +75,14 @@ namespace ER
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""OpenIngameMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""773fc668-543a-41f4-9d95-138c68f1defa"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -172,7 +180,7 @@ namespace ER
                     ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -183,7 +191,7 @@ namespace ER
                     ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -194,7 +202,7 @@ namespace ER
                     ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -205,7 +213,7 @@ namespace ER
                     ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -227,7 +235,7 @@ namespace ER
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""UseRightEquipment"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -249,7 +257,7 @@ namespace ER
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Avoidance"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -271,7 +279,7 @@ namespace ER
                     ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""LookAt"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -282,7 +290,18 @@ namespace ER
                     ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7c30d30d-5262-4b01-9673-93950207e8dc"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -293,7 +312,7 @@ namespace ER
                     ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""UseLeftEquipment"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -304,8 +323,30 @@ namespace ER
                     ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""UseLeftEquipment"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f8dd7510-2258-417e-aaae-f5f1a5489599"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""OpenIngameMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eb2e1943-4b44-4e4d-9ba8-e29f03897ff8"",
+                    ""path"": ""<Keyboard>/o"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""OpenIngameMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -890,6 +931,7 @@ namespace ER
             m_Player_Avoidance = m_Player.FindAction("Avoidance", throwIfNotFound: true);
             m_Player_LookAt = m_Player.FindAction("LookAt", throwIfNotFound: true);
             m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+            m_Player_OpenIngameMenu = m_Player.FindAction("OpenIngameMenu", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -958,6 +1000,7 @@ namespace ER
         private readonly InputAction m_Player_Avoidance;
         private readonly InputAction m_Player_LookAt;
         private readonly InputAction m_Player_Interact;
+        private readonly InputAction m_Player_OpenIngameMenu;
         public struct PlayerActions
         {
             private @ERInputAction m_Wrapper;
@@ -969,6 +1012,7 @@ namespace ER
             public InputAction @Avoidance => m_Wrapper.m_Player_Avoidance;
             public InputAction @LookAt => m_Wrapper.m_Player_LookAt;
             public InputAction @Interact => m_Wrapper.m_Player_Interact;
+            public InputAction @OpenIngameMenu => m_Wrapper.m_Player_OpenIngameMenu;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -999,6 +1043,9 @@ namespace ER
                     @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                     @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                     @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                    @OpenIngameMenu.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenIngameMenu;
+                    @OpenIngameMenu.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenIngameMenu;
+                    @OpenIngameMenu.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenIngameMenu;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
@@ -1024,6 +1071,9 @@ namespace ER
                     @Interact.started += instance.OnInteract;
                     @Interact.performed += instance.OnInteract;
                     @Interact.canceled += instance.OnInteract;
+                    @OpenIngameMenu.started += instance.OnOpenIngameMenu;
+                    @OpenIngameMenu.performed += instance.OnOpenIngameMenu;
+                    @OpenIngameMenu.canceled += instance.OnOpenIngameMenu;
                 }
             }
         }
@@ -1187,6 +1237,7 @@ namespace ER
             void OnAvoidance(InputAction.CallbackContext context);
             void OnLookAt(InputAction.CallbackContext context);
             void OnInteract(InputAction.CallbackContext context);
+            void OnOpenIngameMenu(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {

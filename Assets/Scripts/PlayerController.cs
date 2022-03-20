@@ -107,6 +107,11 @@ namespace ER
                 this.actor.InteractableStageGimmickController.BeginInteract();
             };
 
+            this.inputAction.Player.OpenIngameMenu.performed += callback =>
+            {
+                GameEvent.OnRequestOpenIngameMenuSubject().OnNext(Unit.Default);
+            };
+
             this.rightEquipmentSelector.Attach(this.actor);
             this.leftEquipmentSelector.Attach(this.actor);
 

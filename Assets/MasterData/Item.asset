@@ -13,69 +13,69 @@ MonoBehaviour:
   m_Name: Item
   m_EditorClassIdentifier: 
   records:
-  - id: Weapon.Name010101
+  - id: Weapon/Name010101
     stackable: 0
     category: 1
-  - id: Shield.Name010101
+  - id: Shield/Name010101
     stackable: 0
     category: 8
-  - id: ArmorHead.Name010101
+  - id: ArmorHead/Name010101
     stackable: 0
     category: 2
-  - id: ArmorTorso.Name010101
+  - id: ArmorTorso/Name010101
     stackable: 0
     category: 3
-  - id: ArmorArm.Name010101
+  - id: ArmorArm/Name010101
     stackable: 0
     category: 4
-  - id: ArmorLeg.Name010101
+  - id: ArmorLeg/Name010101
     stackable: 0
     category: 5
-  - id: ValuableItem.Name010101
+  - id: ValuableItem/Name010101
     stackable: 1
     category: 7
-  - id: ValuableItem.Name010102
+  - id: ValuableItem/Name010102
     stackable: 1
     category: 7
-  - id: ValuableItem.Name010103
+  - id: ValuableItem/Name010103
     stackable: 1
     category: 7
-  - id: ValuableItem.Name010104
+  - id: ValuableItem/Name010104
     stackable: 1
     category: 7
-  - id: ValuableItem.Name010105
+  - id: ValuableItem/Name010105
     stackable: 1
     category: 7
-  - id: ValuableItem.Name010106
+  - id: ValuableItem/Name010106
     stackable: 1
     category: 7
-  - id: ValuableItem.Name010107
+  - id: ValuableItem/Name010107
     stackable: 1
     category: 7
-  - id: ValuableItem.Name010108
+  - id: ValuableItem/Name010108
     stackable: 1
     category: 7
-  - id: ValuableItem.Name010109
+  - id: ValuableItem/Name010109
     stackable: 1
     category: 7
-  - id: ValuableItem.Name010110
+  - id: ValuableItem/Name010110
     stackable: 1
     category: 7
-  - id: ValuableItem.Name010111
+  - id: ValuableItem/Name010111
     stackable: 1
     category: 7
-  - id: ValuableItem.Name010112
+  - id: ValuableItem/Name010112
     stackable: 1
     category: 7
-  - id: ValuableItem.Name010113
+  - id: ValuableItem/Name010113
     stackable: 1
     category: 7
-  - id: ValuableItem.Name010114
+  - id: ValuableItem/Name010114
     stackable: 1
     category: 7
-  - id: ValuableItem.Name010115
+  - id: ValuableItem/Name010115
     stackable: 1
     category: 7
-  - id: ValuableItem.Name010116
+  - id: ValuableItem/Name010116
     stackable: 1
     category: 7
