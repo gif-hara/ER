@@ -11,24 +11,24 @@ namespace ER.ERBehaviour
     [Serializable]
     public sealed class OnBeginRightEquipment : ITrigger
     {
-        private bool evalute = false;
+        private bool evaluate = false;
 
         private IDisposable disposable = null;
 
-        public bool Evalute(IBehaviourData data)
+        public bool Evaluate(IBehaviourData data)
         {
             if (this.disposable == null)
             {
                 var actor = data.Cast<IActorHolder>().Actor;
                 disposable = actor.Event.OnBeginRightEquipmentSubject()
-                    .Subscribe(_ => this.evalute = true);
+                    .Subscribe(_ => this.evaluate = true);
             }
 
-            var result = this.evalute;
+            var result = this.evaluate;
 
             if (result)
             {
-                this.evalute = false;
+                this.evaluate = false;
             }
 
             return result;

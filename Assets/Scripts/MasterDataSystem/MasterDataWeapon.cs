@@ -128,9 +128,9 @@ namespace ER.MasterDataSystem
 
             public EquipmentGrowthType growthType = default;
 
-            public int Evalute(float value)
+            public int Evaluate(float value)
             {
-                return Mathf.FloorToInt(Mathf.Lerp(this.minAttack, this.maxAttack, Ease.Evalute(value, this.growthType)));
+                return Mathf.FloorToInt(Mathf.Lerp(this.minAttack, this.maxAttack, Ease.Evaluate(value, this.growthType)));
             }
         }
 

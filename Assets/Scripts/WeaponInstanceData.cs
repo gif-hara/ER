@@ -21,7 +21,7 @@ namespace ER
 
         public int GetAttack(AttackAttributeType attackAttributeType)
         {
-            return this.MasterData.GetAttackElement(attackAttributeType).Evalute(this.LevelData.GetRate(attackAttributeType));
+            return this.MasterData.GetAttackElement(attackAttributeType).Evaluate(this.LevelData.GetRate(attackAttributeType));
         }
     }
 }

@@ -22,7 +22,7 @@ namespace ER.ERBehaviour
         [SerializeField]
         private bool isIn = default;
 
-        public bool Evalute(IBehaviourData data)
+        public bool Evaluate(IBehaviourData data)
         {
             var actorHolder = data.Cast<IActorHolder>();
             var actor = actorHolder.Actor;

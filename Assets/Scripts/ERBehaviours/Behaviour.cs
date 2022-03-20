@@ -19,7 +19,7 @@ namespace ER.ERBehaviour
 
         public void Invoke(IBehaviourData data, CompositeDisposable disposables)
         {
-            if (!this.trigger.Evalute(data))
+            if (!this.trigger.Evaluate(data))
             {
                 return;
             }

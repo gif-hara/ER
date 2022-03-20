@@ -16,11 +16,11 @@ namespace ER.ERBehaviour
         [SerializeReference, SubclassSelector(typeof(ITrigger))]
         private List<ITrigger> triggers = default;
 
-        public bool Evalute(IBehaviourData data)
+        public bool Evaluate(IBehaviourData data)
         {
             foreach (var i in this.triggers)
             {
-                if (!i.Evalute(data))
+                if (!i.Evaluate(data))
                 {
                     return false;
                 }

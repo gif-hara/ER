@@ -12,7 +12,7 @@ namespace ER.ERBehaviour
     [Serializable]
     public sealed class IsLeftRequest : ITrigger
     {
-        public bool Evalute(IBehaviourData data)
+        public bool Evaluate(IBehaviourData data)
         {
             var actorHolder = data.Cast<IActorHolder>();
             var actor = actorHolder.Actor;

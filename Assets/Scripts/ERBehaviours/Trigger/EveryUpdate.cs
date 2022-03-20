@@ -12,7 +12,7 @@ namespace ER.ERBehaviour
     [Serializable]
     public sealed class EveryUpdate : ITrigger
     {
-        public bool Evalute(IBehaviourData data)
+        public bool Evaluate(IBehaviourData data)
         {
             return true;
         }

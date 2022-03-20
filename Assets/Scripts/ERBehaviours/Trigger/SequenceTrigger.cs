@@ -16,7 +16,7 @@ namespace ER.ERBehaviour
         [SerializeReference, SubclassSelector(typeof(ITrigger))]
         private List<ITrigger> triggers = default;
 
-        public bool Evalute(IBehaviourData data)
+        public bool Evaluate(IBehaviourData data)
         {
             throw new NotImplementedException();
         }

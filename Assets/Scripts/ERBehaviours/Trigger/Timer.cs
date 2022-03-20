@@ -14,19 +14,19 @@ namespace ER.ERBehaviour
         [SerializeField]
         private float delaySeconds = default;
 
-        private bool evalute = false;
+        private bool evaluate = false;
 
         private IDisposable disposable = null;
 
-        public bool Evalute(IBehaviourData data)
+        public bool Evaluate(IBehaviourData data)
         {
             if (this.disposable == null)
             {
                 this.disposable = Observable.Timer(TimeSpan.FromSeconds(this.delaySeconds))
-                    .Subscribe(_ => this.evalute = true);
+                    .Subscribe(_ => this.evaluate = true);
             }
 
-            return this.evalute;
+            return this.evaluate;
         }
     }
 }

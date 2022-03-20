@@ -17,7 +17,7 @@ namespace ER.ERBehaviour
         [SerializeField]
         private ActorStateController.StateType stateType = default;
 
-        public bool Evalute(IBehaviourData data)
+        public bool Evaluate(IBehaviourData data)
         {
             var actorHolder = data.Cast<IActorHolder>();
             var actor = actorHolder.Actor;

@@ -13,12 +13,12 @@ namespace ER.ERBehaviour
     [Serializable]
     public sealed class CanAttack : ITrigger
     {
-        public bool Evalute(IBehaviourData data)
+        public bool Evaluate(IBehaviourData data)
         {
-            return this.Evalute(data.Cast<IActorHolder>().Actor);
+            return this.Evaluate(data.Cast<IActorHolder>().Actor);
         }
 
-        private bool Evalute(Actor actor)
+        private bool Evaluate(Actor actor)
         {
             var currentState = actor.StateController.CurrentState;
 

@@ -8,7 +8,7 @@ namespace ER
     /// </summary>
     public static class Ease
     {
-        public static float Evalute(float value, EquipmentGrowthType type)
+        public static float Evaluate(float value, EquipmentGrowthType type)
         {
             switch (type)
             {

@@ -10,6 +10,6 @@ namespace ER.ERBehaviour
     /// </summary>
     public interface ITrigger
     {
-        bool Evalute(IBehaviourData data);
+        bool Evaluate(IBehaviourData data);
     }
 }
