@@ -26,7 +26,7 @@ namespace ER.ActorControllers
         /// 左手装備品の使用を開始した際のイベント
         /// </summary>
         private readonly Subject<Unit> beginLeftEquipmentSubject = new Subject<Unit>();
-        
+
         /// <summary>
         /// 左手装備品の使用を完了した際のイベント
         /// </summary>
@@ -76,6 +76,11 @@ namespace ER.ActorControllers
         /// <see cref="IInteractableGimmick"/>のエリアから出た際のイベント
         /// </summary>
         private readonly Subject<IInteractableStageGimmick> onExitInteractableStageGimmick = new Subject<IInteractableStageGimmick>();
+
+        /// <summary>
+        /// ダメージを受けた際のイベント
+        /// </summary>
+        public readonly Subject<int> onTakedDamage = new Subject<int>();
 
         /// <summary>
         /// <inheritdoc cref="beginRightEquipmentSubject"/>
@@ -142,6 +147,11 @@ namespace ER.ActorControllers
         /// </summary>
         public ISubject<IInteractableStageGimmick> OnExitInteractableStageGimmickSubject() => this.onExitInteractableStageGimmick;
 
+        /// <summary>
+        /// <inheritdoc cref="onTakedDamage"/>
+        /// </summary>
+        public ISubject<int> OnTakedDamageSubject() => this.onTakedDamage;
+
         public void Dispose()
         {
             this.beginRightEquipmentSubject.Dispose();
@@ -155,6 +165,7 @@ namespace ER.ActorControllers
             this.onRespawned.Dispose();
             this.onEnterInteractableStageGimmick.Dispose();
             this.onExitInteractableStageGimmick.Dispose();
+            this.onTakedDamage.Dispose();
         }
     }
 }

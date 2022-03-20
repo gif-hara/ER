@@ -76,7 +76,14 @@ namespace ER.ActorControllers
 
         private void TakeDamage(int damage)
         {
+            if (this.isAlreadyDead)
+            {
+                return;
+            }
+
             this.hitPoint.Value -= damage;
+            this.actor.Event.OnTakedDamageSubject().OnNext(damage);
+
             if (this.HitPoint <= 0)
             {
                 this.isAlreadyDead = true;
