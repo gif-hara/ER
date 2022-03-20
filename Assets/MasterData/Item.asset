@@ -13,75 +13,69 @@ MonoBehaviour:
   m_Name: Item
   m_EditorClassIdentifier: 
   records:
-  - id: Item/Name000000
-    stackable: 0
-    category: 0
-  - id: Item/Name010101
+  - id: Weapon.Name010101
     stackable: 0
     category: 1
-  - id: Item/Name020101
-    stackable: 0
-    category: 2
-  - id: Item/Name030101
-    stackable: 0
-    category: 3
-  - id: Item/Name040101
-    stackable: 0
-    category: 4
-  - id: Item/Name050101
-    stackable: 0
-    category: 5
-  - id: Item/Name060101
-    stackable: 0
-    category: 6
-  - id: Item/Name070101
-    stackable: 1
-    category: 7
-  - id: Item/Name070102
-    stackable: 1
-    category: 7
-  - id: Item/Name070103
-    stackable: 1
-    category: 7
-  - id: Item/Name070104
-    stackable: 1
-    category: 7
-  - id: Item/Name070105
-    stackable: 1
-    category: 7
-  - id: Item/Name070106
-    stackable: 1
-    category: 7
-  - id: Item/Name070107
-    stackable: 1
-    category: 7
-  - id: Item/Name070108
-    stackable: 1
-    category: 7
-  - id: Item/Name070109
-    stackable: 1
-    category: 7
-  - id: Item/Name070110
-    stackable: 1
-    category: 7
-  - id: Item/Name070111
-    stackable: 1
-    category: 7
-  - id: Item/Name070112
-    stackable: 1
-    category: 7
-  - id: Item/Name070113
-    stackable: 1
-    category: 7
-  - id: Item/Name070114
-    stackable: 1
-    category: 7
-  - id: Item/Name070115
-    stackable: 1
-    category: 7
-  - id: Item/Name070116
-    stackable: 1
-    category: 7
-  - id: Item/Name080101
+  - id: Shield.Name010101
     stackable: 0
     category: 8
+  - id: ArmorHead.Name010101
+    stackable: 0
+    category: 2
+  - id: ArmorTorso.Name010101
+    stackable: 0
+    category: 3
+  - id: ArmorArm.Name010101
+    stackable: 0
+    category: 4
+  - id: ArmorLeg.Name010101
+    stackable: 0
+    category: 5
+  - id: ValuableItem.Name010101
+    stackable: 1
+    category: 7
+  - id: ValuableItem.Name010102
+    stackable: 1
+    category: 7
+  - id: ValuableItem.Name010103
+    stackable: 1
+    category: 7
+  - id: ValuableItem.Name010104
+    stackable: 1
+    category: 7
+  - id: ValuableItem.Name010105
+    stackable: 1
+    category: 7
+  - id: ValuableItem.Name010106
+    stackable: 1
+    category: 7
+  - id: ValuableItem.Name010107
+    stackable: 1
+    category: 7
+  - id: ValuableItem.Name010108
+    stackable: 1
+    category: 7
+  - id: ValuableItem.Name010109
+    stackable: 1
+    category: 7
+  - id: ValuableItem.Name010110
+    stackable: 1
+    category: 7
+  - id: ValuableItem.Name010111
+    stackable: 1
+    category: 7
+  - id: ValuableItem.Name010112
+    stackable: 1
+    category: 7
+  - id: ValuableItem.Name010113
+    stackable: 1
+    category: 7
+  - id: ValuableItem.Name010114
+    stackable: 1
+    category: 7
+  - id: ValuableItem.Name010115
+    stackable: 1
+    category: 7
+  - id: ValuableItem.Name010116
+    stackable: 1
+    category: 7

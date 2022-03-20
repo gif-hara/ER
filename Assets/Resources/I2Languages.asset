@@ -17,15 +17,7 @@ MonoBehaviour:
     UserAgreesToHaveItInsideThePluginsFolder: 0
     GoogleLiveSyncIsUptoDate: 1
     mTerms:
-    - Term: Item/Name060101
-      TermType: 0
-      Description: 
-      Languages:
-      - "\u9244\u306E\u6307\u8F2A"
-      - 
-      Flags: 0000
-      Languages_Touch: []
-    - Term: Item/Name070101
+    - Term: ValuableItem/Name010101
       TermType: 0
       Description: 
       Languages:
@@ -33,7 +25,7 @@ MonoBehaviour:
       - 
       Flags: 0000
       Languages_Touch: []
-    - Term: Item/Name070102
+    - Term: ValuableItem/Name010102
       TermType: 0
       Description: 
       Languages:
@@ -41,7 +33,7 @@ MonoBehaviour:
       - 
       Flags: 0000
       Languages_Touch: []
-    - Term: Item/Name070103
+    - Term: ValuableItem/Name010103
       TermType: 0
       Description: 
       Languages:
@@ -49,7 +41,7 @@ MonoBehaviour:
       - 
       Flags: 0000
       Languages_Touch: []
-    - Term: Item/Name070104
+    - Term: ValuableItem/Name010104
       TermType: 0
       Description: 
       Languages:
@@ -57,7 +49,7 @@ MonoBehaviour:
       - 
       Flags: 0000
       Languages_Touch: []
-    - Term: Item/Name070105
+    - Term: ValuableItem/Name010105
       TermType: 0
       Description: 
       Languages:
@@ -65,7 +57,7 @@ MonoBehaviour:
       - 
       Flags: 0000
       Languages_Touch: []
-    - Term: Item/Name070106
+    - Term: ValuableItem/Name010106
       TermType: 0
       Description: 
       Languages:
@@ -73,7 +65,7 @@ MonoBehaviour:
       - 
       Flags: 0000
       Languages_Touch: []
-    - Term: Item/Name070107
+    - Term: ValuableItem/Name010107
       TermType: 0
       Description: 
       Languages:
@@ -81,7 +73,7 @@ MonoBehaviour:
       - 
       Flags: 0000
       Languages_Touch: []
-    - Term: Item/Name070108
+    - Term: ValuableItem/Name010108
       TermType: 0
       Description: 
       Languages:
@@ -89,7 +81,7 @@ MonoBehaviour:
       - 
       Flags: 0000
       Languages_Touch: []
-    - Term: Item/Name070109
+    - Term: ValuableItem/Name010109
       TermType: 0
       Description: 
       Languages:
@@ -97,7 +89,7 @@ MonoBehaviour:
       - 
       Flags: 0000
       Languages_Touch: []
-    - Term: Item/Name070110
+    - Term: ValuableItem/Name010110
       TermType: 0
       Description: 
       Languages:
@@ -105,7 +97,7 @@ MonoBehaviour:
       - 
       Flags: 0000
       Languages_Touch: []
-    - Term: Item/Name070111
+    - Term: ValuableItem/Name010111
       TermType: 0
       Description: 
       Languages:
@@ -113,7 +105,7 @@ MonoBehaviour:
       - 
       Flags: 0000
       Languages_Touch: []
-    - Term: Item/Name070112
+    - Term: ValuableItem/Name010112
       TermType: 0
       Description: 
       Languages:
@@ -121,7 +113,7 @@ MonoBehaviour:
       - 
       Flags: 0000
       Languages_Touch: []
-    - Term: Item/Name070113
+    - Term: ValuableItem/Name010113
       TermType: 0
       Description: 
       Languages:
@@ -129,7 +121,7 @@ MonoBehaviour:
       - 
       Flags: 0000
       Languages_Touch: []
-    - Term: Item/Name070114
+    - Term: ValuableItem/Name010114
       TermType: 0
       Description: 
       Languages:
@@ -137,7 +129,7 @@ MonoBehaviour:
       - 
       Flags: 0000
       Languages_Touch: []
-    - Term: Item/Name070115
+    - Term: ValuableItem/Name010115
       TermType: 0
       Description: 
       Languages:
@@ -145,19 +137,11 @@ MonoBehaviour:
       - 
       Flags: 0000
       Languages_Touch: []
-    - Term: Item/Name070116
+    - Term: ValuableItem/Name010116
       TermType: 0
       Description: 
       Languages:
       - "\u95C7\u9632\u306E\u9B42"
-      - 
-      Flags: 0000
-      Languages_Touch: []
-    - Term: Item/Name080101
-      TermType: 0
-      Description: 
-      Languages:
-      - "\u9244\u306E\u76FE"
       - 
       Flags: 0000
       Languages_Touch: []
@@ -256,7 +240,7 @@ MonoBehaviour:
     Google_WebServiceURL: https://script.google.com/macros/s/AKfycbyF0yeaJl5TfgY6r059oCUDjbulYEndJLFNq6Q7/exec
     Google_SpreadsheetKey: 1UKcNrFW7zKUH617RzHOCnP1JoEKPtbbJkPmgc0Hgkso
     Google_SpreadsheetName: I2Loc ER Localization
-    Google_LastUpdatedVersion: 1647743878689
+    Google_LastUpdatedVersion: 1647744404503
     Google_Password: change_this
     GoogleUpdateFrequency: 1
     GoogleInEditorCheckFrequency: 1
