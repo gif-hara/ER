@@ -181,7 +181,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.data[3].behaviours.Array.data[0].trigger
-      value: Assembly-CSharp ER.ERBehaviour.ActorState
+      value: Assembly-CSharp ER.ERBehaviour.AndTrigger
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.data[3].behaviours.Array.data[1].trigger
@@ -224,6 +224,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[3].behaviours.Array.data[0].trigger.isMatch
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.data[2].behaviours.Array.data[0].action.moveSpeed
       value: 1
       objectReference: {fileID: 0}
@@ -260,6 +264,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[3].behaviours.Array.data[0].trigger.triggers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.data[1].behaviours.Array.data[0].action.actions.Array.data[0]
       value: Assembly-CSharp ER.ERBehaviour.LookAtActor
       objectReference: {fileID: 0}
@@ -274,6 +282,14 @@ PrefabInstance:
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.data[3].behaviours.Array.data[0].action.actions.Array.data[1]
       value: Assembly-CSharp ER.ERBehaviour.ChangeAI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[3].behaviours.Array.data[0].trigger.triggers.Array.data[0]
+      value: Assembly-CSharp ER.ERBehaviour.CanNextAction
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[3].behaviours.Array.data[0].trigger.triggers.Array.data[1]
+      value: Assembly-CSharp ER.ERBehaviour.ActorState
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.data[3].behaviours.Array.data[0].action.actions.Array.data[0].data
@@ -296,6 +312,14 @@ PrefabInstance:
       value: ChasePlayer
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[3].behaviours.Array.data[0].trigger.triggers.Array.data[0].data
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[3].behaviours.Array.data[0].trigger.triggers.Array.data[1].data
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.data[3].behaviours.Array.data[0].action.actions.Array.data[0].handType
       value: 1
       objectReference: {fileID: 0}
@@ -306,6 +330,14 @@ PrefabInstance:
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.data[1].behaviours.Array.data[0].action.actions.Array.data[0].actorType
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[3].behaviours.Array.data[0].trigger.triggers.Array.data[1].isMatch
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[3].behaviours.Array.data[0].trigger.triggers.Array.data[1].stateType
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.data[3].behaviours.Array.data[0].action.actions.Array.data[0].playableAsset
