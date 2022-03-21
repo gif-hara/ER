@@ -141,7 +141,6 @@ namespace ER.MasterDataSystem
             var task = DownloadFromSpreadSheet("Weapon");
             await task;
 
-            Debug.Log(task.Result);
             var result = JsonUtility.FromJson<Json>(task.Result);
 
             this.records = result.elements.Select(x => x.ToRecord()).ToList();
