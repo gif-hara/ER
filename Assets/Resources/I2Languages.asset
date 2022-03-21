@@ -17,6 +17,14 @@ MonoBehaviour:
     UserAgreesToHaveItInsideThePluginsFolder: 0
     GoogleLiveSyncIsUptoDate: 1
     mTerms:
+    - Term: Common/Equipment
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u88C5\u5099"
+      - Equipment
+      Flags: 0000
+      Languages_Touch: []
     - Term: ValuableItem/Name010101
       TermType: 0
       Description: 
@@ -240,7 +248,7 @@ MonoBehaviour:
     Google_WebServiceURL: https://script.google.com/macros/s/AKfycbyF0yeaJl5TfgY6r059oCUDjbulYEndJLFNq6Q7/exec
     Google_SpreadsheetKey: 1UKcNrFW7zKUH617RzHOCnP1JoEKPtbbJkPmgc0Hgkso
     Google_SpreadsheetName: I2Loc ER Localization
-    Google_LastUpdatedVersion: 1647744404503
+    Google_LastUpdatedVersion: 1647831190638
     Google_Password: change_this
     GoogleUpdateFrequency: 1
     GoogleInEditorCheckFrequency: 1
