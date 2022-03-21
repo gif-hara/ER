@@ -131,11 +131,11 @@ namespace ER.ActorControllers
 
         public class Hand
         {
-            public EquipmentController CurrentEquipmentController { get; private set; }
+            public EquipmentController CurrentEquipmentController => this.equipmentHolders[this.index];
 
             private int index;
 
-            private EquipmentController[] equipmentPrefabs = new EquipmentController[Define.EquipmentableNumber];
+            private EquipmentController[] equipmentHolders = new EquipmentController[Define.EquipmentableNumber];
 
             private Actor actor;
 
@@ -144,14 +144,32 @@ namespace ER.ActorControllers
                 this.actor = actor;
             }
 
-            public void Attach(EquipmentController equipmentPrefab, IEquipmentData equipmentData)
+            public void Attach(int index, EquipmentController equipmentPrefab, IEquipmentData equipmentData)
             {
-                if (this.CurrentEquipmentController != null)
+                if (this.equipmentHolders[index] != null)
                 {
-                    Object.Destroy(this.CurrentEquipmentController.gameObject);
+                    Object.Destroy(this.equipmentHolders[index].gameObject);
                 }
 
-                this.CurrentEquipmentController = equipmentPrefab.Attach(this.actor, equipmentData);
+                this.equipmentHolders[index] = equipmentPrefab.Attach(this.actor, equipmentData);
+                this.equipmentHolders[index].gameObject.SetActive(this.index == index);
+            }
+
+            public void ChangeNext()
+            {
+                var oldIndex = this.index;
+                do
+                {
+                    this.index = (this.index + 1) % Define.EquipmentableNumber;
+                } while (this.equipmentHolders[this.index] == null);
+
+                if (oldIndex == index)
+                {
+                    return;
+                }
+
+                this.equipmentHolders[oldIndex].gameObject.SetActive(false);
+                this.equipmentHolders[this.index].gameObject.SetActive(true);
             }
         }
     }
