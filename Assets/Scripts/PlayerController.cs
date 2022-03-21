@@ -52,40 +52,37 @@ namespace ER
         [SerializeField]
         private float lookAtAngleThreshold = default;
 
-        private ERInputAction inputAction;
-
         private void Start()
         {
-            this.inputAction = new ERInputAction();
-            this.inputAction.Enable();
+            var inputAction = GameController.Instance.InputAction;
 
-            this.inputAction.Player.UseRightEquipment.performed += callback =>
+            inputAction.Player.UseRightEquipment.performed += callback =>
             {
                 this.actor.Event.OnBeginRightEquipmentSubject().OnNext(Unit.Default);
             };
-            this.inputAction.Player.UseRightEquipment.canceled += callback =>
+            inputAction.Player.UseRightEquipment.canceled += callback =>
             {
                 this.actor.Event.OnEndRightEquipmentSubject().OnNext(Unit.Default);
             };
-            this.inputAction.Player.UseLeftEquipment.performed += callback =>
+            inputAction.Player.UseLeftEquipment.performed += callback =>
             {
                 this.actor.Event.OnBeginLeftEquipmentSubject().OnNext(Unit.Default);
             };
-            this.inputAction.Player.UseLeftEquipment.canceled += callback =>
+            inputAction.Player.UseLeftEquipment.canceled += callback =>
             {
                 this.actor.Event.OnEndLeftEquipmentSubject().OnNext(Unit.Default);
             };
-            this.inputAction.Player.Avoidance.performed += callback =>
+            inputAction.Player.Avoidance.performed += callback =>
             {
                 if (!this.actor.AnimationParameter.advancedEntry)
                 {
                     return;
                 }
 
-                var direction = this.inputAction.Player.Move.ReadValue<Vector2>();
+                var direction = inputAction.Player.Move.ReadValue<Vector2>();
                 this.actor.Event.OnRequestAvoidanceSubject().OnNext(direction);
             };
-            this.inputAction.Player.LookAt.performed += callback =>
+            inputAction.Player.LookAt.performed += callback =>
             {
                 if (!this.actor.MotionController.IsLookAt)
                 {
@@ -102,12 +99,12 @@ namespace ER
                 }
             };
 
-            this.inputAction.Player.Interact.performed += callback =>
+            inputAction.Player.Interact.performed += callback =>
             {
                 this.actor.InteractableStageGimmickController.BeginInteract();
             };
 
-            this.inputAction.Player.OpenIngameMenu.performed += callback =>
+            inputAction.Player.OpenIngameMenu.performed += callback =>
             {
                 GameEvent.OnRequestOpenIngameMenuSubject().OnNext(Unit.Default);
             };
@@ -123,14 +120,15 @@ namespace ER
 
         private void Update()
         {
+            var inputAction = GameController.Instance.InputAction;
             var t = this.transform;
-            var angle = this.inputAction.Player.Look.ReadValue<Vector2>();
+            var angle = inputAction.Player.Look.ReadValue<Vector2>();
             if (angle.sqrMagnitude > this.angleThreshold * this.angleThreshold)
             {
                 this.actor.MotionController.Rotate(angle);
             }
 
-            var direction = this.inputAction.Player.Move.ReadValue<Vector2>();
+            var direction = inputAction.Player.Move.ReadValue<Vector2>();
             this.actor.MotionController.Move(direction);
         }
 

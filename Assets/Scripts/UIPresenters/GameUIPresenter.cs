@@ -9,12 +9,18 @@ namespace ER.UIPresenters
     /// </summary>
     public sealed class GameUIPresenter : UIPresenter
     {
+        [SerializeField]
+        private UIAnimationController ingameAreaAnimationController = default;
+
         private void Awake()
         {
             GameEvent.OnRequestOpenIngameMenuSubject()
                 .Subscribe(_ =>
                 {
-                    Debug.Log("TODO");
+                    GameController.Instance.InputAction.Player.Disable();
+                    GameController.Instance.InputAction.UI.Enable();
+
+                    this.ingameAreaAnimationController.Play(false);
                 })
                 .AddTo(this);
         }

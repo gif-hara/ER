@@ -12,6 +12,8 @@ namespace ER
     /// </summary>
     public sealed class GameController : MonoBehaviour
     {
+        public static GameController Instance { get; private set; }
+
         [SerializeField]
         private GameCameraController gameCameraControllerPrefab = default;
 
@@ -20,6 +22,8 @@ namespace ER
 
         [SerializeField]
         private Transform playerSpawnPoint = default;
+
+        public ERInputAction InputAction { get; private set; }
 
         private void Awake()
         {
@@ -33,6 +37,10 @@ namespace ER
 
         private IEnumerator SetupCoroutine()
         {
+            Instance = this;
+            this.InputAction = new ERInputAction();
+            this.InputAction.Player.Enable();
+
             GameEvent.Initialize();
 
             yield return MasterData.SetupAsync().ToYieldInstruction();
