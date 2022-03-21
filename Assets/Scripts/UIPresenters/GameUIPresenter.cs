@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using UniRx;
 using UniRx.Triggers;
+using UnityEngine.EventSystems;
 
 namespace ER.UIPresenters
 {
@@ -22,6 +23,9 @@ namespace ER.UIPresenters
 
         [SerializeField]
         private UIAnimationController ingameMenuAnimationController = default;
+
+        [SerializeField]
+        private IngameRootMenuPresenter ingameRootMenuPresenter = default;
 
         private UIAnimationController currentRoot;
 
@@ -72,6 +76,8 @@ namespace ER.UIPresenters
             GameController.Instance.InputAction.Player.Disable();
             GameController.Instance.InputAction.UI.Enable();
             this.ChangeCurrentRoot(this.ingameMenuAnimationController);
+
+            this.ingameRootMenuPresenter.Activate();
         }
     }
 }

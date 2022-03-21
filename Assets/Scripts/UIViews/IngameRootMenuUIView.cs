@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UniRx;
 using UnityEngine;
@@ -18,7 +19,7 @@ namespace ER.UIViews
         [SerializeField]
         private Transform buttonElementParent = default;
 
-        public void ClearButtonElements()
+        private void ClearButtonElements()
         {
             for (var i = 0; i < this.buttonElementParent.childCount; i++)
             {
@@ -26,13 +27,18 @@ namespace ER.UIViews
             }
         }
 
-        public void CreateButtonElement(string label, Action onClickAction)
+        public List<IngameRootMenuButtonElement> CreateButtonElements(params Action<IngameRootMenuButtonElement>[] setupActions)
         {
-            var element = Instantiate(this.buttonElementPrefab, this.buttonElementParent, false);
-            element.Label.text = label;
-            element.Button.OnClickAsObservable()
-                .Subscribe(_ => onClickAction())
-                .AddTo(element);
+            var result = new List<IngameRootMenuButtonElement>();
+            this.ClearButtonElements();
+            foreach (var i in setupActions)
+            {
+                var element = Instantiate(this.buttonElementPrefab, this.buttonElementParent, false);
+                i(element);
+                result.Add(element);
+            }
+
+            return result;
         }
     }
 }
