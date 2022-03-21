@@ -22,7 +22,7 @@ namespace ER.StageControllers
         {
             this.stageLoader = new StageLoader(1, this.transform);
 
-            GameEvent.OnSpawnedActorSubject()
+            GameController.Instance.Event.OnSpawnedActorSubject()
                 .Where(x => x.gameObject.layer == Layer.Index.Player)
                 .Subscribe(x =>
                 {
@@ -34,13 +34,13 @@ namespace ER.StageControllers
 
         private void Update()
         {
-            if(this.actor == null)
+            if (this.actor == null)
             {
                 return;
             }
 
             var index = StageLoader.GetIndex(this.actor.transform.position);
-            if(this.currentIndex == index)
+            if (this.currentIndex == index)
             {
                 return;
             }
@@ -55,7 +55,7 @@ namespace ER.StageControllers
             this.stageLoader.LoadAsync(this.actor.transform.position)
             .Subscribe(x =>
             {
-                foreach(var i in x)
+                foreach (var i in x)
                 {
                     i.stage.SetupGimmicks(this);
                 }

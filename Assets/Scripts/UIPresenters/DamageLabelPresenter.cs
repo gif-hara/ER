@@ -24,14 +24,14 @@ namespace ER.UIPresenters
 
         private void Awake()
         {
-            GameEvent.OnSpawnedActorSubject()
+            GameController.Instance.Event.OnSpawnedActorSubject()
                 .Subscribe(x =>
                 {
                     this.RegisterActorEvent(x);
                 })
                 .AddTo(this);
 
-            GameEvent.OnSpawnedGameCameraControllerSubject()
+            GameController.Instance.Event.OnSpawnedGameCameraControllerSubject()
                 .Subscribe(x =>
                 {
                     this.worldCamera = x.ControlledCamera;

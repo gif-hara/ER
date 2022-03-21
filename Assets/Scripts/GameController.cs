@@ -23,6 +23,8 @@ namespace ER
         [SerializeField]
         private Transform playerSpawnPoint = default;
 
+        public GameEvent Event { get; } = new GameEvent();
+
         public ERInputAction InputAction { get; private set; }
 
         private void Awake()
@@ -32,7 +34,7 @@ namespace ER
 
         private void OnDestroy()
         {
-            GameEvent.Clear();
+            this.Event.Dispose();
         }
 
         private IEnumerator SetupCoroutine()
@@ -40,8 +42,6 @@ namespace ER
             Instance = this;
             this.InputAction = new ERInputAction();
             this.InputAction.Player.Enable();
-
-            GameEvent.Initialize();
 
             yield return MasterData.SetupAsync().ToYieldInstruction();
 
@@ -53,7 +53,7 @@ namespace ER
                 masterDataActorStatus.statusData
                 );
 
-            GameEvent.IsGameReady.Value = true;
+            this.Event.IsGameReady.Value = true;
 
             yield break;
         }

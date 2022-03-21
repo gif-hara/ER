@@ -1,3 +1,4 @@
+using System;
 using ER.ActorControllers;
 using UniRx;
 using UnityEngine;
@@ -8,61 +9,49 @@ namespace ER
     /// <summary>
     /// 
     /// </summary>
-    public static class GameEvent
+    public class GameEvent : IDisposable
     {
         /// <summary>
         /// ゲームを開始出来る状態か
         /// </summary>
-        public static ReactiveProperty<bool> IsGameReady { get; private set; }
+        public ReactiveProperty<bool> IsGameReady { get; } = new ReactiveProperty<bool>(false);
 
         /// <summary>
         /// <see cref="Actor"/>が生成された際のイベント
         /// </summary>
-        private static Subject<Actor> onSpawnedActor;
+        private readonly Subject<Actor> onSpawnedActor = new Subject<Actor>();
 
         /// <summary>
         /// <see cref="GameCameraController"/>が生成された際のイベント
         /// </summary>
-        private static Subject<GameCameraController> onSpawnedGameCameraController;
+        private readonly Subject<GameCameraController> onSpawnedGameCameraController = new Subject<GameCameraController>();
 
         /// <summary>
         /// ゲームメニューの表示をリクエストするイベント
         /// </summary>
-        private static Subject<Unit> onRequestOpenIngameMenu;
+        private readonly Subject<Unit> onRequestOpenIngameMenu = new Subject<Unit>();
 
         /// <summary>
         /// <inheritdoc cref="onSpawnedActor"/>
         /// </summary>
-        public static ISubject<Actor> OnSpawnedActorSubject() => onSpawnedActor;
+        public ISubject<Actor> OnSpawnedActorSubject() => onSpawnedActor;
 
         /// <summary>
         /// <inheritdoc cref="onSpawnedGameCameraController"/>
         /// </summary>
-        public static ISubject<GameCameraController> OnSpawnedGameCameraControllerSubject() => onSpawnedGameCameraController;
+        public ISubject<GameCameraController> OnSpawnedGameCameraControllerSubject() => onSpawnedGameCameraController;
 
         /// <summary>
         /// <inheritdoc cref="onRequestOpenIngameMenu"/>
         /// </summary>
-        public static ISubject<Unit> OnRequestOpenIngameMenuSubject() => onRequestOpenIngameMenu;
+        public ISubject<Unit> OnRequestOpenIngameMenuSubject() => onRequestOpenIngameMenu;
 
-        public static void Initialize()
-        {
-            IsGameReady = new ReactiveProperty<bool>(false);
-            onSpawnedActor = new Subject<Actor>();
-            onSpawnedGameCameraController = new Subject<GameCameraController>();
-            onRequestOpenIngameMenu = new Subject<Unit>();
-        }
-
-        public static void Clear()
+        public void Dispose()
         {
             IsGameReady.Dispose();
-            IsGameReady = null;
             onSpawnedActor.Dispose();
-            onSpawnedActor = null;
             onSpawnedGameCameraController.Dispose();
-            onSpawnedGameCameraController = null;
             onRequestOpenIngameMenu.Dispose();
-            onRequestOpenIngameMenu = null;
         }
     }
 }

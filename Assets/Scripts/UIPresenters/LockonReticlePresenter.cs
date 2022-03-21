@@ -26,7 +26,7 @@ namespace ER.UIPresenters
 
         private void Awake()
         {
-            GameEvent.OnSpawnedActorSubject()
+            GameController.Instance.Event.OnSpawnedActorSubject()
                 .Where(x => x.gameObject.layer == Layer.Index.Player)
                 .Subscribe(x =>
                 {
@@ -34,7 +34,7 @@ namespace ER.UIPresenters
                 })
                 .AddTo(this);
 
-            GameEvent.OnSpawnedGameCameraControllerSubject()
+            GameController.Instance.Event.OnSpawnedGameCameraControllerSubject()
                 .Subscribe(x =>
                 {
                     this.worldCamera = x.ControlledCamera;

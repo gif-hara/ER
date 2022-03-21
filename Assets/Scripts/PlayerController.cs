@@ -106,7 +106,7 @@ namespace ER
 
             inputAction.Player.OpenIngameMenu.performed += callback =>
             {
-                GameEvent.OnRequestOpenIngameMenuSubject().OnNext(Unit.Default);
+                GameController.Instance.Event.OnRequestOpenIngameMenuSubject().OnNext(Unit.Default);
             };
 
             this.rightEquipmentSelector.Attach(this.actor);

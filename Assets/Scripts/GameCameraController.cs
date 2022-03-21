@@ -30,7 +30,7 @@ namespace ER
 
         private void Awake()
         {
-            GameEvent.OnSpawnedActorSubject()
+            GameController.Instance.Event.OnSpawnedActorSubject()
                 .Where(x => x.gameObject.layer == Layer.Index.Player)
                 .Subscribe(x =>
                 {
@@ -43,7 +43,7 @@ namespace ER
 
         private void Start()
         {
-            GameEvent.OnSpawnedGameCameraControllerSubject().OnNext(this);
+            GameController.Instance.Event.OnSpawnedGameCameraControllerSubject().OnNext(this);
         }
 
         public void SetDefaultVirtualCameraTarget(Transform target)
@@ -67,7 +67,7 @@ namespace ER
                 .Subscribe(x =>
                 {
                     SetActiveVirtualCamera(this.defaultVirtualCamera);
-                    if(x != null)
+                    if (x != null)
                     {
                         this.lookAtTargetGroup.RemoveMember(x.transform);
                     }

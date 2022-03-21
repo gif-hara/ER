@@ -17,7 +17,7 @@ namespace ER.ActorControllers
 
         private void Awake()
         {
-            GameEvent.OnSpawnedActorSubject()
+            GameController.Instance.Event.OnSpawnedActorSubject()
                 .Subscribe(x =>
                 {
                     var layer = x.gameObject.layer;
