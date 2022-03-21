@@ -23,7 +23,7 @@ namespace ER.EquipmentSystems
         {
             var masterDataWeapon = MasterDataWeapon.Get(this.weaponDataId);
             var instanceData = new WeaponInstanceData(masterDataWeapon, levelData);
-            actor.EquipmentController.AttachRightEquipment(masterDataWeapon.EquipmentControllerPrefab, instanceData);
+            actor.EquipmentController.RightHand.Attach(masterDataWeapon.EquipmentControllerPrefab, instanceData);
         }
     }
 }

@@ -60,4 +60,12 @@ namespace ER
         Arm,
         Leg
     }
+
+    public static class Define
+    {
+        /// <summary>
+        /// 手に装備可能な装備品の数
+        /// </summary>
+        public const int EquipmentableNumber = 3;
+    }
 }

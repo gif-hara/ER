@@ -3,6 +3,7 @@ using UnityEngine.Assertions;
 using UniRx;
 using ER.MasterDataSystem;
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace ER.ActorControllers
 {
@@ -13,9 +14,9 @@ namespace ER.ActorControllers
     {
         private Actor actor;
 
-        private EquipmentController rightEquipemntContoller;
+        public Hand RightHand { get; } = new Hand();
 
-        private EquipmentController leftEquipmentController;
+        public Hand LeftHand { get; } = new Hand();
 
         public EquipmentController GuardingEquipmentController { get; private set; }
 
@@ -35,6 +36,8 @@ namespace ER.ActorControllers
         public void Setup(Actor actor)
         {
             this.actor = actor;
+            this.RightHand.Setup(actor);
+            this.LeftHand.Setup(actor);
 
             this.actor.Event.OnBeginLeftEquipmentSubject()
                 .Subscribe(_ => this.IsLeftRequest = true)
@@ -43,26 +46,6 @@ namespace ER.ActorControllers
             this.actor.Event.OnEndLeftEquipmentSubject()
                 .Subscribe(_ => this.IsLeftRequest = false)
                 .AddTo(actor.Disposables);
-        }
-
-        public void AttachRightEquipment(EquipmentController equipmentPrefab, IEquipmentData equipmentData)
-        {
-            if (this.rightEquipemntContoller != null)
-            {
-                Object.Destroy(this.rightEquipemntContoller.gameObject);
-            }
-
-            this.rightEquipemntContoller = equipmentPrefab.Attach(this.actor, equipmentData);
-        }
-
-        public void AttachLeftEquipment(EquipmentController equipmentPrefab, IEquipmentData equipmentData)
-        {
-            if (this.leftEquipmentController != null)
-            {
-                Object.Destroy(this.leftEquipmentController.gameObject);
-            }
-
-            this.leftEquipmentController = equipmentPrefab.Attach(this.actor, equipmentData);
         }
 
         public void BeginGuard(EquipmentController equipmentController)
@@ -137,12 +120,38 @@ namespace ER.ActorControllers
             switch (handType)
             {
                 case HandType.Left:
-                    return this.leftEquipmentController;
+                    return this.LeftHand.CurrentEquipmentController;
                 case HandType.Right:
-                    return this.rightEquipemntContoller;
+                    return this.RightHand.CurrentEquipmentController;
                 default:
                     Assert.IsTrue(false, $"{handType}は未実装です");
                     return null;
+            }
+        }
+
+        public class Hand
+        {
+            public EquipmentController CurrentEquipmentController { get; private set; }
+
+            private int index;
+
+            private EquipmentController[] equipmentPrefabs = new EquipmentController[Define.EquipmentableNumber];
+
+            private Actor actor;
+
+            public void Setup(Actor actor)
+            {
+                this.actor = actor;
+            }
+
+            public void Attach(EquipmentController equipmentPrefab, IEquipmentData equipmentData)
+            {
+                if (this.CurrentEquipmentController != null)
+                {
+                    Object.Destroy(this.CurrentEquipmentController.gameObject);
+                }
+
+                this.CurrentEquipmentController = equipmentPrefab.Attach(this.actor, equipmentData);
             }
         }
     }

@@ -235,6 +235,18 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 666674589477926988, guid: b0aad484f136cb54283728a328723887, type: 3}
   m_PrefabInstance: {fileID: 1546282956626501565}
   m_PrefabAsset: {fileID: 0}
+--- !u!225 &6473077660557460887
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4547881018961641762}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!320 &7807983118713074502
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -244,7 +256,7 @@ PlayableDirector:
   m_GameObject: {fileID: 4547881018961641762}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 081de868a2b244e49bf8ba4bc33d51b5, type: 2}
+  m_PlayableAsset: {fileID: 0}
   m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
@@ -321,15 +333,3 @@ MonoBehaviour:
   director: {fileID: 7807983118713074502}
   inAsset: {fileID: 11400000, guid: be74087566c2e4fe489b480570341693, type: 2}
   outAsset: {fileID: 11400000, guid: 081de868a2b244e49bf8ba4bc33d51b5, type: 2}
---- !u!225 &6473077660557460887
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4547881018961641762}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
