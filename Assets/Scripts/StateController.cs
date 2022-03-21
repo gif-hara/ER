@@ -36,6 +36,8 @@ namespace ER
         /// </summary>
         public IObservable<T> OnChangedStateAsObservable() => this.onChangedState;
 
+        public CompositeDisposable StateDisposables { get; } = new CompositeDisposable();
+
         public StateController(T invalidState)
         {
             this.invalidState = invalidState;
@@ -45,7 +47,7 @@ namespace ER
 
         public void Update()
         {
-            if(this.nextState.GetHashCode() != this.invalidState.GetHashCode())
+            if (this.nextState.GetHashCode() != this.invalidState.GetHashCode())
             {
                 this.Change();
             }
@@ -71,14 +73,15 @@ namespace ER
         {
             Assert.AreNotEqual(this.nextState, this.invalidState);
             var previousState = this.CurrentState;
-            if(this.states.ContainsKey(this.CurrentState))
+            if (this.states.ContainsKey(this.CurrentState))
             {
                 this.states[this.CurrentState].onExit?.Invoke(this.nextState);
             }
 
+            this.StateDisposables.Clear();
             this.CurrentState = this.nextState;
 
-            if(this.states.ContainsKey(this.CurrentState))
+            if (this.states.ContainsKey(this.CurrentState))
             {
                 this.states[this.CurrentState].onEnter?.Invoke(previousState);
             }

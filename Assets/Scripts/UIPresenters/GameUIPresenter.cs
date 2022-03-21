@@ -36,8 +36,7 @@ namespace ER.UIPresenters
             this.stateController = new StateController<StateType>(StateType.Invalid);
             this.stateController.Set(StateType.Hud, this.OnEnterHud, null);
             this.stateController.Set(StateType.Menu, this.OnEnterMenu, null);
-
-            this.ChangeCurrentRoot(this.ingameHudAnimationController);
+            this.stateController.ChangeRequest(StateType.Hud);
 
             GameEvent.OnRequestOpenIngameMenuSubject()
                 .Subscribe(_ =>
@@ -73,11 +72,18 @@ namespace ER.UIPresenters
 
         private void OnEnterMenu(StateType prev)
         {
-            GameController.Instance.InputAction.Player.Disable();
-            GameController.Instance.InputAction.UI.Enable();
+            var inputAction = GameController.Instance.InputAction;
+            inputAction.Player.Disable();
+            inputAction.UI.Enable();
+
+            inputAction.UI.Cancel.OnPerformedAsObservable()
+                .Subscribe(_ => this.stateController.ChangeRequest(StateType.Hud))
+                .AddTo(this.stateController.StateDisposables);
+
             this.ChangeCurrentRoot(this.ingameMenuAnimationController);
 
             this.ingameRootMenuPresenter.Activate();
+
         }
     }
 }
