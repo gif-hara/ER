@@ -193,7 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dc3c52d39955488d8e751f6c8437c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ingameAreaAnimationController: {fileID: 6286135456947045009}
+  ingameAreaAnimationController: {fileID: 7753165258334971894}
 --- !u!114 &4393066121943266039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,10 +279,11 @@ GameObject:
   - component: {fileID: 6060772046919405791}
   - component: {fileID: 1728063005414877951}
   - component: {fileID: 7356168437546778957}
-  - component: {fileID: 869795279}
-  - component: {fileID: 6286135456947045009}
+  - component: {fileID: 1815518077697509524}
+  - component: {fileID: 1964719080369546532}
+  - component: {fileID: 7753165258334971894}
   m_Layer: 5
-  m_Name: IngameArea
+  m_Name: IngameHUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -385,7 +386,28 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!95 &869795279
+--- !u!320 &1815518077697509524
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8649701875742456084}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 0}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 4005218276833697508, guid: be74087566c2e4fe489b480570341693, type: 2}
+    value: {fileID: 1964719080369546532}
+  - key: {fileID: 4005218276833697508, guid: 081de868a2b244e49bf8ba4bc33d51b5, type: 2}
+    value: {fileID: 1964719080369546532}
+  m_ExposedReferences:
+    m_References: []
+--- !u!95 &1964719080369546532
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -395,7 +417,7 @@ Animator:
   m_GameObject: {fileID: 8649701875742456084}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a7034c603d8cb41a5a8b150d918c6573, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -404,7 +426,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6286135456947045009
+--- !u!114 &7753165258334971894
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -416,7 +438,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b34d0b64e25a846fba8e21ffd4564baf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 869795279}
+  director: {fileID: 1815518077697509524}
+  inAsset: {fileID: 11400000, guid: be74087566c2e4fe489b480570341693, type: 2}
+  outAsset: {fileID: 11400000, guid: 081de868a2b244e49bf8ba4bc33d51b5, type: 2}
 --- !u!1001 &871689935157782998
 PrefabInstance:
   m_ObjectHideFlags: 0

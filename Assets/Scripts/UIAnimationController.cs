@@ -1,5 +1,8 @@
+using System;
+using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Playables;
 
 namespace ER
 {
@@ -9,32 +12,48 @@ namespace ER
     public sealed class UIAnimationController : MonoBehaviour
     {
         [SerializeField]
-        private Animator animator = default;
+        private PlayableDirector director = default;
 
-        private static readonly int In = Animator.StringToHash("UI_In");
+        [SerializeField]
+        private PlayableAsset inAsset = default;
 
-        private static readonly int Out = Animator.StringToHash("UI_Out");
+        [SerializeField]
+        private PlayableAsset outAsset = default;
+
 
         public void Play(bool isIn)
         {
-            PlayInternal(isIn, 0.0f);
+            this.PlayInternalAsync(isIn, 0.0f)
+                .Subscribe();
         }
 
         public void PlayImmediate(bool isIn)
         {
-            PlayInternal(isIn, 1.0f);
+            this.PlayInternalAsync(isIn, 1.0f)
+                .Subscribe();
         }
 
-        private void PlayInternal(bool isIn, float normalizedTime)
+        public IObservable<Unit> PlayAsync(bool isIn)
+        {
+            return this.PlayInternalAsync(isIn, 0.0f);
+        }
+
+        private IObservable<Unit> PlayInternalAsync(bool isIn, float normalizedTime)
         {
             if (isIn)
             {
-                this.animator.Play(In, 0, normalizedTime);
+                this.director.playableAsset = this.inAsset;
             }
             else
             {
-                this.animator.Play(Out, 0, normalizedTime);
+                this.director.playableAsset = this.outAsset;
             }
+
+            this.director.extrapolationMode = DirectorWrapMode.None;
+            this.director.initialTime = this.director.duration * normalizedTime;
+            this.director.Play();
+
+            return this.director.OnStoppedAsObservable();
         }
     }
 }
