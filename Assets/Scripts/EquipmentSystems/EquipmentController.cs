@@ -70,7 +70,7 @@ namespace ER.EquipmentSystems
                 var hitActor = x.rigidbody.GetComponent<IActor>();
                 if (hitActor != null)
                 {
-                    hitActor.Event.OnHitOpponentAttackSubject().OnNext(this);
+                    hitActor.Broker.Publish(ActorEvent.OnHitOpponentAttack.Get(this));
                 }
             })
             .AddTo(this.disposables);
@@ -88,10 +88,10 @@ namespace ER.EquipmentSystems
 
             this.PlayDefaultPlayableAsset();
 
-            actor.Event.OnChangedStateSubject()
+            actor.Broker.Receive<ActorEvent.OnChangedStateType>()
                 .Subscribe(x =>
                 {
-                    if (x == ActorStateController.StateType.Movable)
+                    if (x.NextState == ActorStateController.StateType.Movable)
                     {
                         this.PlayDefaultPlayableAsset();
                     }

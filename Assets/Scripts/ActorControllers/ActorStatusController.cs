@@ -40,11 +40,11 @@ namespace ER.ActorControllers
             this.hitPointMax.Value = this.baseStatus.hitPoint;
             this.hitPoint.Value = this.HitPointMax;
 
-            actor.Event.OnHitOpponentAttackSubject()
+            actor.Broker.Receive<ActorEvent.OnHitOpponentAttack>()
                 .Where(_ => this.CanTakeDamage())
                 .Subscribe(x =>
                 {
-                    this.TakeDamage(x);
+                    this.TakeDamage(x.OpponentEquipmentController);
                 })
                 .AddTo(actor.Disposables);
 
@@ -87,7 +87,7 @@ namespace ER.ActorControllers
             if (this.HitPoint <= 0)
             {
                 this.isAlreadyDead = true;
-                this.actor.Event.OnDeadSubject().OnNext(Unit.Default);
+                this.actor.Broker.Publish(ActorEvent.OnDead.Get());
             }
         }
 

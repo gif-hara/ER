@@ -40,7 +40,7 @@ namespace ER.ERBehaviour
             actor.Broker.Receive<ActorEvent.EndEquipment>()
                 .Where(x => x.HandType == HandType.Left)
                 .Take(1)
-                .TakeUntil(actor.Event.OnChangedStateSubject().Where(x => x == ActorStateController.StateType.Attack || x == ActorStateController.StateType.Movable))
+                .TakeUntil(actor.Broker.Receive<ActorEvent.OnChangedStateType>().Where(x => x.NextState == ActorStateController.StateType.Attack || x.NextState == ActorStateController.StateType.Movable))
                 .Subscribe(_ =>
                 {
                     actor.StateController.ChangeRequest(ActorStateController.StateType.Movable);
@@ -48,8 +48,8 @@ namespace ER.ERBehaviour
                 .AddTo(equipmentController)
                 .AddTo(actor.Disposables);
 
-            actor.Event.OnChangedStateSubject()
-                .Where(x => x == ActorStateController.StateType.Attack || x == ActorStateController.StateType.Movable)
+            actor.Broker.Receive<ActorEvent.OnChangedStateType>()
+                .Where(x => x.NextState == ActorStateController.StateType.Attack || x.NextState == ActorStateController.StateType.Movable)
                 .Take(1)
                 .Subscribe(_ =>
                 {

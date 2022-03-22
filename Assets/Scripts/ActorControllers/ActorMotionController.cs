@@ -53,17 +53,17 @@ namespace ER.ActorControllers
                 })
                 .AddTo(actor.Disposables);
 
-            actor.Event.OnChangedStateSubject()
+            actor.Broker.Receive<ActorEvent.OnChangedStateType>()
                 .Subscribe(x =>
                 {
-                    if (x == ActorStateController.StateType.Movable)
+                    if (x.NextState == ActorStateController.StateType.Movable)
                     {
                         actor.AnimationParameter.moveSpeedRate = 1.0f;
                         actor.AnimationParameter.invisible = false;
                         actor.AnimationParameter.advancedEntry = true;
                     }
 
-                    if (x == ActorStateController.StateType.Guard)
+                    if (x.NextState == ActorStateController.StateType.Guard)
                     {
                         actor.AnimationParameter.moveSpeedRate = 0.5f;
                         actor.AnimationParameter.invisible = false;
@@ -73,20 +73,21 @@ namespace ER.ActorControllers
                 })
                 .AddTo(actor.Disposables);
 
-            actor.Event.OnRequestAvoidanceSubject()
+            actor.Broker.Receive<ActorEvent.OnRequestAvoidance>()
                 .Subscribe(x =>
                 {
+                    var direction = x.Direction;
                     // 入力が無い場合はバックステップする
-                    if (x == Vector2.zero)
+                    if (direction == Vector2.zero)
                     {
-                        x = -actor.transform.up;
+                        direction = -actor.transform.up;
                     }
 
-                    x = x.normalized;
+                    direction = direction.normalized;
 
                     actor.DirectorController.PlayOneShotAsync(motionData.avoidanceAsset)
                     .TakeUntil(this.actor.Broker.Receive<ActorEvent.BeginEquipment>())
-                    .TakeUntil(this.actor.Event.OnRequestAvoidanceSubject())
+                    .TakeUntil(this.actor.Broker.Receive<ActorEvent.OnRequestAvoidance>())
                     .Subscribe(_ =>
                     {
                         actor.StateController.ChangeRequest(ActorStateController.StateType.Movable);
@@ -95,11 +96,11 @@ namespace ER.ActorControllers
 
                     actor.StateController.ChangeRequest(ActorStateController.StateType.Avoidance);
                     actor.gameObject.UpdateAsObservable()
-                    .TakeUntil(actor.Event.OnChangedStateSubject().Where(nextState => nextState != ActorStateController.StateType.Avoidance))
-                    .TakeUntil(this.actor.Event.OnRequestAvoidanceSubject())
+                    .TakeUntil(actor.Broker.Receive<ActorEvent.OnChangedStateType>().Where(x => x.NextState != ActorStateController.StateType.Avoidance))
+                    .TakeUntil(this.actor.Broker.Receive<ActorEvent.OnRequestAvoidance>())
                     .Subscribe(_ =>
                     {
-                        this.Move(x);
+                        this.Move(direction);
                     })
                     .AddTo(actor.Disposables);
                 })

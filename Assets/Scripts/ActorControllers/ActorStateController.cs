@@ -28,7 +28,7 @@ namespace ER.ActorControllers
             this.stateController.OnChangedStateAsObservable()
                 .Subscribe(x =>
                 {
-                    actor.Event.OnChangedStateSubject().OnNext(x);
+                    actor.Broker.Publish(ActorEvent.OnChangedStateType.Get(x));
                 })
                 .AddTo(actor.Disposables);
 

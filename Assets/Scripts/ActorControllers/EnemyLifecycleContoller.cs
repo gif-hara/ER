@@ -14,7 +14,7 @@ namespace ER.ActorControllers
 
         private void Start()
         {
-            this.actor.Event.OnDeadSubject()
+            this.actor.Broker.Receive<ActorEvent.OnDead>()
                 .Subscribe(_ =>
                 {
                     Destroy(this.actor.gameObject);

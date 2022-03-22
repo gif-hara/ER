@@ -15,7 +15,7 @@ namespace ER.ActorControllers
 
         private void Start()
         {
-            this.actor.Event.OnDeadSubject()
+            this.actor.Broker.Receive<ActorEvent.OnDead>()
                 .SelectMany(_ => this.PlayDeadEffectAsync())
                 .Subscribe()
                 .AddTo(this);

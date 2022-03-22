@@ -48,8 +48,8 @@ namespace ER.ERBehaviour
             })
             .AddTo(equipmentController);
 
-            actor.Event.OnChangedStateSubject()
-            .Where(x => x == ActorStateController.StateType.Avoidance || x == ActorStateController.StateType.Guard)
+            actor.Broker.Receive<ActorEvent.OnChangedStateType>()
+            .Where(x => x.NextState == ActorStateController.StateType.Avoidance || x.NextState == ActorStateController.StateType.Guard)
             .Subscribe(_ =>
             {
                 equipmentController.PlayDefaultPlayableAsset();

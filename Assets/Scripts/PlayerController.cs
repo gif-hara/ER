@@ -80,7 +80,7 @@ namespace ER
                 }
 
                 var direction = inputAction.Player.Move.ReadValue<Vector2>();
-                this.actor.Event.OnRequestAvoidanceSubject().OnNext(direction);
+                this.actor.Broker.Publish(ActorEvent.OnRequestAvoidance.Get(direction));
             };
             inputAction.Player.LookAt.performed += callback =>
             {

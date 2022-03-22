@@ -36,24 +36,44 @@ namespace ER.ActorControllers
         }
 
         /// <summary>
-        /// 相手から攻撃を受けた際のイベント
+        /// 相手から攻撃を受けた際のメッセージ
         /// </summary>
-        private readonly Subject<EquipmentController> onHitOpponentAttack = new Subject<EquipmentController>();
+        public class OnHitOpponentAttack : Message<OnHitOpponentAttack, EquipmentController>
+        {
+            /// <summary>
+            /// 相手側の<see cref="EquipmentController"/>
+            /// </summary>
+            public EquipmentController OpponentEquipmentController => this.param1;
+        }
 
         /// <summary>
-        /// 死亡した際のイベント
+        /// 死亡した際のメッセージ
         /// </summary>
-        private readonly Subject<Unit> onDead = new Subject<Unit>();
+        public class OnDead : Message<OnDead>
+        {
+        }
 
         /// <summary>
-        /// ステートが切り替わった際のイベント
+        /// ステートが切り替わった際のメッセージ
         /// </summary>
-        private readonly Subject<ActorStateController.StateType> onChangedStateType = new Subject<ActorStateController.StateType>();
+        public class OnChangedStateType : Message<OnChangedStateType, ActorStateController.StateType>
+        {
+            /// <summary>
+            /// 次のステート
+            /// </summary>
+            public ActorStateController.StateType NextState => this.param1;
+        }
 
         /// <summary>
-        /// 回避をリクエストするイベント
+        /// 回避をリクエストするメッセージ
         /// </summary>
-        private readonly Subject<Vector2> onRequestAvoidance = new Subject<Vector2>();
+        public class OnRequestAvoidance : Message<OnRequestAvoidance, Vector2>
+        {
+            /// <summary>
+            /// 回避する方向
+            /// </summary>
+            public Vector2 Direction => this.param1;
+        }
 
         /// <summary>
         /// ロックオンを開始した際のイベント
@@ -94,26 +114,6 @@ namespace ER.ActorControllers
         /// 左手装備品の切り替えをリクエストするイベント
         /// </summary>
         private readonly Subject<Unit> onRequestChangeLeftEquipment = new Subject<Unit>();
-
-        /// <summary>
-        /// <inheritdoc cref="onHitOpponentAttack"/>
-        /// </summary>
-        public ISubject<EquipmentController> OnHitOpponentAttackSubject() => this.onHitOpponentAttack;
-
-        /// <summary>
-        /// <inheritdoc cref="onDead"/>
-        /// </summary>
-        public ISubject<Unit> OnDeadSubject() => this.onDead;
-
-        /// <summary>
-        /// <inheritdoc cref="onChangedStateType"/>
-        /// </summary>
-        public ISubject<ActorStateController.StateType> OnChangedStateSubject() => this.onChangedStateType;
-
-        /// <summary>
-        /// <inheritdoc cref="onRequestAvoidance"/>
-        /// </summary>
-        public ISubject<Vector2> OnRequestAvoidanceSubject() => this.onRequestAvoidance;
 
         /// <summary>
         /// <inheritdoc cref="onBeginLookAt"/>
@@ -157,10 +157,6 @@ namespace ER.ActorControllers
 
         public void Dispose()
         {
-            this.onHitOpponentAttack.Dispose();
-            this.onDead.Dispose();
-            this.onChangedStateType.Dispose();
-            this.onRequestAvoidance.Dispose();
             this.onBeginLookAt.Dispose();
             this.onEndLookAt.Dispose();
             this.onRespawned.Dispose();
