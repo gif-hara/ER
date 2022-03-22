@@ -18,13 +18,13 @@ namespace ER.StageControllers
             this.OnTriggerEnter2DAsObservable()
                 .Select(x => x.attachedRigidbody.GetComponent<Actor>())
                 .Where(x => x != null)
-                .Subscribe(x => x.Event.OnEnterInteractableStageGimmickSubject().OnNext(this))
+                .Subscribe(x => x.Broker.Publish(ActorEvent.OnEnterInteractableStageGimmick.Get(this)))
                 .AddTo(this);
 
             this.OnTriggerExit2DAsObservable()
                 .Select(x => x.attachedRigidbody.GetComponent<Actor>())
                 .Where(x => x != null)
-                .Subscribe(x => x.Event.OnExitInteractableStageGimmickSubject().OnNext(this))
+                .Subscribe(x => x.Broker.Publish(ActorEvent.OnExitInteractableStageGimmick.Get(this)))
                 .AddTo(this);
         }
     }

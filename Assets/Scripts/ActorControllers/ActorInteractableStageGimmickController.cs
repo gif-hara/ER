@@ -18,19 +18,19 @@ namespace ER.ActorControllers
         {
             this.actor = actor;
 
-            actor.Event.OnEnterInteractableStageGimmickSubject()
-                .Subscribe(x => this.currentGimmick = x)
+            actor.Broker.Receive<ActorEvent.OnEnterInteractableStageGimmick>()
+                .Subscribe(x => this.currentGimmick = x.Gimmick)
                 .AddTo(actor.Disposables);
 
-            actor.Event.OnExitInteractableStageGimmickSubject()
-                .Where(x => this.currentGimmick == x)
+            actor.Broker.Receive<ActorEvent.OnExitInteractableStageGimmick>()
+                .Where(x => this.currentGimmick == x.Gimmick)
                 .Subscribe(x => this.currentGimmick = null)
                 .AddTo(actor.Disposables);
         }
 
         public void BeginInteract()
         {
-            if(this.currentGimmick == null)
+            if (this.currentGimmick == null)
             {
                 return;
             }

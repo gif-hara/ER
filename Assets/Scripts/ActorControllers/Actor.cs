@@ -40,8 +40,6 @@ namespace ER.ActorControllers
 
         public Animator Animator { get; private set; }
 
-        public ActorEvent Event { get; private set; }
-
         public ActorAnimationParameter AnimationParameter => this.animationParameter;
 
         public ActorMotionController MotionController { get; private set; }
@@ -76,7 +74,6 @@ namespace ER.ActorControllers
         private void Setup(ActorStatusData statusData)
         {
             this.Animator = this.GetComponent<Animator>();
-            this.Event = new ActorEvent();
             this.StateController.Setup(this);
             this.StatusController.Setup(this, statusData);
             this.InteractableStageGimmickController.Setup(this);
@@ -89,7 +86,6 @@ namespace ER.ActorControllers
                 .Subscribe(_ =>
                 {
                     this.Disposables.Dispose();
-                    this.Event.Dispose();
                     this.broker.Dispose();
                 });
         }

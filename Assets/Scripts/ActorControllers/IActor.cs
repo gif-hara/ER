@@ -15,8 +15,6 @@ namespace ER.ActorControllers
     {
         CompositeDisposable Disposables { get; }
 
-        ActorEvent Event { get; }
-
         Transform transform { get; }
 
         GameObject gameObject { get; }

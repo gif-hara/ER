@@ -111,12 +111,12 @@ namespace ER
 
             inputAction.Player.ChangeRightEquipment.performed += callback =>
             {
-                this.actor.Event.OnRequestChangeRightEquipment().OnNext(Unit.Default);
+                this.actor.Broker.Publish(ActorEvent.OnRequestChangeEquipment.Get(HandType.Right));
             };
 
             inputAction.Player.ChangeLeftEquipment.performed += callback =>
             {
-                this.actor.Event.OnRequestChangeLeftEquipment().OnNext(Unit.Default);
+                this.actor.Broker.Publish(ActorEvent.OnRequestChangeEquipment.Get(HandType.Left));
             };
 
             for (var i = 0; i < this.rightEquipmentSelectors.Count; i++)

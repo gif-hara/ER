@@ -41,10 +41,10 @@ namespace ER.UIPresenters
 
         private void RegisterActorEvent(Actor actor)
         {
-            actor.Event.OnTakedDamageSubject()
+            actor.Broker.Receive<ActorEvent.OnTakedDamage>()
                 .Subscribe(x =>
                 {
-                    var element = this.damageLabelUIView.CreateElement(x.ToString());
+                    var element = this.damageLabelUIView.CreateElement(x.Damage.ToString());
                     Vector2 position;
                     var screenPosition = RectTransformUtility.WorldToScreenPoint(this.worldCamera, actor.transform.position);
                     RectTransformUtility.ScreenPointToLocalPointInRectangle(this.canvasTransform, screenPosition, this.uiCamera, out position);

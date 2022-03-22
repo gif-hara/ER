@@ -82,7 +82,7 @@ namespace ER.ActorControllers
             }
 
             this.hitPoint.Value -= damage;
-            this.actor.Event.OnTakedDamageSubject().OnNext(damage);
+            this.actor.Broker.Publish(ActorEvent.OnTakedDamage.Get(damage));
 
             if (this.HitPoint <= 0)
             {

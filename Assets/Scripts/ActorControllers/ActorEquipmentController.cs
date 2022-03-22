@@ -55,7 +55,8 @@ namespace ER.ActorControllers
                 })
                 .AddTo(actor.Disposables);
 
-            this.actor.Event.OnRequestChangeRightEquipment()
+            this.actor.Broker.Receive<ActorEvent.OnRequestChangeEquipment>()
+                .Where(x => x.HandType == HandType.Right)
                 .Where(_ => this.actor.StateController.CurrentState == ActorStateController.StateType.Movable)
                 .Subscribe(_ =>
                 {
@@ -63,7 +64,8 @@ namespace ER.ActorControllers
                 })
                 .AddTo(actor.Disposables);
 
-            this.actor.Event.OnRequestChangeLeftEquipment()
+            this.actor.Broker.Receive<ActorEvent.OnRequestChangeEquipment>()
+                .Where(x => x.HandType == HandType.Left)
                 .Where(_ => this.actor.StateController.CurrentState == ActorStateController.StateType.Movable)
                 .Subscribe(_ =>
                 {

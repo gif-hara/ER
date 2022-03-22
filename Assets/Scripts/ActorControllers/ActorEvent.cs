@@ -11,7 +11,7 @@ namespace ER.ActorControllers
     /// <summary>
     /// <see cref="Actor"/>に発生するイベントを持つクラス
     /// </summary>
-    public sealed class ActorEvent : IDisposable
+    public sealed class ActorEvent
     {
         /// <summary>
         /// 装備品の使用を開始した際のメッセージ
@@ -105,62 +105,47 @@ namespace ER.ActorControllers
         }
 
         /// <summary>
-        /// <see cref="IInteractableGimmick"/>のエリア内に入った際のイベント
+        /// <see cref="IInteractableStageGimmick"/>のエリア内に入った際のイベント
         /// </summary>
-        private readonly Subject<IInteractableStageGimmick> onEnterInteractableStageGimmick = new Subject<IInteractableStageGimmick>();
-
-        /// <summary>
-        /// <see cref="IInteractableGimmick"/>のエリアから出た際のイベント
-        /// </summary>
-        private readonly Subject<IInteractableStageGimmick> onExitInteractableStageGimmick = new Subject<IInteractableStageGimmick>();
-
-        /// <summary>
-        /// ダメージを受けた際のイベント
-        /// </summary>
-        private readonly Subject<int> onTakedDamage = new Subject<int>();
-
-        /// <summary>
-        /// 右手装備品の切り替えをリクエストするイベント
-        /// </summary>
-        private readonly Subject<Unit> onRequestChangeRightEquipment = new Subject<Unit>();
-
-        /// <summary>
-        /// 左手装備品の切り替えをリクエストするイベント
-        /// </summary>
-        private readonly Subject<Unit> onRequestChangeLeftEquipment = new Subject<Unit>();
-
-        /// <summary>
-        /// <inheritdoc cref="onEnterInteractableStageGimmick"/>
-        /// </summary>
-        public ISubject<IInteractableStageGimmick> OnEnterInteractableStageGimmickSubject() => this.onEnterInteractableStageGimmick;
-
-        /// <summary>
-        /// <inheritdoc cref="onExitInteractableStageGimmick"/>
-        /// </summary>
-        public ISubject<IInteractableStageGimmick> OnExitInteractableStageGimmickSubject() => this.onExitInteractableStageGimmick;
-
-        /// <summary>
-        /// <inheritdoc cref="onTakedDamage"/>
-        /// </summary>
-        public ISubject<int> OnTakedDamageSubject() => this.onTakedDamage;
-
-        /// <summary>
-        /// <inheritdoc cref="onRequestChangeRightEquipment"/>
-        /// </summary>
-        public ISubject<Unit> OnRequestChangeRightEquipment() => this.onRequestChangeRightEquipment;
-
-        /// <summary>
-        /// <inheritdoc cref="onRequestChangeLeftEquipment"/>
-        /// </summary>
-        public ISubject<Unit> OnRequestChangeLeftEquipment() => this.onRequestChangeLeftEquipment;
-
-        public void Dispose()
+        public class OnEnterInteractableStageGimmick : Message<OnEnterInteractableStageGimmick, IInteractableStageGimmick>
         {
-            this.onEnterInteractableStageGimmick.Dispose();
-            this.onExitInteractableStageGimmick.Dispose();
-            this.onTakedDamage.Dispose();
-            this.onRequestChangeRightEquipment.Dispose();
-            this.onRequestChangeLeftEquipment.Dispose();
+            /// <summary>
+            /// ギミック
+            /// </summary>
+            public IInteractableStageGimmick Gimmick => this.param1;
+        }
+
+        /// <summary>
+        /// <see cref="IInteractableStageGimmick"/>のエリアから出た際のイベント
+        /// </summary>
+        public class OnExitInteractableStageGimmick : Message<OnExitInteractableStageGimmick, IInteractableStageGimmick>
+        {
+            /// <summary>
+            /// ギミック
+            /// </summary>
+            public IInteractableStageGimmick Gimmick => this.param1;
+        }
+
+        /// <summary>
+        /// ダメージを受けた際のメッセージ
+        /// </summary>
+        public class OnTakedDamage : Message<OnTakedDamage, int>
+        {
+            /// <summary>
+            /// ダメージ量
+            /// </summary>
+            public int Damage => this.param1;
+        }
+
+        /// <summary>
+        /// 装備品の切り替えをリクエストするメッセージ
+        /// </summary>
+        public class OnRequestChangeEquipment : Message<OnRequestChangeEquipment, HandType>
+        {
+            /// <summary>
+            /// 切り替えたい手のタイプ
+            /// </summary>
+            public HandType HandType => this.param1;
         }
     }
 }
