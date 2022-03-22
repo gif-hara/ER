@@ -1,4 +1,5 @@
 using ER.EquipmentSystems;
+using HK.Framework.EventSystems;
 using System;
 using System.Collections.Generic;
 using UniRx;
@@ -23,6 +24,8 @@ namespace ER.ActorControllers
         [SerializeField]
         private PlayableDirector director = default;
 
+        private MessageBroker broker = new MessageBroker();
+
         public ActorStatusController StatusController { get; } = new ActorStatusController();
 
         public ActorInteractableStageGimmickController InteractableStageGimmickController { get; } = new ActorInteractableStageGimmickController();
@@ -44,6 +47,8 @@ namespace ER.ActorControllers
         public ActorMotionController MotionController { get; private set; }
 
         public CompositeDisposable Disposables { get; } = new CompositeDisposable();
+
+        public IMessageBroker Broker => this.broker;
 
         /// <summary>
         /// シーンに存在する<see cref="Actor"/>
@@ -85,6 +90,7 @@ namespace ER.ActorControllers
                 {
                     this.Disposables.Dispose();
                     this.Event.Dispose();
+                    this.broker.Dispose();
                 });
         }
 

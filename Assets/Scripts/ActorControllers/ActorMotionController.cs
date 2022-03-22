@@ -85,7 +85,7 @@ namespace ER.ActorControllers
                     x = x.normalized;
 
                     actor.DirectorController.PlayOneShotAsync(motionData.avoidanceAsset)
-                    .TakeUntil(this.actor.Event.OnBeginRightEquipmentSubject())
+                    .TakeUntil(this.actor.Broker.Receive<ActorEvent.BeginEquipment>())
                     .TakeUntil(this.actor.Event.OnRequestAvoidanceSubject())
                     .Subscribe(_ =>
                     {

@@ -1,4 +1,5 @@
 using System;
+using ER.ActorControllers;
 using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -9,8 +10,11 @@ namespace ER.ERBehaviour
     /// 
     /// </summary>
     [Serializable]
-    public sealed class OnBeginLeftEquipment : ITrigger
+    public sealed class OnBeginEquipment : ITrigger
     {
+        [SerializeField]
+        private HandType handType = default;
+
         private bool evaluate = false;
 
         private IDisposable disposable = null;
@@ -20,7 +24,8 @@ namespace ER.ERBehaviour
             if (this.disposable == null)
             {
                 var actor = data.Cast<IActorHolder>().Actor;
-                disposable = actor.Event.OnBeginLeftEquipmentSubject()
+                this.disposable = actor.Broker.Receive<ActorEvent.BeginEquipment>()
+                    .Where(x => x.HandType == this.handType)
                     .Subscribe(_ => this.evaluate = true);
             }
 

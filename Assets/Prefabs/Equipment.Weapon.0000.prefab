@@ -69,7 +69,9 @@ MonoBehaviour:
         power: 1
         handType: 1
     00000002:
-      type: {class: OnBeginRightEquipment, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      type: {class: OnBeginEquipment, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        handType: 1
     00000003:
       type: {class: CanNextAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
 --- !u!320 &4311177486490712205

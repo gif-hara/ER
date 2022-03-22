@@ -39,7 +39,8 @@ namespace ER.ActorControllers
             this.RightHand.Setup(actor);
             this.LeftHand.Setup(actor);
 
-            this.actor.Event.OnBeginLeftEquipmentSubject()
+            this.actor.Broker.Receive<ActorEvent.BeginEquipment>()
+                .Where(x => x.HandType == HandType.Left)
                 .Subscribe(_ => this.IsLeftRequest = true)
                 .AddTo(actor.Disposables);
 

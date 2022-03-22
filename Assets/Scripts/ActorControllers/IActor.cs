@@ -1,4 +1,5 @@
 using ER.EquipmentSystems;
+using HK.Framework.EventSystems;
 using System;
 using UniRx;
 using UnityEngine;
@@ -37,5 +38,7 @@ namespace ER.ActorControllers
         ActorEquipmentController EquipmentController { get; }
 
         ActorInventoryController InventoryController { get; }
+
+        IMessageBroker Broker { get; }
     }
 }

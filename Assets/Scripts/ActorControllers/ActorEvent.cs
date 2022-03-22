@@ -1,5 +1,6 @@
 using ER.EquipmentSystems;
 using ER.StageControllers;
+using HK.Framework.EventSystems;
 using System;
 using UniRx;
 using UnityEngine;
@@ -13,9 +14,20 @@ namespace ER.ActorControllers
     public sealed class ActorEvent : IDisposable
     {
         /// <summary>
-        /// 右手装備品の使用を開始した際のイベント
+        /// 装備品の使用を開始した際のメッセージ
         /// </summary>
-        private readonly Subject<Unit> beginRightEquipmentSubject = new Subject<Unit>();
+        public class BeginEquipment : Message<BeginEquipment, HandType>
+        {
+            /// <summary>
+            /// どの手の装備品を使用したか
+            /// </summary>
+            public HandType HandType => this.param1;
+        }
+
+        /// <summary>
+        /// 右手装備品の使用を開始した際のメッセージ
+        /// </summary>
+        public class BeginRightEquipment : Message<BeginRightEquipment> { }
 
         /// <summary>
         /// 右手装備品の使用を完了した際のイベント
@@ -91,11 +103,6 @@ namespace ER.ActorControllers
         /// 左手装備品の切り替えをリクエストするイベント
         /// </summary>
         private readonly Subject<Unit> onRequestChangeLeftEquipment = new Subject<Unit>();
-
-        /// <summary>
-        /// <inheritdoc cref="beginRightEquipmentSubject"/>
-        /// </summary>
-        public ISubject<Unit> OnBeginRightEquipmentSubject() => this.beginRightEquipmentSubject;
 
         /// <summary>
         /// <inheritdoc cref="endRightEquipmentSubject"/>
@@ -174,7 +181,6 @@ namespace ER.ActorControllers
 
         public void Dispose()
         {
-            this.beginRightEquipmentSubject.Dispose();
             this.endRightEquipmentSubject.Dispose();
             this.onHitOpponentAttack.Dispose();
             this.onDead.Dispose();

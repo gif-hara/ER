@@ -58,7 +58,7 @@ namespace ER
 
             inputAction.Player.UseRightEquipment.performed += callback =>
             {
-                this.actor.Event.OnBeginRightEquipmentSubject().OnNext(Unit.Default);
+                this.actor.Broker.Publish(ActorEvent.BeginEquipment.Get(HandType.Right));
             };
             inputAction.Player.UseRightEquipment.canceled += callback =>
             {
@@ -66,7 +66,7 @@ namespace ER
             };
             inputAction.Player.UseLeftEquipment.performed += callback =>
             {
-                this.actor.Event.OnBeginLeftEquipmentSubject().OnNext(Unit.Default);
+                this.actor.Broker.Publish(ActorEvent.BeginEquipment.Get(HandType.Left));
             };
             inputAction.Player.UseLeftEquipment.canceled += callback =>
             {
