@@ -41,11 +41,18 @@ namespace ER.ActorControllers
 
             this.actor.Broker.Receive<ActorEvent.BeginEquipment>()
                 .Where(x => x.HandType == HandType.Left)
-                .Subscribe(_ => this.IsLeftRequest = true)
+                .Subscribe(_ =>
+                {
+                    this.IsLeftRequest = true;
+                })
                 .AddTo(actor.Disposables);
 
-            this.actor.Event.OnEndLeftEquipmentSubject()
-                .Subscribe(_ => this.IsLeftRequest = false)
+            this.actor.Broker.Receive<ActorEvent.EndEquipment>()
+                .Where(x => x.HandType == HandType.Left)
+                .Subscribe(_ =>
+                {
+                    this.IsLeftRequest = false;
+                })
                 .AddTo(actor.Disposables);
 
             this.actor.Event.OnRequestChangeRightEquipment()

@@ -37,26 +37,27 @@ namespace ER.ERBehaviour
             actor.EquipmentController.BeginGuard(equipmentController);
             actor.StateController.ChangeRequest(ActorStateController.StateType.Guard);
 
-            actor.Event.OnEndLeftEquipmentSubject()
-            .Take(1)
-            .TakeUntil(actor.Event.OnChangedStateSubject().Where(x => x == ActorStateController.StateType.Attack || x == ActorStateController.StateType.Movable))
-            .Subscribe(_ =>
-            {
-                actor.StateController.ChangeRequest(ActorStateController.StateType.Movable);
-            })
-            .AddTo(equipmentController)
-            .AddTo(actor.Disposables);
+            actor.Broker.Receive<ActorEvent.EndEquipment>()
+                .Where(x => x.HandType == HandType.Left)
+                .Take(1)
+                .TakeUntil(actor.Event.OnChangedStateSubject().Where(x => x == ActorStateController.StateType.Attack || x == ActorStateController.StateType.Movable))
+                .Subscribe(_ =>
+                {
+                    actor.StateController.ChangeRequest(ActorStateController.StateType.Movable);
+                })
+                .AddTo(equipmentController)
+                .AddTo(actor.Disposables);
 
             actor.Event.OnChangedStateSubject()
-            .Where(x => x == ActorStateController.StateType.Attack || x == ActorStateController.StateType.Movable)
-            .Take(1)
-            .Subscribe(_ =>
-            {
-                equipmentController.PlayDefaultPlayableAsset();
-                actor.EquipmentController.EndGuard();
-            })
-            .AddTo(equipmentController)
-            .AddTo(actor.Disposables);
+                .Where(x => x == ActorStateController.StateType.Attack || x == ActorStateController.StateType.Movable)
+                .Take(1)
+                .Subscribe(_ =>
+                {
+                    equipmentController.PlayDefaultPlayableAsset();
+                    actor.EquipmentController.EndGuard();
+                })
+                .AddTo(equipmentController)
+                .AddTo(actor.Disposables);
         }
     }
 }

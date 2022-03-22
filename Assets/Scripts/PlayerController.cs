@@ -62,7 +62,7 @@ namespace ER
             };
             inputAction.Player.UseRightEquipment.canceled += callback =>
             {
-                this.actor.Event.OnEndRightEquipmentSubject().OnNext(Unit.Default);
+                this.actor.Broker.Publish(ActorEvent.EndEquipment.Get(HandType.Right));
             };
             inputAction.Player.UseLeftEquipment.performed += callback =>
             {
@@ -70,7 +70,7 @@ namespace ER
             };
             inputAction.Player.UseLeftEquipment.canceled += callback =>
             {
-                this.actor.Event.OnEndLeftEquipmentSubject().OnNext(Unit.Default);
+                this.actor.Broker.Publish(ActorEvent.EndEquipment.Get(HandType.Left));
             };
             inputAction.Player.Avoidance.performed += callback =>
             {

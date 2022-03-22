@@ -25,24 +25,15 @@ namespace ER.ActorControllers
         }
 
         /// <summary>
-        /// 右手装備品の使用を開始した際のメッセージ
+        /// 装備品の使用を終了した際のメッセージ
         /// </summary>
-        public class BeginRightEquipment : Message<BeginRightEquipment> { }
-
-        /// <summary>
-        /// 右手装備品の使用を完了した際のイベント
-        /// </summary>
-        private readonly Subject<Unit> endRightEquipmentSubject = new Subject<Unit>();
-
-        /// <summary>
-        /// 左手装備品の使用を開始した際のイベント
-        /// </summary>
-        private readonly Subject<Unit> beginLeftEquipmentSubject = new Subject<Unit>();
-
-        /// <summary>
-        /// 左手装備品の使用を完了した際のイベント
-        /// </summary>
-        private readonly Subject<Unit> endLeftEquipmentSubject = new Subject<Unit>();
+        public class EndEquipment : Message<EndEquipment, HandType>
+        {
+            /// <summary>
+            /// どの手の装備品の使用を終了したか
+            /// </summary>
+            public HandType HandType => this.param1;
+        }
 
         /// <summary>
         /// 相手から攻撃を受けた際のイベント
@@ -103,21 +94,6 @@ namespace ER.ActorControllers
         /// 左手装備品の切り替えをリクエストするイベント
         /// </summary>
         private readonly Subject<Unit> onRequestChangeLeftEquipment = new Subject<Unit>();
-
-        /// <summary>
-        /// <inheritdoc cref="endRightEquipmentSubject"/>
-        /// </summary>
-        public ISubject<Unit> OnEndRightEquipmentSubject() => this.endRightEquipmentSubject;
-
-        /// <summary>
-        /// <inheritdoc cref="beginLeftEquipmentSubject"/>
-        /// </summary>
-        public ISubject<Unit> OnBeginLeftEquipmentSubject() => this.beginLeftEquipmentSubject;
-
-        /// <summary>
-        /// <inheritdoc cref="endLeftEquipmentSubject"/>
-        /// </summary>
-        public ISubject<Unit> OnEndLeftEquipmentSubject() => this.endLeftEquipmentSubject;
 
         /// <summary>
         /// <inheritdoc cref="onHitOpponentAttack"/>
@@ -181,7 +157,6 @@ namespace ER.ActorControllers
 
         public void Dispose()
         {
-            this.endRightEquipmentSubject.Dispose();
             this.onHitOpponentAttack.Dispose();
             this.onDead.Dispose();
             this.onChangedStateType.Dispose();
