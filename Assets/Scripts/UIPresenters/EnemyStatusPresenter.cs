@@ -74,9 +74,9 @@ namespace ER.UIPresenters
                     this.enemyStatusUIView.EnemyName.text = this.target.StatusController.BaseStatus.LocalizedName;
 
                     this.target.StatusController.HitPointAsObservable()
-                    .Subscribe(hitPoint =>
+                    .Subscribe(_ =>
                     {
-                        this.enemyStatusUIView.HitPointSlider.value = x.Target.StatusController.HitPointRate;
+                        this.enemyStatusUIView.HitPointSlider.value = this.target.StatusController.HitPointRate;
                     })
                     .AddTo(this.hitPointDisposables);
                 })
