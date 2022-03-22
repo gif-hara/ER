@@ -47,7 +47,7 @@ MonoBehaviour:
     statusData:
       name: Actor/Name020200
       hitPoint: 100
-      physicsAttack: 5
+      physicsAttack: 20
       magicAttack: 0
       fireAttack: 0
       earthAttack: 0

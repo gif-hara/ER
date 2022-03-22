@@ -39,7 +39,7 @@ namespace ER.ActorControllers
                 })
                 .AddTo(actor.Disposables);
 
-            actor.Event.OnRespawnedSubject()
+            actor.Broker.Receive<ActorEvent.OnRespawned>()
                 .Subscribe(_ =>
                 {
                     this.ChangeRequest(StateType.Movable);

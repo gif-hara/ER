@@ -76,19 +76,33 @@ namespace ER.ActorControllers
         }
 
         /// <summary>
-        /// ロックオンを開始した際のイベント
+        /// ロックオンを開始した際のメッセージ
         /// </summary>
-        private readonly Subject<Actor> onBeginLookAt = new Subject<Actor>();
+        public class OnBeginLookAt : Message<OnBeginLookAt, Actor>
+        {
+            /// <summary>
+            /// ロックオン対象
+            /// </summary>
+            public Actor Target => this.param1;
+        }
 
         /// <summary>
-        /// ロックオンを終了した際のイベント
+        /// ロックオンを終了した際のメッセージ
         /// </summary>
-        private readonly Subject<Actor> onEndLookAt = new Subject<Actor>();
+        public class OnEndLookAt : Message<OnEndLookAt, Actor>
+        {
+            /// <summary>
+            /// ロックオン対象
+            /// </summary>
+            public Actor Target => this.param1;
+        }
 
         /// <summary>
-        /// リスポーンされた際のイベント
+        /// リスポーンされた際のメッセージ
         /// </summary>
-        private readonly Subject<Unit> onRespawned = new Subject<Unit>();
+        public class OnRespawned : Message<OnRespawned>
+        {
+        }
 
         /// <summary>
         /// <see cref="IInteractableGimmick"/>のエリア内に入った際のイベント
@@ -114,21 +128,6 @@ namespace ER.ActorControllers
         /// 左手装備品の切り替えをリクエストするイベント
         /// </summary>
         private readonly Subject<Unit> onRequestChangeLeftEquipment = new Subject<Unit>();
-
-        /// <summary>
-        /// <inheritdoc cref="onBeginLookAt"/>
-        /// </summary>
-        public ISubject<Actor> OnBeginLookAtSubject() => this.onBeginLookAt;
-
-        /// <summary>
-        /// <inheritdoc cref="onEndLookAt"/>
-        /// </summary>
-        public ISubject<Actor> OnEndLookAtSubject() => this.onEndLookAt;
-
-        /// <summary>
-        /// <inheritdoc cref="onRespawned"/>
-        /// </summary>
-        public ISubject<Unit> OnRespawnedSubject() => this.onRespawned;
 
         /// <summary>
         /// <inheritdoc cref="onEnterInteractableStageGimmick"/>
@@ -157,9 +156,6 @@ namespace ER.ActorControllers
 
         public void Dispose()
         {
-            this.onBeginLookAt.Dispose();
-            this.onEndLookAt.Dispose();
-            this.onRespawned.Dispose();
             this.onEnterInteractableStageGimmick.Dispose();
             this.onExitInteractableStageGimmick.Dispose();
             this.onTakedDamage.Dispose();

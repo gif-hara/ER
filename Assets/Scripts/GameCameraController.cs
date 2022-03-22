@@ -54,22 +54,22 @@ namespace ER
 
         private void RegisterActorEvent(IActor actor)
         {
-            actor.Event.OnBeginLookAtSubject()
+            actor.Broker.Receive<ActorEvent.OnBeginLookAt>()
                 .Subscribe(x =>
                 {
                     SetActiveVirtualCamera(this.lookAtVirtualCamera);
                     this.lookAtTargetGroup.AddMember(actor.transform, 1.0f, 1.0f);
-                    this.lookAtTargetGroup.AddMember(x.transform, 1.0f, 1.0f);
+                    this.lookAtTargetGroup.AddMember(x.Target.transform, 1.0f, 1.0f);
                 })
                 .AddTo(this);
 
-            actor.Event.OnEndLookAtSubject()
+            actor.Broker.Receive<ActorEvent.OnEndLookAt>()
                 .Subscribe(x =>
                 {
                     SetActiveVirtualCamera(this.defaultVirtualCamera);
-                    if (x != null)
+                    if (x.Target != null)
                     {
-                        this.lookAtTargetGroup.RemoveMember(x.transform);
+                        this.lookAtTargetGroup.RemoveMember(x.Target.transform);
                     }
                 })
                 .AddTo(this);

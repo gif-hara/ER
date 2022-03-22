@@ -66,22 +66,22 @@ namespace ER.UIPresenters
 
         private void RegisterActorEvent(Actor actor)
         {
-            actor.Event.OnBeginLookAtSubject()
+            actor.Broker.Receive<ActorEvent.OnBeginLookAt>()
                 .Subscribe(x =>
                 {
-                    this.target = x;
+                    this.target = x.Target;
                     this.enemyStatusUIView.RootCanvasGroup.alpha = 1.0f;
                     this.enemyStatusUIView.EnemyName.text = this.target.StatusController.BaseStatus.LocalizedName;
 
                     this.target.StatusController.HitPointAsObservable()
                     .Subscribe(hitPoint =>
                     {
-                        this.enemyStatusUIView.HitPointSlider.value = x.StatusController.HitPointRate;
+                        this.enemyStatusUIView.HitPointSlider.value = x.Target.StatusController.HitPointRate;
                     })
                     .AddTo(this.hitPointDisposables);
                 })
                 .AddTo(actor.Disposables);
-            actor.Event.OnEndLookAtSubject()
+            actor.Broker.Receive<ActorEvent.OnEndLookAt>()
                 .Subscribe(_ =>
                 {
                     this.target = null;

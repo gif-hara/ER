@@ -33,7 +33,7 @@ namespace ER.ActorControllers
                 {
                     this.actor.transform.position = this.actor.MotionController.CheckPoint;
                     this.actor.gameObject.SetActive(true);
-                    this.actor.Event.OnRespawnedSubject().OnNext(Unit.Default);
+                    this.actor.Broker.Publish(ActorEvent.OnRespawned.Get());
                 })
                 .AsUnitObservable();
             });

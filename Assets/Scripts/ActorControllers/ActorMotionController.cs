@@ -106,7 +106,7 @@ namespace ER.ActorControllers
                 })
                 .AddTo(actor.Disposables);
 
-            actor.Event.OnRespawnedSubject()
+            actor.Broker.Receive<ActorEvent.OnRespawned>()
                 .Subscribe(_ =>
                 {
                     if (IsLookAt)
@@ -155,17 +155,17 @@ namespace ER.ActorControllers
             Assert.IsNotNull(this.lookAtTarget);
             this.IsLookAt = true;
 
-            this.actor.Event.OnBeginLookAtSubject().OnNext(this.lookAtTarget);
+            this.actor.Broker.Publish(ActorEvent.OnBeginLookAt.Get(this.lookAtTarget));
         }
 
         public void EndLookAt()
         {
             Assert.IsTrue(this.IsLookAt);
-            var tempTransform = this.lookAtTarget;
+            var tempTarget = this.lookAtTarget;
             this.lookAtTarget = null;
             this.IsLookAt = false;
 
-            this.actor.Event.OnEndLookAtSubject().OnNext(tempTransform);
+            this.actor.Broker.Publish(ActorEvent.OnEndLookAt.Get(tempTarget));
         }
 
         private void UpdatePosition(IActor actor)

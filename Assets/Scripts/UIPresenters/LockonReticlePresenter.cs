@@ -58,14 +58,14 @@ namespace ER.UIPresenters
 
         private void RegisterActorEvent(Actor actor)
         {
-            actor.Event.OnBeginLookAtSubject()
+            actor.Broker.Receive<ActorEvent.OnBeginLookAt>()
                 .Subscribe(x =>
                 {
-                    this.target = x.transform;
+                    this.target = x.Target.transform;
                     this.lockonReticleUIView.Reticle.gameObject.SetActive(true);
                 })
                 .AddTo(actor.Disposables);
-            actor.Event.OnEndLookAtSubject()
+            actor.Broker.Receive<ActorEvent.OnEndLookAt>()
                 .Subscribe(_ =>
                 {
                     this.target = null;
