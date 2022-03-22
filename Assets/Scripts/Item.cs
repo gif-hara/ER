@@ -8,9 +8,9 @@ namespace ER
     /// </summary>
     public sealed class Item
     {
-        private string itemId;
+        public string ItemId { get; private set; }
 
-        private string instanceId;
+        public string InstanceId { get; private set; }
 
         /// <summary>
         /// 所持数
@@ -19,13 +19,13 @@ namespace ER
 
         public Item(string id)
         {
-            this.itemId = id;
+            this.ItemId = id;
         }
 
         public Item(string id, int instanceId)
         {
-            this.itemId = id;
-            this.instanceId = id + instanceId.ToString();
+            this.ItemId = id;
+            this.InstanceId = id + instanceId.ToString();
         }
 
         public void AddNumber(int value)

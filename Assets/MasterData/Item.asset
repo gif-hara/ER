@@ -16,6 +16,12 @@ MonoBehaviour:
   - id: Weapon/Name010101
     stackable: 0
     category: 1
+  - id: Weapon/Name010102
+    stackable: 0
+    category: 1
+  - id: Weapon/Name020101
+    stackable: 0
+    category: 1
   - id: Shield/Name010101
     stackable: 0
     category: 8

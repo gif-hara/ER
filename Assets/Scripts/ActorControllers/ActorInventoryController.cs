@@ -15,6 +15,11 @@ namespace ER.ActorControllers
         public readonly List<Item> Equipments = new List<Item>();
 
         /// <summary>
+        /// 武器のレベルデータ
+        /// </summary>
+        public readonly Dictionary<string, WeaponLevelData> weaponLevelDatabase = new Dictionary<string, WeaponLevelData>();
+
+        /// <summary>
         /// 装備品を追加した数
         /// </summary>
         private int addedEquipmentNumber = 0;
@@ -36,6 +41,24 @@ namespace ER.ActorControllers
             }
         }
 
+        public Item AddEquipment(MasterDataItem.Record masterDataItem)
+        {
+            Assert.IsTrue(masterDataItem.Category.IsEquipment(), $"{masterDataItem.Id}は装備品ではありません");
+
+            var item = new Item(masterDataItem.Id, addedEquipmentNumber++);
+            if (masterDataItem.Category == ItemCategory.Weapon)
+            {
+                this.weaponLevelDatabase.Add(item.InstanceId, new WeaponLevelData());
+            }
+
+            return item;
+        }
+
+        public Item AddEquipment(string itemid)
+        {
+            return AddEquipment(MasterDataItem.Get(itemid));
+        }
+
         private void AddValuables(MasterDataItem.Record masterDataItem, int number)
         {
             Assert.AreEqual(masterDataItem.Category, ItemCategory.Valuable);
@@ -52,12 +75,11 @@ namespace ER.ActorControllers
 
         private void AddEquipments(MasterDataItem.Record masterDataItem, int number)
         {
-            Assert.IsTrue(masterDataItem.Category.IsEquipment());
+            Assert.IsTrue(masterDataItem.Category.IsEquipment(), $"{masterDataItem.Id}は装備品ではありません");
 
             for (var i = 0; i < number; i++)
             {
-                this.Equipments.Add(new Item(masterDataItem.Id, addedEquipmentNumber));
-                addedEquipmentNumber++;
+                this.AddEquipment(masterDataItem);
             }
         }
     }
