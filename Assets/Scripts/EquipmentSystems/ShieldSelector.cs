@@ -18,7 +18,8 @@ namespace ER.EquipmentSystems
 
         public void Attach(Actor actor, int index)
         {
-            var masterDataShield = MasterDataShield.Get(this.shieldDataId);
+            var item = actor.InventoryController.AddEquipment(this.shieldDataId);
+            var masterDataShield = MasterDataShield.Get(item.ItemId);
             actor.EquipmentController.LeftHand.Attach(index, masterDataShield.EquipmentControllerPrefab, masterDataShield);
         }
     }
