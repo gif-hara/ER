@@ -129,6 +129,10 @@ namespace ER
                 this.leftEquipmentSelectors[i].Attach(this.actor, i);
             }
 
+            this.actor.InventoryController.AddEquipment(this.headMasterDataId);
+            this.actor.InventoryController.AddEquipment(this.torsoMasterDataId);
+            this.actor.InventoryController.AddEquipment(this.armMasterDataId);
+            this.actor.InventoryController.AddEquipment(this.legMasterDataId);
 
             this.actor.EquipmentController.SetArmor(ArmorType.Head, this.headMasterDataId);
             this.actor.EquipmentController.SetArmor(ArmorType.Torso, this.torsoMasterDataId);
