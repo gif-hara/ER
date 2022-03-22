@@ -12,6 +12,6 @@ namespace ER.EquipmentSystems
         /// <summary>
         /// <see cref="Actor"/>に装備品をアタッチする
         /// </summary>
-        void Attach(Actor actor);
+        void Attach(Actor actor, int index);
     }
 }

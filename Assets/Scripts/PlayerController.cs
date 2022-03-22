@@ -23,10 +23,10 @@ namespace ER
         private float angleThreshold = default;
 
         [SerializeReference, SubclassSelector(typeof(IEquipmentSelector))]
-        private IEquipmentSelector rightEquipmentSelector = default;
+        private List<IEquipmentSelector> rightEquipmentSelectors = default;
 
         [SerializeReference, SubclassSelector(typeof(IEquipmentSelector))]
-        private IEquipmentSelector leftEquipmentSelector = default;
+        private List<IEquipmentSelector> leftEquipmentSelectors = default;
 
         [SerializeField, TermsPopup("ArmorHead/")]
         private string headMasterDataId = default;
@@ -109,8 +109,26 @@ namespace ER
                 GameController.Instance.Event.OnRequestOpenIngameMenuSubject().OnNext(Unit.Default);
             };
 
-            this.rightEquipmentSelector.Attach(this.actor);
-            this.leftEquipmentSelector.Attach(this.actor);
+            inputAction.Player.ChangeRightEquipment.performed += callback =>
+            {
+                this.actor.Event.OnRequestChangeRightEquipment().OnNext(Unit.Default);
+            };
+
+            inputAction.Player.ChangeLeftEquipment.performed += callback =>
+            {
+                this.actor.Event.OnRequestChangeLeftEquipment().OnNext(Unit.Default);
+            };
+
+            for (var i = 0; i < this.rightEquipmentSelectors.Count; i++)
+            {
+                this.rightEquipmentSelectors[i].Attach(this.actor, i);
+            }
+
+            for (var i = 0; i < this.leftEquipmentSelectors.Count; i++)
+            {
+                this.leftEquipmentSelectors[i].Attach(this.actor, i);
+            }
+
 
             this.actor.EquipmentController.SetArmor(ArmorType.Head, this.headMasterDataId);
             this.actor.EquipmentController.SetArmor(ArmorType.Torso, this.torsoMasterDataId);

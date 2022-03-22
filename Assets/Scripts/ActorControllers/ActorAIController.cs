@@ -42,7 +42,7 @@ namespace ER.ActorControllers
             }
 
             this.ChangeRequest(this.initialAiName);
-            this.rightEquipmentSelector.Attach(this.actor);
+            this.rightEquipmentSelector.Attach(this.actor, 0);
 
             this.behaviourData = new ActorAIBehaviourData
             {

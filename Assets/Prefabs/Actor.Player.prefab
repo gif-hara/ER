@@ -177,10 +177,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actor: {fileID: 4763258836534807601}
   angleThreshold: 0.1
-  rightEquipmentSelector:
-    id: 0
-  leftEquipmentSelector:
-    id: 1
+  rightEquipmentSelectors:
+  - id: 0
+  - id: 1
+  leftEquipmentSelectors:
+  - id: 2
   headMasterDataId: ArmorHead/Name010101
   torsoMasterDataId: ArmorTorso/Name010101
   armMasterDataId: ArmorArm/Name010101
@@ -203,6 +204,19 @@ MonoBehaviour:
           holyLevel: 0
           darkLevel: 0
     00000001:
+      type: {class: WeaponSelector, ns: ER.EquipmentSystems, asm: Assembly-CSharp}
+      data:
+        weaponDataId: Weapon/Name010102
+        levelData:
+          physicsLevel: 0
+          magicLevel: 0
+          fireLevel: 0
+          earthLevel: 0
+          thunderLevel: 0
+          waterLevel: 0
+          holyLevel: 0
+          darkLevel: 0
+    00000002:
       type: {class: ShieldSelector, ns: ER.EquipmentSystems, asm: Assembly-CSharp}
       data:
         shieldDataId: Shield/Name010101

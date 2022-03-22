@@ -46,6 +46,22 @@ namespace ER.ActorControllers
             this.actor.Event.OnEndLeftEquipmentSubject()
                 .Subscribe(_ => this.IsLeftRequest = false)
                 .AddTo(actor.Disposables);
+
+            this.actor.Event.OnRequestChangeRightEquipment()
+                .Where(_ => this.actor.StateController.CurrentState == ActorStateController.StateType.Movable)
+                .Subscribe(_ =>
+                {
+                    this.RightHand.ChangeNext();
+                })
+                .AddTo(actor.Disposables);
+
+            this.actor.Event.OnRequestChangeLeftEquipment()
+                .Where(_ => this.actor.StateController.CurrentState == ActorStateController.StateType.Movable)
+                .Subscribe(_ =>
+                {
+                    this.LeftHand.ChangeNext();
+                })
+                .AddTo(actor.Disposables);
         }
 
         public void BeginGuard(EquipmentController equipmentController)
@@ -170,6 +186,7 @@ namespace ER.ActorControllers
 
                 this.equipmentHolders[oldIndex].gameObject.SetActive(false);
                 this.equipmentHolders[this.index].gameObject.SetActive(true);
+                this.equipmentHolders[this.index].PlayDefaultPlayableAsset();
             }
         }
     }

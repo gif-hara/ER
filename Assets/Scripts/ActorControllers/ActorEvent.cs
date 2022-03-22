@@ -80,7 +80,17 @@ namespace ER.ActorControllers
         /// <summary>
         /// ダメージを受けた際のイベント
         /// </summary>
-        public readonly Subject<int> onTakedDamage = new Subject<int>();
+        private readonly Subject<int> onTakedDamage = new Subject<int>();
+
+        /// <summary>
+        /// 右手装備品の切り替えをリクエストするイベント
+        /// </summary>
+        private readonly Subject<Unit> onRequestChangeRightEquipment = new Subject<Unit>();
+
+        /// <summary>
+        /// 左手装備品の切り替えをリクエストするイベント
+        /// </summary>
+        private readonly Subject<Unit> onRequestChangeLeftEquipment = new Subject<Unit>();
 
         /// <summary>
         /// <inheritdoc cref="beginRightEquipmentSubject"/>
@@ -152,6 +162,16 @@ namespace ER.ActorControllers
         /// </summary>
         public ISubject<int> OnTakedDamageSubject() => this.onTakedDamage;
 
+        /// <summary>
+        /// <inheritdoc cref="onRequestChangeRightEquipment"/>
+        /// </summary>
+        public ISubject<Unit> OnRequestChangeRightEquipment() => this.onRequestChangeRightEquipment;
+
+        /// <summary>
+        /// <inheritdoc cref="onRequestChangeLeftEquipment"/>
+        /// </summary>
+        public ISubject<Unit> OnRequestChangeLeftEquipment() => this.onRequestChangeLeftEquipment;
+
         public void Dispose()
         {
             this.beginRightEquipmentSubject.Dispose();
@@ -166,6 +186,8 @@ namespace ER.ActorControllers
             this.onEnterInteractableStageGimmick.Dispose();
             this.onExitInteractableStageGimmick.Dispose();
             this.onTakedDamage.Dispose();
+            this.onRequestChangeRightEquipment.Dispose();
+            this.onRequestChangeLeftEquipment.Dispose();
         }
     }
 }

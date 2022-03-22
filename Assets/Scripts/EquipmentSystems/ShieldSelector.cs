@@ -16,10 +16,10 @@ namespace ER.EquipmentSystems
         [SerializeField, TermsPopup("Shield/")]
         private string shieldDataId = default;
 
-        public void Attach(Actor actor)
+        public void Attach(Actor actor, int index)
         {
             var masterDataShield = MasterDataShield.Get(this.shieldDataId);
-            actor.EquipmentController.LeftHand.Attach(0, masterDataShield.EquipmentControllerPrefab, masterDataShield);
+            actor.EquipmentController.LeftHand.Attach(index, masterDataShield.EquipmentControllerPrefab, masterDataShield);
         }
     }
 }

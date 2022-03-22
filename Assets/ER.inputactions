@@ -68,6 +68,22 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "ChangeRightEquipment",
+                    "type": "Button",
+                    "id": "3e049586-99d1-48a9-8d30-8103af63aefd",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "ChangeLeftEquipment",
+                    "type": "Button",
+                    "id": "0186fae1-eef1-4aa2-aae7-6934c6a172f9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -332,6 +348,28 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "OpenIngameMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "426d5bb6-584b-4048-8c10-bee42c2f5a7c",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeRightEquipment",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "20e01b88-1922-4410-9408-7ecd9e8fb5d5",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeLeftEquipment",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
