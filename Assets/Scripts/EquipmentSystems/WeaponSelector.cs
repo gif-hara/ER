@@ -16,9 +16,6 @@ namespace ER.EquipmentSystems
         [SerializeField, TermsPopup("Weapon/")]
         private string weaponDataId = default;
 
-        [SerializeField]
-        private WeaponLevelData levelData = default;
-
         public void Attach(Actor actor, int index)
         {
             var item = actor.InventoryController.AddEquipment(this.weaponDataId);
