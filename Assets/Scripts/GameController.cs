@@ -23,9 +23,13 @@ namespace ER
         [SerializeField]
         private Transform playerSpawnPoint = default;
 
+        private MessageBroker broker = new MessageBroker();
+
         public GameEvent Event { get; } = new GameEvent();
 
         public ERInputAction InputAction { get; private set; }
+
+        public IMessageBroker Broker => this.broker;
 
         private void Awake()
         {

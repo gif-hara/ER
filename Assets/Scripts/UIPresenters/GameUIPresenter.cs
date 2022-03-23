@@ -16,6 +16,7 @@ namespace ER.UIPresenters
             Invalid,
             Hud,
             Menu,
+            ChangeEquipment,
         }
 
         [SerializeField]
@@ -23,6 +24,9 @@ namespace ER.UIPresenters
 
         [SerializeField]
         private UIAnimationController ingameMenuAnimationController = default;
+
+        [SerializeField]
+        private UIAnimationController changeEquipmentAnimationController = default;
 
         [SerializeField]
         private IngameRootMenuPresenter ingameRootMenuPresenter = default;
@@ -36,6 +40,7 @@ namespace ER.UIPresenters
             this.stateController = new StateController<StateType>(StateType.Invalid);
             this.stateController.Set(StateType.Hud, this.OnEnterHud, null);
             this.stateController.Set(StateType.Menu, this.OnEnterMenu, null);
+            this.stateController.Set(StateType.Menu, this.OnEnterChangeEquipment, null);
             this.stateController.ChangeRequest(StateType.Hud);
 
             GameController.Instance.Event.OnRequestOpenIngameMenuSubject()
@@ -65,17 +70,15 @@ namespace ER.UIPresenters
 
         private void OnEnterHud(StateType prev)
         {
-            GameController.Instance.InputAction.Player.Enable();
-            GameController.Instance.InputAction.UI.Disable();
+            EnablePlayerInputAction();
             this.ChangeCurrentRoot(this.ingameHudAnimationController);
         }
 
         private void OnEnterMenu(StateType prev)
         {
-            var inputAction = GameController.Instance.InputAction;
-            inputAction.Player.Disable();
-            inputAction.UI.Enable();
+            EnableUIInputAction();
 
+            var inputAction = GameController.Instance.InputAction;
             inputAction.UI.Cancel.OnPerformedAsObservable()
                 .Subscribe(_ => this.stateController.ChangeRequest(StateType.Hud))
                 .AddTo(this.stateController.StateDisposables);
@@ -83,7 +86,30 @@ namespace ER.UIPresenters
             this.ChangeCurrentRoot(this.ingameMenuAnimationController);
 
             this.ingameRootMenuPresenter.Activate();
+        }
 
+        private void OnEnterChangeEquipment(StateType prev)
+        {
+            var inputAction = GameController.Instance.InputAction;
+            inputAction.UI.Cancel.OnPerformedAsObservable()
+                .Subscribe(_ => this.stateController.ChangeRequest(StateType.Menu))
+                .AddTo(this.stateController.StateDisposables);
+
+            this.ChangeCurrentRoot(this.changeEquipmentAnimationController);
+        }
+
+        private void EnableUIInputAction()
+        {
+            var inputAction = GameController.Instance.InputAction;
+            inputAction.Player.Disable();
+            inputAction.UI.Enable();
+        }
+
+        private void EnablePlayerInputAction()
+        {
+            var inputAction = GameController.Instance.InputAction;
+            inputAction.Player.Enable();
+            inputAction.UI.Disable();
         }
     }
 }
