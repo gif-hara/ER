@@ -40,7 +40,7 @@ namespace ER.UIPresenters
             this.stateController = new StateController<StateType>(StateType.Invalid);
             this.stateController.Set(StateType.Hud, this.OnEnterHud, null);
             this.stateController.Set(StateType.Menu, this.OnEnterMenu, null);
-            this.stateController.Set(StateType.Menu, this.OnEnterChangeEquipment, null);
+            this.stateController.Set(StateType.ChangeEquipment, this.OnEnterChangeEquipment, null);
             this.stateController.ChangeRequest(StateType.Hud);
 
             GameController.Instance.Event.OnRequestOpenIngameMenuSubject()
