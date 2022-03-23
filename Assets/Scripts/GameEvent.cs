@@ -30,5 +30,12 @@ namespace ER
         public class OnRequestOpenIngameMenu : Message<OnRequestOpenIngameMenu>
         {
         }
+
+        /// <summary>
+        /// 装備品切り替えUIの表示をリクエストするメッセージ
+        /// </summary>
+        public class OnRequestOpenChangeEquipment : Message<OnRequestOpenChangeEquipment>
+        {
+        }
     }
 }

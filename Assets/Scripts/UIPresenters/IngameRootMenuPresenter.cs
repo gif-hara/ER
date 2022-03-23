@@ -36,7 +36,7 @@ namespace ER.UIPresenters
                     e.Button.OnClickAsObservable()
                     .Subscribe(_ =>
                     {
-                        Debug.Log("TODO");
+                        GameController.Instance.Broker.Publish(GameEvent.OnRequestOpenChangeEquipment.Get());
                     })
                     .AddTo(e.Button);
                 },

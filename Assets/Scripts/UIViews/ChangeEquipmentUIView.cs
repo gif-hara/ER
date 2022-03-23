@@ -63,5 +63,10 @@ namespace ER.UIViews
                     return null;
             }
         }
+
+        public Button[] GetAllButtons()
+        {
+            return this.GetComponentsInChildren<Button>();
+        }
     }
 }

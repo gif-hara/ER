@@ -31,12 +31,19 @@ namespace ER.UIPresenters
         [SerializeField]
         private IngameRootMenuPresenter ingameRootMenuPresenter = default;
 
+        [SerializeField]
+        private ChangeEquipmentPresenter changeEquipmentPresenter = default;
+
         private UIAnimationController currentRoot;
 
         private StateController<StateType> stateController;
 
         private void Awake()
         {
+            this.ingameHudAnimationController.PlayImmediate(false);
+            this.ingameMenuAnimationController.PlayImmediate(false);
+            this.changeEquipmentAnimationController.PlayImmediate(false);
+
             this.stateController = new StateController<StateType>(StateType.Invalid);
             this.stateController.Set(StateType.Hud, this.OnEnterHud, null);
             this.stateController.Set(StateType.Menu, this.OnEnterMenu, null);
@@ -44,10 +51,11 @@ namespace ER.UIPresenters
             this.stateController.ChangeRequest(StateType.Hud);
 
             GameController.Instance.Broker.Receive<GameEvent.OnRequestOpenIngameMenu>()
-                .Subscribe(_ =>
-                {
-                    this.stateController.ChangeRequest(StateType.Menu);
-                })
+                .Subscribe(_ => this.stateController.ChangeRequest(StateType.Menu))
+                .AddTo(this);
+
+            GameController.Instance.Broker.Receive<GameEvent.OnRequestOpenChangeEquipment>()
+                .Subscribe(_ => this.stateController.ChangeRequest(StateType.ChangeEquipment))
                 .AddTo(this);
 
             this.UpdateAsObservable()
@@ -96,6 +104,8 @@ namespace ER.UIPresenters
                 .AddTo(this.stateController.StateDisposables);
 
             this.ChangeCurrentRoot(this.changeEquipmentAnimationController);
+
+            this.changeEquipmentPresenter.Activate();
         }
 
         private void EnableUIInputAction()

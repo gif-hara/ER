@@ -12,7 +12,7 @@ namespace ER
     /// </summary>
     public static class SelectableExtensions
     {
-        public static void SetupVerticalNavigations<T>(this List<T> self) where T : Selectable
+        public static void SetupVerticalNavigations<T>(this IList<T> self) where T : Selectable
         {
             for (var i = 0; i < self.Count; i++)
             {
