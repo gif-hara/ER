@@ -75,7 +75,7 @@ namespace ER.MasterDataSystem
 
             public string Id => this.id;
 
-            public string Name => LocalizationManager.GetTermTranslation(this.id);
+            public string LocalizedName => LocalizationManager.GetTermTranslation(this.id);
 
             public ArmorType ArmorType => this.armorType;
 

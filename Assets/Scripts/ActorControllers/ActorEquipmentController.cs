@@ -198,6 +198,11 @@ namespace ER.ActorControllers
                 this.equipmentHolders[this.index].gameObject.SetActive(true);
                 this.equipmentHolders[this.index].PlayDefaultPlayableAsset();
             }
+
+            public EquipmentController GetEquipmentController(int index)
+            {
+                return this.equipmentHolders[index];
+            }
         }
     }
 }

@@ -41,6 +41,14 @@ MonoBehaviour:
       - System
       Flags: 0000
       Languages_Touch: []
+    - Term: Common/Empty
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u306A\u3057"
+      - Empty
+      Flags: 0000
+      Languages_Touch: []
     - Term: ValuableItem/Name010101
       TermType: 0
       Description: 
@@ -272,7 +280,7 @@ MonoBehaviour:
     Google_WebServiceURL: https://script.google.com/macros/s/AKfycbyF0yeaJl5TfgY6r059oCUDjbulYEndJLFNq6Q7/exec
     Google_SpreadsheetKey: 1UKcNrFW7zKUH617RzHOCnP1JoEKPtbbJkPmgc0Hgkso
     Google_SpreadsheetName: I2Loc ER Localization
-    Google_LastUpdatedVersion: 1647948285129
+    Google_LastUpdatedVersion: 1648042810972
     Google_Password: change_this
     GoogleUpdateFrequency: 1
     GoogleInEditorCheckFrequency: 1

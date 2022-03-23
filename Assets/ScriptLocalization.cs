@@ -7,6 +7,7 @@ namespace I2.Loc
 
 		public static class Common
 		{
+			public static string Empty 		{ get{ return LocalizationManager.GetTranslation ("Common/Empty"); } }
 			public static string Equipment 		{ get{ return LocalizationManager.GetTranslation ("Common/Equipment"); } }
 			public static string Inventory 		{ get{ return LocalizationManager.GetTranslation ("Common/Inventory"); } }
 			public static string System 		{ get{ return LocalizationManager.GetTranslation ("Common/System"); } }
@@ -18,6 +19,7 @@ namespace I2.Loc
 
 		public static class Common
 		{
+		    public const string Empty = "Common/Empty";
 		    public const string Equipment = "Common/Equipment";
 		    public const string Inventory = "Common/Inventory";
 		    public const string System = "Common/System";

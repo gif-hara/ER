@@ -49,6 +49,8 @@ namespace ER.MasterDataSystem
 
             public string Id => this.id;
 
+            public string LocalizedName => LocalizationManager.GetTermTranslation(this.id);
+
             public EquipmentController EquipmentControllerPrefab => this.equipmentControllerPrefab;
 
             public AttackElement Physics => this.physics;

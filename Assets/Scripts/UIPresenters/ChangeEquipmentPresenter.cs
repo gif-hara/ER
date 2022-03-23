@@ -1,5 +1,7 @@
 using ER.ActorControllers;
+using ER.MasterDataSystem;
 using ER.UIViews;
+using I2.Loc;
 using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -17,6 +19,8 @@ namespace ER.UIPresenters
 
         private Actor actor;
 
+        private readonly CompositeDisposable disposables = new CompositeDisposable();
+
         private void Awake()
         {
             GameController.Instance.Broker.Receive<GameEvent.OnSpawnedActor>()
@@ -30,11 +34,90 @@ namespace ER.UIPresenters
 
         public void Activate()
         {
+            this.disposables.Clear();
+
             var buttons = this.changeEquipmentUIView.GetAllButtons();
             EventSystem.current.SetSelectedGameObject(buttons[0].gameObject);
             buttons.SetupVerticalNavigations();
 
-            Debug.Log("?");
+            for (var i = 0; i < Define.EquipmentableNumber; i++)
+            {
+                // 右手
+                {
+                    var buttonElement = this.changeEquipmentUIView.GetRightEquipmentButtonElement(i);
+                    var equipmentController = this.actor.EquipmentController.RightHand.GetEquipmentController(i);
+
+                    if (equipmentController == null)
+                    {
+                        buttonElement.Label.text = ScriptLocalization.Common.Empty;
+                    }
+                    else
+                    {
+                        switch (equipmentController.EquipmentData)
+                        {
+                            case WeaponInstanceData weaponInstanceData:
+                                buttonElement.Label.text = weaponInstanceData.MasterData.LocalizedName;
+                                buttonElement.Button.OnClickAsObservable()
+                                    .Subscribe(_ => Debug.Log("TODO"))
+                                    .AddTo(this.disposables);
+                                break;
+                            default:
+                                Assert.IsTrue(false, $"{equipmentController.EquipmentData.GetType()}は未対応です");
+                                break;
+                        }
+                    }
+                }
+                // 左手
+                {
+                    var buttonElement = this.changeEquipmentUIView.GetLeftEquipmentButtonElement(i);
+                    var equipmentController = this.actor.EquipmentController.LeftHand.GetEquipmentController(i);
+
+                    if (equipmentController == null)
+                    {
+                        buttonElement.Label.text = ScriptLocalization.Common.Empty;
+                    }
+                    else
+                    {
+                        switch (equipmentController.EquipmentData)
+                        {
+                            case MasterDataShield.Record masterDataShield:
+                                buttonElement.Label.text = masterDataShield.LocalizedName;
+                                buttonElement.Button.OnClickAsObservable()
+                                    .Subscribe(_ => Debug.Log("TODO"))
+                                    .AddTo(this.disposables);
+                                break;
+                            default:
+                                Assert.IsTrue(false, $"{equipmentController.EquipmentData.GetType()}は未対応です");
+                                break;
+                        }
+                    }
+                }
+                // 防具
+                {
+                    this.ApplyArmor(ArmorType.Head);
+                    this.ApplyArmor(ArmorType.Torso);
+                    this.ApplyArmor(ArmorType.Arm);
+                    this.ApplyArmor(ArmorType.Leg);
+                }
+            }
+        }
+
+        private void ApplyArmor(ArmorType armorType)
+        {
+            var buttonElement = this.changeEquipmentUIView.GetArmorButtonElement(armorType);
+            var masterDataArmor = this.actor.EquipmentController.GetArmor(armorType);
+
+            if (masterDataArmor == null)
+            {
+                buttonElement.Label.text = ScriptLocalization.Common.Empty;
+            }
+            else
+            {
+                buttonElement.Label.text = masterDataArmor.LocalizedName;
+                buttonElement.Button.OnClickAsObservable()
+                    .Subscribe(_ => Debug.Log("?"))
+                    .AddTo(this);
+            }
         }
     }
 }
