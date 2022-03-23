@@ -49,6 +49,36 @@ MonoBehaviour:
       - Empty
       Flags: 0000
       Languages_Touch: []
+    - Term: Common/WeaponInformation
+      TermType: 0
+      Description: 
+      Languages:
+      - "<size=72>{0}</size>\n\u653B\u6483\u529B\n  \u7269\u7406:{1}\n  \u9B54\u6CD5:{2}\n 
+        \u706B\u708E:{3}\n  \u5927\u5730:{4}\n  \u96F7\u5149:{5}\n  \u6C34\u6D41:{6}\n 
+        \u795E\u8056:{7}\n  \u9ED2\u95C7:{8}"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Common/ShieldInformation
+      TermType: 0
+      Description: 
+      Languages:
+      - "<size=72>{0}</size>\n\u30C0\u30E1\u30FC\u30B8\u30AB\u30C3\u30C8\u7387\n 
+        \u7269\u7406:{1}%\n  \u9B54\u6CD5:{2}%\n  \u706B\u708E:{3}%\n  \u5927\u5730:{4}%\n 
+        \u96F7\u5149:{5}%\n  \u6C34\u6D41:{6}%\n  \u795E\u8056:{7}%\n  \u9ED2\u95C7:{8}%"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Common/ArmorInformaiton
+      TermType: 0
+      Description: 
+      Languages:
+      - "<size=72>{0}</size>\n\u9632\u5FA1\u529B\n  \u7269\u7406:{1}\n  \u9B54\u6CD5:{2}\n 
+        \u706B\u708E:{3}\n  \u5927\u5730:{4}\n  \u96F7\u5149:{5}\n  \u6C34\u6D41:{6}\n 
+        \u795E\u8056:{7}\n  \u9ED2\u95C7:{8}"
+      - 
+      Flags: 0000
+      Languages_Touch: []
     - Term: ValuableItem/Name010101
       TermType: 0
       Description: 
@@ -280,7 +310,7 @@ MonoBehaviour:
     Google_WebServiceURL: https://script.google.com/macros/s/AKfycbyF0yeaJl5TfgY6r059oCUDjbulYEndJLFNq6Q7/exec
     Google_SpreadsheetKey: 1UKcNrFW7zKUH617RzHOCnP1JoEKPtbbJkPmgc0Hgkso
     Google_SpreadsheetName: I2Loc ER Localization
-    Google_LastUpdatedVersion: 1648042810972
+    Google_LastUpdatedVersion: 1648052573039
     Google_Password: change_this
     GoogleUpdateFrequency: 1
     GoogleInEditorCheckFrequency: 1
