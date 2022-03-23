@@ -129,15 +129,15 @@ namespace ER
                 this.leftEquipmentSelectors[i].Attach(this.actor, i);
             }
 
-            this.actor.InventoryController.AddEquipment(this.headMasterDataId);
-            this.actor.InventoryController.AddEquipment(this.torsoMasterDataId);
-            this.actor.InventoryController.AddEquipment(this.armMasterDataId);
-            this.actor.InventoryController.AddEquipment(this.legMasterDataId);
+            var headItem = this.actor.InventoryController.AddEquipment(this.headMasterDataId);
+            var torsoItem = this.actor.InventoryController.AddEquipment(this.torsoMasterDataId);
+            var armItem = this.actor.InventoryController.AddEquipment(this.armMasterDataId);
+            var legItem = this.actor.InventoryController.AddEquipment(this.legMasterDataId);
 
-            this.actor.EquipmentController.SetArmor(ArmorType.Head, this.headMasterDataId);
-            this.actor.EquipmentController.SetArmor(ArmorType.Torso, this.torsoMasterDataId);
-            this.actor.EquipmentController.SetArmor(ArmorType.Arm, this.armMasterDataId);
-            this.actor.EquipmentController.SetArmor(ArmorType.Leg, this.legMasterDataId);
+            this.actor.EquipmentController.SetArmorItem(ArmorType.Head, headItem.InstanceId);
+            this.actor.EquipmentController.SetArmorItem(ArmorType.Torso, torsoItem.InstanceId);
+            this.actor.EquipmentController.SetArmorItem(ArmorType.Arm, armItem.InstanceId);
+            this.actor.EquipmentController.SetArmorItem(ArmorType.Leg, legItem.InstanceId);
         }
 
         private void Update()

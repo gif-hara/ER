@@ -20,13 +20,13 @@ namespace ER.ActorControllers
 
         public EquipmentController GuardingEquipmentController { get; private set; }
 
-        public MasterDataArmor.Record Head { get; private set; }
+        public Item Head { get; private set; }
 
-        public MasterDataArmor.Record Torso { get; private set; }
+        public Item Torso { get; private set; }
 
-        public MasterDataArmor.Record Arm { get; private set; }
+        public Item Arm { get; private set; }
 
-        public MasterDataArmor.Record Leg { get; private set; }
+        public Item Leg { get; private set; }
 
         /// <summary>
         /// 左手行動のリクエストが来ているか
@@ -84,7 +84,7 @@ namespace ER.ActorControllers
             this.GuardingEquipmentController = null;
         }
 
-        public MasterDataArmor.Record GetArmor(ArmorType armorType)
+        public Item GetArmorItem(ArmorType armorType)
         {
             switch (armorType)
             {
@@ -102,27 +102,21 @@ namespace ER.ActorControllers
             }
         }
 
-        public void SetArmor(ArmorType armorType, string masterDataArmorId)
+        public void SetArmorItem(ArmorType armorType, string itemInstanceId)
         {
-            if (!MasterDataArmor.Contains(masterDataArmorId))
-            {
-                return;
-            }
-
-            var masterDataArmor = MasterDataArmor.Get(masterDataArmorId);
             switch (armorType)
             {
                 case ArmorType.Head:
-                    this.Head = masterDataArmor;
+                    this.Head = this.actor.InventoryController.Equipments[itemInstanceId]; ;
                     break;
                 case ArmorType.Torso:
-                    this.Torso = masterDataArmor;
+                    this.Torso = this.actor.InventoryController.Equipments[itemInstanceId]; ;
                     break;
                 case ArmorType.Arm:
-                    this.Arm = masterDataArmor;
+                    this.Arm = this.actor.InventoryController.Equipments[itemInstanceId]; ;
                     break;
                 case ArmorType.Leg:
-                    this.Leg = masterDataArmor;
+                    this.Leg = this.actor.InventoryController.Equipments[itemInstanceId]; ;
                     break;
                 default:
                     Assert.IsTrue(false, $"{armorType}は未対応です");
@@ -133,10 +127,10 @@ namespace ER.ActorControllers
         public int GetDefense(AttackAttributeType attackAttributeType)
         {
             var result = 0;
-            if (this.Head != null) result += this.Head.GetDefense(attackAttributeType);
-            if (this.Torso != null) result += this.Torso.GetDefense(attackAttributeType);
-            if (this.Arm != null) result += this.Arm.GetDefense(attackAttributeType);
-            if (this.Leg != null) result += this.Leg.GetDefense(attackAttributeType);
+            if (this.Head != null) result += this.Head.MasterDataItem.ToArmor().GetDefense(attackAttributeType);
+            if (this.Torso != null) result += this.Torso.MasterDataItem.ToArmor().GetDefense(attackAttributeType);
+            if (this.Arm != null) result += this.Arm.MasterDataItem.ToArmor().GetDefense(attackAttributeType);
+            if (this.Leg != null) result += this.Leg.MasterDataItem.ToArmor().GetDefense(attackAttributeType);
 
             return result;
         }
@@ -170,14 +164,14 @@ namespace ER.ActorControllers
                 this.actor = actor;
             }
 
-            public void Attach(int index, EquipmentController equipmentPrefab, IEquipmentData equipmentData)
+            public void Attach(int index, EquipmentController equipmentPrefab, string itemInstanceId)
             {
                 if (this.equipmentHolders[index] != null)
                 {
                     Object.Destroy(this.equipmentHolders[index].gameObject);
                 }
 
-                this.equipmentHolders[index] = equipmentPrefab.Attach(this.actor, equipmentData);
+                this.equipmentHolders[index] = equipmentPrefab.Attach(this.actor, itemInstanceId);
                 this.equipmentHolders[index].gameObject.SetActive(this.index == index);
             }
 

@@ -20,8 +20,7 @@ namespace ER.EquipmentSystems
         {
             var item = actor.InventoryController.AddEquipment(this.weaponDataId);
             var masterDataWeapon = MasterDataWeapon.Get(item.ItemId);
-            var instanceData = new WeaponInstanceData(masterDataWeapon, actor.InventoryController.weaponLevelDatabase[item.InstanceId]);
-            actor.EquipmentController.RightHand.Attach(index, masterDataWeapon.EquipmentControllerPrefab, instanceData);
+            actor.EquipmentController.RightHand.Attach(index, masterDataWeapon.EquipmentControllerPrefab, item.InstanceId);
         }
     }
 }

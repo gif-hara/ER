@@ -29,11 +29,17 @@ namespace ER.MasterDataSystem
 
             public string Id => this.id;
 
-            public string Name => LocalizationManager.GetTermTranslation(this.id);
+            public string LocalizedName => LocalizationManager.GetTermTranslation(this.id);
 
             public bool Stackable => this.stackable;
 
             public ItemCategory Category => this.category;
+
+            public MasterDataWeapon.Record ToWeapon() => MasterDataWeapon.Get(this.id);
+
+            public MasterDataShield.Record ToShield() => MasterDataShield.Get(this.id);
+
+            public MasterDataArmor.Record ToArmor() => MasterDataArmor.Get(this.id);
 
             public Record(string id, bool stackable, ItemCategory category)
             {

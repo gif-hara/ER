@@ -12,12 +12,12 @@ namespace ER.ActorControllers
     {
         public readonly Dictionary<string, Item> Valuables = new Dictionary<string, Item>();
 
-        public readonly List<Item> Equipments = new List<Item>();
+        public readonly Dictionary<string, Item> Equipments = new Dictionary<string, Item>();
 
         /// <summary>
         /// 武器のレベルデータ
         /// </summary>
-        public readonly Dictionary<string, WeaponLevelData> weaponLevelDatabase = new Dictionary<string, WeaponLevelData>();
+        public readonly Dictionary<string, WeaponLevelData> WeaponLevelDatabase = new Dictionary<string, WeaponLevelData>();
 
         /// <summary>
         /// 装備品を追加した数
@@ -46,9 +46,10 @@ namespace ER.ActorControllers
             Assert.IsTrue(masterDataItem.Category.IsEquipment(), $"{masterDataItem.Id}は装備品ではありません");
 
             var item = new Item(masterDataItem.Id, addedEquipmentNumber++);
+            this.Equipments.Add(item.InstanceId, item);
             if (masterDataItem.Category == ItemCategory.Weapon)
             {
-                this.weaponLevelDatabase.Add(item.InstanceId, new WeaponLevelData());
+                this.WeaponLevelDatabase.Add(item.InstanceId, new WeaponLevelData());
             }
 
             return item;

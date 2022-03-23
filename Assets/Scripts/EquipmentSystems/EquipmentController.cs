@@ -29,7 +29,12 @@ namespace ER.EquipmentSystems
         /// </summary>
         public float Power { get; set; }
 
-        public IEquipmentData EquipmentData { get; private set; }
+        public string ItemInstanceId { get; private set; }
+
+        /// <summary>
+        /// この装備品と紐づく<see cref="Item"/>を返す
+        /// </summary>
+        public Item Item => this.Actor.InventoryController.Equipments[this.ItemInstanceId];
 
         public Actor Actor { get; private set; }
 
@@ -39,10 +44,10 @@ namespace ER.EquipmentSystems
 
         private List<Collider2D> colliders = null;
 
-        public EquipmentController Attach(Actor actor, IEquipmentData equipmentData)
+        public EquipmentController Attach(Actor actor, string itemInstanceId)
         {
             var clone = Instantiate(this, actor.transform);
-            clone.AttachInternal(actor, equipmentData);
+            clone.AttachInternal(actor, itemInstanceId);
             return clone;
         }
 
@@ -51,10 +56,10 @@ namespace ER.EquipmentSystems
             this.disposables.Dispose();
         }
 
-        private void AttachInternal(Actor actor, IEquipmentData equipmentData)
+        private void AttachInternal(Actor actor, string itemInstanceId)
         {
             this.Actor = actor;
-            this.EquipmentData = equipmentData;
+            this.ItemInstanceId = itemInstanceId;
             this.transform.localPosition = Vector3.zero;
             this.transform.localRotation = Quaternion.identity;
             this.gameObject.SetLayerRecursive(GetLayerIndex(actor.gameObject.layer));

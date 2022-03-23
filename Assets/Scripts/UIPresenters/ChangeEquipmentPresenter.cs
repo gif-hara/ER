@@ -53,18 +53,12 @@ namespace ER.UIPresenters
                     }
                     else
                     {
-                        switch (equipmentController.EquipmentData)
-                        {
-                            case WeaponInstanceData weaponInstanceData:
-                                buttonElement.Label.text = weaponInstanceData.MasterData.LocalizedName;
-                                buttonElement.Button.OnClickAsObservable()
-                                    .Subscribe(_ => Debug.Log("TODO"))
-                                    .AddTo(this.disposables);
-                                break;
-                            default:
-                                Assert.IsTrue(false, $"{equipmentController.EquipmentData.GetType()}は未対応です");
-                                break;
-                        }
+                        var item = equipmentController.Item;
+                        var masterDataItem = item.MasterDataItem;
+                        buttonElement.Label.text = masterDataItem.LocalizedName;
+                        buttonElement.Button.OnClickAsObservable()
+                            .Subscribe(_ => Debug.Log("TODO"))
+                            .AddTo(this.disposables);
                     }
                 }
                 // 左手
@@ -78,44 +72,39 @@ namespace ER.UIPresenters
                     }
                     else
                     {
-                        switch (equipmentController.EquipmentData)
-                        {
-                            case MasterDataShield.Record masterDataShield:
-                                buttonElement.Label.text = masterDataShield.LocalizedName;
-                                buttonElement.Button.OnClickAsObservable()
-                                    .Subscribe(_ => Debug.Log("TODO"))
-                                    .AddTo(this.disposables);
-                                break;
-                            default:
-                                Assert.IsTrue(false, $"{equipmentController.EquipmentData.GetType()}は未対応です");
-                                break;
-                        }
+                        var item = equipmentController.Item;
+                        var masterDataItem = item.MasterDataItem;
+                        buttonElement.Label.text = masterDataItem.LocalizedName;
+                        buttonElement.Button.OnClickAsObservable()
+                            .Subscribe(_ => Debug.Log("TODO"))
+                            .AddTo(this.disposables);
                     }
                 }
-                // 防具
-                {
-                    this.ApplyArmor(ArmorType.Head);
-                    this.ApplyArmor(ArmorType.Torso);
-                    this.ApplyArmor(ArmorType.Arm);
-                    this.ApplyArmor(ArmorType.Leg);
-                }
+            }
+
+            // 防具
+            {
+                this.ApplyArmor(ArmorType.Head);
+                this.ApplyArmor(ArmorType.Torso);
+                this.ApplyArmor(ArmorType.Arm);
+                this.ApplyArmor(ArmorType.Leg);
             }
         }
 
         private void ApplyArmor(ArmorType armorType)
         {
             var buttonElement = this.changeEquipmentUIView.GetArmorButtonElement(armorType);
-            var masterDataArmor = this.actor.EquipmentController.GetArmor(armorType);
+            var armorItem = this.actor.EquipmentController.GetArmorItem(armorType);
 
-            if (masterDataArmor == null)
+            if (armorItem == null)
             {
                 buttonElement.Label.text = ScriptLocalization.Common.Empty;
             }
             else
             {
-                buttonElement.Label.text = masterDataArmor.LocalizedName;
+                buttonElement.Label.text = armorItem.MasterDataItem.LocalizedName;
                 buttonElement.Button.OnClickAsObservable()
-                    .Subscribe(_ => Debug.Log("?"))
+                    .Subscribe(_ => Debug.Log(armorItem.MasterDataItem.LocalizedName))
                     .AddTo(this);
             }
         }

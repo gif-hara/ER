@@ -1,3 +1,4 @@
+using ER.MasterDataSystem;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -15,7 +16,9 @@ namespace ER
         /// <summary>
         /// 所持数
         /// </summary>
-        private int number;
+        public int Number { get; private set; }
+
+        public MasterDataItem.Record MasterDataItem => MasterDataSystem.MasterDataItem.Get(this.ItemId);
 
         public Item(string id)
         {
@@ -30,7 +33,7 @@ namespace ER
 
         public void AddNumber(int value)
         {
-            this.number += value;
+            this.Number += value;
         }
     }
 }

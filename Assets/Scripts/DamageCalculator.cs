@@ -38,10 +38,13 @@ namespace ER
             AttackAttributeType attackAttributeType
             )
         {
-            var weaponData = (WeaponInstanceData)attackerWeapon.EquipmentData;
+            var weaponItem = attackerWeapon.Item;
+            var masterDataWeapon = weaponItem.MasterDataItem.ToWeapon();
+            var weaponLevelData = attacker.InventoryController.WeaponLevelDatabase[weaponItem.InstanceId];
+            var weaponAttack = masterDataWeapon.GetAttackElement(attackAttributeType).Evaluate(weaponLevelData.GetRate(attackAttributeType));
             var attack =
                 attacker.StatusController.BaseStatus.GetAttack(attackAttributeType)
-                + weaponData.GetAttack(attackAttributeType);
+                + weaponAttack;
             var defense =
                 defenser.StatusController.BaseStatus.GetDefense(attackAttributeType)
                 + defenser.EquipmentController.GetDefense(attackAttributeType);
@@ -57,7 +60,7 @@ namespace ER
                 var angle = Vector2.Angle(defenser.transform.up, diff);
                 if (angle <= threshold)
                 {
-                    var masterDataShield = guardingEquipmentController.EquipmentData as MasterDataShield.Record;
+                    var masterDataShield = guardingEquipmentController.Item.MasterDataItem.ToShield();
                     Assert.IsNotNull(masterDataShield, $"{guardingEquipmentController.name}に{typeof(MasterDataShield)}のデータがありません");
 
                     cutRate += masterDataShield.GetCutRate(attackAttributeType);

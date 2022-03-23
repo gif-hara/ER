@@ -20,7 +20,7 @@ namespace ER.EquipmentSystems
         {
             var item = actor.InventoryController.AddEquipment(this.shieldDataId);
             var masterDataShield = MasterDataShield.Get(item.ItemId);
-            actor.EquipmentController.LeftHand.Attach(index, masterDataShield.EquipmentControllerPrefab, masterDataShield);
+            actor.EquipmentController.LeftHand.Attach(index, masterDataShield.EquipmentControllerPrefab, item.InstanceId);
         }
     }
 }
