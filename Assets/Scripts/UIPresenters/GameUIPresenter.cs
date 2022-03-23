@@ -43,7 +43,7 @@ namespace ER.UIPresenters
             this.stateController.Set(StateType.ChangeEquipment, this.OnEnterChangeEquipment, null);
             this.stateController.ChangeRequest(StateType.Hud);
 
-            GameController.Instance.Event.OnRequestOpenIngameMenuSubject()
+            GameController.Instance.Broker.Receive<GameEvent.OnRequestOpenIngameMenu>()
                 .Subscribe(_ =>
                 {
                     this.stateController.ChangeRequest(StateType.Menu);

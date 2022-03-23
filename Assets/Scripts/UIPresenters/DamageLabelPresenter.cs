@@ -31,10 +31,10 @@ namespace ER.UIPresenters
                 })
                 .AddTo(this);
 
-            GameController.Instance.Event.OnSpawnedGameCameraControllerSubject()
+            GameController.Instance.Broker.Receive<GameEvent.OnSpawnedGameCameraController>()
                 .Subscribe(x =>
                 {
-                    this.worldCamera = x.ControlledCamera;
+                    this.worldCamera = x.SpawnedGameCameraController.ControlledCamera;
                 })
                 .AddTo(this);
         }

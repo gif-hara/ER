@@ -25,8 +25,6 @@ namespace ER
 
         private MessageBroker broker = new MessageBroker();
 
-        public GameEvent Event { get; } = new GameEvent();
-
         public ERInputAction InputAction { get; private set; }
 
         public IMessageBroker Broker => this.broker;
@@ -39,11 +37,6 @@ namespace ER
         private void Awake()
         {
             StartCoroutine(this.SetupCoroutine());
-        }
-
-        private void OnDestroy()
-        {
-            this.Event.Dispose();
         }
 
         private IEnumerator SetupCoroutine()

@@ -43,7 +43,7 @@ namespace ER
 
         private void Start()
         {
-            GameController.Instance.Event.OnSpawnedGameCameraControllerSubject().OnNext(this);
+            GameController.Instance.Broker.Publish(GameEvent.OnSpawnedGameCameraController.Get(this));
         }
 
         public void SetDefaultVirtualCameraTarget(Transform target)

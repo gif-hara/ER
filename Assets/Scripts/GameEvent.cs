@@ -1,16 +1,12 @@
-using System;
 using ER.ActorControllers;
 using HK.Framework.EventSystems;
-using UniRx;
-using UnityEngine;
-using UnityEngine.Assertions;
 
 namespace ER
 {
     /// <summary>
     /// 
     /// </summary>
-    public class GameEvent : IDisposable
+    public class GameEvent
     {
         /// <summary>
         /// <see cref="Actor"/>が生成された際のイベント
@@ -21,29 +17,18 @@ namespace ER
         }
 
         /// <summary>
-        /// <see cref="GameCameraController"/>が生成された際のイベント
+        /// <see cref="GameCameraController"/>が生成された際のメッセージ
         /// </summary>
-        private readonly Subject<GameCameraController> onSpawnedGameCameraController = new Subject<GameCameraController>();
-
-        /// <summary>
-        /// ゲームメニューの表示をリクエストするイベント
-        /// </summary>
-        private readonly Subject<Unit> onRequestOpenIngameMenu = new Subject<Unit>();
-
-        /// <summary>
-        /// <inheritdoc cref="onSpawnedGameCameraController"/>
-        /// </summary>
-        public ISubject<GameCameraController> OnSpawnedGameCameraControllerSubject() => onSpawnedGameCameraController;
-
-        /// <summary>
-        /// <inheritdoc cref="onRequestOpenIngameMenu"/>
-        /// </summary>
-        public ISubject<Unit> OnRequestOpenIngameMenuSubject() => onRequestOpenIngameMenu;
-
-        public void Dispose()
+        public class OnSpawnedGameCameraController : Message<OnSpawnedGameCameraController, GameCameraController>
         {
-            onSpawnedGameCameraController.Dispose();
-            onRequestOpenIngameMenu.Dispose();
+            public GameCameraController SpawnedGameCameraController => this.param1;
+        }
+
+        /// <summary>
+        /// ゲームメニューの表示をリクエストするメッセージ
+        /// </summary>
+        public class OnRequestOpenIngameMenu : Message<OnRequestOpenIngameMenu>
+        {
         }
     }
 }
