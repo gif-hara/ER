@@ -107,7 +107,7 @@ namespace ER.ActorControllers
                 Debug.LogWarning($"{this.name}.{nameof(this.gameObject.layer)}はどの{typeof(Actor)}にも属していません");
             }
 
-            GameController.Instance.Event.OnSpawnedActorSubject().OnNext(this);
+            GameController.Instance.Broker.Publish(GameEvent.OnSpawnedActor.Get(this));
         }
 
         void OnDestroy()

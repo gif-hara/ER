@@ -17,17 +17,17 @@ namespace ER.ActorControllers
 
         private void Awake()
         {
-            GameController.Instance.Event.OnSpawnedActorSubject()
+            GameController.Instance.Broker.Receive<GameEvent.OnSpawnedActor>()
                 .Subscribe(x =>
                 {
-                    var layer = x.gameObject.layer;
+                    var layer = x.SpawnedActor.gameObject.layer;
                     if (layer == Layer.Index.Player)
                     {
-                        x.transform.parent = this.playerParent;
+                        x.SpawnedActor.transform.parent = this.playerParent;
                     }
                     else if (layer == Layer.Index.Enemy)
                     {
-                        x.transform.parent = this.enemyParent;
+                        x.SpawnedActor.transform.parent = this.enemyParent;
                     }
                     else
                     {

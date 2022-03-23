@@ -30,13 +30,13 @@ namespace ER
 
         private void Awake()
         {
-            GameController.Instance.Event.OnSpawnedActorSubject()
-                .Where(x => x.gameObject.layer == Layer.Index.Player)
+            GameController.Instance.Broker.Receive<GameEvent.OnSpawnedActor>()
+                .Where(x => x.SpawnedActor.gameObject.layer == Layer.Index.Player)
                 .Subscribe(x =>
                 {
                     this.SetActiveVirtualCamera(this.defaultVirtualCamera);
-                    this.SetDefaultVirtualCameraTarget(x.transform);
-                    this.RegisterActorEvent(x);
+                    this.SetDefaultVirtualCameraTarget(x.SpawnedActor.transform);
+                    this.RegisterActorEvent(x.SpawnedActor);
                 })
                 .AddTo(this);
         }

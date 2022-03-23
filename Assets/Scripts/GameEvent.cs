@@ -1,5 +1,6 @@
 using System;
 using ER.ActorControllers;
+using HK.Framework.EventSystems;
 using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -12,14 +13,12 @@ namespace ER
     public class GameEvent : IDisposable
     {
         /// <summary>
-        /// ゲームを開始出来る状態か
-        /// </summary>
-        public ReactiveProperty<bool> IsGameReady { get; } = new ReactiveProperty<bool>(false);
-
-        /// <summary>
         /// <see cref="Actor"/>が生成された際のイベント
         /// </summary>
-        private readonly Subject<Actor> onSpawnedActor = new Subject<Actor>();
+        public class OnSpawnedActor : Message<OnSpawnedActor, Actor>
+        {
+            public Actor SpawnedActor => this.param1;
+        }
 
         /// <summary>
         /// <see cref="GameCameraController"/>が生成された際のイベント
@@ -30,11 +29,6 @@ namespace ER
         /// ゲームメニューの表示をリクエストするイベント
         /// </summary>
         private readonly Subject<Unit> onRequestOpenIngameMenu = new Subject<Unit>();
-
-        /// <summary>
-        /// <inheritdoc cref="onSpawnedActor"/>
-        /// </summary>
-        public ISubject<Actor> OnSpawnedActorSubject() => onSpawnedActor;
 
         /// <summary>
         /// <inheritdoc cref="onSpawnedGameCameraController"/>
@@ -48,8 +42,6 @@ namespace ER
 
         public void Dispose()
         {
-            IsGameReady.Dispose();
-            onSpawnedActor.Dispose();
             onSpawnedGameCameraController.Dispose();
             onRequestOpenIngameMenu.Dispose();
         }

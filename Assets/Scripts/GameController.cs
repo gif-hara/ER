@@ -31,6 +31,11 @@ namespace ER
 
         public IMessageBroker Broker => this.broker;
 
+        /// <summary>
+        /// ゲームを開始出来る状態か
+        /// </summary>
+        public ReactiveProperty<bool> IsGameReady { get; } = new ReactiveProperty<bool>(false);
+
         private void Awake()
         {
             StartCoroutine(this.SetupCoroutine());
@@ -57,7 +62,7 @@ namespace ER
                 masterDataActorStatus.statusData
                 );
 
-            this.Event.IsGameReady.Value = true;
+            this.IsGameReady.Value = true;
 
             yield break;
         }

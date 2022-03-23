@@ -22,11 +22,11 @@ namespace ER.StageControllers
         {
             this.stageLoader = new StageLoader(1, this.transform);
 
-            GameController.Instance.Event.OnSpawnedActorSubject()
-                .Where(x => x.gameObject.layer == Layer.Index.Player)
+            GameController.Instance.Broker.Receive<GameEvent.OnSpawnedActor>()
+                .Where(x => x.SpawnedActor.gameObject.layer == Layer.Index.Player)
                 .Subscribe(x =>
                 {
-                    this.actor = x;
+                    this.actor = x.SpawnedActor;
                     this.Load();
                 })
                 .AddTo(this);

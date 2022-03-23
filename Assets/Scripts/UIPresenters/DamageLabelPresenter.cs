@@ -24,10 +24,10 @@ namespace ER.UIPresenters
 
         private void Awake()
         {
-            GameController.Instance.Event.OnSpawnedActorSubject()
+            GameController.Instance.Broker.Receive<GameEvent.OnSpawnedActor>()
                 .Subscribe(x =>
                 {
-                    this.RegisterActorEvent(x);
+                    this.RegisterActorEvent(x.SpawnedActor);
                 })
                 .AddTo(this);
 

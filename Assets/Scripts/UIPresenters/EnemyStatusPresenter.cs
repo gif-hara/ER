@@ -34,11 +34,11 @@ namespace ER.UIPresenters
 
         private void Awake()
         {
-            GameController.Instance.Event.OnSpawnedActorSubject()
-                .Where(x => x.gameObject.layer == Layer.Index.Player)
+            GameController.Instance.Broker.Receive<GameEvent.OnSpawnedActor>()
+                .Where(x => x.SpawnedActor.gameObject.layer == Layer.Index.Player)
                 .Subscribe(x =>
                 {
-                    this.RegisterActorEvent(x);
+                    this.RegisterActorEvent(x.SpawnedActor);
                 })
                 .AddTo(this);
 
