@@ -914,7 +914,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8531753663884800393, guid: 96823b784cb474ee69278591299a31fe, type: 3}
       propertyPath: m_Name
-      value: UI.IngameRootMenu.ButtonElement (9)
+      value: UI.Menu.ButtonElement (9)
       objectReference: {fileID: 0}
     - target: {fileID: 9011774064828304608, guid: 96823b784cb474ee69278591299a31fe, type: 3}
       propertyPath: m_Pivot.x
@@ -1043,7 +1043,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8531753663884800393, guid: 96823b784cb474ee69278591299a31fe, type: 3}
       propertyPath: m_Name
-      value: UI.IngameRootMenu.ButtonElement (2)
+      value: UI.Menu.ButtonElement (2)
       objectReference: {fileID: 0}
     - target: {fileID: 9011774064828304608, guid: 96823b784cb474ee69278591299a31fe, type: 3}
       propertyPath: m_Pivot.x
@@ -1172,7 +1172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8531753663884800393, guid: 96823b784cb474ee69278591299a31fe, type: 3}
       propertyPath: m_Name
-      value: UI.IngameRootMenu.ButtonElement (6)
+      value: UI.Menu.ButtonElement (6)
       objectReference: {fileID: 0}
     - target: {fileID: 9011774064828304608, guid: 96823b784cb474ee69278591299a31fe, type: 3}
       propertyPath: m_Pivot.x
@@ -1301,7 +1301,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8531753663884800393, guid: 96823b784cb474ee69278591299a31fe, type: 3}
       propertyPath: m_Name
-      value: UI.IngameRootMenu.ButtonElement (1)
+      value: UI.Menu.ButtonElement (1)
       objectReference: {fileID: 0}
     - target: {fileID: 9011774064828304608, guid: 96823b784cb474ee69278591299a31fe, type: 3}
       propertyPath: m_Pivot.x
@@ -1430,7 +1430,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8531753663884800393, guid: 96823b784cb474ee69278591299a31fe, type: 3}
       propertyPath: m_Name
-      value: UI.IngameRootMenu.ButtonElement
+      value: UI.Menu.ButtonElement (0)
       objectReference: {fileID: 0}
     - target: {fileID: 9011774064828304608, guid: 96823b784cb474ee69278591299a31fe, type: 3}
       propertyPath: m_Pivot.x
@@ -1559,7 +1559,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8531753663884800393, guid: 96823b784cb474ee69278591299a31fe, type: 3}
       propertyPath: m_Name
-      value: UI.IngameRootMenu.ButtonElement (3)
+      value: UI.Menu.ButtonElement (3)
       objectReference: {fileID: 0}
     - target: {fileID: 9011774064828304608, guid: 96823b784cb474ee69278591299a31fe, type: 3}
       propertyPath: m_Pivot.x
@@ -1688,7 +1688,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8531753663884800393, guid: 96823b784cb474ee69278591299a31fe, type: 3}
       propertyPath: m_Name
-      value: UI.IngameRootMenu.ButtonElement (8)
+      value: UI.Menu.ButtonElement (8)
       objectReference: {fileID: 0}
     - target: {fileID: 9011774064828304608, guid: 96823b784cb474ee69278591299a31fe, type: 3}
       propertyPath: m_Pivot.x
@@ -1817,7 +1817,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8531753663884800393, guid: 96823b784cb474ee69278591299a31fe, type: 3}
       propertyPath: m_Name
-      value: UI.IngameRootMenu.ButtonElement (7)
+      value: UI.Menu.ButtonElement (7)
       objectReference: {fileID: 0}
     - target: {fileID: 9011774064828304608, guid: 96823b784cb474ee69278591299a31fe, type: 3}
       propertyPath: m_Pivot.x
@@ -1946,7 +1946,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8531753663884800393, guid: 96823b784cb474ee69278591299a31fe, type: 3}
       propertyPath: m_Name
-      value: UI.IngameRootMenu.ButtonElement (5)
+      value: UI.Menu.ButtonElement (5)
       objectReference: {fileID: 0}
     - target: {fileID: 9011774064828304608, guid: 96823b784cb474ee69278591299a31fe, type: 3}
       propertyPath: m_Pivot.x
@@ -2075,7 +2075,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8531753663884800393, guid: 96823b784cb474ee69278591299a31fe, type: 3}
       propertyPath: m_Name
-      value: UI.IngameRootMenu.ButtonElement (4)
+      value: UI.Menu.ButtonElement (4)
       objectReference: {fileID: 0}
     - target: {fileID: 9011774064828304608, guid: 96823b784cb474ee69278591299a31fe, type: 3}
       propertyPath: m_Pivot.x
