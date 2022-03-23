@@ -28,7 +28,7 @@ namespace ER.UIPresenters
 
         public void Activate()
         {
-            var elements = this.ingameRootMenuUIView.CreateButtonElements(new Action<IngameRootMenuButtonElement>[]
+            var elements = this.ingameRootMenuUIView.CreateButtonElements(new Action<MenuButtonElement>[]
             {
                 e =>
                 {

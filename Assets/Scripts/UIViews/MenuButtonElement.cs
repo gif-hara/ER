@@ -10,7 +10,7 @@ namespace ER.UIViews
     /// <summary>
     /// 
     /// </summary>
-    public sealed class IngameRootMenuButtonElement : MonoBehaviour
+    public sealed class MenuButtonElement : MonoBehaviour
     {
         [SerializeField]
         private TextMeshProUGUI label = default;

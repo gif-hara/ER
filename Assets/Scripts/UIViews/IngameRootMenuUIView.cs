@@ -14,7 +14,7 @@ namespace ER.UIViews
     public sealed class IngameRootMenuUIView : UIView
     {
         [SerializeField]
-        private IngameRootMenuButtonElement buttonElementPrefab = default;
+        private MenuButtonElement buttonElementPrefab = default;
 
         [SerializeField]
         private Transform buttonElementParent = default;
@@ -27,9 +27,9 @@ namespace ER.UIViews
             }
         }
 
-        public List<IngameRootMenuButtonElement> CreateButtonElements(params Action<IngameRootMenuButtonElement>[] setupActions)
+        public List<MenuButtonElement> CreateButtonElements(params Action<MenuButtonElement>[] setupActions)
         {
-            var result = new List<IngameRootMenuButtonElement>();
+            var result = new List<MenuButtonElement>();
             this.ClearButtonElements();
             foreach (var i in setupActions)
             {

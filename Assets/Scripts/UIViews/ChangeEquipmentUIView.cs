@@ -14,39 +14,39 @@ namespace ER.UIViews
     public sealed class ChangeEquipmentUIView : UIView
     {
         [SerializeField]
-        private List<IngameRootMenuButtonElement> rightEquipmentButtonElements = default;
+        private List<MenuButtonElement> rightEquipmentButtonElements = default;
 
         [SerializeField]
-        private List<IngameRootMenuButtonElement> leftEquipmentButtonElements = default;
+        private List<MenuButtonElement> leftEquipmentButtonElements = default;
 
         [SerializeField]
-        private IngameRootMenuButtonElement headButtonElement = default;
+        private MenuButtonElement headButtonElement = default;
 
         [SerializeField]
-        private IngameRootMenuButtonElement torsoButtonElement = default;
+        private MenuButtonElement torsoButtonElement = default;
 
         [SerializeField]
-        private IngameRootMenuButtonElement armButtonElement = default;
+        private MenuButtonElement armButtonElement = default;
 
         [SerializeField]
-        private IngameRootMenuButtonElement legButtonElement = default;
+        private MenuButtonElement legButtonElement = default;
 
         [SerializeField]
         private TextMeshProUGUI information = default;
 
         public TextMeshProUGUI Information => this.information;
 
-        public IngameRootMenuButtonElement GetRightEquipmentButtonElement(int index)
+        public MenuButtonElement GetRightEquipmentButtonElement(int index)
         {
             return this.rightEquipmentButtonElements[index];
         }
 
-        public IngameRootMenuButtonElement GetLeftEquipmentButtonElement(int index)
+        public MenuButtonElement GetLeftEquipmentButtonElement(int index)
         {
             return this.leftEquipmentButtonElements[index];
         }
 
-        public IngameRootMenuButtonElement GetArmorButtonElement(ArmorType armorType)
+        public MenuButtonElement GetArmorButtonElement(ArmorType armorType)
         {
             switch (armorType)
             {
