@@ -151,9 +151,9 @@ namespace ER.ActorControllers
 
         public class Hand
         {
-            public EquipmentController CurrentEquipmentController => this.equipmentHolders[this.index];
+            public EquipmentController CurrentEquipmentController => this.equipmentHolders[this.currentIndex];
 
-            private int index;
+            private int currentIndex;
 
             private EquipmentController[] equipmentHolders = new EquipmentController[Define.EquipmentableNumber];
 
@@ -189,7 +189,7 @@ namespace ER.ActorControllers
                 }
 
                 this.equipmentHolders[index] = equipmentPrefab.Attach(this.actor, itemInstanceId);
-                this.equipmentHolders[index].gameObject.SetActive(this.index == index);
+                this.equipmentHolders[index].gameObject.SetActive(this.currentIndex == index);
             }
 
             /// <summary>
@@ -202,33 +202,70 @@ namespace ER.ActorControllers
                 this.equipmentHolders[target] = tempEquipmentController;
 
                 // 今装備しているインデックスとsourceが一致している場合はインデックスも更新する
-                if (this.index == source)
+                if (this.currentIndex == source)
                 {
-                    this.index = target;
+                    this.currentIndex = target;
+                }
+            }
+
+            public void Remove(int index)
+            {
+                var equipmentController = this.equipmentHolders[index];
+                if (equipmentController == null)
+                {
+                    return;
+                }
+
+                Assert.AreNotEqual(this.GetEquipmentNumber(), 0, "装備している装備品が0になりました");
+
+                Object.Destroy(equipmentController.gameObject);
+                this.equipmentHolders[index] = null;
+
+                // 現在装備中の装備品が削除されたら別の装備品を装備する
+                if (this.currentIndex == index)
+                {
+                    this.ChangeNext();
                 }
             }
 
             public void ChangeNext()
             {
-                var oldIndex = this.index;
+                var oldIndex = this.currentIndex;
                 do
                 {
-                    this.index = (this.index + 1) % Define.EquipmentableNumber;
-                } while (this.equipmentHolders[this.index] == null);
+                    this.currentIndex = (this.currentIndex + 1) % Define.EquipmentableNumber;
+                } while (this.equipmentHolders[this.currentIndex] == null);
 
-                if (oldIndex == index)
+                if (oldIndex == currentIndex)
                 {
                     return;
                 }
 
-                this.equipmentHolders[oldIndex].gameObject.SetActive(false);
-                this.equipmentHolders[this.index].gameObject.SetActive(true);
-                this.equipmentHolders[this.index].PlayDefaultPlayableAsset();
+                if (this.equipmentHolders[oldIndex] != null)
+                {
+                    this.equipmentHolders[oldIndex].gameObject.SetActive(false);
+                }
+                this.equipmentHolders[this.currentIndex].gameObject.SetActive(true);
+                this.equipmentHolders[this.currentIndex].PlayDefaultPlayableAsset();
             }
 
             public EquipmentController GetEquipmentController(int index)
             {
                 return this.equipmentHolders[index];
+            }
+
+            /// <summary>
+            /// 今装備している数を返す
+            /// </summary>
+            public int GetEquipmentNumber()
+            {
+                var number = 0;
+                foreach (var i in this.equipmentHolders)
+                {
+                    number += i != null ? 1 : 0;
+                }
+
+                return number;
             }
         }
     }

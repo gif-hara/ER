@@ -56,9 +56,9 @@ namespace ER.UIPresenters
             {
                 var buttonElement = this.changeEquipmentUIView.GetRightEquipmentButtonElement(i);
                 var equipmentController = this.actor.EquipmentController.RightHand.GetEquipmentController(i);
-
                 var index = i;
                 var item = equipmentController != null ? equipmentController.Item : null;
+
                 items.Add(item);
                 buttonElement.Label.text = item != null ? item.MasterDataItem.LocalizedName : ScriptLocalization.Common.Empty;
                 buttonElement.Button.OnClickAsObservable()
@@ -72,8 +72,25 @@ namespace ER.UIPresenters
                             targetItems,
                             selectedItem =>
                             {
-                                this.actor.EquipmentController.RightHand.Attach(index, selectedItem.MasterDataItem.ToWeapon().EquipmentControllerPrefab, selectedItem.InstanceId);
-                                GameController.Instance.Broker.Publish(GameEvent.OnRequestOpenChangeEquipment.Get());
+                                // 同じアイテムを選択した場合は外す処理
+                                if (item != null && item.InstanceId == selectedItem.InstanceId)
+                                {
+                                    // ただし全て外すことはできない
+                                    if (this.actor.EquipmentController.RightHand.GetEquipmentNumber() == 1)
+                                    {
+                                        Debug.Log("TODO:装備品を全て外すことは不可能な旨を伝える");
+                                    }
+                                    else
+                                    {
+                                        this.actor.EquipmentController.RightHand.Remove(index);
+                                        GameController.Instance.Broker.Publish(GameEvent.OnRequestOpenChangeEquipment.Get());
+                                    }
+                                }
+                                else
+                                {
+                                    this.actor.EquipmentController.RightHand.Attach(index, selectedItem.MasterDataItem.ToWeapon().EquipmentControllerPrefab, selectedItem.InstanceId);
+                                    GameController.Instance.Broker.Publish(GameEvent.OnRequestOpenChangeEquipment.Get());
+                                }
                             }));
                     })
                     .AddTo(this.disposables);
