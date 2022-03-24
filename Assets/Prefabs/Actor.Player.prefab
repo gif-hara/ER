@@ -179,44 +179,23 @@ MonoBehaviour:
   angleThreshold: 0.1
   rightEquipmentSelectors:
   - id: 0
-  - id: 1
   leftEquipmentSelectors:
-  - id: 2
+  - id: 1
   headMasterDataId: ArmorHead/Name010101
   torsoMasterDataId: ArmorTorso/Name010101
   armMasterDataId: ArmorArm/Name010101
   legMasterDataId: ArmorLeg/Name010101
   lookAtDistanceThreshold: 26
   lookAtAngleThreshold: 90
+  addWeapons:
+  - Weapon/Name010102
   references:
     version: 1
     00000000:
       type: {class: WeaponSelector, ns: ER.EquipmentSystems, asm: Assembly-CSharp}
       data:
         weaponDataId: Weapon/Name010101
-        levelData:
-          physicsLevel: 0
-          magicLevel: 0
-          fireLevel: 0
-          earthLevel: 0
-          thunderLevel: 0
-          waterLevel: 0
-          holyLevel: 0
-          darkLevel: 0
     00000001:
-      type: {class: WeaponSelector, ns: ER.EquipmentSystems, asm: Assembly-CSharp}
-      data:
-        weaponDataId: Weapon/Name010102
-        levelData:
-          physicsLevel: 0
-          magicLevel: 0
-          fireLevel: 0
-          earthLevel: 0
-          thunderLevel: 0
-          waterLevel: 0
-          holyLevel: 0
-          darkLevel: 0
-    00000002:
       type: {class: ShieldSelector, ns: ER.EquipmentSystems, asm: Assembly-CSharp}
       data:
         shieldDataId: Shield/Name010101

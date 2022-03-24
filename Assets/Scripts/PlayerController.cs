@@ -53,6 +53,9 @@ namespace ER
         [SerializeField]
         private float lookAtAngleThreshold = default;
 
+        [SerializeField, TermsPopup("Weapon/")]
+        private List<string> addWeapons = default;
+
         private void Start()
         {
             var inputAction = GameController.Instance.InputAction;
@@ -139,6 +142,11 @@ namespace ER
             this.actor.EquipmentController.SetArmorItem(ArmorType.Torso, torsoItem.InstanceId);
             this.actor.EquipmentController.SetArmorItem(ArmorType.Arm, armItem.InstanceId);
             this.actor.EquipmentController.SetArmorItem(ArmorType.Leg, legItem.InstanceId);
+
+            foreach (var i in this.addWeapons)
+            {
+                this.actor.InventoryController.AddEquipment(i);
+            }
         }
 
         private void Update()

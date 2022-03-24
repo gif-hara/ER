@@ -57,34 +57,26 @@ namespace ER.UIPresenters
                 var buttonElement = this.changeEquipmentUIView.GetRightEquipmentButtonElement(i);
                 var equipmentController = this.actor.EquipmentController.RightHand.GetEquipmentController(i);
 
-                if (equipmentController == null)
-                {
-                    items.Add(null);
-                    buttonElement.Label.text = ScriptLocalization.Common.Empty;
-                }
-                else
-                {
-                    var index = i;
-                    var item = equipmentController.Item;
-                    items.Add(item);
-                    var masterDataItem = item.MasterDataItem;
-                    buttonElement.Label.text = masterDataItem.LocalizedName;
-                    buttonElement.Button.OnClickAsObservable()
-                        .Subscribe(_ =>
-                        {
-                            var targetItems = this.actor.InventoryController.Equipments
-                            .Where(x => x.Value.MasterDataItem.Category == ItemCategory.Weapon)
-                            .Select(x => x.Value)
-                            .ToList();
-                            GameController.Instance.Broker.Publish(GameEvent.OnRequestOpenInventory.Get(
-                                targetItems,
-                                item =>
-                                {
-                                    this.actor.EquipmentController.RightHand.Attach(index, masterDataItem.ToWeapon().EquipmentControllerPrefab, item.InstanceId);
-                                }));
-                        })
-                        .AddTo(this.disposables);
-                }
+                var index = i;
+                var item = equipmentController != null ? equipmentController.Item : null;
+                items.Add(item);
+                buttonElement.Label.text = item != null ? item.MasterDataItem.LocalizedName : ScriptLocalization.Common.Empty;
+                buttonElement.Button.OnClickAsObservable()
+                    .Subscribe(_ =>
+                    {
+                        var targetItems = this.actor.InventoryController.Equipments
+                        .Where(x => x.Value.MasterDataItem.Category == ItemCategory.Weapon)
+                        .Select(x => x.Value)
+                        .ToList();
+                        GameController.Instance.Broker.Publish(GameEvent.OnRequestOpenInventory.Get(
+                            targetItems,
+                            selectedItem =>
+                            {
+                                this.actor.EquipmentController.RightHand.Attach(index, selectedItem.MasterDataItem.ToWeapon().EquipmentControllerPrefab, selectedItem.InstanceId);
+                                GameController.Instance.Broker.Publish(GameEvent.OnRequestOpenChangeEquipment.Get());
+                            }));
+                    })
+                    .AddTo(this.disposables);
             }
 
             // 左手
