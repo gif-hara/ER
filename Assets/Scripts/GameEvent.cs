@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using ER.ActorControllers;
 using HK.Framework.EventSystems;
 
@@ -41,8 +43,17 @@ namespace ER
         /// <summary>
         /// インベントリUIの表示をリクエストするメッセージ
         /// </summary>
-        public class OnRequestOpenInventory : Message<OnRequestOpenInventory>
+        public class OnRequestOpenInventory : Message<OnRequestOpenInventory, List<Item>, Action<Item>>
         {
+            /// <summary>
+            /// UIに表示したいアイテムのリスト
+            /// </summary>
+            public List<Item> TargetItems => this.param1;
+
+            /// <summary>
+            /// アイテムを選択した際の処理
+            /// </summary>
+            public Action<Item> OnSelectItemAction => this.param2;
         }
     }
 }

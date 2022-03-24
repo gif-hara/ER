@@ -31,11 +31,6 @@ namespace ER.UIPresenters
         /// </summary>
         private ReactiveProperty<int> index = new ReactiveProperty<int>(0);
 
-        /// <summary>
-        /// ビューに反映されているアイテムのリスト
-        /// </summary>
-        private List<Item> items = new List<Item>();
-
         private void Awake()
         {
             GameController.Instance.Broker.Receive<GameEvent.OnSpawnedActor>()
@@ -49,7 +44,7 @@ namespace ER.UIPresenters
 
         public void Activate()
         {
-            this.disposables.Clear();
+            var items = new List<Item>();
 
             var buttons = this.changeEquipmentUIView.GetAllButtons();
             this.buttonGameObjects = buttons.Select(x => x.gameObject).ToList();
@@ -64,17 +59,30 @@ namespace ER.UIPresenters
 
                 if (equipmentController == null)
                 {
-                    this.items.Add(null);
+                    items.Add(null);
                     buttonElement.Label.text = ScriptLocalization.Common.Empty;
                 }
                 else
                 {
+                    var index = i;
                     var item = equipmentController.Item;
-                    this.items.Add(item);
+                    items.Add(item);
                     var masterDataItem = item.MasterDataItem;
                     buttonElement.Label.text = masterDataItem.LocalizedName;
                     buttonElement.Button.OnClickAsObservable()
-                        .Subscribe(_ => GameController.Instance.Broker.Publish(GameEvent.OnRequestOpenInventory.Get()))
+                        .Subscribe(_ =>
+                        {
+                            var targetItems = this.actor.InventoryController.Equipments
+                            .Where(x => x.Value.MasterDataItem.Category == ItemCategory.Weapon)
+                            .Select(x => x.Value)
+                            .ToList();
+                            GameController.Instance.Broker.Publish(GameEvent.OnRequestOpenInventory.Get(
+                                targetItems,
+                                item =>
+                                {
+                                    this.actor.EquipmentController.RightHand.Attach(index, masterDataItem.ToWeapon().EquipmentControllerPrefab, item.InstanceId);
+                                }));
+                        })
                         .AddTo(this.disposables);
                 }
             }
@@ -87,13 +95,13 @@ namespace ER.UIPresenters
 
                 if (equipmentController == null)
                 {
-                    this.items.Add(null);
+                    items.Add(null);
                     buttonElement.Label.text = ScriptLocalization.Common.Empty;
                 }
                 else
                 {
                     var item = equipmentController.Item;
-                    this.items.Add(item);
+                    items.Add(item);
                     var masterDataItem = item.MasterDataItem;
                     buttonElement.Label.text = masterDataItem.LocalizedName;
                     buttonElement.Button.OnClickAsObservable()
@@ -104,10 +112,10 @@ namespace ER.UIPresenters
 
             // 防具
             {
-                this.ApplyArmor(ArmorType.Head);
-                this.ApplyArmor(ArmorType.Torso);
-                this.ApplyArmor(ArmorType.Arm);
-                this.ApplyArmor(ArmorType.Leg);
+                this.ApplyArmor(ArmorType.Head, items);
+                this.ApplyArmor(ArmorType.Torso, items);
+                this.ApplyArmor(ArmorType.Arm, items);
+                this.ApplyArmor(ArmorType.Leg, items);
             }
 
             EventSystem.current.ObserveEveryValueChanged(x => x.currentSelectedGameObject)
@@ -118,7 +126,7 @@ namespace ER.UIPresenters
             this.index
                 .Subscribe(x =>
                 {
-                    this.ApplyInformation(this.items[x]);
+                    this.ApplyInformation(items[x]);
                 })
                 .AddTo(this.disposables);
         }
@@ -128,11 +136,11 @@ namespace ER.UIPresenters
             this.disposables.Clear();
         }
 
-        private void ApplyArmor(ArmorType armorType)
+        private void ApplyArmor(ArmorType armorType, List<Item> items)
         {
             var buttonElement = this.changeEquipmentUIView.GetArmorButtonElement(armorType);
             var armorItem = this.actor.EquipmentController.GetArmorItem(armorType);
-            this.items.Add(armorItem);
+            items.Add(armorItem);
 
             if (armorItem == null)
             {

@@ -164,8 +164,25 @@ namespace ER.ActorControllers
                 this.actor = actor;
             }
 
+            /// <summary>
+            /// <paramref name="index"/>に対して新規で装備品をアタッチする
+            /// </summary>
             public void Attach(int index, EquipmentController equipmentPrefab, string itemInstanceId)
             {
+                // もし別のスロットに装備されている場合はスワップする
+                for (var i = 0; i < this.equipmentHolders.Length; i++)
+                {
+                    if (this.equipmentHolders[i] == null)
+                    {
+                        continue;
+                    }
+                    if (this.equipmentHolders[i].ItemInstanceId == itemInstanceId)
+                    {
+                        this.Swap(index, i);
+                        return;
+                    }
+                }
+
                 if (this.equipmentHolders[index] != null)
                 {
                     Object.Destroy(this.equipmentHolders[index].gameObject);
@@ -173,6 +190,22 @@ namespace ER.ActorControllers
 
                 this.equipmentHolders[index] = equipmentPrefab.Attach(this.actor, itemInstanceId);
                 this.equipmentHolders[index].gameObject.SetActive(this.index == index);
+            }
+
+            /// <summary>
+            /// <paramref name="source"/>と<paramref name="target"/>をスワップする
+            /// </summary>
+            public void Swap(int source, int target)
+            {
+                var tempEquipmentController = this.equipmentHolders[source];
+                this.equipmentHolders[source] = this.equipmentHolders[target];
+                this.equipmentHolders[target] = tempEquipmentController;
+
+                // 今装備しているインデックスとsourceが一致している場合はインデックスも更新する
+                if (this.index == source)
+                {
+                    this.index = target;
+                }
             }
 
             public void ChangeNext()

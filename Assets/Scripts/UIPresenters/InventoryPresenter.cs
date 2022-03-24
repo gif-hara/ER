@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using ER.ActorControllers;
 using ER.UIViews;
@@ -18,19 +20,27 @@ namespace ER.UIPresenters
 
         private readonly CompositeDisposable disposables = new CompositeDisposable();
 
-        private FancyCellInventoryItem[] items;
+        private List<Item> targetItems;
+
+        private Action<Item> onSelectItemAction;
 
         private int currentIndex;
 
+        public void Setup(List<Item> targetItems, Action<Item> onSelectItemAction)
+        {
+            this.targetItems = targetItems;
+            this.onSelectItemAction = onSelectItemAction;
+        }
+
         public void Activate()
         {
-            this.items = Enumerable.Range(0, 50)
-                .Select(x => new FancyCellInventoryItem($"Cell {x}"))
+            var items = this.targetItems
+                .Select(x => new FancyCellInventoryItem($"{x.MasterDataItem.LocalizedName}"))
                 .ToArray();
-            this.inventoryUIView.ScrollView.UpdateData(this.items);
+            this.inventoryUIView.ScrollView.UpdateData(items);
 
             this.inventoryUIView.ScrollView.OnClickElementAsObservable()
-                .Subscribe(x => Debug.Log(x))
+                .Subscribe(x => onSelectItemAction(this.targetItems[x]))
                 .AddTo(this.disposables);
 
             this.inventoryUIView.ScrollView.JumpTo(this.currentIndex);
@@ -42,13 +52,13 @@ namespace ER.UIPresenters
                     if (value.y >= 1.0f)
                     {
                         this.currentIndex--;
-                        this.currentIndex = this.currentIndex < 0 ? this.items.Length - 1 : this.currentIndex;
+                        this.currentIndex = this.currentIndex < 0 ? this.targetItems.Count - 1 : this.currentIndex;
                         this.inventoryUIView.ScrollView.JumpTo(this.currentIndex);
                     }
                     else if (value.y <= -1.0f)
                     {
                         this.currentIndex++;
-                        this.currentIndex = this.currentIndex >= this.items.Length ? 0 : this.currentIndex;
+                        this.currentIndex = this.currentIndex >= this.targetItems.Count ? 0 : this.currentIndex;
                         this.inventoryUIView.ScrollView.JumpTo(this.currentIndex);
                     }
                 })

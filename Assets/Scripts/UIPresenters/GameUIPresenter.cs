@@ -68,7 +68,11 @@ namespace ER.UIPresenters
                 .AddTo(this);
 
             GameController.Instance.Broker.Receive<GameEvent.OnRequestOpenInventory>()
-                .Subscribe(_ => this.stateController.ChangeRequest(StateType.Inventory))
+                .Subscribe(x =>
+                {
+                    this.inventoryPresenter.Setup(x.TargetItems, x.OnSelectItemAction);
+                    this.stateController.ChangeRequest(StateType.Inventory);
+                })
                 .AddTo(this);
 
             this.UpdateAsObservable()
