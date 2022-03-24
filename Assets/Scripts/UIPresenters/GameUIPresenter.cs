@@ -17,6 +17,7 @@ namespace ER.UIPresenters
             Hud,
             Menu,
             ChangeEquipment,
+            Inventory,
         }
 
         [SerializeField]
@@ -29,10 +30,16 @@ namespace ER.UIPresenters
         private UIAnimationController changeEquipmentAnimationController = default;
 
         [SerializeField]
+        private UIAnimationController inventoryAnimationController = default;
+
+        [SerializeField]
         private IngameRootMenuPresenter ingameRootMenuPresenter = default;
 
         [SerializeField]
         private ChangeEquipmentPresenter changeEquipmentPresenter = default;
+
+        [SerializeField]
+        private InventoryPresenter inventoryPresenter = default;
 
         private UIAnimationController currentRoot;
 
@@ -43,11 +50,13 @@ namespace ER.UIPresenters
             this.ingameHudAnimationController.PlayImmediate(false);
             this.ingameMenuAnimationController.PlayImmediate(false);
             this.changeEquipmentAnimationController.PlayImmediate(false);
+            this.inventoryAnimationController.PlayImmediate(false);
 
             this.stateController = new StateController<StateType>(StateType.Invalid);
             this.stateController.Set(StateType.Hud, this.OnEnterHud, null);
             this.stateController.Set(StateType.Menu, this.OnEnterMenu, null);
-            this.stateController.Set(StateType.ChangeEquipment, this.OnEnterChangeEquipment, null);
+            this.stateController.Set(StateType.ChangeEquipment, this.OnEnterChangeEquipment, this.OnExitChangeEquipment);
+            this.stateController.Set(StateType.Inventory, this.OnEnterInventory, OnExitInventory);
             this.stateController.ChangeRequest(StateType.Hud);
 
             GameController.Instance.Broker.Receive<GameEvent.OnRequestOpenIngameMenu>()
@@ -56,6 +65,10 @@ namespace ER.UIPresenters
 
             GameController.Instance.Broker.Receive<GameEvent.OnRequestOpenChangeEquipment>()
                 .Subscribe(_ => this.stateController.ChangeRequest(StateType.ChangeEquipment))
+                .AddTo(this);
+
+            GameController.Instance.Broker.Receive<GameEvent.OnRequestOpenInventory>()
+                .Subscribe(_ => this.stateController.ChangeRequest(StateType.Inventory))
                 .AddTo(this);
 
             this.UpdateAsObservable()
@@ -106,6 +119,28 @@ namespace ER.UIPresenters
             this.ChangeCurrentRoot(this.changeEquipmentAnimationController);
 
             this.changeEquipmentPresenter.Activate();
+        }
+
+        private void OnExitChangeEquipment(StateType next)
+        {
+            this.changeEquipmentPresenter.Deactivate();
+        }
+
+        private void OnEnterInventory(StateType prev)
+        {
+            var inputAction = GameController.Instance.InputAction;
+            inputAction.UI.Cancel.OnPerformedAsObservable()
+                .Subscribe(_ => this.stateController.ChangeRequest(prev))
+                .AddTo(this.stateController.StateDisposables);
+
+            this.ChangeCurrentRoot(this.inventoryAnimationController);
+
+            this.inventoryPresenter.Activate();
+        }
+
+        private void OnExitInventory(StateType next)
+        {
+            this.inventoryPresenter.Deactivate();
         }
 
         private void EnableUIInputAction()

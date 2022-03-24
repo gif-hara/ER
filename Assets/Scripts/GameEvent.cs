@@ -37,5 +37,12 @@ namespace ER
         public class OnRequestOpenChangeEquipment : Message<OnRequestOpenChangeEquipment>
         {
         }
+
+        /// <summary>
+        /// インベントリUIの表示をリクエストするメッセージ
+        /// </summary>
+        public class OnRequestOpenInventory : Message<OnRequestOpenInventory>
+        {
+        }
     }
 }

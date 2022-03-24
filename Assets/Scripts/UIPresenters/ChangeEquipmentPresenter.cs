@@ -74,7 +74,7 @@ namespace ER.UIPresenters
                     var masterDataItem = item.MasterDataItem;
                     buttonElement.Label.text = masterDataItem.LocalizedName;
                     buttonElement.Button.OnClickAsObservable()
-                        .Subscribe(_ => Debug.Log("TODO"))
+                        .Subscribe(_ => GameController.Instance.Broker.Publish(GameEvent.OnRequestOpenInventory.Get()))
                         .AddTo(this.disposables);
                 }
             }
@@ -121,6 +121,11 @@ namespace ER.UIPresenters
                     this.ApplyInformation(this.items[x]);
                 })
                 .AddTo(this.disposables);
+        }
+
+        public void Deactivate()
+        {
+            this.disposables.Clear();
         }
 
         private void ApplyArmor(ArmorType armorType)

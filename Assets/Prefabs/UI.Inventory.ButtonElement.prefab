@@ -7,17 +7,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4660329799759852696, guid: 96823b784cb474ee69278591299a31fe, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5030983479865198985, guid: 96823b784cb474ee69278591299a31fe, type: 3}
+      propertyPath: m_fontSize
+      value: 70
+      objectReference: {fileID: 0}
     - target: {fileID: 8531753663884800393, guid: 96823b784cb474ee69278591299a31fe, type: 3}
       propertyPath: m_Name
       value: UI.Inventory.ButtonElement
       objectReference: {fileID: 0}
     - target: {fileID: 9011774064828304608, guid: 96823b784cb474ee69278591299a31fe, type: 3}
       propertyPath: m_Pivot.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 9011774064828304608, guid: 96823b784cb474ee69278591299a31fe, type: 3}
       propertyPath: m_Pivot.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 9011774064828304608, guid: 96823b784cb474ee69278591299a31fe, type: 3}
       propertyPath: m_RootOrder
@@ -25,11 +33,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9011774064828304608, guid: 96823b784cb474ee69278591299a31fe, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9011774064828304608, guid: 96823b784cb474ee69278591299a31fe, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9011774064828304608, guid: 96823b784cb474ee69278591299a31fe, type: 3}
       propertyPath: m_AnchorMin.x
@@ -37,15 +45,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9011774064828304608, guid: 96823b784cb474ee69278591299a31fe, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9011774064828304608, guid: 96823b784cb474ee69278591299a31fe, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 500
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9011774064828304608, guid: 96823b784cb474ee69278591299a31fe, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 9011774064828304608, guid: 96823b784cb474ee69278591299a31fe, type: 3}
       propertyPath: m_LocalPosition.x
