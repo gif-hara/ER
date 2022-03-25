@@ -88,7 +88,15 @@ namespace ER.UIPresenters
                                 }
                                 else
                                 {
-                                    this.actor.EquipmentController.RightHand.Attach(index, selectedItem.MasterDataItem.ToWeapon().EquipmentControllerPrefab, selectedItem.InstanceId);
+                                    var selectedIndex = this.actor.EquipmentController.RightHand.Find(selectedItem.InstanceId);
+                                    if (selectedIndex == -1)
+                                    {
+                                        this.actor.EquipmentController.RightHand.Attach(index, selectedItem.MasterDataItem.ToWeapon().EquipmentControllerPrefab, selectedItem.InstanceId);
+                                    }
+                                    else
+                                    {
+                                        this.actor.EquipmentController.RightHand.Swap(index, selectedIndex);
+                                    }
                                     GameController.Instance.Broker.Publish(GameEvent.OnRequestOpenChangeEquipment.Get());
                                 }
                             }));

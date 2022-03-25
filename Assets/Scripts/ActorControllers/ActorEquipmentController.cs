@@ -206,6 +206,10 @@ namespace ER.ActorControllers
                 {
                     this.currentIndex = target;
                 }
+                else if (this.currentIndex == target)
+                {
+                    this.currentIndex = source;
+                }
             }
 
             public void Remove(int index)
@@ -226,6 +230,23 @@ namespace ER.ActorControllers
                 {
                     this.ChangeNext();
                 }
+            }
+
+            public int Find(string itemInstanceId)
+            {
+                for (var i = 0; i < this.equipmentHolders.Length; i++)
+                {
+                    if (this.equipmentHolders[i] == null)
+                    {
+                        continue;
+                    }
+                    if (this.equipmentHolders[i].ItemInstanceId == itemInstanceId)
+                    {
+                        return i;
+                    }
+                }
+
+                return -1;
             }
 
             public void ChangeNext()
