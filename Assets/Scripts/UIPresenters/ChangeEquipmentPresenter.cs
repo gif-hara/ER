@@ -191,18 +191,32 @@ namespace ER.UIPresenters
             var buttonElement = this.changeEquipmentUIView.GetArmorButtonElement(armorType);
             var armorItem = this.actor.EquipmentController.GetArmorItem(armorType);
             items.Add(armorItem);
+            buttonElement.Label.text = armorItem != null ? armorItem.MasterDataItem.LocalizedName : ScriptLocalization.Common.Empty;
+            buttonElement.Button.OnClickAsObservable()
+                .Subscribe(_ =>
+                {
+                    var targetItems = this.actor.InventoryController.Equipments
+                    .Where(x => x.Value.MasterDataItem.Category == armorType.ToItemCategory())
+                    .Select(x => x.Value)
+                    .ToList();
+                    GameController.Instance.Broker.Publish(GameEvent.OnRequestOpenInventory.Get(
+                        targetItems,
+                        selectedItem =>
+                        {
+                            // 同じアイテムが選択された場合は外す
+                            if (armorItem.InstanceId == selectedItem.InstanceId)
+                            {
+                                this.actor.EquipmentController.RemoveArmorItem(armorType);
+                            }
+                            else
+                            {
+                                this.actor.EquipmentController.SetArmorItem(armorType, selectedItem.InstanceId);
+                            }
 
-            if (armorItem == null)
-            {
-                buttonElement.Label.text = ScriptLocalization.Common.Empty;
-            }
-            else
-            {
-                buttonElement.Label.text = armorItem.MasterDataItem.LocalizedName;
-                buttonElement.Button.OnClickAsObservable()
-                    .Subscribe(_ => Debug.Log(armorItem.MasterDataItem.LocalizedName))
-                    .AddTo(this);
-            }
+                            GameController.Instance.Broker.Publish(GameEvent.OnRequestOpenChangeEquipment.Get());
+                        }));
+                })
+                .AddTo(this);
         }
 
         private void ApplyInformation(Item item)

@@ -107,16 +107,38 @@ namespace ER.ActorControllers
             switch (armorType)
             {
                 case ArmorType.Head:
-                    this.Head = this.actor.InventoryController.Equipments[itemInstanceId]; ;
+                    this.Head = this.actor.InventoryController.Equipments[itemInstanceId];
                     break;
                 case ArmorType.Torso:
-                    this.Torso = this.actor.InventoryController.Equipments[itemInstanceId]; ;
+                    this.Torso = this.actor.InventoryController.Equipments[itemInstanceId];
                     break;
                 case ArmorType.Arm:
-                    this.Arm = this.actor.InventoryController.Equipments[itemInstanceId]; ;
+                    this.Arm = this.actor.InventoryController.Equipments[itemInstanceId];
                     break;
                 case ArmorType.Leg:
-                    this.Leg = this.actor.InventoryController.Equipments[itemInstanceId]; ;
+                    this.Leg = this.actor.InventoryController.Equipments[itemInstanceId];
+                    break;
+                default:
+                    Assert.IsTrue(false, $"{armorType}は未対応です");
+                    break;
+            }
+        }
+
+        public void RemoveArmorItem(ArmorType armorType)
+        {
+            switch (armorType)
+            {
+                case ArmorType.Head:
+                    this.Head = null;
+                    break;
+                case ArmorType.Torso:
+                    this.Torso = null;
+                    break;
+                case ArmorType.Arm:
+                    this.Arm = null;
+                    break;
+                case ArmorType.Leg:
+                    this.Leg = null;
                     break;
                 default:
                     Assert.IsTrue(false, $"{armorType}は未対応です");

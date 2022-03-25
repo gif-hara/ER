@@ -28,5 +28,23 @@ namespace ER
                     return false;
             }
         }
+
+        public static ItemCategory ToItemCategory(this ArmorType self)
+        {
+            switch (self)
+            {
+                case ArmorType.Head:
+                    return ItemCategory.ArmorHead;
+                case ArmorType.Torso:
+                    return ItemCategory.ArmorTorso;
+                case ArmorType.Arm:
+                    return ItemCategory.ArmorArm;
+                case ArmorType.Leg:
+                    return ItemCategory.ArmorLeg;
+                default:
+                    Assert.IsTrue(false, $"{self}は未対応です");
+                    return ItemCategory.Unknown;
+            }
+        }
     }
 }

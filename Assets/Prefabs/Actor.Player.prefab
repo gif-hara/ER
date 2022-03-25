@@ -191,6 +191,11 @@ MonoBehaviour:
   - Weapon/Name010102
   addShields:
   - Shield/Name010102
+  addArmors:
+  - ArmorArm/Name010102
+  - ArmorHead/Name010102
+  - ArmorLeg/Name010102
+  - ArmorTorso/Name010102
   references:
     version: 1
     00000000:

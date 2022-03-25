@@ -40,6 +40,18 @@ MonoBehaviour:
   - id: ArmorLeg/Name010101
     stackable: 0
     category: 5
+  - id: ArmorHead/Name010102
+    stackable: 0
+    category: 2
+  - id: ArmorTorso/Name010102
+    stackable: 0
+    category: 3
+  - id: ArmorArm/Name010102
+    stackable: 0
+    category: 4
+  - id: ArmorLeg/Name010102
+    stackable: 0
+    category: 5
   - id: ValuableItem/Name010101
     stackable: 1
     category: 7
