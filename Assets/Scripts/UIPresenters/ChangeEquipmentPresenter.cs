@@ -88,11 +88,13 @@ namespace ER.UIPresenters
                                 }
                                 else
                                 {
+                                    // 新規の場合はアタッチする
                                     var selectedIndex = this.actor.EquipmentController.RightHand.Find(selectedItem.InstanceId);
                                     if (selectedIndex == -1)
                                     {
                                         this.actor.EquipmentController.RightHand.Attach(index, selectedItem.MasterDataItem.ToWeapon().EquipmentControllerPrefab, selectedItem.InstanceId);
                                     }
+                                    // 装備済みの場合はインデックスをスワップする
                                     else
                                     {
                                         this.actor.EquipmentController.RightHand.Swap(index, selectedIndex);
