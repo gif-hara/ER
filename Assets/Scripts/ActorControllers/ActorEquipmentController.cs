@@ -169,19 +169,7 @@ namespace ER.ActorControllers
             /// </summary>
             public void Attach(int index, EquipmentController equipmentPrefab, string itemInstanceId)
             {
-                // もし別のスロットに装備されている場合はスワップする
-                for (var i = 0; i < this.equipmentHolders.Length; i++)
-                {
-                    if (this.equipmentHolders[i] == null)
-                    {
-                        continue;
-                    }
-                    if (this.equipmentHolders[i].ItemInstanceId == itemInstanceId)
-                    {
-                        this.Swap(index, i);
-                        return;
-                    }
-                }
+                Assert.AreEqual(this.Find(itemInstanceId), -1, "Swapしてください");
 
                 if (this.equipmentHolders[index] != null)
                 {
