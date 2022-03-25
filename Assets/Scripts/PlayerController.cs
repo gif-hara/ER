@@ -56,6 +56,9 @@ namespace ER
         [SerializeField, TermsPopup("Weapon/")]
         private List<string> addWeapons = default;
 
+        [SerializeField, TermsPopup("Shield/")]
+        private List<string> addShields = default;
+
         private void Start()
         {
             var inputAction = GameController.Instance.InputAction;
@@ -144,6 +147,11 @@ namespace ER
             this.actor.EquipmentController.SetArmorItem(ArmorType.Leg, legItem.InstanceId);
 
             foreach (var i in this.addWeapons)
+            {
+                this.actor.InventoryController.AddEquipment(i);
+            }
+
+            foreach (var i in this.addShields)
             {
                 this.actor.InventoryController.AddEquipment(i);
             }

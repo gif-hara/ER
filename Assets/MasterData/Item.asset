@@ -25,6 +25,9 @@ MonoBehaviour:
   - id: Shield/Name010101
     stackable: 0
     category: 8
+  - id: Shield/Name010102
+    stackable: 0
+    category: 8
   - id: ArmorHead/Name010101
     stackable: 0
     category: 2

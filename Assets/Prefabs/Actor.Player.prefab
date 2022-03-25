@@ -189,6 +189,8 @@ MonoBehaviour:
   lookAtAngleThreshold: 90
   addWeapons:
   - Weapon/Name010102
+  addShields:
+  - Shield/Name010102
   references:
     version: 1
     00000000:

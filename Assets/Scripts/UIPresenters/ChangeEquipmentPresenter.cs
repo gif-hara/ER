@@ -111,22 +111,53 @@ namespace ER.UIPresenters
             {
                 var buttonElement = this.changeEquipmentUIView.GetLeftEquipmentButtonElement(i);
                 var equipmentController = this.actor.EquipmentController.LeftHand.GetEquipmentController(i);
-
-                if (equipmentController == null)
-                {
-                    items.Add(null);
-                    buttonElement.Label.text = ScriptLocalization.Common.Empty;
-                }
-                else
-                {
-                    var item = equipmentController.Item;
-                    items.Add(item);
-                    var masterDataItem = item.MasterDataItem;
-                    buttonElement.Label.text = masterDataItem.LocalizedName;
-                    buttonElement.Button.OnClickAsObservable()
-                        .Subscribe(_ => Debug.Log("TODO"))
-                        .AddTo(this.disposables);
-                }
+                var index = i;
+                var item = equipmentController != null ? equipmentController.Item : null;
+                items.Add(item);
+                buttonElement.Label.text = item != null ? item.MasterDataItem.LocalizedName : ScriptLocalization.Common.Empty;
+                buttonElement.Button.OnClickAsObservable()
+                    .Subscribe(_ =>
+                    {
+                        var targetItems = this.actor.InventoryController.Equipments
+                        .Where(x => x.Value.MasterDataItem.Category == ItemCategory.Shield)
+                        .Select(x => x.Value)
+                        .ToList();
+                        GameController.Instance.Broker.Publish(GameEvent.OnRequestOpenInventory.Get(
+                            targetItems,
+                            selectedItem =>
+                            {
+                                // 同じアイテムを選択した場合は外す処理
+                                if (item != null && item.InstanceId == selectedItem.InstanceId)
+                                {
+                                    // ただし全て外すことはできない
+                                    if (this.actor.EquipmentController.LeftHand.GetEquipmentNumber() == 1)
+                                    {
+                                        Debug.Log("TODO:装備品を全て外すことは不可能な旨を伝える");
+                                    }
+                                    else
+                                    {
+                                        this.actor.EquipmentController.LeftHand.Remove(index);
+                                        GameController.Instance.Broker.Publish(GameEvent.OnRequestOpenChangeEquipment.Get());
+                                    }
+                                }
+                                else
+                                {
+                                    // 新規の場合はアタッチする
+                                    var selectedIndex = this.actor.EquipmentController.LeftHand.Find(selectedItem.InstanceId);
+                                    if (selectedIndex == -1)
+                                    {
+                                        this.actor.EquipmentController.LeftHand.Attach(index, selectedItem.MasterDataItem.ToShield().EquipmentControllerPrefab, selectedItem.InstanceId);
+                                    }
+                                    // 装備済みの場合はインデックスをスワップする
+                                    else
+                                    {
+                                        this.actor.EquipmentController.LeftHand.Swap(index, selectedIndex);
+                                    }
+                                    GameController.Instance.Broker.Publish(GameEvent.OnRequestOpenChangeEquipment.Get());
+                                }
+                            }));
+                    })
+                    .AddTo(this.disposables);
             }
 
             // 防具
