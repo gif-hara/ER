@@ -239,11 +239,27 @@ MonoBehaviour:
       - 
       Flags: 0000
       Languages_Touch: []
+    - Term: Shield/Name010102
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u92FC\u9244\u306E\u76FE"
+      - 
+      Flags: 0000
+      Languages_Touch: []
     - Term: ArmorHead/Name010101
       TermType: 0
       Description: 
       Languages:
       - "\u9244\u306E\u515C"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ArmorHead/Name010102
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u92FC\u9244\u306E\u515C"
       - 
       Flags: 0000
       Languages_Touch: []
@@ -255,6 +271,14 @@ MonoBehaviour:
       - 
       Flags: 0000
       Languages_Touch: []
+    - Term: ArmorTorso/Name010102
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u92FC\u9244\u306E\u93A7"
+      - 
+      Flags: 0000
+      Languages_Touch: []
     - Term: ArmorArm/Name010101
       TermType: 0
       Description: 
@@ -263,11 +287,27 @@ MonoBehaviour:
       - 
       Flags: 0000
       Languages_Touch: []
+    - Term: ArmorArm/Name010102
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u92FC\u9244\u306E\u624B\u7532"
+      - 
+      Flags: 0000
+      Languages_Touch: []
     - Term: ArmorLeg/Name010101
       TermType: 0
       Description: 
       Languages:
       - "\u9244\u306E\u8DB3\u7532"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ArmorLeg/Name010102
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u92FC\u9244\u306E\u8DB3\u7532"
       - 
       Flags: 0000
       Languages_Touch: []
@@ -310,7 +350,7 @@ MonoBehaviour:
     Google_WebServiceURL: https://script.google.com/macros/s/AKfycbyF0yeaJl5TfgY6r059oCUDjbulYEndJLFNq6Q7/exec
     Google_SpreadsheetKey: 1UKcNrFW7zKUH617RzHOCnP1JoEKPtbbJkPmgc0Hgkso
     Google_SpreadsheetName: I2Loc ER Localization
-    Google_LastUpdatedVersion: 1648052573039
+    Google_LastUpdatedVersion: 1648205662651
     Google_Password: change_this
     GoogleUpdateFrequency: 1
     GoogleInEditorCheckFrequency: 1
