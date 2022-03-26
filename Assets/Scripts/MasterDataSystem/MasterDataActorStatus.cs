@@ -53,7 +53,8 @@ namespace ER.MasterDataSystem
                 float thunderCutRate,
                 float waterCutRate,
                 float holyCutRate,
-                float darkCutRate
+                float darkCutRate,
+                int experience
                 )
             {
                 this.id = id;
@@ -85,7 +86,8 @@ namespace ER.MasterDataSystem
                     thunderCutRate = thunderCutRate,
                     waterCutRate = waterCutRate,
                     holyCutRate = holyCutRate,
-                    darkCutRate = darkCutRate
+                    darkCutRate = darkCutRate,
+                    experience = experience
                 };
             }
         }
@@ -140,6 +142,7 @@ namespace ER.MasterDataSystem
             public string WaterCutRate;
             public string HolyCutRate;
             public string DarkCutRate;
+            public string Experience;
 
             public Record ToRecord() => new Record(
                 this.Id,
@@ -169,7 +172,8 @@ namespace ER.MasterDataSystem
                 float.Parse(this.ThunderCutRate),
                 float.Parse(this.WaterCutRate),
                 float.Parse(this.HolyCutRate),
-                float.Parse(this.DarkCutRate)
+                float.Parse(this.DarkCutRate),
+                int.Parse(this.Experience)
                 );
 
             private Actor GetActorPrefab()

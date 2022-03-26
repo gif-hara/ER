@@ -72,6 +72,11 @@ namespace ER.ActorControllers
         [Range(0.0f, 1.0f)]
         public float darkCutRate = default;
 
+        /// <summary>
+        /// 経験値
+        /// </summary>
+        public int experience;
+
         public string LocalizedName => LocalizationManager.GetTermTranslation(this.name);
 
         public int GetAttack(AttackAttributeType type)

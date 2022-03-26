@@ -42,12 +42,13 @@ MonoBehaviour:
       waterCutRate: 0
       holyCutRate: 0
       darkCutRate: 0
+      experience: 0
   - id: 20100
     actorPrefab: {fileID: 9119910791474521852, guid: 67df0cd4baa71fe4ca1bef38d82a3659, type: 3}
     statusData:
       name: Actor/Name020200
       hitPoint: 100
-      physicsAttack: 20
+      physicsAttack: 5
       magicAttack: 0
       fireAttack: 0
       earthAttack: 0
@@ -71,3 +72,4 @@ MonoBehaviour:
       waterCutRate: 0
       holyCutRate: 0
       darkCutRate: 0
+      experience: 100
