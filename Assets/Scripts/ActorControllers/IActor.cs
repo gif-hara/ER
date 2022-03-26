@@ -21,6 +21,8 @@ namespace ER.ActorControllers
 
         Animator Animator { get; }
 
+        Rigidbody2D Rigidbody2D { get; }
+
         ActorAnimationParameter AnimationParameter { get; }
 
         ActorMotionController MotionController { get; }

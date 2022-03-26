@@ -69,10 +69,10 @@ namespace ER.EquipmentSystems
                 EquipmentController = this,
             };
 
-            this.OnCollisionEnter2DAsObservable()
+            this.OnTriggerEnter2DAsObservable()
             .Subscribe(x =>
             {
-                var hitActor = x.rigidbody.GetComponent<IActor>();
+                var hitActor = x.attachedRigidbody.GetComponent<IActor>();
                 if (hitActor != null)
                 {
                     hitActor.Broker.Publish(ActorEvent.OnHitOpponentAttack.Get(this));

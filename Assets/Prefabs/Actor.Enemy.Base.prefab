@@ -142,9 +142,12 @@ MonoBehaviour:
   actor: {fileID: 5003387275646208275}
   elements: []
   initialAiName: Idle
-  rightEquipmentPrefab: {fileID: 4608228154354743508, guid: b12d6f23289132a449f58ef17eff3410, type: 3}
+  rightEquipmentSelector:
+    id: 0
   references:
     version: 1
+    00000000:
+      type: {class: , ns: , asm: }
 --- !u!1001 &8384275275401527551
 PrefabInstance:
   m_ObjectHideFlags: 0

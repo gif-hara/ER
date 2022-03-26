@@ -28,8 +28,6 @@ namespace ER.ActorControllers
 
         private Actor lookAtTarget;
 
-        private RaycastHit2D[] cachedRaycastHit2Ds = new RaycastHit2D[32];
-
         /// <summary>
         /// チェックポイント
         /// </summary>
@@ -170,39 +168,11 @@ namespace ER.ActorControllers
 
         private void UpdatePosition(IActor actor)
         {
-            var t = actor.transform;
-            var direction = (this.moveDirection + this.rawVelocity).normalized;
             var velocity =
                 (this.moveDirection * Time.deltaTime * this.motionData.moveSpeed * actor.AnimationParameter.moveSpeedRate)
                 + this.rawVelocity;
-
-            var hitNumber = Physics2D.CircleCastNonAlloc(
-                t.localPosition,
-                this.motionData.radius,
-                direction,
-                this.cachedRaycastHit2Ds,
-                velocity.magnitude,
-                GetUpdatePositionLayerMask()
-                );
-
-            if (hitNumber > 0)
-            {
-                var hitinfo = this.cachedRaycastHit2Ds[0];
-                var angle = Vector2.Angle(direction.normalized, hitinfo.normal);
-                if (angle >= 90.0f)
-                {
-                    t.localPosition = hitinfo.point + hitinfo.normal * this.motionData.radius;
-                }
-                else
-                {
-                    t.localPosition += new Vector3(velocity.x, velocity.y, 0.0f);
-                }
-            }
-            else
-            {
-                t.localPosition += new Vector3(velocity.x, velocity.y, 0.0f);
-            }
-
+            var t = this.actor.transform;
+            this.actor.Rigidbody2D.MovePosition(new Vector2(t.position.x, t.position.y) + velocity);
             this.moveDirection = Vector2.zero;
             this.rawVelocity = Vector2.zero;
         }
@@ -223,21 +193,6 @@ namespace ER.ActorControllers
             }
 
             actor.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, angle);
-        }
-
-        private int GetUpdatePositionLayerMask()
-        {
-            var result = Layer.Mask.Stage;
-            if (this.actor.gameObject.layer == Layer.Index.Player)
-            {
-                result |= Layer.Mask.Enemy;
-            }
-            else if (this.actor.gameObject.layer == Layer.Index.Enemy)
-            {
-                result |= Layer.Mask.Player;
-            }
-
-            return result;
         }
     }
 }

@@ -48,6 +48,8 @@ namespace ER.ActorControllers
 
         public IMessageBroker Broker => this.broker;
 
+        public Rigidbody2D Rigidbody2D { get; private set; }
+
         /// <summary>
         /// シーンに存在する<see cref="Actor"/>
         /// </summary>
@@ -88,6 +90,12 @@ namespace ER.ActorControllers
                     this.Disposables.Dispose();
                     this.broker.Dispose();
                 });
+        }
+
+        void Awake()
+        {
+            this.Rigidbody2D = this.GetComponent<Rigidbody2D>();
+            Assert.IsNotNull(this.Rigidbody2D);
         }
 
         void Start()
