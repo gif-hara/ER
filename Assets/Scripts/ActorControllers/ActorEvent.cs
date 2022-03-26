@@ -147,5 +147,21 @@ namespace ER.ActorControllers
             /// </summary>
             public HandType HandType => this.param1;
         }
+
+        /// <summary>
+        /// 手に持つ装備品が変更された際のメッセージ
+        /// </summary>
+        public class OnChangedHandEquipment : Message<OnChangedHandEquipment, HandType, EquipmentController>
+        {
+            /// <summary>
+            /// 変更された手のタイプ
+            /// </summary>
+            public HandType HandType => this.param1;
+
+            /// <summary>
+            /// 装備品
+            /// </summary>
+            public EquipmentController EquipmentController => this.param2;
+        }
     }
 }

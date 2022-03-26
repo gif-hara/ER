@@ -36,8 +36,8 @@ namespace ER.ActorControllers
         public void Setup(Actor actor)
         {
             this.actor = actor;
-            this.RightHand.Setup(actor);
-            this.LeftHand.Setup(actor);
+            this.RightHand.Setup(actor, HandType.Right);
+            this.LeftHand.Setup(actor, HandType.Left);
 
             this.actor.Broker.Receive<ActorEvent.BeginEquipment>()
                 .Where(x => x.HandType == HandType.Left)
@@ -181,9 +181,12 @@ namespace ER.ActorControllers
 
             private Actor actor;
 
-            public void Setup(Actor actor)
+            private HandType handType;
+
+            public void Setup(Actor actor, HandType handType)
             {
                 this.actor = actor;
+                this.handType = handType;
             }
 
             /// <summary>
@@ -200,6 +203,11 @@ namespace ER.ActorControllers
 
                 this.equipmentHolders[index] = equipmentPrefab.Attach(this.actor, itemInstanceId);
                 this.equipmentHolders[index].gameObject.SetActive(this.currentIndex == index);
+
+                if (this.currentIndex == index)
+                {
+                    this.actor.Broker.Publish(ActorEvent.OnChangedHandEquipment.Get(this.handType, this.equipmentHolders[this.currentIndex]));
+                }
             }
 
             /// <summary>
@@ -215,10 +223,12 @@ namespace ER.ActorControllers
                 if (this.currentIndex == source)
                 {
                     this.currentIndex = target;
+                    this.actor.Broker.Publish(ActorEvent.OnChangedHandEquipment.Get(this.handType, this.equipmentHolders[this.currentIndex]));
                 }
                 else if (this.currentIndex == target)
                 {
                     this.currentIndex = source;
+                    this.actor.Broker.Publish(ActorEvent.OnChangedHandEquipment.Get(this.handType, this.equipmentHolders[this.currentIndex]));
                 }
             }
 
@@ -278,6 +288,8 @@ namespace ER.ActorControllers
                 }
                 this.equipmentHolders[this.currentIndex].gameObject.SetActive(true);
                 this.equipmentHolders[this.currentIndex].PlayDefaultPlayableAsset();
+
+                this.actor.Broker.Publish(ActorEvent.OnChangedHandEquipment.Get(this.handType, this.equipmentHolders[this.currentIndex]));
             }
 
             public EquipmentController GetEquipmentController(int index)
