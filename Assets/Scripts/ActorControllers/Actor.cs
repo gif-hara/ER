@@ -19,7 +19,7 @@ namespace ER.ActorControllers
         private ActorMotionData motionData = default;
 
         [SerializeField]
-        private ActorAnimationParameter animationParameter = default;
+        private ActorAnimationMediator animationParameter = default;
 
         [SerializeField]
         private PlayableDirector director = default;
@@ -40,7 +40,7 @@ namespace ER.ActorControllers
 
         public Animator Animator { get; private set; }
 
-        public ActorAnimationParameter AnimationParameter => this.animationParameter;
+        public ActorAnimationMediator AnimationParameter => this.animationParameter;
 
         public ActorMotionController MotionController { get; private set; }
 

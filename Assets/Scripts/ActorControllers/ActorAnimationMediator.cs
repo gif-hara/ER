@@ -4,9 +4,9 @@ using UnityEngine.Assertions;
 namespace ER.ActorControllers
 {
     /// <summary>
-    /// <see cref="Actor"/>のアニメーションに関するパラメータを持つクラス
+    /// <see cref="Actor"/>とアニメーションの仲介を行うクラス
     /// </summary>
-    public sealed class ActorAnimationParameter : MonoBehaviour
+    public sealed class ActorAnimationMediator : MonoBehaviour
     {
         [SerializeField]
         private Actor actor = default;
