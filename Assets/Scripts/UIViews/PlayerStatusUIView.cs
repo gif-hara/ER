@@ -20,11 +20,16 @@ namespace ER.UIViews
         [SerializeField]
         private HandStatus rightHandStatus = default;
 
+        [SerializeField]
+        private TextMeshProUGUI experience = default;
+
         public Slider HitPointSlider => this.hitPointSlider;
 
         public HandStatus LeftHandStatus => this.leftHandStatus;
 
         public HandStatus RightHandStatus => this.rightHandStatus;
+
+        public TextMeshProUGUI Experience => this.experience;
 
         [Serializable]
         public class HandStatus

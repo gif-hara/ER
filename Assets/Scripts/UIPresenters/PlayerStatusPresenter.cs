@@ -35,6 +35,14 @@ namespace ER.UIPresenters
                 .AddTo(actor.Disposables)
                 .AddTo(this);
 
+            actor.StatusController.ExperienceAsObservable()
+                .Subscribe(x =>
+                {
+                    this.playerStatusUIView.Experience.text = actor.StatusController.Experience.ToString();
+                })
+                .AddTo(actor.Disposables)
+                .AddTo(this);
+
             actor.Broker.Receive<ActorEvent.OnChangedHandEquipment>()
                 .Subscribe(x =>
                 {

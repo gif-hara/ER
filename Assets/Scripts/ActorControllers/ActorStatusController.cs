@@ -31,6 +31,12 @@ namespace ER.ActorControllers
 
         public float HitPointRate => (float)this.HitPoint / this.HitPointMax;
 
+        private readonly ReactiveProperty<int> experience = new ReactiveProperty<int>();
+
+        public IObservable<int> ExperienceAsObservable() => this.experience;
+
+        public int Experience => this.experience.Value;
+
         public ActorStatusData BaseStatus => this.baseStatus;
 
         public void Setup(IActor actor, ActorStatusData status)
@@ -39,6 +45,7 @@ namespace ER.ActorControllers
             this.baseStatus = status;
             this.hitPointMax.Value = this.baseStatus.hitPoint;
             this.hitPoint.Value = this.HitPointMax;
+            this.experience.Value = this.baseStatus.experience;
 
             actor.Broker.Receive<ActorEvent.OnHitOpponentAttack>()
                 .Where(_ => this.CanTakeDamage())
@@ -57,6 +64,11 @@ namespace ER.ActorControllers
                 .AddTo(actor.Disposables);
         }
 
+        public void AddExperience(int value)
+        {
+            this.experience.Value += value;
+        }
+
         private void TakeDamage(EquipmentController equipmentController)
         {
             if (this.isAlreadyDead)
@@ -64,7 +76,6 @@ namespace ER.ActorControllers
                 return;
             }
 
-            var attackerStatus = equipmentController.Actor.StatusController.baseStatus;
             var damage = DamageCalculator.Calculate(
                 equipmentController.Actor,
                 equipmentController,
