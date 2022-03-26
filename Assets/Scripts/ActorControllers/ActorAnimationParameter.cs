@@ -8,6 +8,9 @@ namespace ER.ActorControllers
     /// </summary>
     public sealed class ActorAnimationParameter : MonoBehaviour
     {
+        [SerializeField]
+        private Actor actor = default;
+
         /// <summary>
         /// 移動速度の係数
         /// </summary>
@@ -22,5 +25,13 @@ namespace ER.ActorControllers
         /// 先行入力が出来るか
         /// </summary>
         public bool advancedEntry = false;
+
+        public void UseRecoveryItem()
+        {
+#if UNITY_EDITOR
+            Debug.Log("UseRecoveryItem");
+            return;
+#endif
+        }
     }
 }
