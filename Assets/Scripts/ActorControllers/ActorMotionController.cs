@@ -51,26 +51,6 @@ namespace ER.ActorControllers
                 })
                 .AddTo(actor.Disposables);
 
-            actor.Broker.Receive<ActorEvent.OnChangedStateType>()
-                .Subscribe(x =>
-                {
-                    if (x.NextState == ActorStateController.StateType.Movable)
-                    {
-                        actor.AnimationParameter.moveSpeedRate = 1.0f;
-                        actor.AnimationParameter.invisible = false;
-                        actor.AnimationParameter.advancedEntry = true;
-                    }
-
-                    if (x.NextState == ActorStateController.StateType.Guard)
-                    {
-                        actor.AnimationParameter.moveSpeedRate = 0.5f;
-                        actor.AnimationParameter.invisible = false;
-                        actor.AnimationParameter.advancedEntry = true;
-                    }
-
-                })
-                .AddTo(actor.Disposables);
-
             actor.Broker.Receive<ActorEvent.OnRequestAvoidance>()
                 .Subscribe(x =>
                 {
