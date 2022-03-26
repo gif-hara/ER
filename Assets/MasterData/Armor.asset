@@ -53,3 +53,43 @@ MonoBehaviour:
     waterDefense: 1
     holyDefense: 1
     darkDefense: 1
+  - id: ArmorHead/Name010102
+    armorType: 0
+    physicsDefense: 7
+    magicDefense: 7
+    fireDefense: 7
+    earthDefense: 7
+    thunderDefense: 7
+    waterDefense: 7
+    holyDefense: 7
+    darkDefense: 7
+  - id: ArmorTorso/Name010102
+    armorType: 1
+    physicsDefense: 10
+    magicDefense: 10
+    fireDefense: 10
+    earthDefense: 10
+    thunderDefense: 10
+    waterDefense: 10
+    holyDefense: 10
+    darkDefense: 10
+  - id: ArmorArm/Name010102
+    armorType: 2
+    physicsDefense: 7
+    magicDefense: 7
+    fireDefense: 7
+    earthDefense: 7
+    thunderDefense: 7
+    waterDefense: 7
+    holyDefense: 7
+    darkDefense: 7
+  - id: ArmorLeg/Name010102
+    armorType: 3
+    physicsDefense: 7
+    magicDefense: 7
+    fireDefense: 7
+    earthDefense: 7
+    thunderDefense: 7
+    waterDefense: 7
+    holyDefense: 7
+    darkDefense: 7

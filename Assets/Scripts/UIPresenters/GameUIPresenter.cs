@@ -1,8 +1,6 @@
 using UnityEngine;
-using UnityEngine.Assertions;
 using UniRx;
 using UniRx.Triggers;
-using UnityEngine.EventSystems;
 
 namespace ER.UIPresenters
 {

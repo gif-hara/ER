@@ -16,6 +16,11 @@ namespace ER.UIViews
         [SerializeField]
         private FancyScrollView scrollView = default;
 
+        [SerializeField]
+        private TextMeshProUGUI information = default;
+
         public FancyScrollView ScrollView => this.scrollView;
+
+        public TextMeshProUGUI Information => this.information;
     }
 }

@@ -26,6 +26,20 @@ namespace ER.UIPresenters
 
         private int currentIndex;
 
+        private Actor actor;
+
+        private void Awake()
+        {
+            GameController.Instance.Broker.Receive<GameEvent.OnSpawnedActor>()
+            .Where(x => x.SpawnedActor.gameObject.layer == Layer.Index.Player)
+            .Subscribe(x =>
+            {
+                this.actor = x.SpawnedActor;
+            })
+            .AddTo(this);
+
+        }
+
         public void Setup(List<Item> targetItems, Action<Item> onSelectItemAction)
         {
             this.targetItems = targetItems;
@@ -54,15 +68,21 @@ namespace ER.UIPresenters
                         this.currentIndex--;
                         this.currentIndex = this.currentIndex < 0 ? this.targetItems.Count - 1 : this.currentIndex;
                         this.inventoryUIView.ScrollView.JumpTo(this.currentIndex);
+                        UIUtility.ApplyInformation(this.inventoryUIView.Information, this.actor, this.targetItems[this.currentIndex]);
                     }
                     else if (value.y <= -1.0f)
                     {
                         this.currentIndex++;
                         this.currentIndex = this.currentIndex >= this.targetItems.Count ? 0 : this.currentIndex;
                         this.inventoryUIView.ScrollView.JumpTo(this.currentIndex);
+                        UIUtility.ApplyInformation(this.inventoryUIView.Information, this.actor, this.targetItems[this.currentIndex]);
                     }
                 })
                 .AddTo(this.disposables);
+
+            this.currentIndex = 0;
+            this.inventoryUIView.ScrollView.JumpTo(this.currentIndex);
+            UIUtility.ApplyInformation(this.inventoryUIView.Information, this.actor, this.targetItems[this.currentIndex]);
         }
 
         public void Deactivate()
