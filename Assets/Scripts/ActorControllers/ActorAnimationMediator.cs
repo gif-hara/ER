@@ -34,16 +34,16 @@ namespace ER.ActorControllers
                 {
                     if (x.NextState == ActorStateController.StateType.Movable)
                     {
-                        actor.AnimationParameter.moveSpeedRate = 1.0f;
-                        actor.AnimationParameter.invisible = false;
-                        actor.AnimationParameter.advancedEntry = true;
+                        this.moveSpeedRate = 1.0f;
+                        this.invisible = false;
+                        this.advancedEntry = true;
                     }
 
                     if (x.NextState == ActorStateController.StateType.Guard)
                     {
-                        actor.AnimationParameter.moveSpeedRate = 0.5f;
-                        actor.AnimationParameter.invisible = false;
-                        actor.AnimationParameter.advancedEntry = true;
+                        this.moveSpeedRate = 0.5f;
+                        this.invisible = false;
+                        this.advancedEntry = true;
                     }
 
                 })
