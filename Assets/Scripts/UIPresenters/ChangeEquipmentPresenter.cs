@@ -204,7 +204,7 @@ namespace ER.UIPresenters
                         selectedItem =>
                         {
                             // 同じアイテムが選択された場合は外す
-                            if (armorItem.InstanceId == selectedItem.InstanceId)
+                            if (armorItem != null && armorItem.InstanceId == selectedItem.InstanceId)
                             {
                                 this.actor.EquipmentController.RemoveArmorItem(armorType);
                             }
