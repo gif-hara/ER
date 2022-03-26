@@ -175,6 +175,7 @@ namespace ER.ActorControllers
             var velocity =
                 (this.moveDirection * Time.deltaTime * this.motionData.moveSpeed * actor.AnimationParameter.moveSpeedRate)
                 + this.rawVelocity;
+
             var hitNumber = Physics2D.CircleCastNonAlloc(
                 t.localPosition,
                 this.motionData.radius,
@@ -187,8 +188,15 @@ namespace ER.ActorControllers
             if (hitNumber > 0)
             {
                 var hitinfo = this.cachedRaycastHit2Ds[0];
-                t.localPosition = hitinfo.point + hitinfo.normal * this.motionData.radius;
-
+                var angle = Vector2.Angle(direction.normalized, hitinfo.normal);
+                if (angle >= 90.0f)
+                {
+                    t.localPosition = hitinfo.point + hitinfo.normal * this.motionData.radius;
+                }
+                else
+                {
+                    t.localPosition += new Vector3(velocity.x, velocity.y, 0.0f);
+                }
             }
             else
             {
