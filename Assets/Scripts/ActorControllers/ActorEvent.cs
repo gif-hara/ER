@@ -170,5 +170,16 @@ namespace ER.ActorControllers
         public class OnRequestStartRecoveryItem : Message<OnRequestStartRecoveryItem>
         {
         }
+
+        /// <summary>
+        /// チェックポイントとインタラクトした際のメッセージ
+        /// </summary>
+        public class OnInteractedCheckPoint : Message<OnInteractedCheckPoint, InteractableStageGimmickCheckPoint>
+        {
+            /// <summary>
+            /// インタラクトしたチェックポイント
+            /// </summary>
+            public InteractableStageGimmickCheckPoint CheckPoint => this.param1;
+        }
     }
 }

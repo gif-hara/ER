@@ -93,6 +93,13 @@ namespace ER.ActorControllers
                     }
                 })
                 .AddTo(actor.Disposables);
+
+            actor.Broker.Receive<ActorEvent.OnInteractedCheckPoint>()
+                .Subscribe(x =>
+                {
+                    this.CheckPoint = x.CheckPoint.transform.position;
+                })
+                .AddTo(actor.Disposables);
         }
 
         /// <summary>

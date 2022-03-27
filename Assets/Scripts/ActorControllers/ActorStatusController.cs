@@ -12,6 +12,7 @@ namespace ER.ActorControllers
     public sealed class ActorStatusController
     {
         public const int RecoveryItemMax = 3;
+
         private IActor actor;
 
         private ActorStatusData baseStatus = default;
@@ -38,7 +39,11 @@ namespace ER.ActorControllers
 
         public int Experience => this.experience.Value;
 
-        private int recoveryItemNumber = RecoveryItemMax;
+        private ReactiveProperty<int> recoveryItemNumber = new ReactiveProperty<int>(RecoveryItemMax);
+
+        public IObservable<int> RecoveryItemNumberAsObservable() => this.recoveryItemNumber;
+
+        public int RecoveryItemNumber => this.recoveryItemNumber.Value;
 
         public ActorStatusData BaseStatus => this.baseStatus;
 
@@ -65,6 +70,13 @@ namespace ER.ActorControllers
                     this.isAlreadyDead = false;
                 })
                 .AddTo(actor.Disposables);
+
+            actor.Broker.Receive<ActorEvent.OnInteractedCheckPoint>()
+                .Subscribe(_ =>
+                {
+                    this.recoveryItemNumber.Value = RecoveryItemMax;
+                })
+                .AddTo(actor.Disposables);
         }
 
         public void AddExperience(int value)
@@ -76,7 +88,7 @@ namespace ER.ActorControllers
         {
             Assert.IsTrue(this.CanUseRecoveryItem());
 
-            this.recoveryItemNumber--;
+            this.recoveryItemNumber.Value -= 1;
             var hitPoint = this.HitPoint;
             hitPoint = Mathf.Min(hitPoint + this.HitPointMax / 2, this.HitPointMax);
 
@@ -85,7 +97,7 @@ namespace ER.ActorControllers
 
         public bool CanUseRecoveryItem()
         {
-            return this.recoveryItemNumber > 0;
+            return this.RecoveryItemNumber > 0;
         }
 
         private void TakeDamage(EquipmentController equipmentController)
