@@ -1,6 +1,7 @@
 using UnityEngine;
 using UniRx;
 using UniRx.Triggers;
+using ER.ActorControllers;
 
 namespace ER.UIPresenters
 {
@@ -13,9 +14,10 @@ namespace ER.UIPresenters
         {
             Invalid,
             Hud,
-            Menu,
+            FromStartButtonMenu,
             ChangeEquipment,
             Inventory,
+            CheckPointMenu,
         }
 
         [SerializeField]
@@ -57,16 +59,17 @@ namespace ER.UIPresenters
 
             this.stateController = new StateController<StateType>(StateType.Invalid);
             this.stateController.Set(StateType.Hud, this.OnEnterHud, null);
-            this.stateController.Set(StateType.Menu, this.OnEnterMenu, null);
+            this.stateController.Set(StateType.FromStartButtonMenu, this.OnEnterFromStartButtonMenu, this.OnExitFromStartButtonMenu);
             this.stateController.Set(StateType.ChangeEquipment, this.OnEnterChangeEquipment, this.OnExitChangeEquipment);
-            this.stateController.Set(StateType.Inventory, this.OnEnterInventory, OnExitInventory);
+            this.stateController.Set(StateType.Inventory, this.OnEnterInventory, this.OnExitInventory);
+            this.stateController.Set(StateType.CheckPointMenu, this.OnEnterCheckPointMenu, this.OnExitCheckPointMenu);
             this.stateController.ChangeRequest(StateType.Hud);
 
             GameController.Instance.Broker.Receive<GameEvent.OnRequestOpenIngameMenu>()
                 .Subscribe(x =>
                 {
                     this.requestMenuType = x.IngameMenuType;
-                    this.stateController.ChangeRequest(StateType.Menu);
+                    this.stateController.ChangeRequest(StateType.FromStartButtonMenu);
                 })
                 .AddTo(this);
 
@@ -82,11 +85,27 @@ namespace ER.UIPresenters
                 })
                 .AddTo(this);
 
+            GameController.Instance.Broker.Receive<GameEvent.OnSpawnedActor>()
+                .Where(x => x.SpawnedActor.gameObject.layer == Layer.Index.Player)
+                .Subscribe(x => this.RegisterActorEvent(x.SpawnedActor))
+                .AddTo(this);
+
             this.UpdateAsObservable()
                 .Subscribe(_ =>
                 {
                     this.stateController.Update();
                 });
+        }
+
+        private void RegisterActorEvent(Actor actor)
+        {
+            actor.Broker.Receive<ActorEvent.OnInteractedCheckPoint>()
+                .Subscribe(_ =>
+                {
+                    this.requestMenuType = IngameMenuType.CheckPoint;
+                    this.stateController.ChangeRequest(StateType.CheckPointMenu);
+                })
+                .AddTo(this);
         }
 
         private void ChangeCurrentRoot(UIAnimationController nextRoot)
@@ -106,7 +125,7 @@ namespace ER.UIPresenters
             this.ChangeCurrentRoot(this.ingameHudAnimationController);
         }
 
-        private void OnEnterMenu(StateType prev)
+        private void OnEnterFromStartButtonMenu(StateType prev)
         {
             EnableUIInputAction();
 
@@ -120,11 +139,16 @@ namespace ER.UIPresenters
             this.ingameRootMenuPresenter.Activate(this.requestMenuType);
         }
 
+        private void OnExitFromStartButtonMenu(StateType next)
+        {
+            this.ingameRootMenuPresenter.Deactivate();
+        }
+
         private void OnEnterChangeEquipment(StateType prev)
         {
             var inputAction = GameController.Instance.InputAction;
             inputAction.UI.Cancel.OnPerformedAsObservable()
-                .Subscribe(_ => this.stateController.ChangeRequest(StateType.Menu))
+                .Subscribe(_ => this.stateController.ChangeRequest(StateType.FromStartButtonMenu))
                 .AddTo(this.stateController.StateDisposables);
 
             this.ChangeCurrentRoot(this.changeEquipmentAnimationController);
@@ -152,6 +176,25 @@ namespace ER.UIPresenters
         private void OnExitInventory(StateType next)
         {
             this.inventoryPresenter.Deactivate();
+        }
+
+        private void OnEnterCheckPointMenu(StateType prev)
+        {
+            EnableUIInputAction();
+
+            var inputAction = GameController.Instance.InputAction;
+            inputAction.UI.Cancel.OnPerformedAsObservable()
+                .Subscribe(_ => this.stateController.ChangeRequest(StateType.Hud))
+                .AddTo(this.stateController.StateDisposables);
+
+            this.ChangeCurrentRoot(this.ingameMenuAnimationController);
+
+            this.ingameRootMenuPresenter.Activate(this.requestMenuType);
+        }
+
+        private void OnExitCheckPointMenu(StateType next)
+        {
+            this.ingameRootMenuPresenter.Deactivate();
         }
 
         private void EnableUIInputAction()
