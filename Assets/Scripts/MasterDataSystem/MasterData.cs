@@ -21,7 +21,9 @@ namespace ER.MasterDataSystem
         [SerializeField]
         protected List<TRecord> records = default;
 
-        private Dictionary<string, TRecord> raw = new Dictionary<string, TRecord>();
+        public List<TRecord> Records => this.records;
+
+        protected Dictionary<string, TRecord> raw = new Dictionary<string, TRecord>();
 
         private void Setup()
         {
@@ -85,12 +87,16 @@ namespace ER.MasterDataSystem
             var streams = new List<IObservable<Unit>>();
 
             return Observable.WhenAll(
-                MasterDataItem.SetupAsync("Assets/MasterData/Item.asset"),
                 MasterDataWeapon.SetupAsync("Assets/MasterData/Weapon.asset"),
                 MasterDataActorStatus.SetupAsync("Assets/MasterData/ActorStatus.asset"),
                 MasterDataShield.SetupAsync("Assets/MasterData/Shield.asset"),
                 MasterDataArmor.SetupAsync("Assets/MasterData/Armor.asset")
                 )
+                .SelectMany(_ =>
+                {
+                    // MasterDataItemのみ上のマスターデータを読み込んだ後でセットアップする必要がある
+                    return MasterDataItem.SetupAsync("Assets/MasterData/Item.asset");
+                })
                 .AsUnitObservable();
         }
     }

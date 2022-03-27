@@ -12,6 +12,27 @@ namespace ER.MasterDataSystem
     [CreateAssetMenu(menuName = "ER/MasterData/Item")]
     public sealed class MasterDataItem : MasterData<MasterDataItem, MasterDataItem.Record>
     {
+        protected override void OnSetupped()
+        {
+            base.OnSetupped();
+
+            // このマスターデータのみ、動的にレコードを生成しています
+            // なので参照するマスターデータは先に読み込まれている必要があります
+
+            this.raw.Clear();
+            foreach (var i in MasterDataWeapon.Instance.Records)
+            {
+                this.raw.Add(i.Id, new Record(i.Id, false, ItemCategory.Weapon));
+            }
+            foreach (var i in MasterDataShield.Instance.Records)
+            {
+                this.raw.Add(i.Id, new Record(i.Id, false, ItemCategory.Shield));
+            }
+            foreach (var i in MasterDataArmor.Instance.Records)
+            {
+                this.raw.Add(i.Id, new Record(i.Id, false, i.ArmorType.ToItemCategory()));
+            }
+        }
         [Serializable]
         public class Record : IIdHolder<string>
         {
@@ -48,39 +69,5 @@ namespace ER.MasterDataSystem
                 this.category = category;
             }
         }
-
-#if UNITY_EDITOR
-        [ContextMenu("Download")]
-        private async void Download()
-        {
-            var task = DownloadFromSpreadSheet("Item");
-            await task;
-
-            var result = JsonUtility.FromJson<Json>(task.Result);
-
-            this.records = result.elements.Select(x => x.ToRecord()).ToList();
-            UnityEditor.EditorUtility.SetDirty(this);
-        }
-
-        [Serializable]
-        private class Json
-        {
-            public List<JsonElement> elements;
-        }
-
-        [Serializable]
-        private class JsonElement
-        {
-            public string Id;
-            public string Stackable;
-            public string Category;
-
-            public Record ToRecord() => new Record(
-                this.Id,
-                bool.Parse(this.Stackable),
-                (ItemCategory)Enum.Parse(typeof(ItemCategory), this.Category)
-                );
-        }
-#endif
     }
 }
