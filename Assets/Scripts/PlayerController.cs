@@ -1,14 +1,9 @@
 using ER.ActorControllers;
 using ER.EquipmentSystems;
-using ER.MasterDataSystem;
 using I2.Loc;
-using System;
 using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
-using UnityEngine.Assertions;
-using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 
 namespace ER
 {
@@ -64,80 +59,107 @@ namespace ER
 
         private void Start()
         {
-            var inputAction = GameController.Instance.InputAction;
+            var inputAction = GameController.Instance.InputAction.Player;
 
-            inputAction.Player.UseRightEquipment.performed += callback =>
-            {
-                this.actor.Broker.Publish(ActorEvent.BeginEquipment.Get(HandType.Right));
-            };
-            inputAction.Player.UseRightEquipment.canceled += callback =>
-            {
-                this.actor.Broker.Publish(ActorEvent.EndEquipment.Get(HandType.Right));
-            };
-            inputAction.Player.UseLeftEquipment.performed += callback =>
-            {
-                this.actor.Broker.Publish(ActorEvent.BeginEquipment.Get(HandType.Left));
-            };
-            inputAction.Player.UseLeftEquipment.canceled += callback =>
-            {
-                this.actor.Broker.Publish(ActorEvent.EndEquipment.Get(HandType.Left));
-            };
-            inputAction.Player.Avoidance.performed += callback =>
-            {
-                if (!this.actor.AnimationParameter.advancedEntry)
+            inputAction.UseRightEquipment.OnPerformedAsObservable()
+                .Subscribe(_ =>
                 {
-                    return;
-                }
+                    this.actor.Broker.Publish(ActorEvent.BeginEquipment.Get(HandType.Right));
+                })
+                .AddTo(this);
 
-                var direction = inputAction.Player.Move.ReadValue<Vector2>();
-                this.actor.Broker.Publish(ActorEvent.OnRequestAvoidance.Get(direction));
-            };
-            inputAction.Player.LookAt.performed += callback =>
-            {
-                if (!this.actor.MotionController.IsLookAt)
+            inputAction.UseRightEquipment.OnCanceledAsObservable()
+                .Subscribe(_ =>
                 {
-                    var target = FindLookAtTargetEnemy();
-                    if (target == null)
+                    this.actor.Broker.Publish(ActorEvent.EndEquipment.Get(HandType.Right));
+                })
+                .AddTo(this);
+
+            inputAction.UseLeftEquipment.OnPerformedAsObservable()
+                .Subscribe(_ =>
+                {
+                    this.actor.Broker.Publish(ActorEvent.BeginEquipment.Get(HandType.Left));
+                })
+                .AddTo(this);
+
+            inputAction.UseLeftEquipment.OnCanceledAsObservable()
+                .Subscribe(_ =>
+                {
+                    this.actor.Broker.Publish(ActorEvent.EndEquipment.Get(HandType.Left));
+                })
+                .AddTo(this);
+
+            inputAction.Avoidance.OnPerformedAsObservable()
+                .Subscribe(_ =>
+                {
+                    if (!this.actor.AnimationParameter.advancedEntry)
                     {
                         return;
                     }
-                    this.actor.MotionController.BeginLookAt(target);
-                }
-                else
+
+                    var direction = inputAction.Move.ReadValue<Vector2>();
+                    this.actor.Broker.Publish(ActorEvent.OnRequestAvoidance.Get(direction));
+                })
+                .AddTo(this);
+
+            inputAction.LookAt.OnPerformedAsObservable()
+                .Subscribe(_ =>
                 {
-                    this.actor.MotionController.EndLookAt();
-                }
-            };
+                    if (!this.actor.MotionController.IsLookAt)
+                    {
+                        var target = FindLookAtTargetEnemy();
+                        if (target == null)
+                        {
+                            return;
+                        }
+                        this.actor.MotionController.BeginLookAt(target);
+                    }
+                    else
+                    {
+                        this.actor.MotionController.EndLookAt();
+                    }
+                })
+                .AddTo(this);
 
-            inputAction.Player.Interact.performed += callback =>
-            {
-                this.actor.InteractableStageGimmickController.BeginInteract();
-            };
-
-            inputAction.Player.OpenIngameMenu.performed += callback =>
-            {
-                GameController.Instance.Broker.Publish(GameEvent.OnRequestOpenIngameMenu.Get(IngameMenuType.FromStartButton));
-            };
-
-            inputAction.Player.ChangeRightEquipment.performed += callback =>
-            {
-                this.actor.Broker.Publish(ActorEvent.OnRequestChangeEquipment.Get(HandType.Right));
-            };
-
-            inputAction.Player.ChangeLeftEquipment.performed += callback =>
-            {
-                this.actor.Broker.Publish(ActorEvent.OnRequestChangeEquipment.Get(HandType.Left));
-            };
-
-            inputAction.Player.UseItem.performed += callback =>
-            {
-                if (!this.actor.AnimationParameter.advancedEntry)
+            inputAction.Interact.OnPerformedAsObservable()
+                .Subscribe(_ =>
                 {
-                    return;
-                }
+                    this.actor.InteractableStageGimmickController.BeginInteract();
+                })
+                .AddTo(this);
 
-                this.actor.Broker.Publish(ActorEvent.OnRequestStartRecoveryItem.Get());
-            };
+            inputAction.OpenIngameMenu.OnPerformedAsObservable()
+                .Subscribe(_ =>
+                {
+                    GameController.Instance.Broker.Publish(GameEvent.OnRequestOpenIngameMenu.Get(IngameMenuType.FromStartButton));
+                })
+                .AddTo(this);
+
+            inputAction.ChangeRightEquipment.OnPerformedAsObservable()
+                .Subscribe(_ =>
+                {
+                    this.actor.Broker.Publish(ActorEvent.OnRequestChangeEquipment.Get(HandType.Right));
+                })
+                .AddTo(this);
+
+            inputAction.ChangeLeftEquipment.OnPerformedAsObservable()
+                .Subscribe(_ =>
+                {
+                    this.actor.Broker.Publish(ActorEvent.OnRequestChangeEquipment.Get(HandType.Left));
+                })
+                .AddTo(this);
+
+            inputAction.UseItem.OnPerformedAsObservable()
+                .Subscribe(_ =>
+                {
+                    if (!this.actor.AnimationParameter.advancedEntry)
+                    {
+                        return;
+                    }
+
+                    this.actor.Broker.Publish(ActorEvent.OnRequestStartRecoveryItem.Get());
+                })
+                .AddTo(this);
 
             for (var i = 0; i < this.rightEquipmentSelectors.Count; i++)
             {
