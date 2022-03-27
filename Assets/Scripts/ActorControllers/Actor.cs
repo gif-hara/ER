@@ -24,6 +24,9 @@ namespace ER.ActorControllers
         [SerializeField]
         private PlayableDirector director = default;
 
+        [SerializeField]
+        private ActorRecoveryItemController recoveryItemController = default;
+
         private MessageBroker broker = new MessageBroker();
 
         public ActorStatusController StatusController { get; } = new ActorStatusController();
@@ -83,6 +86,7 @@ namespace ER.ActorControllers
             this.MotionController = new ActorMotionController();
             this.MotionController.Setup(this, this.motionData);
             this.DirectorController.Setup(this, this.director);
+            this.recoveryItemController.Setup(this);
 
             this.OnDestroyAsObservable()
                 .Subscribe(_ =>

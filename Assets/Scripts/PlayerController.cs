@@ -129,6 +129,16 @@ namespace ER
                 this.actor.Broker.Publish(ActorEvent.OnRequestChangeEquipment.Get(HandType.Left));
             };
 
+            inputAction.Player.UseItem.performed += callback =>
+            {
+                if (!this.actor.AnimationParameter.advancedEntry)
+                {
+                    return;
+                }
+
+                this.actor.Broker.Publish(ActorEvent.OnRequestStartRecoveryItem.Get());
+            };
+
             for (var i = 0; i < this.rightEquipmentSelectors.Count; i++)
             {
                 this.rightEquipmentSelectors[i].Attach(this.actor, i);

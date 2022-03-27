@@ -163,5 +163,12 @@ namespace ER.ActorControllers
             /// </summary>
             public EquipmentController EquipmentController => this.param2;
         }
+
+        /// <summary>
+        /// 回復アイテム使用開始をリクエストするメッセージ
+        /// </summary>
+        public class OnRequestStartRecoveryItem : Message<OnRequestStartRecoveryItem>
+        {
+        }
     }
 }

@@ -99,6 +99,14 @@ namespace ER
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""UseItem"",
+                    ""type"": ""Button"",
+                    ""id"": ""774d711e-cb31-4960-920f-4a00a5a26004"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -407,6 +415,28 @@ namespace ER
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ChangeLeftEquipment"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b104ff6b-79b1-4064-87da-d4878f25d525"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""UseItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fe822470-1353-4c4d-b4d7-7353469516dd"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""UseItem"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -994,6 +1024,7 @@ namespace ER
             m_Player_OpenIngameMenu = m_Player.FindAction("OpenIngameMenu", throwIfNotFound: true);
             m_Player_ChangeRightEquipment = m_Player.FindAction("ChangeRightEquipment", throwIfNotFound: true);
             m_Player_ChangeLeftEquipment = m_Player.FindAction("ChangeLeftEquipment", throwIfNotFound: true);
+            m_Player_UseItem = m_Player.FindAction("UseItem", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1065,6 +1096,7 @@ namespace ER
         private readonly InputAction m_Player_OpenIngameMenu;
         private readonly InputAction m_Player_ChangeRightEquipment;
         private readonly InputAction m_Player_ChangeLeftEquipment;
+        private readonly InputAction m_Player_UseItem;
         public struct PlayerActions
         {
             private @ERInputAction m_Wrapper;
@@ -1079,6 +1111,7 @@ namespace ER
             public InputAction @OpenIngameMenu => m_Wrapper.m_Player_OpenIngameMenu;
             public InputAction @ChangeRightEquipment => m_Wrapper.m_Player_ChangeRightEquipment;
             public InputAction @ChangeLeftEquipment => m_Wrapper.m_Player_ChangeLeftEquipment;
+            public InputAction @UseItem => m_Wrapper.m_Player_UseItem;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -1118,6 +1151,9 @@ namespace ER
                     @ChangeLeftEquipment.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeLeftEquipment;
                     @ChangeLeftEquipment.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeLeftEquipment;
                     @ChangeLeftEquipment.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeLeftEquipment;
+                    @UseItem.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseItem;
+                    @UseItem.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseItem;
+                    @UseItem.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseItem;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
@@ -1152,6 +1188,9 @@ namespace ER
                     @ChangeLeftEquipment.started += instance.OnChangeLeftEquipment;
                     @ChangeLeftEquipment.performed += instance.OnChangeLeftEquipment;
                     @ChangeLeftEquipment.canceled += instance.OnChangeLeftEquipment;
+                    @UseItem.started += instance.OnUseItem;
+                    @UseItem.performed += instance.OnUseItem;
+                    @UseItem.canceled += instance.OnUseItem;
                 }
             }
         }
@@ -1318,6 +1357,7 @@ namespace ER
             void OnOpenIngameMenu(InputAction.CallbackContext context);
             void OnChangeRightEquipment(InputAction.CallbackContext context);
             void OnChangeLeftEquipment(InputAction.CallbackContext context);
+            void OnUseItem(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {

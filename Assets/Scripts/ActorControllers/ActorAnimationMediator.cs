@@ -46,6 +46,11 @@ namespace ER.ActorControllers
                         this.advancedEntry = true;
                     }
 
+                    if (x.NextState == ActorStateController.StateType.UseRecoveryItem)
+                    {
+                        this.moveSpeedRate = 0.5f;
+                        this.invisible = false;
+                    }
                 })
                 .AddTo(actor.Disposables);
         }
@@ -54,8 +59,8 @@ namespace ER.ActorControllers
         {
 #if UNITY_EDITOR
             Debug.Log("UseRecoveryItem");
-            return;
 #endif
+            this.actor.StatusController.UseRecoveryItem();
         }
     }
 }

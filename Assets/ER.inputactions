@@ -84,6 +84,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "UseItem",
+                    "type": "Button",
+                    "id": "774d711e-cb31-4960-920f-4a00a5a26004",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -392,6 +400,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "ChangeLeftEquipment",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b104ff6b-79b1-4064-87da-d4878f25d525",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "UseItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fe822470-1353-4c4d-b4d7-7353469516dd",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "UseItem",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

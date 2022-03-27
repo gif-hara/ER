@@ -55,6 +55,7 @@ MonoBehaviour:
     avoidanceAsset: {fileID: 11400000, guid: c54bb4588527889499dbfb08e97751c4, type: 2}
   animationParameter: {fileID: 1747911066581499898}
   director: {fileID: 4614482006976423406}
+  recoveryItemController: {fileID: 5469232807201834641}
 --- !u!114 &1747911066581499898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,6 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02e80b06433e34fa3bee4549a5fc5515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  recoveryItemPrefab: {fileID: 3458228184060664456, guid: d72011b69868f45968d9c0c053255b70, type: 3}
 --- !u!50 &7022896992796212799
 Rigidbody2D:
   serializedVersion: 4

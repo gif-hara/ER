@@ -11,6 +11,7 @@ namespace ER.ActorControllers
     /// </summary>
     public sealed class ActorStatusController
     {
+        public const int RecoveryItemMax = 3;
         private IActor actor;
 
         private ActorStatusData baseStatus = default;
@@ -36,6 +37,8 @@ namespace ER.ActorControllers
         public IObservable<int> ExperienceAsObservable() => this.experience;
 
         public int Experience => this.experience.Value;
+
+        private int recoveryItemNumber = RecoveryItemMax;
 
         public ActorStatusData BaseStatus => this.baseStatus;
 
@@ -67,6 +70,22 @@ namespace ER.ActorControllers
         public void AddExperience(int value)
         {
             this.experience.Value += value;
+        }
+
+        public void UseRecoveryItem()
+        {
+            Assert.IsTrue(this.CanUseRecoveryItem());
+
+            this.recoveryItemNumber--;
+            var hitPoint = this.HitPoint;
+            hitPoint = Mathf.Min(hitPoint + this.HitPointMax / 2, this.HitPointMax);
+
+            this.hitPoint.Value = hitPoint;
+        }
+
+        public bool CanUseRecoveryItem()
+        {
+            return this.recoveryItemNumber > 0;
         }
 
         private void TakeDamage(EquipmentController equipmentController)
