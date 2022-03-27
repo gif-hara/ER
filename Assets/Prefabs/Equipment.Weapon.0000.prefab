@@ -103,6 +103,12 @@ PlayableDirector:
     value: {fileID: 6119873786565449434}
   - key: {fileID: -1935603194271161550, guid: 679b92cd0b950f740810daaaffbf0b5d, type: 2}
     value: {fileID: 0}
+  - key: {fileID: -3140158847642730933, guid: 97f895a63bc7e4bb19c47f224fdde690, type: 2}
+    value: {fileID: 6817020702216351253}
+  - key: {fileID: 226853102563252438, guid: 97f895a63bc7e4bb19c47f224fdde690, type: 2}
+    value: {fileID: 6119873786565449434}
+  - key: {fileID: -1935603194271161550, guid: 97f895a63bc7e4bb19c47f224fdde690, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!50 &-5223219104144271367
@@ -184,6 +190,26 @@ PrefabInstance:
     - target: {fileID: 5078142423875378304, guid: 6183565eed251a4469039bf658a61b11, type: 3}
       propertyPath: m_Name
       value: Sword.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 8632573841751660908, guid: 6183565eed251a4469039bf658a61b11, type: 3}
+      propertyPath: m_Time
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8632573841751660908, guid: 6183565eed251a4469039bf658a61b11, type: 3}
+      propertyPath: m_Parameters.colorGradient.atime1
+      value: 49151
+      objectReference: {fileID: 0}
+    - target: {fileID: 8632573841751660908, guid: 6183565eed251a4469039bf658a61b11, type: 3}
+      propertyPath: m_Parameters.colorGradient.atime2
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 8632573841751660908, guid: 6183565eed251a4469039bf658a61b11, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8632573841751660908, guid: 6183565eed251a4469039bf658a61b11, type: 3}
+      propertyPath: m_Parameters.colorGradient.m_NumAlphaKeys
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6183565eed251a4469039bf658a61b11, type: 3}

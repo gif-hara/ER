@@ -65,7 +65,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: rightEquipmentSelector
@@ -85,7 +85,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.data[3].aiName
-      value: Attack
+      value: Attack.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[4].aiName
+      value: Attack.02
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: rightEquipmentSelector.weaponDataId
@@ -132,6 +136,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[4].behaviours.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: rightEquipmentSelector.levelData.physicsLevel
       value: 0
       objectReference: {fileID: 0}
@@ -157,10 +165,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.data[3].behaviours.Array.data[0].action
-      value: Assembly-CSharp ER.ERBehaviour.BeginAttack
+      value: Assembly-CSharp ER.ERBehaviour.SequenceAction
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.data[3].behaviours.Array.data[1].action
+      value: Assembly-CSharp ER.ERBehaviour.ChangeAI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[4].behaviours.Array.data[0].action
+      value: Assembly-CSharp ER.ERBehaviour.SequenceAction
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[4].behaviours.Array.data[1].action
       value: Assembly-CSharp ER.ERBehaviour.ChangeAI
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
@@ -188,6 +204,14 @@ PrefabInstance:
       value: Assembly-CSharp ER.ERBehaviour.DistancePlayer
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[4].behaviours.Array.data[0].trigger
+      value: Assembly-CSharp ER.ERBehaviour.AndTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[4].behaviours.Array.data[1].trigger
+      value: Assembly-CSharp ER.ERBehaviour.DistancePlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.data[0].behaviours.Array.data[0].trigger.isIn
       value: 1
       objectReference: {fileID: 0}
@@ -204,15 +228,23 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[4].behaviours.Array.data[1].trigger.isIn
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.data[0].behaviours.Array.data[0].action.aiName
       value: BeginLookAtPlayer
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.data[2].behaviours.Array.data[1].action.aiName
-      value: Attack
+      value: Attack.01
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.data[3].behaviours.Array.data[1].action.aiName
+      value: ChasePlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[4].behaviours.Array.data[1].action.aiName
       value: ChasePlayer
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
@@ -264,7 +296,19 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[4].behaviours.Array.data[0].action.actions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[4].behaviours.Array.data[1].trigger.distanceThreshold
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.data[3].behaviours.Array.data[0].trigger.triggers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[4].behaviours.Array.data[0].trigger.triggers.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
@@ -284,11 +328,27 @@ PrefabInstance:
       value: Assembly-CSharp ER.ERBehaviour.ChangeAI
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[4].behaviours.Array.data[0].action.actions.Array.data[0]
+      value: Assembly-CSharp ER.ERBehaviour.BeginAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[4].behaviours.Array.data[0].action.actions.Array.data[1]
+      value: Assembly-CSharp ER.ERBehaviour.ChangeAI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.data[3].behaviours.Array.data[0].trigger.triggers.Array.data[0]
       value: Assembly-CSharp ER.ERBehaviour.CanNextAction
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.data[3].behaviours.Array.data[0].trigger.triggers.Array.data[1]
+      value: Assembly-CSharp ER.ERBehaviour.ActorState
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[4].behaviours.Array.data[0].trigger.triggers.Array.data[0]
+      value: Assembly-CSharp ER.ERBehaviour.CanNextAction
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[4].behaviours.Array.data[0].trigger.triggers.Array.data[1]
       value: Assembly-CSharp ER.ERBehaviour.ActorState
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
@@ -300,7 +360,19 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[4].behaviours.Array.data[0].action.actions.Array.data[0].data
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[4].behaviours.Array.data[0].action.actions.Array.data[1].data
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.data[3].behaviours.Array.data[0].action.actions.Array.data[0].power
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[4].behaviours.Array.data[0].action.actions.Array.data[0].power
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
@@ -309,7 +381,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.data[3].behaviours.Array.data[0].action.actions.Array.data[1].aiName
-      value: ChasePlayer
+      value: Attack.02
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.data[3].behaviours.Array.data[0].trigger.triggers.Array.data[0].data
@@ -317,6 +389,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.data[3].behaviours.Array.data[0].trigger.triggers.Array.data[1].data
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[4].behaviours.Array.data[0].action.actions.Array.data[1].aiName
+      value: ChasePlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[4].behaviours.Array.data[0].trigger.triggers.Array.data[0].data
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[4].behaviours.Array.data[0].trigger.triggers.Array.data[1].data
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
@@ -328,20 +412,40 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[4].behaviours.Array.data[0].action.actions.Array.data[0].handType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[4].behaviours.Array.data[0].action.actions.Array.data[0].wrapMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.data[1].behaviours.Array.data[0].action.actions.Array.data[0].actorType
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.data[3].behaviours.Array.data[0].trigger.triggers.Array.data[1].isMatch
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[4].behaviours.Array.data[0].trigger.triggers.Array.data[1].isMatch
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.data[3].behaviours.Array.data[0].trigger.triggers.Array.data[1].stateType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[4].behaviours.Array.data[0].trigger.triggers.Array.data[1].stateType
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.data[3].behaviours.Array.data[0].action.actions.Array.data[0].playableAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 4e3dc0d37e76f884bb0ff92b825a8805, type: 2}
+      objectReference: {fileID: 11400000, guid: 679b92cd0b950f740810daaaffbf0b5d, type: 2}
+    - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: elements.Array.data[4].behaviours.Array.data[0].action.actions.Array.data[0].playableAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 97f895a63bc7e4bb19c47f224fdde690, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a956312de110fd64caae24e5eb263503, type: 3}

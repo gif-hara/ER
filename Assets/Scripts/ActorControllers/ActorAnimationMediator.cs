@@ -27,6 +27,11 @@ namespace ER.ActorControllers
         /// </summary>
         public bool advancedEntry = false;
 
+        /// <summary>
+        /// 次の攻撃インデックス
+        /// </summary>
+        public int nextAttackIndex = 0;
+
         private void Awake()
         {
             actor.Broker.Receive<ActorEvent.OnChangedStateType>()
