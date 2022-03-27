@@ -29,8 +29,12 @@ namespace ER
         /// <summary>
         /// ゲームメニューの表示をリクエストするメッセージ
         /// </summary>
-        public class OnRequestOpenIngameMenu : Message<OnRequestOpenIngameMenu>
+        public class OnRequestOpenIngameMenu : Message<OnRequestOpenIngameMenu, IngameMenuType>
         {
+            /// <summary>
+            /// 開きたいメニュータイプ
+            /// </summary>
+            public IngameMenuType IngameMenuType => this.param1;
         }
 
         /// <summary>

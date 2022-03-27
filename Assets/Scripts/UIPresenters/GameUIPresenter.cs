@@ -43,6 +43,11 @@ namespace ER.UIPresenters
 
         private StateController<StateType> stateController;
 
+        /// <summary>
+        /// 次に開くメニュータイプ
+        /// </summary>
+        private IngameMenuType requestMenuType;
+
         private void Awake()
         {
             this.ingameHudAnimationController.PlayImmediate(false);
@@ -58,7 +63,11 @@ namespace ER.UIPresenters
             this.stateController.ChangeRequest(StateType.Hud);
 
             GameController.Instance.Broker.Receive<GameEvent.OnRequestOpenIngameMenu>()
-                .Subscribe(_ => this.stateController.ChangeRequest(StateType.Menu))
+                .Subscribe(x =>
+                {
+                    this.requestMenuType = x.IngameMenuType;
+                    this.stateController.ChangeRequest(StateType.Menu);
+                })
                 .AddTo(this);
 
             GameController.Instance.Broker.Receive<GameEvent.OnRequestOpenChangeEquipment>()
@@ -108,7 +117,7 @@ namespace ER.UIPresenters
 
             this.ChangeCurrentRoot(this.ingameMenuAnimationController);
 
-            this.ingameRootMenuPresenter.Activate();
+            this.ingameRootMenuPresenter.Activate(this.requestMenuType);
         }
 
         private void OnEnterChangeEquipment(StateType prev)

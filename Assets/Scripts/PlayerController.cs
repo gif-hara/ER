@@ -116,7 +116,7 @@ namespace ER
 
             inputAction.Player.OpenIngameMenu.performed += callback =>
             {
-                GameController.Instance.Broker.Publish(GameEvent.OnRequestOpenIngameMenu.Get());
+                GameController.Instance.Broker.Publish(GameEvent.OnRequestOpenIngameMenu.Get(IngameMenuType.FromStartButton));
             };
 
             inputAction.Player.ChangeRightEquipment.performed += callback =>

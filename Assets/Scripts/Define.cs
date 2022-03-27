@@ -61,6 +61,22 @@ namespace ER
         Leg
     }
 
+    /// <summary>
+    /// インゲーム中のメニュータイプ
+    /// </summary>
+    public enum IngameMenuType
+    {
+        /// <summary>
+        /// スタートボタンが押された際のメニュー
+        /// </summary>
+        FromStartButton,
+
+        /// <summary>
+        /// チェックポイントメニュー
+        /// </summary>
+        CheckPoint,
+    }
+
     public static class Define
     {
         /// <summary>
