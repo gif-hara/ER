@@ -131,6 +131,15 @@ namespace ER.StageControllers
             });
         }
 
+        public void Clear()
+        {
+            foreach (var i in this.loadedIndexies)
+            {
+                UnityEngine.Object.Destroy(i.stage.gameObject);
+            }
+            this.loadedIndexies.Clear();
+        }
+
         public static Vector2Int GetIndex(Vector3 position)
         {
             return new Vector2Int(Mathf.FloorToInt(position.x / SplitSize), Mathf.FloorToInt(position.y / SplitSize));

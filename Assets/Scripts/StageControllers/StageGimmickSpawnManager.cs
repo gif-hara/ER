@@ -40,6 +40,11 @@ namespace ER.StageControllers
             this.spawnedItemIds.Add(id);
         }
 
+        public void ResetSpawnedEnemy()
+        {
+            this.spawnedEnemyIds.Clear();
+        }
+
         private string GetId(Transform t)
         {
             this.stringBuilder.Clear();

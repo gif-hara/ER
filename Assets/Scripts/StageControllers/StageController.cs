@@ -1,3 +1,4 @@
+using System;
 using ER.ActorControllers;
 using UniRx;
 using UnityEngine;
@@ -18,6 +19,8 @@ namespace ER.StageControllers
 
         public StageGimmickSpawnManager GimmickSpawnManager { get; } = new StageGimmickSpawnManager();
 
+        private IDisposable disposable = null;
+
         private void Awake()
         {
             this.stageLoader = new StageLoader(1, this.transform);
@@ -28,6 +31,7 @@ namespace ER.StageControllers
                 {
                     this.actor = x.SpawnedActor;
                     this.Load();
+                    this.RegisterActorEvent(x.SpawnedActor);
                 })
                 .AddTo(this);
         }
@@ -49,10 +53,32 @@ namespace ER.StageControllers
             this.Load();
         }
 
+        private void RegisterActorEvent(Actor actor)
+        {
+            actor.Broker.Receive<ActorEvent.OnInteractedCheckPoint>()
+                .Subscribe(_ =>
+                {
+                    foreach (var i in Actor.Enemies)
+                    {
+                        Destroy(i.gameObject);
+                    }
+                    this.GimmickSpawnManager.ResetSpawnedEnemy();
+                    this.stageLoader.Clear();
+                    this.Load();
+                })
+                .AddTo(actor.Disposables)
+                .AddTo(this);
+        }
+
         private void Load()
         {
-            this.currentIndex = StageLoader.GetIndex(this.actor.transform.position);
-            this.stageLoader.LoadAsync(this.actor.transform.position)
+            if (this.disposable != null)
+            {
+                this.disposable.Dispose();
+                this.disposable = null;
+            }
+
+            this.disposable = this.stageLoader.LoadAsync(this.actor.transform.position)
             .Subscribe(x =>
             {
                 foreach (var i in x)
