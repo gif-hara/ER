@@ -89,6 +89,8 @@ namespace ER.ActorControllers
             Assert.IsTrue(this.CanUseRecoveryItem());
 
             this.recoveryItemNumber.Value -= 1;
+
+            // TODO: 回復量決める
             var hitPoint = this.HitPoint;
             hitPoint = Mathf.Min(hitPoint + this.HitPointMax / 2, this.HitPointMax);
 

@@ -43,6 +43,14 @@ namespace ER.UIPresenters
                 .AddTo(actor.Disposables)
                 .AddTo(this);
 
+            actor.StatusController.RecoveryItemNumberAsObservable()
+                .Subscribe(x =>
+                {
+                    this.playerStatusUIView.RecoveryItem.text = x.ToString();
+                })
+                .AddTo(actor.Disposables)
+                .AddTo(this);
+
             actor.Broker.Receive<ActorEvent.OnChangedHandEquipment>()
                 .Subscribe(x =>
                 {

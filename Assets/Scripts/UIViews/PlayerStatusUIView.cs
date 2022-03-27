@@ -23,6 +23,9 @@ namespace ER.UIViews
         [SerializeField]
         private TextMeshProUGUI experience = default;
 
+        [SerializeField]
+        private TextMeshProUGUI recoveryItem = default;
+
         public Slider HitPointSlider => this.hitPointSlider;
 
         public HandStatus LeftHandStatus => this.leftHandStatus;
@@ -30,6 +33,8 @@ namespace ER.UIViews
         public HandStatus RightHandStatus => this.rightHandStatus;
 
         public TextMeshProUGUI Experience => this.experience;
+
+        public TextMeshProUGUI RecoveryItem => this.recoveryItem;
 
         [Serializable]
         public class HandStatus
