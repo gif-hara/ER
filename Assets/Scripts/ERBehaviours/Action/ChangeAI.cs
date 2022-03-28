@@ -12,12 +12,12 @@ namespace ER.ERBehaviour
     public sealed class ChangeAI : IAction
     {
         [SerializeField]
-        private string aiName = default;
+        private ActorAIElement nextAI = default;
 
         public void Invoke(IBehaviourData data)
         {
             var aiBehaviourData = data.Cast<ActorAIBehaviourData>();
-            aiBehaviourData.AIController.ChangeRequest(this.aiName);
+            aiBehaviourData.AIController.ChangeRequest(this.nextAI);
         }
     }
 }

@@ -16,32 +16,22 @@ namespace ER.ActorControllers
         private Actor actor = default;
 
         [SerializeField]
-        private List<AIElement> elements = default;
-
-        [SerializeField]
-        private string initialAiName = default;
+        private ActorAIElement initialAI = default;
 
         [SerializeReference, SubclassSelector(typeof(IEquipmentSelector))]
         private IEquipmentSelector rightEquipmentSelector = default;
 
-        private readonly Dictionary<string, AIElement> runtimeElements = new Dictionary<string, AIElement>();
-
-        private AIElement current = null;
-
         private readonly CompositeDisposable disposables = new CompositeDisposable();
 
-        private string nextAiName;
+        private ActorAIElement nextAI;
+
+        private ActorAIElement currentAI;
 
         private ActorAIBehaviourData behaviourData;
 
         private void Start()
         {
-            foreach (var i in this.elements)
-            {
-                this.runtimeElements.Add(i.aiName, i);
-            }
-
-            this.ChangeRequest(this.initialAiName);
+            this.ChangeRequest(this.initialAI);
             this.rightEquipmentSelector.Attach(this.actor, 0);
 
             this.behaviourData = new ActorAIBehaviourData
@@ -55,29 +45,29 @@ namespace ER.ActorControllers
         {
             this.ChangeInternal();
 
-            foreach (var i in this.current.behaviours)
+            foreach (var i in this.currentAI.Behaviours)
             {
                 i.Invoke(this.behaviourData, this.disposables);
             }
         }
 
-        public void ChangeRequest(string aiName)
+        public void ChangeRequest(ActorAIElement nextAI)
         {
-            this.nextAiName = aiName;
+            this.nextAI = nextAI;
+            Assert.IsNotNull(this.nextAI);
         }
 
         private void ChangeInternal()
         {
-            if (string.IsNullOrEmpty(this.nextAiName))
+            if (this.nextAI == null)
             {
                 return;
             }
 
             this.disposables.Clear();
-            Assert.IsTrue(this.runtimeElements.ContainsKey(this.nextAiName), $"{this.nextAiName}というAIはありません");
 
-            this.current = this.runtimeElements[this.nextAiName];
-            this.nextAiName = "";
+            this.currentAI = this.nextAI;
+            this.nextAI = null;
         }
 
         [Serializable]

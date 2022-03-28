@@ -17,13 +17,13 @@ namespace ER.ERBehaviour
         private PlayableAsset playableAsset = default;
 
         [SerializeField]
-        private DirectorWrapMode wrapMode = default;
+        private DirectorWrapMode wrapMode = DirectorWrapMode.None;
 
         [SerializeField]
-        private float power = default;
+        private float power = 1.0f;
 
         [SerializeField]
-        private HandType handType = default;
+        private HandType handType = HandType.Right;
 
         public void Invoke(IBehaviourData data)
         {
