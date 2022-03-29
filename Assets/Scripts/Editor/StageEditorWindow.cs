@@ -5,6 +5,7 @@ using System.Linq;
 using ER.StageControllers;
 using UnityEngine.SceneManagement;
 using UnityEditor.SceneManagement;
+using System.Collections.Generic;
 
 namespace ER.Editor
 {
@@ -19,9 +20,11 @@ namespace ER.Editor
 
         private Vector3Int max;
 
+        private List<Vector3Int> stageIndexies = null;
+
         private Vector2 buttonScrollView;
 
-        private Vector2Int editingIndex;
+        private Vector3Int editingIndex;
 
         private StageChunk editingStageChunk;
 
@@ -31,59 +34,16 @@ namespace ER.Editor
             GetWindow<StageEditorWindow>();
         }
 
-        private void OnEnable()
-        {
-            var indexies = AssetDatabase
-                .FindAssets("Stage.Chunk(", new string[] { "Assets/Prefabs" })
-                .Select(guid => AssetDatabase.GUIDToAssetPath(guid))
-                .Select(path => GetStageIndex(path));
-
-            this.min = new Vector3Int(
-                int.MaxValue,
-                int.MaxValue,
-                int.MaxValue
-                );
-
-            this.max = new Vector3Int(
-                int.MinValue,
-                int.MinValue,
-                int.MinValue
-                );
-
-            foreach (var i in indexies)
-            {
-                if (this.min.x >= i.x)
-                {
-                    this.min.x = i.x;
-                }
-                if (this.max.x <= i.x)
-                {
-                    this.max.x = i.x;
-                }
-                if (this.min.y >= i.y)
-                {
-                    this.min.y = i.y;
-                }
-                if (this.max.y <= i.y)
-                {
-                    this.max.y = i.y;
-                }
-                if (this.min.z >= i.z)
-                {
-                    this.min.z = i.z;
-                }
-                if (this.max.z <= i.z)
-                {
-                    this.max.z = i.z;
-                }
-            }
-        }
-
         private void OnGUI()
         {
-            var xMax = Mathf.Abs(this.min.x) + Mathf.Abs(this.max.x);
-            var yMax = Mathf.Abs(this.min.y) + Mathf.Abs(this.max.y);
-            using (var scope = new GUI.ScrollViewScope(new Rect(0, 0, 400, this.position.height), this.buttonScrollView, new Rect(0, 0, xMax * ButtonSize + 40, yMax * ButtonSize + 120), true, true))
+            if (this.stageIndexies == null)
+            {
+                this.CalculateStageIndexies();
+            }
+
+            var width = (Mathf.Abs(this.min.x) + Mathf.Abs(this.max.x) + 2) * ButtonSize;
+            var height = (Mathf.Abs(this.min.y) + Mathf.Abs(this.max.y) + 2) * ButtonSize;
+            using (var scope = new GUI.ScrollViewScope(new Rect(0, 0, 400, this.position.height), this.buttonScrollView, new Rect(this.min.x * ButtonSize, this.min.y * ButtonSize, width, height), true, true))
             {
                 this.DrawButtons();
 
@@ -101,26 +61,17 @@ namespace ER.Editor
 
         private void DrawButtons()
         {
-            var xPosition = 0;
-            var yPosition = 0;
             var defaultColor = GUI.color;
-            for (var y = this.max.y; y >= this.min.y; y--)
+            foreach (var i in this.stageIndexies)
             {
-                for (var x = this.min.x; x <= this.max.x; x++)
+                var index = i;
+                GUI.color = (this.editingStageChunk != null && this.editingIndex == index) ? Color.green : defaultColor;
+                if (GUI.Button(new Rect(i.x * ButtonSize + 20, i.y * ButtonSize + 20, ButtonSize, ButtonSize), $"({index.x},{index.y})"))
                 {
-                    var index = new Vector2Int(x, y);
-                    GUI.color = (this.editingStageChunk != null && this.editingIndex == index) ? Color.green : defaultColor;
-                    if (GUI.Button(new Rect(xPosition * ButtonSize + 20, yPosition * ButtonSize + 20, ButtonSize, ButtonSize), $"({x},{y})"))
-                    {
-                        this.editingStageChunk = AssetDatabase.LoadAssetAtPath<StageChunk>($"Assets/Prefabs/Stage.Chunk({x},{y},0).prefab");
-                        this.editingIndex = index;
-                        AssetDatabase.OpenAsset(this.editingStageChunk.gameObject.GetInstanceID());
-                    }
-                    xPosition++;
+                    this.editingStageChunk = AssetDatabase.LoadAssetAtPath<StageChunk>($"Assets/Prefabs/Stage.Chunk({index.x},{index.y},{index.z}).prefab");
+                    this.editingIndex = index;
+                    AssetDatabase.OpenAsset(this.editingStageChunk.gameObject.GetInstanceID());
                 }
-
-                xPosition = 0;
-                yPosition++;
             }
 
             GUI.color = defaultColor;
@@ -187,6 +138,55 @@ namespace ER.Editor
             var z = int.Parse(name.Substring(startIndex + 1, endIndex - startIndex - 1));
 
             return new Vector3Int(x, y, z);
+        }
+
+        private void CalculateStageIndexies()
+        {
+            this.stageIndexies = AssetDatabase
+                .FindAssets("Stage.Chunk(", new string[] { "Assets/Prefabs" })
+                .Select(guid => AssetDatabase.GUIDToAssetPath(guid))
+                .Select(path => GetStageIndex(path))
+                .ToList();
+
+            this.min = new Vector3Int(
+                int.MaxValue,
+                int.MaxValue,
+                int.MaxValue
+                );
+
+            this.max = new Vector3Int(
+                int.MinValue,
+                int.MinValue,
+                int.MinValue
+                );
+
+            foreach (var i in this.stageIndexies)
+            {
+                if (this.min.x >= i.x)
+                {
+                    this.min.x = i.x;
+                }
+                if (this.max.x <= i.x)
+                {
+                    this.max.x = i.x;
+                }
+                if (this.min.y >= i.y)
+                {
+                    this.min.y = i.y;
+                }
+                if (this.max.y <= i.y)
+                {
+                    this.max.y = i.y;
+                }
+                if (this.min.z >= i.z)
+                {
+                    this.min.z = i.z;
+                }
+                if (this.max.z <= i.z)
+                {
+                    this.max.z = i.z;
+                }
+            }
         }
     }
 }
