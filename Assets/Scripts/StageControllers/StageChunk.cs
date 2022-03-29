@@ -10,11 +10,11 @@ namespace ER.StageControllers
     {
 #if UNITY_EDITOR
         [ContextMenu("SetPositionFromId")]
-        private void SetPositionFromId()
+        public void SetPositionFromId()
         {
             var name = this.name;
             var startIndex = name.IndexOf("(");
-            if(startIndex == -1 && name.IndexOf("Base") == -1)
+            if (startIndex == -1 && name.IndexOf("Base") == -1)
             {
                 Debug.Log($"{name}を正しくパースできません");
             }
@@ -25,14 +25,14 @@ namespace ER.StageControllers
             endIndex = name.IndexOf(",", startIndex + 1);
             var y = int.Parse(name.Substring(startIndex + 1, endIndex - startIndex - 1));
 
-            this.transform.localPosition = new Vector3(x * StageLoader.SplitSize * 2, y * StageLoader.SplitSize * 2, 0);
+            this.transform.localPosition = new Vector3(x * StageLoader.SplitSize, y * StageLoader.SplitSize, 0);
             UnityEditor.EditorUtility.SetDirty(this);
         }
 #endif
 
         public void SetupGimmicks(StageController stageController)
         {
-            foreach(var i in this.GetComponentsInChildren<IStageGimmick>())
+            foreach (var i in this.GetComponentsInChildren<IStageGimmick>())
             {
                 i.Setup(stageController);
             }
