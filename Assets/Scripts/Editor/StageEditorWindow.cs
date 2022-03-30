@@ -43,7 +43,7 @@ namespace ER.Editor
 
             var width = (Mathf.Abs(this.min.x) + Mathf.Abs(this.max.x) + 2) * ButtonSize;
             var height = (Mathf.Abs(this.min.y) + Mathf.Abs(this.max.y) + 2) * ButtonSize;
-            using (var scope = new GUI.ScrollViewScope(new Rect(0, 0, 400, this.position.height), this.buttonScrollView, new Rect(this.min.x * ButtonSize, this.min.y * ButtonSize, width, height), true, true))
+            using (var scope = new GUI.ScrollViewScope(new Rect(0, 0, 400, this.position.height), this.buttonScrollView, new Rect(this.min.x * ButtonSize, -this.max.y * ButtonSize, width, height), true, true))
             {
                 this.DrawButtons();
 
@@ -66,7 +66,7 @@ namespace ER.Editor
             {
                 var index = i;
                 GUI.color = (this.editingStageChunk != null && this.editingIndex == index) ? Color.green : defaultColor;
-                if (GUI.Button(new Rect(i.x * ButtonSize + 20, i.y * ButtonSize + 20, ButtonSize, ButtonSize), $"({index.x},{index.y})"))
+                if (GUI.Button(new Rect(i.x * ButtonSize + 20, -i.y * ButtonSize + 20, ButtonSize, ButtonSize), $"({index.x},{index.y})"))
                 {
                     this.editingStageChunk = AssetDatabase.LoadAssetAtPath<StageChunk>($"Assets/Prefabs/Stage.Chunk({index.x},{index.y},{index.z}).prefab");
                     this.editingIndex = index;
@@ -92,6 +92,29 @@ namespace ER.Editor
             {
                 EditorGUILayout.ObjectField("Path", this.editingStageChunk, typeof(StageChunk), false);
             }
+
+            if (GUILayout.Button("Build Around Chunks"))
+            {
+                for (var y = -1; y <= 1; y++)
+                {
+                    for (var x = -1; x <= 1; x++)
+                    {
+                        var index = new Vector3Int(this.editingIndex.x + x, this.editingIndex.y + y, this.editingIndex.z);
+                        var path = $"Assets/Prefabs/Stage.Chunk({index.x},{index.y},{index.z}).prefab";
+                        if (AssetDatabase.LoadAssetAtPath<StageChunk>(path) == null)
+                        {
+                            var basePath = "Assets/Prefabs/Stage.Chunk.Base.prefab";
+                            var basePrefab = (GameObject)PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>(basePath));
+                            PrefabUtility.SaveAsPrefabAssetAndConnect(basePrefab, path, InteractionMode.AutomatedAction);
+                            DestroyImmediate(basePrefab);
+                            Debug.Log(index);
+                        }
+                    }
+                }
+
+                this.CalculateStageIndexies();
+            }
+
             EditorGUI.indentLevel--;
         }
 
