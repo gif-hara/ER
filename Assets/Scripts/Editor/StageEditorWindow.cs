@@ -140,6 +140,10 @@ namespace ER.Editor
                     stageChunk.SetPositionFromId();
                 }
             }
+            if (GUILayout.Button("Refresh"))
+            {
+                this.CalculateStageIndexies();
+            }
         }
 
         private Vector3Int GetStageIndex(string name)
