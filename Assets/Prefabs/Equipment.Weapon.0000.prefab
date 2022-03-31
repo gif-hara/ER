@@ -57,15 +57,19 @@ MonoBehaviour:
       id: 2
     action:
       id: 3
+  - trigger:
+      id: 4
+    action:
+      id: 5
   references:
     version: 1
     00000000:
       type: {class: AndTrigger, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         triggers:
-        - id: 4
-        - id: 5
         - id: 6
+        - id: 7
+        - id: 8
     00000001:
       type: {class: BeginAttack, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
@@ -77,9 +81,9 @@ MonoBehaviour:
       type: {class: AndTrigger, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         triggers:
-        - id: 7
-        - id: 8
         - id: 9
+        - id: 10
+        - id: 11
     00000003:
       type: {class: BeginAttack, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
@@ -88,25 +92,49 @@ MonoBehaviour:
         power: 1
         handType: 1
     00000004:
+      type: {class: AndTrigger, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        triggers:
+        - id: 12
+        - id: 13
+        - id: 14
+    00000005:
+      type: {class: BeginAttack, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        playableAsset: {fileID: 11400000, guid: 1e6b2b8a85b50482e88ace4a752784eb, type: 2}
+        wrapMode: 2
+        power: 1
+        handType: 1
+    00000006:
       type: {class: OnBeginEquipment, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         handType: 1
-    00000005:
+    00000007:
       type: {class: CanNextAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
-    00000006:
+    00000008:
       type: {class: IsMatchNextAttackIndex, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         targetNextAttackIndex: 0
-    00000007:
+    00000009:
       type: {class: OnBeginEquipment, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         handType: 1
-    00000008:
+    0000000A:
       type: {class: CanNextAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
-    00000009:
+    0000000B:
       type: {class: IsMatchNextAttackIndex, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         targetNextAttackIndex: 1
+    0000000C:
+      type: {class: OnBeginEquipment, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        handType: 1
+    0000000D:
+      type: {class: CanNextAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+    0000000E:
+      type: {class: IsMatchNextAttackIndex, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        targetNextAttackIndex: 2
 --- !u!320 &4311177486490712205
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -116,7 +144,7 @@ PlayableDirector:
   m_GameObject: {fileID: 4608228154354743509}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 17a72ceeb17734ddaa78a3fbf57c0d78, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: 1e6b2b8a85b50482e88ace4a752784eb, type: 2}
   m_InitialState: 0
   m_WrapMode: 1
   m_DirectorUpdateMode: 1
@@ -154,6 +182,12 @@ PlayableDirector:
     value: {fileID: 6119873786565449434}
   - key: {fileID: -1935603194271161550, guid: 17a72ceeb17734ddaa78a3fbf57c0d78, type: 2}
     value: {fileID: 0}
+  - key: {fileID: -3140158847642730933, guid: 1e6b2b8a85b50482e88ace4a752784eb, type: 2}
+    value: {fileID: 6817020702216351253}
+  - key: {fileID: 226853102563252438, guid: 1e6b2b8a85b50482e88ace4a752784eb, type: 2}
+    value: {fileID: 6119873786565449434}
+  - key: {fileID: -1935603194271161550, guid: 1e6b2b8a85b50482e88ace4a752784eb, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!50 &-5223219104144271367
@@ -187,6 +221,10 @@ PrefabInstance:
     - target: {fileID: 655392272305158409, guid: 6183565eed251a4469039bf658a61b11, type: 3}
       propertyPath: m_DynamicOccludee
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1171185063081909610, guid: 6183565eed251a4469039bf658a61b11, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.316
       objectReference: {fileID: 0}
     - target: {fileID: 3474046909495799082, guid: 6183565eed251a4469039bf658a61b11, type: 3}
       propertyPath: m_RootOrder
@@ -241,8 +279,12 @@ PrefabInstance:
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8632573841751660908, guid: 6183565eed251a4469039bf658a61b11, type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8632573841751660908, guid: 6183565eed251a4469039bf658a61b11, type: 3}
       propertyPath: m_Parameters.colorGradient.atime1
-      value: 49151
+      value: 65535
       objectReference: {fileID: 0}
     - target: {fileID: 8632573841751660908, guid: 6183565eed251a4469039bf658a61b11, type: 3}
       propertyPath: m_Parameters.colorGradient.atime2
@@ -250,11 +292,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8632573841751660908, guid: 6183565eed251a4469039bf658a61b11, type: 3}
       propertyPath: m_Parameters.colorGradient.key1.a
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8632573841751660908, guid: 6183565eed251a4469039bf658a61b11, type: 3}
       propertyPath: m_Parameters.colorGradient.m_NumAlphaKeys
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6183565eed251a4469039bf658a61b11, type: 3}
