@@ -53,14 +53,19 @@ MonoBehaviour:
       id: 0
     action:
       id: 1
+  - trigger:
+      id: 2
+    action:
+      id: 3
   references:
     version: 1
     00000000:
       type: {class: AndTrigger, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         triggers:
-        - id: 2
-        - id: 3
+        - id: 4
+        - id: 5
+        - id: 6
     00000001:
       type: {class: BeginAttack, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
@@ -69,11 +74,39 @@ MonoBehaviour:
         power: 1
         handType: 1
     00000002:
+      type: {class: AndTrigger, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        triggers:
+        - id: 7
+        - id: 8
+        - id: 9
+    00000003:
+      type: {class: BeginAttack, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        playableAsset: {fileID: 11400000, guid: 17a72ceeb17734ddaa78a3fbf57c0d78, type: 2}
+        wrapMode: 2
+        power: 1
+        handType: 1
+    00000004:
       type: {class: OnBeginEquipment, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         handType: 1
-    00000003:
+    00000005:
       type: {class: CanNextAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+    00000006:
+      type: {class: IsMatchNextAttackIndex, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        targetNextAttackIndex: 0
+    00000007:
+      type: {class: OnBeginEquipment, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        handType: 1
+    00000008:
+      type: {class: CanNextAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+    00000009:
+      type: {class: IsMatchNextAttackIndex, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        targetNextAttackIndex: 1
 --- !u!320 &4311177486490712205
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -83,7 +116,7 @@ PlayableDirector:
   m_GameObject: {fileID: 4608228154354743509}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 0}
+  m_PlayableAsset: {fileID: 11400000, guid: 17a72ceeb17734ddaa78a3fbf57c0d78, type: 2}
   m_InitialState: 0
   m_WrapMode: 1
   m_DirectorUpdateMode: 1
@@ -108,6 +141,18 @@ PlayableDirector:
   - key: {fileID: 226853102563252438, guid: 97f895a63bc7e4bb19c47f224fdde690, type: 2}
     value: {fileID: 6119873786565449434}
   - key: {fileID: -1935603194271161550, guid: 97f895a63bc7e4bb19c47f224fdde690, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -3140158847642730933, guid: dbed9ea1bb58d4ebc9664d94b81e39af, type: 2}
+    value: {fileID: 6817020702216351253}
+  - key: {fileID: 226853102563252438, guid: dbed9ea1bb58d4ebc9664d94b81e39af, type: 2}
+    value: {fileID: 6119873786565449434}
+  - key: {fileID: -1935603194271161550, guid: dbed9ea1bb58d4ebc9664d94b81e39af, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -3140158847642730933, guid: 17a72ceeb17734ddaa78a3fbf57c0d78, type: 2}
+    value: {fileID: 6817020702216351253}
+  - key: {fileID: 226853102563252438, guid: 17a72ceeb17734ddaa78a3fbf57c0d78, type: 2}
+    value: {fileID: 6119873786565449434}
+  - key: {fileID: -1935603194271161550, guid: 17a72ceeb17734ddaa78a3fbf57c0d78, type: 2}
     value: {fileID: 0}
   m_ExposedReferences:
     m_References: []

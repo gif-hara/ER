@@ -42,6 +42,7 @@ namespace ER.ActorControllers
                         this.moveSpeedRate = 1.0f;
                         this.invisible = false;
                         this.advancedEntry = true;
+                        this.nextAttackIndex = 0;
                     }
 
                     if (x.NextState == ActorStateController.StateType.Guard)
@@ -49,6 +50,7 @@ namespace ER.ActorControllers
                         this.moveSpeedRate = 0.5f;
                         this.invisible = false;
                         this.advancedEntry = true;
+                        this.nextAttackIndex = 0;
                     }
 
                     if (x.NextState == ActorStateController.StateType.UseRecoveryItem)
