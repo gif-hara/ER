@@ -115,6 +115,15 @@ namespace ER.Editor
                 this.CalculateStageIndexies();
             }
 
+            if (GUILayout.Button("Remove"))
+            {
+                if (EditorUtility.DisplayDialog("確認", "本当に削除しますか？", "OK", "CANCEL"))
+                {
+                    AssetDatabase.DeleteAsset(AssetDatabase.GetAssetPath(this.editingStageChunk));
+                    this.CalculateStageIndexies();
+                }
+            }
+
             EditorGUI.indentLevel--;
         }
 

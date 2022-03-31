@@ -133,7 +133,7 @@ PrefabInstance:
     - target: {fileID: 4311177486490712205, guid: b12d6f23289132a449f58ef17eff3410, type: 3}
       propertyPath: m_PlayableAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 4e3dc0d37e76f884bb0ff92b825a8805, type: 2}
+      objectReference: {fileID: 11400000, guid: 1e6b2b8a85b50482e88ace4a752784eb, type: 2}
     - target: {fileID: 4311177486490712205, guid: b12d6f23289132a449f58ef17eff3410, type: 3}
       propertyPath: m_SceneBindings.Array.data[2].value
       value: 
