@@ -116,14 +116,38 @@ namespace ER.StageControllers
                 {
                     var stageInfo = i;
                     var index = i.index;
-                    var stream = AssetLoader.LoadAsync<GameObject>($"Assets/Prefabs/Stage.Chunk({index.x},{index.y},0).prefab")
-                    .Do(x =>
+                    var path = $"Assets/Prefabs/Stage.Chunk({index.x},{index.y},0).prefab";
+
+                    //var stream = AssetLoader.LoadAsync<GameObject>(path)
+                    //.Do(x =>
+                    //{
+                    //    stageInfo.stage = UnityEngine.Object.Instantiate(x, this.stageParent).GetComponent<StageChunk>();
+                    //    stageInfo.stage.transform.localPosition = new Vector3(index.x * SplitSize, index.y * SplitSize, 0);
+                    //    this.loadedIndexies.Add(stageInfo);
+                    //})
+                    //.Select(_ => stageInfo);
+
+                    var stream = AssetLoader.IsExists(path)
+                    .SelectMany(x =>
                     {
-                        stageInfo.stage = UnityEngine.Object.Instantiate(x, this.stageParent).GetComponent<StageChunk>();
-                        stageInfo.stage.transform.localPosition = new Vector3(index.x * SplitSize, index.y * SplitSize, 0);
-                        this.loadedIndexies.Add(stageInfo);
+                        if (x)
+                        {
+                            return AssetLoader.LoadAsync<GameObject>(path)
+                            .Do(x =>
+                            {
+                                stageInfo.stage = UnityEngine.Object.Instantiate(x, this.stageParent).GetComponent<StageChunk>();
+                                stageInfo.stage.transform.localPosition = new Vector3(index.x * SplitSize, index.y * SplitSize, 0);
+                                this.loadedIndexies.Add(stageInfo);
+                            })
+                            .AsUnitObservable();
+                        }
+                        else
+                        {
+                            return Observable.ReturnUnit();
+                        }
                     })
                     .Select(_ => stageInfo);
+
                     loadStreams.Add(stream);
                 }
 
@@ -149,6 +173,12 @@ namespace ER.StageControllers
         {
             public Vector2Int index;
 
+            /// <summary>
+            /// ステージチャンク
+            /// </summary>
+            /// <remarks>
+            /// Nullである可能性があります
+            /// </remarks>
             public StageChunk stage;
 
             public bool Equals(StageInfo other)

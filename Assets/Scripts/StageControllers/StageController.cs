@@ -83,6 +83,11 @@ namespace ER.StageControllers
             {
                 foreach (var i in x)
                 {
+                    if (i.stage == null)
+                    {
+                        continue;
+                    }
+
                     i.stage.SetupGimmicks(this);
                 }
             });
