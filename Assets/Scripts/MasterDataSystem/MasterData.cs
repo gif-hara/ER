@@ -90,7 +90,8 @@ namespace ER.MasterDataSystem
                 MasterDataWeapon.SetupAsync("Assets/MasterData/Weapon.asset"),
                 MasterDataActorStatus.SetupAsync("Assets/MasterData/ActorStatus.asset"),
                 MasterDataShield.SetupAsync("Assets/MasterData/Shield.asset"),
-                MasterDataArmor.SetupAsync("Assets/MasterData/Armor.asset")
+                MasterDataArmor.SetupAsync("Assets/MasterData/Armor.asset"),
+                MasterDataActorDropItem.SetupAsync("Assets/MasterData/ActorDropItem.asset")
                 )
                 .SelectMany(_ =>
                 {

@@ -15,7 +15,7 @@ namespace ER.StageControllers
 
         public void Setup(StageController stageController)
         {
-            if(stageController.GimmickSpawnManager.CanSpawnEnemy(this.transform, out var id))
+            if (stageController.GimmickSpawnManager.CanSpawnEnemy(this.transform, out var id))
             {
                 stageController.GimmickSpawnManager.AddSpawnedEnemy(id);
                 var t = this.transform;
@@ -23,7 +23,7 @@ namespace ER.StageControllers
                 masterDataActorStatus.actorPrefab.Spawn(
                     t.position,
                     t.rotation,
-                    masterDataActorStatus.statusData
+                    actorStatusId
                     );
             }
         }

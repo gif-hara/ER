@@ -13,6 +13,8 @@ namespace ER.ActorControllers
     /// </summary>
     public interface IActor
     {
+        string Id { get; }
+
         CompositeDisposable Disposables { get; }
 
         Transform transform { get; }

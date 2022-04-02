@@ -52,7 +52,7 @@ namespace ER
             var player = masterDataActorStatus.actorPrefab.Spawn(
                 this.playerSpawnPoint.position,
                 this.playerSpawnPoint.localRotation,
-                masterDataActorStatus.statusData
+                this.playerActorStatusId
                 );
 
             this.IsGameReady.Value = true;

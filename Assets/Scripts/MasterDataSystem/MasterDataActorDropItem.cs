@@ -11,8 +11,17 @@ namespace ER.MasterDataSystem
     [CreateAssetMenu(menuName = "ER/MasterData/ActorDropItem")]
     public sealed class MasterDataActorDropItem : MasterData<MasterDataActorDropItem, MasterDataActorDropItem.Record>
     {
+        public Dictionary<string, List<Record>> Table { get; private set; }
+
+        protected override void OnSetupped()
+        {
+            base.OnSetupped();
+
+            this.Table = this.records.GroupBy(x => x.ActorId).ToDictionary(x => x.Key, x => x.ToList());
+        }
+
         [Serializable]
-        public class Record : IIdHolder<string>
+        public class Record : IIdHolder<string>, IProbability
         {
             [SerializeField]
             private string id = default;
@@ -36,6 +45,12 @@ namespace ER.MasterDataSystem
             private float probability = default;
 
             public string Id => this.id;
+
+            public string ActorId => this.actorId;
+
+            public string ItemId => this.itemId;
+
+            public float Probability => this.probability;
 
             public Record(string id, string actorId, string itemId, float probability)
             {

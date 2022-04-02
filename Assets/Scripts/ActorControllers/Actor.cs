@@ -1,4 +1,5 @@
 using ER.EquipmentSystems;
+using ER.MasterDataSystem;
 using HK.Framework.EventSystems;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,8 @@ namespace ER.ActorControllers
     /// </summary>
     public sealed class Actor : MonoBehaviour, IActor
     {
+        public string Id { get; private set; }
+
         [SerializeField]
         private ActorMotionData motionData = default;
 
@@ -68,19 +71,20 @@ namespace ER.ActorControllers
         /// </summary>
         public static readonly List<Actor> Enemies = new List<Actor>();
 
-        public Actor Spawn(Vector3 position, Quaternion rotation, ActorStatusData statusData)
+        public Actor Spawn(Vector3 position, Quaternion rotation, string actorId)
         {
             var clone = Instantiate(this, position, rotation);
-            clone.Setup(statusData);
+            clone.Setup(actorId);
 
             return clone;
         }
 
-        private void Setup(ActorStatusData statusData)
+        private void Setup(string actorId)
         {
+            this.Id = actorId;
             this.Animator = this.GetComponent<Animator>();
             this.StateController.Setup(this);
-            this.StatusController.Setup(this, statusData);
+            this.StatusController.Setup(this, MasterDataActorStatus.Get(actorId).statusData);
             this.InteractableStageGimmickController.Setup(this);
             this.EquipmentController.Setup(this);
             this.MotionController = new ActorMotionController();
