@@ -3,6 +3,7 @@ using I2.Loc;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UniRx;
+using System.Collections.Generic;
 
 namespace ER.StageControllers
 {
@@ -14,21 +15,18 @@ namespace ER.StageControllers
         [SerializeField]
         private InteractableStageGimmickItem itemPrefab = default;
 
-        [SerializeField, TermsPopup]
-        private string itemId = default;
-
         [SerializeField]
-        private int number = 1;
+        private List<InteractableStageGimmickItem.Element> elements = default;
 
         public void Setup(StageController stageController)
         {
             Assert.IsNotNull(this.itemPrefab, $"{nameof(this.itemPrefab)}がNullです");
 
-            if(stageController.GimmickSpawnManager.CanSpawnItem(this.transform, out var id))
+            if (stageController.GimmickSpawnManager.CanSpawnItem(this.transform, out var id))
             {
                 var item = Instantiate(this.itemPrefab, this.transform.position, this.transform.rotation, this.transform);
                 item.Setup(stageController);
-                item.Setup(this.itemId, this.number);
+                item.Setup(this.elements);
                 item.OnAddedItemAsObservable()
                     .Subscribe(_ =>
                     {

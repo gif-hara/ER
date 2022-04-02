@@ -1,6 +1,7 @@
 using ER.ActorControllers;
 using I2.Loc;
 using System;
+using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -12,27 +13,36 @@ namespace ER.StageControllers
     /// </summary>
     public sealed class InteractableStageGimmickItem : InteractableStageGimmick
     {
-        [SerializeField, TermsPopup]
-        private string itemId = default;
-
         [SerializeField]
-        private int number = 1;
+        private List<Element> elements = default;
 
         private Subject<Unit> onAddedItemSubject = new Subject<Unit>();
 
         public IObservable<Unit> OnAddedItemAsObservable() => this.onAddedItemSubject;
 
-        public void Setup(string itemId, int number)
+        public void Setup(List<Element> elements)
         {
-            this.itemId = itemId;
-            this.number = number;
+            this.elements = elements;
         }
 
         public override void BeginInteract(Actor actor)
         {
-            actor.InventoryController.AddItem(this.itemId, this.number);
+            foreach (var i in this.elements)
+            {
+                actor.InventoryController.AddItem(i.itemId, i.number);
+            }
             this.onAddedItemSubject.OnNext(Unit.Default);
             Destroy(this.gameObject);
+        }
+
+        [Serializable]
+        public class Element
+        {
+            [SerializeField, TermsPopup]
+            public string itemId = default;
+
+            [SerializeField]
+            public int number = 1;
         }
     }
 }

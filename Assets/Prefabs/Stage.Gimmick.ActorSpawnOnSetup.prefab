@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5080786863182183036}
   - component: {fileID: 7132403566962195079}
   m_Layer: 0
-  m_Name: Stage.Gimmick
+  m_Name: Stage.Gimmick.ActorSpawnOnSetup
   m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -43,4 +43,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f063e5b73e122242a50964a825690b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actorPrefab: {fileID: 0}
+  actorStatusId: 
