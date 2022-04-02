@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4631819}
   - component: {fileID: 4631820}
+  - component: {fileID: 4631821}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -170,6 +171,20 @@ MonoBehaviour:
   gameCameraControllerPrefab: {fileID: 6600700286319972123, guid: 483dc6cfc30cbb54b97b8cc57daabe8d, type: 3}
   playerActorStatusId: 10101
   playerSpawnPoint: {fileID: 859855001}
+--- !u!114 &4631821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4631818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edf6799841efc41d0974e51ddae98a49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 2867457826712429985, guid: 20fdcab161b67a8478278723f604f5ca, type: 3}
+  stageController: {fileID: 1881949035}
 --- !u!1 &263060697
 GameObject:
   m_ObjectHideFlags: 0

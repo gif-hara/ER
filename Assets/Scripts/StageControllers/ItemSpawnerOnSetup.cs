@@ -13,26 +13,20 @@ namespace ER.StageControllers
     public sealed class ItemSpawnerOnSetup : MonoBehaviour, IStageGimmick
     {
         [SerializeField]
-        private InteractableStageGimmickItem itemPrefab = default;
-
-        [SerializeField]
         private List<InteractableStageGimmickItem.Element> elements = default;
 
         public void Setup(StageController stageController)
         {
-            Assert.IsNotNull(this.itemPrefab, $"{nameof(this.itemPrefab)}がNullです");
-
             if (stageController.GimmickSpawnManager.CanSpawnItem(this.transform, out var id))
             {
-                var item = Instantiate(this.itemPrefab, this.transform.position, this.transform.rotation, this.transform);
-                item.Setup(stageController);
-                item.Setup(this.elements);
-                item.OnAddedItemAsObservable()
-                    .Subscribe(_ =>
+                GameController.Instance.Broker.Publish(GameEvent.OnRequestItemSpawn.Get(
+                    this.transform.position,
+                    this.elements,
+                    () =>
                     {
                         stageController.GimmickSpawnManager.AddSpawnedItem(id);
-                    })
-                    .AddTo(this);
+                    }
+                ));
             }
         }
     }

@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfe5f0163b13c4348b8c401490a48cf5, type: 3}
   m_Name: ActorDropItem
   m_EditorClassIdentifier: 
-  records: []
+  records:
+  - id: 1
+    actorId: 20100
+    itemId: Weapon/Name010101
+    probability: 0.5

@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using ER.ActorControllers;
+using ER.StageControllers;
 using HK.Framework.EventSystems;
+using UnityEngine;
 
 namespace ER
 {
@@ -58,6 +60,27 @@ namespace ER
             /// アイテムを選択した際の処理
             /// </summary>
             public Action<Item> OnSelectItemAction => this.param2;
+        }
+
+        /// <summary>
+        /// アイテムの生成をリクエストするメッセージ
+        /// </summary>
+        public class OnRequestItemSpawn : Message<OnRequestItemSpawn, Vector3, List<InteractableStageGimmickItem.Element>, Action>
+        {
+            /// <summary>
+            /// 生成する座標
+            /// </summary>
+            public Vector3 SpawnPoint => this.param1;
+
+            /// <summary>
+            /// 生成するアイテムリスト
+            /// </summary>
+            public List<InteractableStageGimmickItem.Element> Elements => this.param2;
+
+            /// <summary>
+            /// アイテムを獲得した際のアクション
+            /// </summary>
+            public Action OnAcquiredItemAction => this.param3;
         }
     }
 }

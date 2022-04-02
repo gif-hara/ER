@@ -21,6 +21,8 @@ namespace ER.StageControllers
 
         private IDisposable disposable = null;
 
+        public StageChunk CurrentStageChunk => this.stageLoader.GetLoadedStateInfo(this.currentIndex).stage;
+
         private void Awake()
         {
             this.stageLoader = new StageLoader(1, this.transform);

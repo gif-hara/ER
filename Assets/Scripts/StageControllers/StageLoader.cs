@@ -44,6 +44,11 @@ namespace ER.StageControllers
         /// </summary>
         private Transform stageParent;
 
+        public StageInfo GetLoadedStateInfo(Vector2Int index)
+        {
+            return this.loadedIndexies.Find(x => x.index == index);
+        }
+
         public StageLoader(int range, Transform stageParent)
         {
             this.range = range;
