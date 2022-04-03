@@ -1,31 +1,50 @@
 using ER.EquipmentSystems;
 using UnityEngine.Assertions;
 using UniRx;
-using ER.MasterDataSystem;
 using UnityEngine;
-using System.Collections.Generic;
 
 namespace ER.ActorControllers
 {
     /// <summary>
-    /// 
+    /// <see cref="Actor"/>の装備品を制御するクラス
     /// </summary>
     public sealed class ActorEquipmentController
     {
         private Actor actor;
 
+        /// <summary>
+        /// 右手の装備品
+        /// </summary>
         public Hand RightHand { get; } = new Hand();
 
+        /// <summary>
+        /// 左手の装備品
+        /// </summary>
         public Hand LeftHand { get; } = new Hand();
 
+        /// <summary>
+        /// ガードを行っている装備品
+        /// </summary>
         public EquipmentController GuardingEquipmentController { get; private set; }
 
+        /// <summary>
+        /// 頭防具
+        /// </summary>
         public Item Head { get; private set; }
 
+        /// <summary>
+        /// 胴防具
+        /// </summary>
         public Item Torso { get; private set; }
 
+        /// <summary>
+        /// 腕防具
+        /// </summary>
         public Item Arm { get; private set; }
 
+        /// <summary>
+        /// 足防具
+        /// </summary>
         public Item Leg { get; private set; }
 
         /// <summary>
@@ -33,6 +52,9 @@ namespace ER.ActorControllers
         /// </summary>
         public bool IsLeftRequest { get; private set; }
 
+        /// <summary>
+        /// 利用可能な状態にする
+        /// </summary>
         public void Setup(Actor actor)
         {
             this.actor = actor;
@@ -74,16 +96,25 @@ namespace ER.ActorControllers
                 .AddTo(actor.Disposables);
         }
 
+        /// <summary>
+        /// ガードを開始する
+        /// </summary>
         public void BeginGuard(EquipmentController equipmentController)
         {
             this.GuardingEquipmentController = equipmentController;
         }
 
+        /// <summary>
+        /// ガードを終了する
+        /// </summary>
         public void EndGuard()
         {
             this.GuardingEquipmentController = null;
         }
 
+        /// <summary>
+        /// <paramref name="armorType"/>に対応した防具を返す
+        /// </summary>
         public Item GetArmorItem(ArmorType armorType)
         {
             switch (armorType)
@@ -102,6 +133,9 @@ namespace ER.ActorControllers
             }
         }
 
+        /// <summary>
+        /// <paramref name="armorType"/>に対応した防具を設定する
+        /// </summary>
         public void SetArmorItem(ArmorType armorType, string itemInstanceId)
         {
             switch (armorType)
@@ -124,6 +158,9 @@ namespace ER.ActorControllers
             }
         }
 
+        /// <summary>
+        /// <paramref name="armorType"/>に対応する防具を外す
+        /// </summary>
         public void RemoveArmorItem(ArmorType armorType)
         {
             switch (armorType)
@@ -146,6 +183,9 @@ namespace ER.ActorControllers
             }
         }
 
+        /// <summary>
+        /// <paramref name="attackAttributeType"/>の総合防御力を返す
+        /// </summary>
         public int GetDefense(AttackAttributeType attackAttributeType)
         {
             var result = 0;
@@ -157,6 +197,9 @@ namespace ER.ActorControllers
             return result;
         }
 
+        /// <summary>
+        /// <paramref name="handType"/>に対応する装備品を返す
+        /// </summary>
         public EquipmentController GetEquipmentController(HandType handType)
         {
             switch (handType)
@@ -171,18 +214,30 @@ namespace ER.ActorControllers
             }
         }
 
+        /// <summary>
+        /// 手
+        /// </summary>
         public class Hand
         {
+            /// <summary>
+            /// 現在利用している装備品を返す
+            /// </summary>
             public EquipmentController CurrentEquipmentController => this.equipmentHolders[this.currentIndex];
 
             private int currentIndex;
 
+            /// <summary>
+            /// 装備品ホルダー
+            /// </summary>
             private EquipmentController[] equipmentHolders = new EquipmentController[Define.EquipmentableNumber];
 
             private Actor actor;
 
             private HandType handType;
 
+            /// <summary>
+            /// 利用可能な状態にする
+            /// </summary>
             public void Setup(Actor actor, HandType handType)
             {
                 this.actor = actor;

@@ -5,7 +5,7 @@ using UnityEngine.Assertions;
 namespace ER.ActorControllers
 {
     /// <summary>
-    /// 
+    /// <see cref="Actor"/>のAI要素
     /// </summary>
     public sealed class ActorAIElement : MonoBehaviour
     {

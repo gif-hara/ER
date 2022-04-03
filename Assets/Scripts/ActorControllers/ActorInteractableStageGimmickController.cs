@@ -12,8 +12,14 @@ namespace ER.ActorControllers
     {
         private Actor actor;
 
+        /// <summary>
+        /// 現在対話可能な<see cref="IInteractableStageGimmick"/>
+        /// </summary>
         private IInteractableStageGimmick currentGimmick = null;
 
+        /// <summary>
+        /// 利用可能な状態にする
+        /// </summary>
         public void Setup(Actor actor)
         {
             this.actor = actor;
@@ -28,6 +34,9 @@ namespace ER.ActorControllers
                 .AddTo(actor.Disposables);
         }
 
+        /// <summary>
+        /// 対話を開始する
+        /// </summary>
         public void BeginInteract()
         {
             if (this.currentGimmick == null)

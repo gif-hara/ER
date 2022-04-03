@@ -1,7 +1,4 @@
-using ER.EquipmentSystems;
 using ER.MasterDataSystem;
-using HK.Framework.EventSystems;
-using System;
 using System.Collections.Generic;
 using UniRx;
 using UniRx.Triggers;
@@ -12,7 +9,7 @@ using UnityEngine.Playables;
 namespace ER.ActorControllers
 {
     /// <summary>
-    /// 
+    /// ゲーム中のアクターの中枢を担うクラス
     /// </summary>
     public sealed class Actor : MonoBehaviour, IActor
     {
@@ -71,6 +68,9 @@ namespace ER.ActorControllers
         /// </summary>
         public static readonly List<Actor> Enemies = new List<Actor>();
 
+        /// <summary>
+        /// 自分自身を生成する
+        /// </summary>
         public Actor Spawn(Vector3 position, Quaternion rotation, string actorId)
         {
             var clone = Instantiate(this, position, rotation);
@@ -79,6 +79,9 @@ namespace ER.ActorControllers
             return clone;
         }
 
+        /// <summary>
+        /// 利用可能な状態にする
+        /// </summary>
         private void Setup(string actorId)
         {
             this.Id = actorId;

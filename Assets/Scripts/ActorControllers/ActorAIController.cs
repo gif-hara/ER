@@ -8,13 +8,16 @@ using UnityEngine.Assertions;
 namespace ER.ActorControllers
 {
     /// <summary>
-    /// 
+    /// <see cref="Actor"/>をAIで制御するクラス
     /// </summary>
     public sealed class ActorAIController : MonoBehaviour
     {
         [SerializeField]
         private Actor actor = default;
 
+        /// <summary>
+        /// 初めに起動するAI
+        /// </summary>
         [SerializeField]
         private ActorAIElement initialAI = default;
 
@@ -51,12 +54,18 @@ namespace ER.ActorControllers
             }
         }
 
+        /// <summary>
+        /// <paramref name="nextAI"/>を切り替えるリクエストを行う
+        /// </summary>
         public void ChangeRequest(ActorAIElement nextAI)
         {
             this.nextAI = nextAI;
             Assert.IsNotNull(this.nextAI);
         }
 
+        /// <summary>
+        /// AIを切り替える
+        /// </summary>
         private void ChangeInternal()
         {
             if (this.nextAI == null)

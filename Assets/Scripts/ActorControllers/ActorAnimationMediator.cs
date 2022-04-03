@@ -62,6 +62,9 @@ namespace ER.ActorControllers
                 .AddTo(actor.Disposables);
         }
 
+        /// <summary>
+        /// 回復アイテムを使用する
+        /// </summary>
         public void UseRecoveryItem()
         {
 #if UNITY_EDITOR

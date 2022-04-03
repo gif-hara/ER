@@ -24,8 +24,14 @@ namespace ER.ActorControllers
         /// </summary>
         private Vector2 rawVelocity;
 
+        /// <summary>
+        /// 向いている方向
+        /// </summary>
         private float angle;
 
+        /// <summary>
+        /// 注視している<see cref="Actor"/>
+        /// </summary>
         private Actor lookAtTarget;
 
         /// <summary>
@@ -38,6 +44,9 @@ namespace ER.ActorControllers
         /// </summary>
         public bool IsLookAt { get; private set; }
 
+        /// <summary>
+        /// 利用可能な状態にする
+        /// </summary>
         public void Setup(IActor actor, ActorMotionData motionData)
         {
             this.actor = actor;
@@ -124,16 +133,25 @@ namespace ER.ActorControllers
             this.rawVelocity += rawVelocity;
         }
 
+        /// <summary>
+        /// 回転を行う
+        /// </summary>
         public void Rotate(float angle)
         {
             this.angle = angle;
         }
 
+        /// <summary>
+        /// 回転を行う
+        /// </summary>
         public void Rotate(Vector2 angle)
         {
             this.Rotate(-90.0f + Mathf.Atan2(angle.y, angle.x) * Mathf.Rad2Deg);
         }
 
+        /// <summary>
+        /// 注視を開始する
+        /// </summary>
         public void BeginLookAt(Actor target)
         {
             this.lookAtTarget = target;
@@ -143,6 +161,9 @@ namespace ER.ActorControllers
             this.actor.Broker.Publish(ActorEvent.OnBeginLookAt.Get(this.lookAtTarget));
         }
 
+        /// <summary>
+        /// 注視を終了する
+        /// </summary>
         public void EndLookAt()
         {
             Assert.IsTrue(this.IsLookAt);
@@ -153,6 +174,9 @@ namespace ER.ActorControllers
             this.actor.Broker.Publish(ActorEvent.OnEndLookAt.Get(tempTarget));
         }
 
+        /// <summary>
+        /// 座標の更新
+        /// </summary>
         private void UpdatePosition(IActor actor)
         {
             var velocity =
@@ -164,6 +188,9 @@ namespace ER.ActorControllers
             this.rawVelocity = Vector2.zero;
         }
 
+        /// <summary>
+        /// 回転の更新
+        /// </summary>
         private void UpdateRotation(IActor actor)
         {
             if (this.IsLookAt)

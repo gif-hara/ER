@@ -15,12 +15,18 @@ namespace ER.ActorControllers
 
         private PlayableDirector director;
 
+        /// <summary>
+        /// 利用可能な状態にする
+        /// </summary>
         public void Setup(IActor actor, PlayableDirector director)
         {
             this.actor = actor;
             this.director = director;
         }
 
+        /// <summary>
+        /// <paramref name="asset"/>を一度だけ再生する
+        /// </summary>
         public IObservable<Unit> PlayOneShotAsync(PlayableAsset asset)
         {
             return Observable.Defer(() =>

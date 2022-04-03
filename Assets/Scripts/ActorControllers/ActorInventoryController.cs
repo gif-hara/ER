@@ -1,19 +1,24 @@
 using ER.MasterDataSystem;
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace ER.ActorControllers
 {
     /// <summary>
-    /// 
+    /// <see cref="Actor"/>のインベントリを制御するクラス
     /// </summary>
     public sealed class ActorInventoryController
     {
         private Actor actor;
 
+        /// <summary>
+        /// 貴重品
+        /// </summary>
         public readonly Dictionary<string, Item> Valuables = new Dictionary<string, Item>();
 
+        /// <summary>
+        /// 装備品
+        /// </summary>
         public readonly Dictionary<string, Item> Equipments = new Dictionary<string, Item>();
 
         /// <summary>
@@ -26,11 +31,18 @@ namespace ER.ActorControllers
         /// </summary>
         private int addedEquipmentNumber = 0;
 
+        /// <summary>
+        /// 利用可能な状態にする
+        /// </summary>
+        /// <param name="actor"></param>
         public void Setup(Actor actor)
         {
             this.actor = actor;
         }
 
+        /// <summary>
+        /// <paramref name="itemId"/>を<paramref name="number"/>の数だけ追加する
+        /// </summary>
         public void AddItem(string itemId, int number)
         {
             var masterDataItem = MasterDataItem.Get(itemId);
@@ -48,6 +60,9 @@ namespace ER.ActorControllers
             }
         }
 
+        /// <summary>
+        /// 装備品を追加する
+        /// </summary>
         public Item AddEquipment(MasterDataItem.Record masterDataItem)
         {
             Assert.IsTrue(masterDataItem.Category.IsEquipment(), $"{masterDataItem.Id}は装備品ではありません");
@@ -64,11 +79,17 @@ namespace ER.ActorControllers
             return item;
         }
 
+        /// <summary>
+        /// 装備品を追加する
+        /// </summary>
         public Item AddEquipment(string itemid)
         {
             return AddEquipment(MasterDataItem.Get(itemid));
         }
 
+        /// <summary>
+        /// 貴重品を追加する
+        /// </summary>
         private void AddValuables(MasterDataItem.Record masterDataItem, int number)
         {
             Assert.AreEqual(masterDataItem.Category, ItemCategory.Valuable);
@@ -85,6 +106,9 @@ namespace ER.ActorControllers
             this.actor.Broker.Publish(ActorEvent.OnAcquiredItem.Get(masterDataItem, number));
         }
 
+        /// <summary>
+        /// <paramref name="number"/>の数だけ装備品を追加する
+        /// </summary>
         private void AddEquipments(MasterDataItem.Record masterDataItem, int number)
         {
             Assert.IsTrue(masterDataItem.Category.IsEquipment(), $"{masterDataItem.Id}は装備品ではありません");
