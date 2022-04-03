@@ -53,6 +53,9 @@ TagManager:
   - name: Actor
     uniqueID: 3577601389
     locked: 0
+  - name: Equipment
+    uniqueID: 868957037
+    locked: 0
   - name: Stage/Gimmick/Foreground
     uniqueID: 442165455
     locked: 0
