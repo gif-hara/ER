@@ -48,6 +48,22 @@ namespace ER.ActorControllers
         }
 
         /// <summary>
+        /// 攻撃が当たった際のメッセージ
+        /// </summary>
+        public class OnHitAttack : Message<OnHitAttack, Vector3, Quaternion>
+        {
+            /// <summary>
+            /// ヒットした座標
+            /// </summary>
+            public Vector3 HitPosition => this.param1;
+
+            /// <summary>
+            /// ヒットした角度
+            /// </summary>
+            public Quaternion Angle => this.param2;
+        }
+
+        /// <summary>
         /// 死亡した際のメッセージ
         /// </summary>
         public class OnDead : Message<OnDead>

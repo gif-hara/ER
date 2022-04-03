@@ -24,6 +24,9 @@ namespace ER.EquipmentSystems
         [SerializeField]
         public List<ERBehaviour.Behaviour> behaviours = default;
 
+        [SerializeField]
+        private PoolableEffect hitEffectPrefab = default;
+
         /// <summary>
         /// 攻撃した際のダメージ係数
         /// </summary>
@@ -76,6 +79,11 @@ namespace ER.EquipmentSystems
                 if (hitActor != null)
                 {
                     hitActor.Broker.Publish(ActorEvent.OnHitOpponentAttack.Get(this));
+
+                    if(this.hitEffectPrefab != null)
+                    {
+                        this.hitEffectPrefab.Rent(x.bounds.center, Quaternion.Euler(0.0f, 0.0f, UnityEngine.Random.Range(0.0f, 360.0f)));
+                    }
                 }
             })
             .AddTo(this.disposables);

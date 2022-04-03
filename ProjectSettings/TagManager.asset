@@ -44,6 +44,9 @@ TagManager:
   - name: Stage/Background
     uniqueID: 1249706807
     locked: 0
+  - name: Effect/Background
+    uniqueID: 2392626607
+    locked: 0
   - name: Stage/Gimmick/Background
     uniqueID: 2352439877
     locked: 0
@@ -55,4 +58,7 @@ TagManager:
     locked: 0
   - name: Stage/Foreground
     uniqueID: 4081457433
+    locked: 0
+  - name: Effect/Foreground
+    uniqueID: 3594534753
     locked: 0
