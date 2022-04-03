@@ -1,4 +1,5 @@
 using ER.EquipmentSystems;
+using ER.MasterDataSystem;
 using ER.StageControllers;
 using HK.Framework.EventSystems;
 using System;
@@ -180,6 +181,22 @@ namespace ER.ActorControllers
             /// インタラクトしたチェックポイント
             /// </summary>
             public InteractableStageGimmickCheckPoint CheckPoint => this.param1;
+        }
+
+        /// <summary>
+        /// アイテムを獲得した際のメッセージ
+        /// </summary>
+        public class OnAcquiredItem : Message<OnAcquiredItem, MasterDataItem.Record, int>
+        {
+            /// <summary>
+            /// 獲得したアイテムのマスターデータ
+            /// </summary>
+            public MasterDataItem.Record MasterDataItem => this.param1;
+
+            /// <summary>
+            /// 獲得した数
+            /// </summary>
+            public int Number => this.param2;
         }
     }
 }

@@ -10,6 +10,8 @@ namespace ER.ActorControllers
     /// </summary>
     public sealed class ActorInventoryController
     {
+        private Actor actor;
+
         public readonly Dictionary<string, Item> Valuables = new Dictionary<string, Item>();
 
         public readonly Dictionary<string, Item> Equipments = new Dictionary<string, Item>();
@@ -23,6 +25,11 @@ namespace ER.ActorControllers
         /// 装備品を追加した数
         /// </summary>
         private int addedEquipmentNumber = 0;
+
+        public void Setup(Actor actor)
+        {
+            this.actor = actor;
+        }
 
         public void AddItem(string itemId, int number)
         {
@@ -52,6 +59,8 @@ namespace ER.ActorControllers
                 this.WeaponLevelDatabase.Add(item.InstanceId, new WeaponLevelData());
             }
 
+            this.actor.Broker.Publish(ActorEvent.OnAcquiredItem.Get(masterDataItem, 1));
+
             return item;
         }
 
@@ -72,6 +81,8 @@ namespace ER.ActorControllers
             }
 
             this.Valuables[itemId].AddNumber(number);
+
+            this.actor.Broker.Publish(ActorEvent.OnAcquiredItem.Get(masterDataItem, number));
         }
 
         private void AddEquipments(MasterDataItem.Record masterDataItem, int number)

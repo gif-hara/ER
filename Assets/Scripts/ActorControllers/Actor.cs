@@ -91,6 +91,7 @@ namespace ER.ActorControllers
             this.MotionController.Setup(this, this.motionData);
             this.DirectorController.Setup(this, this.director);
             this.recoveryItemController.Setup(this);
+            this.InventoryController.Setup(this);
 
             this.OnDestroyAsObservable()
                 .Subscribe(_ =>
