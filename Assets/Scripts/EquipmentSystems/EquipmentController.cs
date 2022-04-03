@@ -80,7 +80,7 @@ namespace ER.EquipmentSystems
                 {
                     hitActor.Broker.Publish(ActorEvent.OnHitOpponentAttack.Get(this));
 
-                    if(this.hitEffectPrefab != null)
+                    if(!hitActor.AnimationParameter.invisible && this.hitEffectPrefab != null)
                     {
                         this.hitEffectPrefab.Rent(x.bounds.center, Quaternion.Euler(0.0f, 0.0f, UnityEngine.Random.Range(0.0f, 360.0f)));
                     }
