@@ -191,12 +191,17 @@ namespace ER.ActorControllers
         /// <summary>
         /// チェックポイントとインタラクトした際のメッセージ
         /// </summary>
-        public class OnInteractedCheckPoint : Message<OnInteractedCheckPoint, InteractableStageGimmickCheckPoint>
+        public class OnInteractedCheckPoint : Message<OnInteractedCheckPoint, InteractableStageGimmickCheckPoint, bool>
         {
             /// <summary>
             /// インタラクトしたチェックポイント
             /// </summary>
             public InteractableStageGimmickCheckPoint CheckPoint => this.param1;
+
+            /// <summary>
+            /// メニューUIを開くことが出来るか
+            /// </summary>
+            public bool CanOpenMenu => this.param2;
         }
 
         /// <summary>

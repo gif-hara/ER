@@ -100,6 +100,7 @@ namespace ER.UIPresenters
         private void RegisterActorEvent(Actor actor)
         {
             actor.Broker.Receive<ActorEvent.OnInteractedCheckPoint>()
+                .Where(x => x.CanOpenMenu)
                 .Subscribe(_ =>
                 {
                     this.requestMenuType = IngameMenuType.CheckPoint;

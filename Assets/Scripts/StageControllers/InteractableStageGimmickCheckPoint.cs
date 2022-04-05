@@ -11,7 +11,7 @@ namespace ER.StageControllers
     {
         public override void BeginInteract(Actor actor)
         {
-            actor.Broker.Publish(ActorEvent.OnInteractedCheckPoint.Get(this));
+            actor.Broker.Publish(ActorEvent.OnInteractedCheckPoint.Get(this, false));
         }
     }
 }
