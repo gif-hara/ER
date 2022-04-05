@@ -15,11 +15,18 @@ namespace ER.ActorControllers
         [SerializeField]
         private Actor actor = default;
 
+        [SerializeField]
+        private PoolableEffect deadEffectPrefab = default;
+
         private void Start()
         {
             this.actor.Broker.Receive<ActorEvent.OnDead>()
                 .Subscribe(async _ =>
                 {
+                    // エフェクト生成
+                    var t = this.actor.transform;
+                    this.deadEffectPrefab.Rent(t.position, t.rotation);
+                    
                     // プレイヤーに経験値を付与
                     foreach (var i in Actor.Players)
                     {

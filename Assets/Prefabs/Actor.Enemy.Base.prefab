@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actor: {fileID: 5003387275646208275}
+  deadEffectPrefab: {fileID: -5151209227141963588, guid: 519dc49837fc1f14aa054b2604960239, type: 3}
 --- !u!1001 &8384275275401527551
 PrefabInstance:
   m_ObjectHideFlags: 0

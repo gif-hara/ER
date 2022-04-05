@@ -14,6 +14,9 @@ namespace ER.ActorControllers
         [SerializeField]
         private Actor actor = default;
 
+        [SerializeField]
+        private PoolableEffect deadEffectPrefab = default;
+
         private void Start()
         {
             this.actor.Broker.Receive<ActorEvent.OnDead>()
@@ -27,6 +30,8 @@ namespace ER.ActorControllers
             return Observable.Defer(() =>
             {
                 this.actor.gameObject.SetActive(false);
+                var t = this.actor.transform;
+                this.deadEffectPrefab.Rent(t.position, t.rotation);
 
                 return Observable
                 .Timer(TimeSpan.FromSeconds(2.0f))
