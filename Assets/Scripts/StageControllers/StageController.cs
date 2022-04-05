@@ -57,7 +57,10 @@ namespace ER.StageControllers
 
         private void RegisterActorEvent(Actor actor)
         {
-            actor.Broker.Receive<ActorEvent.OnInteractedCheckPoint>()
+            Observable.Merge(
+                    actor.Broker.Receive<ActorEvent.OnInteractedCheckPoint>().AsUnitObservable(),
+                    actor.Broker.Receive<ActorEvent.OnRespawned>().AsUnitObservable()
+                )
                 .Subscribe(_ =>
                 {
                     foreach (var i in Actor.Enemies)

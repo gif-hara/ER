@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using UniRx;
 using System;
+using ER.UIPresenters;
 
 namespace ER.ActorControllers
 {
@@ -29,12 +30,15 @@ namespace ER.ActorControllers
 
                 return Observable
                 .Timer(TimeSpan.FromSeconds(2.0f))
-                .Do(_ =>
+                .SelectMany(_ => FadePresenter.Instance.PlayOutAsync())
+                .SelectMany(_ =>
                 {
                     this.actor.transform.position = this.actor.MotionController.CheckPoint;
                     this.actor.gameObject.SetActive(true);
                     this.actor.Broker.Publish(ActorEvent.OnRespawned.Get());
+                    return Observable.ReturnUnit();
                 })
+                .SelectMany(_ => FadePresenter.Instance.PlayInAsync())
                 .AsUnitObservable();
             });
         }

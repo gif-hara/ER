@@ -68,6 +68,7 @@ namespace ER.ActorControllers
                 {
                     this.hitPoint.Value = this.HitPointMax;
                     this.isAlreadyDead = false;
+                    this.recoveryItemNumber.Value = RecoveryItemMax;
                 })
                 .AddTo(actor.Disposables);
 

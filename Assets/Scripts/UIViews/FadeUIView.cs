@@ -43,6 +43,7 @@ namespace ER.UIViews
         {
             return Observable.Defer(() =>
             {
+                this.director.initialTime = 0.0f;
                 this.director.Play(asset);
                 return this.director.OnStoppedAsObservable();
             });
