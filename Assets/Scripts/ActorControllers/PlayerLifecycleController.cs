@@ -8,7 +8,7 @@ namespace ER.ActorControllers
     /// <summary>
     /// 
     /// </summary>
-    public sealed class PlayerLifecycleContoller : MonoBehaviour
+    public sealed class PlayerLifecycleController : MonoBehaviour
     {
         [SerializeField]
         private Actor actor = default;
