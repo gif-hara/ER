@@ -107,6 +107,14 @@ namespace ER
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Select"",
+                    ""type"": ""Button"",
+                    ""id"": ""1e1dc803-bd08-4e2f-97ea-cbee14f4c0c3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -437,6 +445,17 @@ namespace ER
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""UseItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9ae3b721-1542-4804-a74c-58e00b51284c"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Select"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1036,6 +1055,7 @@ namespace ER
             m_Player_ChangeRightEquipment = m_Player.FindAction("ChangeRightEquipment", throwIfNotFound: true);
             m_Player_ChangeLeftEquipment = m_Player.FindAction("ChangeLeftEquipment", throwIfNotFound: true);
             m_Player_UseItem = m_Player.FindAction("UseItem", throwIfNotFound: true);
+            m_Player_Select = m_Player.FindAction("Select", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1108,6 +1128,7 @@ namespace ER
         private readonly InputAction m_Player_ChangeRightEquipment;
         private readonly InputAction m_Player_ChangeLeftEquipment;
         private readonly InputAction m_Player_UseItem;
+        private readonly InputAction m_Player_Select;
         public struct PlayerActions
         {
             private @ERInputAction m_Wrapper;
@@ -1123,6 +1144,7 @@ namespace ER
             public InputAction @ChangeRightEquipment => m_Wrapper.m_Player_ChangeRightEquipment;
             public InputAction @ChangeLeftEquipment => m_Wrapper.m_Player_ChangeLeftEquipment;
             public InputAction @UseItem => m_Wrapper.m_Player_UseItem;
+            public InputAction @Select => m_Wrapper.m_Player_Select;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -1165,6 +1187,9 @@ namespace ER
                     @UseItem.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseItem;
                     @UseItem.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseItem;
                     @UseItem.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseItem;
+                    @Select.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelect;
+                    @Select.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelect;
+                    @Select.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelect;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
@@ -1202,6 +1227,9 @@ namespace ER
                     @UseItem.started += instance.OnUseItem;
                     @UseItem.performed += instance.OnUseItem;
                     @UseItem.canceled += instance.OnUseItem;
+                    @Select.started += instance.OnSelect;
+                    @Select.performed += instance.OnSelect;
+                    @Select.canceled += instance.OnSelect;
                 }
             }
         }
@@ -1369,6 +1397,7 @@ namespace ER
             void OnChangeRightEquipment(InputAction.CallbackContext context);
             void OnChangeLeftEquipment(InputAction.CallbackContext context);
             void OnUseItem(InputAction.CallbackContext context);
+            void OnSelect(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {

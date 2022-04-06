@@ -82,5 +82,12 @@ namespace ER
             /// </summary>
             public Action OnAcquiredItemAction => this.param3;
         }
+
+        /// <summary>
+        /// 操作方法UIの表示をリクエストするメッセージ
+        /// </summary>
+        public class OnRequestOpenInputTutorial : Message<OnRequestOpenInputTutorial>
+        {
+        }
     }
 }

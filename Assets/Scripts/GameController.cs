@@ -55,9 +55,9 @@ namespace ER
                 this.playerActorStatusId
                 );
 
+            this.Broker.Publish(GameEvent.OnRequestOpenInputTutorial.Get());
+            
             this.IsGameReady.Value = true;
-
-            yield break;
         }
     }
 }

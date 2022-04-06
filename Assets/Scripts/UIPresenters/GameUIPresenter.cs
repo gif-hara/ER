@@ -18,6 +18,7 @@ namespace ER.UIPresenters
             ChangeEquipment,
             Inventory,
             CheckPointMenu,
+            InputTutorial,
         }
 
         [SerializeField]
@@ -31,6 +32,9 @@ namespace ER.UIPresenters
 
         [SerializeField]
         private UIAnimationController inventoryAnimationController = default;
+
+        [SerializeField]
+        private UIAnimationController inputTutorialAnimationController = default;
 
         [SerializeField]
         private IngameRootMenuPresenter ingameRootMenuPresenter = default;
@@ -56,6 +60,7 @@ namespace ER.UIPresenters
             this.ingameMenuAnimationController.PlayImmediate(false);
             this.changeEquipmentAnimationController.PlayImmediate(false);
             this.inventoryAnimationController.PlayImmediate(false);
+            this.inputTutorialAnimationController.PlayImmediate(false);
 
             this.stateController = new StateController<StateType>(StateType.Invalid);
             this.stateController.Set(StateType.Hud, this.OnEnterHud, null);
@@ -63,6 +68,7 @@ namespace ER.UIPresenters
             this.stateController.Set(StateType.ChangeEquipment, this.OnEnterChangeEquipment, this.OnExitChangeEquipment);
             this.stateController.Set(StateType.Inventory, this.OnEnterInventory, this.OnExitInventory);
             this.stateController.Set(StateType.CheckPointMenu, this.OnEnterCheckPointMenu, this.OnExitCheckPointMenu);
+            this.stateController.Set(StateType.InputTutorial, this.OnEnterInputTutorial, null);
             this.stateController.ChangeRequest(StateType.Hud);
 
             GameController.Instance.Broker.Receive<GameEvent.OnRequestOpenIngameMenu>()
@@ -88,6 +94,13 @@ namespace ER.UIPresenters
             GameController.Instance.Broker.Receive<GameEvent.OnSpawnedActor>()
                 .Where(x => x.SpawnedActor.gameObject.layer == Layer.Index.Player)
                 .Subscribe(x => this.RegisterActorEvent(x.SpawnedActor))
+                .AddTo(this);
+
+            GameController.Instance.Broker.Receive<GameEvent.OnRequestOpenInputTutorial>()
+                .Subscribe(_ =>
+                {
+                    this.stateController.ChangeRequest(StateType.InputTutorial);
+                })
                 .AddTo(this);
 
             this.UpdateAsObservable()
@@ -196,6 +209,17 @@ namespace ER.UIPresenters
         private void OnExitCheckPointMenu(StateType next)
         {
             this.ingameRootMenuPresenter.Deactivate();
+        }
+
+        private void OnEnterInputTutorial(StateType prev)
+        {
+            EnableUIInputAction();
+            var inputAction = GameController.Instance.InputAction;
+            inputAction.UI.Cancel.OnPerformedAsObservable()
+                .Subscribe(_ => this.stateController.ChangeRequest(StateType.Hud))
+                .AddTo(this.stateController.StateDisposables);
+            
+            this.ChangeCurrentRoot(this.inputTutorialAnimationController);
         }
 
         private void EnableUIInputAction()

@@ -161,6 +161,13 @@ namespace ER
                 })
                 .AddTo(this);
 
+            inputAction.Select.OnPerformedAsObservable()
+                .Subscribe(_ =>
+                {
+                    GameController.Instance.Broker.Publish(GameEvent.OnRequestOpenInputTutorial.Get());
+                })
+                .AddTo(this);
+
             for (var i = 0; i < this.rightEquipmentSelectors.Count; i++)
             {
                 this.rightEquipmentSelectors[i].Attach(this.actor, i);
