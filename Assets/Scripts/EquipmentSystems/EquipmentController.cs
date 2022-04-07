@@ -28,6 +28,12 @@ namespace ER.EquipmentSystems
         private PoolableEffect hitEffectPrefab = default;
 
         /// <summary>
+        /// 当たり判定を持つオブジェクト
+        /// </summary>
+        [SerializeField]
+        private GameObject colliderObject = default;
+
+        /// <summary>
         /// 攻撃した際のダメージ係数
         /// </summary>
         public float Power { get; set; }
@@ -45,11 +51,9 @@ namespace ER.EquipmentSystems
 
         private CompositeDisposable disposables = new CompositeDisposable();
 
-        private List<Collider2D> colliders = null;
-
         public EquipmentController Attach(Actor actor, string itemInstanceId)
         {
-            var clone = Instantiate(this, actor.transform);
+            var clone = Instantiate(this, actor.BodyController.ModelParent);
             clone.AttachInternal(actor, itemInstanceId);
             return clone;
         }
@@ -97,8 +101,6 @@ namespace ER.EquipmentSystems
                     }
                 });
 
-            this.colliders = new List<Collider2D>(this.GetComponentsInChildren<Collider2D>());
-
             this.PlayDefaultPlayableAsset();
 
             actor.Broker.Receive<ActorEvent.OnChangedStateType>()
@@ -117,9 +119,9 @@ namespace ER.EquipmentSystems
             this.playableDirector.extrapolationMode = DirectorWrapMode.Loop;
             this.playableDirector.Play(this.defaultPlayableAsset);
 
-            foreach (var i in this.colliders)
+            if (this.colliderObject != null)
             {
-                i.gameObject.SetActive(false);
+                this.colliderObject.SetActive(false);
             }
         }
 

@@ -128,12 +128,32 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1545918643}
+    m_TransformParent: {fileID: 1545918642}
     m_Modifications:
+    - target: {fileID: 779182866689357273, guid: b12d6f23289132a449f58ef17eff3410, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 779182866689357273, guid: b12d6f23289132a449f58ef17eff3410, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 779182866689357273, guid: b12d6f23289132a449f58ef17eff3410, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 779182866689357273, guid: b12d6f23289132a449f58ef17eff3410, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 779182866689357273, guid: b12d6f23289132a449f58ef17eff3410, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4311177486490712205, guid: b12d6f23289132a449f58ef17eff3410, type: 3}
       propertyPath: m_PlayableAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 1e6b2b8a85b50482e88ace4a752784eb, type: 2}
+      objectReference: {fileID: 11400000, guid: 97f895a63bc7e4bb19c47f224fdde690, type: 2}
     - target: {fileID: 4311177486490712205, guid: b12d6f23289132a449f58ef17eff3410, type: 3}
       propertyPath: m_SceneBindings.Array.data[2].value
       value: 
@@ -184,15 +204,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4608228154354743515, guid: b12d6f23289132a449f58ef17eff3410, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4608228154354743515, guid: b12d6f23289132a449f58ef17eff3410, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4608228154354743515, guid: b12d6f23289132a449f58ef17eff3410, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4608228154354743515, guid: b12d6f23289132a449f58ef17eff3410, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -213,7 +233,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1545918643}
+    m_TransformParent: {fileID: 1545918642}
     m_Modifications:
     - target: {fileID: 4608228154354743509, guid: 7600be1bbd3bd1b4eae74c2992a5ce83, type: 3}
       propertyPath: m_Name
@@ -241,15 +261,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4608228154354743515, guid: 7600be1bbd3bd1b4eae74c2992a5ce83, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4608228154354743515, guid: 7600be1bbd3bd1b4eae74c2992a5ce83, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4608228154354743515, guid: 7600be1bbd3bd1b4eae74c2992a5ce83, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4608228154354743515, guid: 7600be1bbd3bd1b4eae74c2992a5ce83, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -442,6 +462,11 @@ PrefabInstance:
 --- !u!95 &1545918641 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 4281818031515201643, guid: d4d76e2c587d4724ab5a9601e4eb3ca1, type: 3}
+  m_PrefabInstance: {fileID: 1545918640}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1545918642 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 646681530448301843, guid: d4d76e2c587d4724ab5a9601e4eb3ca1, type: 3}
   m_PrefabInstance: {fileID: 1545918640}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1545918643 stripped

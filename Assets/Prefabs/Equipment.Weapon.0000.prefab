@@ -62,6 +62,7 @@ MonoBehaviour:
     action:
       id: 5
   hitEffectPrefab: {fileID: 8976608033597634073, guid: 30c75ed03da943b47ba7a0eaf26dee12, type: 3}
+  colliderObject: {fileID: 6119873786565449434}
   references:
     version: 1
     00000000:
