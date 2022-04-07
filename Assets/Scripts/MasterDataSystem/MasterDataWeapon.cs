@@ -187,7 +187,7 @@ namespace ER.MasterDataSystem
 
             public Record ToRecord() => new Record(
                 $"Weapon/{this.Id}",
-                UnityEditor.AssetDatabase.LoadAssetAtPath<EquipmentController>($"Assets/Prefabs/Equipment.Weapon.{this.PrefabName}.prefab"),
+                UnityEditor.AssetDatabase.LoadAssetAtPath<EquipmentController>($"Assets/Prefabs/Equipment.{this.PrefabName}.prefab"),
                 new AttackElement
                 {
                     minAttack = int.Parse(this.PhysicsMin),
