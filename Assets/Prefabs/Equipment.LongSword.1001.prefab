@@ -146,49 +146,23 @@ PlayableDirector:
   m_GameObject: {fileID: 4608228154354743509}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 1e6b2b8a85b50482e88ace4a752784eb, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: 0827f38d9fc44484d8f9cbad100fd84b, type: 2}
   m_InitialState: 0
   m_WrapMode: 1
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
-  - key: {fileID: -3140158847642730933, guid: 4e3dc0d37e76f884bb0ff92b825a8805, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: 226853102563252438, guid: 4e3dc0d37e76f884bb0ff92b825a8805, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -1935603194271161550, guid: 4e3dc0d37e76f884bb0ff92b825a8805, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -3140158847642730933, guid: 0e92d3a4cc7d0ed41a6f70c84d5b23e5, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -3140158847642730933, guid: 679b92cd0b950f740810daaaffbf0b5d, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: 226853102563252438, guid: 679b92cd0b950f740810daaaffbf0b5d, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -1935603194271161550, guid: 679b92cd0b950f740810daaaffbf0b5d, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -3140158847642730933, guid: 97f895a63bc7e4bb19c47f224fdde690, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: 226853102563252438, guid: 97f895a63bc7e4bb19c47f224fdde690, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -1935603194271161550, guid: 97f895a63bc7e4bb19c47f224fdde690, type: 2}
-    value: {fileID: 0}
   - key: {fileID: -3140158847642730933, guid: dbed9ea1bb58d4ebc9664d94b81e39af, type: 2}
     value: {fileID: 0}
   - key: {fileID: 226853102563252438, guid: dbed9ea1bb58d4ebc9664d94b81e39af, type: 2}
     value: {fileID: 0}
   - key: {fileID: -1935603194271161550, guid: dbed9ea1bb58d4ebc9664d94b81e39af, type: 2}
     value: {fileID: 0}
-  - key: {fileID: -3140158847642730933, guid: 17a72ceeb17734ddaa78a3fbf57c0d78, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: 226853102563252438, guid: 17a72ceeb17734ddaa78a3fbf57c0d78, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -1935603194271161550, guid: 17a72ceeb17734ddaa78a3fbf57c0d78, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -3140158847642730933, guid: 1e6b2b8a85b50482e88ace4a752784eb, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: 226853102563252438, guid: 1e6b2b8a85b50482e88ace4a752784eb, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -1935603194271161550, guid: 1e6b2b8a85b50482e88ace4a752784eb, type: 2}
+  - key: {fileID: -3140158847642730933, guid: 0827f38d9fc44484d8f9cbad100fd84b, type: 2}
+    value: {fileID: 5539482030791588543}
+  - key: {fileID: 226853102563252438, guid: 0827f38d9fc44484d8f9cbad100fd84b, type: 2}
+    value: {fileID: 410604998934274819}
+  - key: {fileID: -1935603194271161550, guid: 0827f38d9fc44484d8f9cbad100fd84b, type: 2}
     value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
@@ -277,5 +251,15 @@ PrefabInstance:
 --- !u!4 &1777491436417966451 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3474046909495799082, guid: 31c1426a8dc008b469f019cda16e237e, type: 3}
+  m_PrefabInstance: {fileID: 2926390094341835865}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &5539482030791588543 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7240822586996324070, guid: 31c1426a8dc008b469f019cda16e237e, type: 3}
+  m_PrefabInstance: {fileID: 2926390094341835865}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &410604998934274819 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3255648823381176154, guid: 31c1426a8dc008b469f019cda16e237e, type: 3}
   m_PrefabInstance: {fileID: 2926390094341835865}
   m_PrefabAsset: {fileID: 0}
