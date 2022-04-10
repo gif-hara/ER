@@ -53,7 +53,6 @@ namespace ER.ERBehaviour
                 .Take(1)
                 .Subscribe(_ =>
                 {
-                    equipmentController.PlayDefaultPlayableAsset();
                     actor.EquipmentController.EndGuard();
                 })
                 .AddTo(equipmentController)

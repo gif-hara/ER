@@ -256,7 +256,7 @@ namespace ER.ActorControllers
                     Object.Destroy(this.equipmentHolders[index].gameObject);
                 }
 
-                this.equipmentHolders[index] = equipmentPrefab.Attach(this.actor, itemInstanceId);
+                this.equipmentHolders[index] = equipmentPrefab.Attach(this.actor, itemInstanceId, this.handType);
                 this.equipmentHolders[index].gameObject.SetActive(this.currentIndex == index);
 
                 if (this.currentIndex == index)
@@ -342,7 +342,6 @@ namespace ER.ActorControllers
                     this.equipmentHolders[oldIndex].gameObject.SetActive(false);
                 }
                 this.equipmentHolders[this.currentIndex].gameObject.SetActive(true);
-                this.equipmentHolders[this.currentIndex].PlayDefaultPlayableAsset();
 
                 this.actor.Broker.Publish(ActorEvent.OnChangedHandEquipment.Get(this.handType, this.equipmentHolders[this.currentIndex]));
             }

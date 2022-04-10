@@ -19,9 +19,6 @@ namespace ER.EquipmentSystems
         private PlayableDirector playableDirector = default;
 
         [SerializeField]
-        private PlayableAsset defaultPlayableAsset = default;
-
-        [SerializeField]
         public List<ERBehaviour.Behaviour> behaviours = default;
 
         [SerializeField]
@@ -51,9 +48,9 @@ namespace ER.EquipmentSystems
 
         private CompositeDisposable disposables = new CompositeDisposable();
 
-        public EquipmentController Attach(Actor actor, string itemInstanceId)
+        public EquipmentController Attach(Actor actor, string itemInstanceId, HandType handType)
         {
-            var clone = Instantiate(this, actor.BodyController.ModelParent);
+            var clone = Instantiate(this, actor.BodyController.GetHandParent(handType));
             clone.AttachInternal(actor, itemInstanceId);
             return clone;
         }
@@ -100,31 +97,8 @@ namespace ER.EquipmentSystems
                         i.Invoke(behaviourData, this.disposables);
                     }
                 });
-
-            this.PlayDefaultPlayableAsset();
-
-            actor.Broker.Receive<ActorEvent.OnChangedStateType>()
-                .Subscribe(x =>
-                {
-                    if (x.NextState == ActorStateController.StateType.Movable)
-                    {
-                        this.PlayDefaultPlayableAsset();
-                    }
-                })
-                .AddTo(this.disposables);
         }
-
-        public void PlayDefaultPlayableAsset()
-        {
-            this.playableDirector.extrapolationMode = DirectorWrapMode.Loop;
-            this.playableDirector.Play(this.defaultPlayableAsset);
-
-            if (this.colliderObject != null)
-            {
-                this.colliderObject.SetActive(false);
-            }
-        }
-
+        
         private static int GetLayerIndex(int ownerLayerIndex)
         {
             switch (ownerLayerIndex)

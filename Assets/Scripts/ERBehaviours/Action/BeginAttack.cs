@@ -47,14 +47,6 @@ namespace ER.ERBehaviour
                 actor.StateController.ChangeRequest(ActorStateController.StateType.Movable);
             })
             .AddTo(equipmentController);
-
-            actor.Broker.Receive<ActorEvent.OnChangedStateType>()
-            .Where(x => x.NextState == ActorStateController.StateType.Avoidance || x.NextState == ActorStateController.StateType.Guard)
-            .Subscribe(_ =>
-            {
-                equipmentController.PlayDefaultPlayableAsset();
-            })
-            .AddTo(equipmentController);
         }
     }
 }

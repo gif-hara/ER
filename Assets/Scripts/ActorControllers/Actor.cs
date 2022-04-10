@@ -153,6 +153,11 @@ namespace ER.ActorControllers
 
         void OnAnimatorMove()
         {
+            if (this.Animator == null || this.MotionController == null)
+            {
+                return;
+            }
+            
             var velocity = this.Animator.rootPosition - this.transform.position;
             this.MotionController.MoveRaw(velocity);
         }

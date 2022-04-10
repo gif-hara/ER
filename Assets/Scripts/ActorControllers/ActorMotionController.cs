@@ -59,40 +59,7 @@ namespace ER.ActorControllers
                     UpdateRotation(actor);
                 })
                 .AddTo(actor.Disposables);
-
-            actor.Broker.Receive<ActorEvent.OnRequestAvoidance>()
-                .Subscribe(x =>
-                {
-                    var direction = x.Direction;
-                    // 入力が無い場合はバックステップする
-                    if (direction == Vector2.zero)
-                    {
-                        direction = -actor.transform.up;
-                    }
-
-                    direction = direction.normalized;
-
-                    actor.DirectorController.PlayOneShotAsync(motionData.avoidanceAsset)
-                    .TakeUntil(this.actor.Broker.Receive<ActorEvent.BeginEquipment>())
-                    .TakeUntil(this.actor.Broker.Receive<ActorEvent.OnRequestAvoidance>())
-                    .Subscribe(_ =>
-                    {
-                        actor.StateController.ChangeRequest(ActorStateController.StateType.Movable);
-                    })
-                    .AddTo(actor.Disposables);
-
-                    actor.StateController.ChangeRequest(ActorStateController.StateType.Avoidance);
-                    actor.gameObject.UpdateAsObservable()
-                    .TakeUntil(actor.Broker.Receive<ActorEvent.OnChangedStateType>().Where(x => x.NextState != ActorStateController.StateType.Avoidance))
-                    .TakeUntil(this.actor.Broker.Receive<ActorEvent.OnRequestAvoidance>())
-                    .Subscribe(_ =>
-                    {
-                        this.Move(direction);
-                    })
-                    .AddTo(actor.Disposables);
-                })
-                .AddTo(actor.Disposables);
-
+            
             actor.Broker.Receive<ActorEvent.OnRespawned>()
                 .Subscribe(_ =>
                 {
