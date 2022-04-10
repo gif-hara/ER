@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8207273531949983257}
   - component: {fileID: 3240392672265994588}
+  - component: {fileID: 3590943879548157592}
   - component: {fileID: 1747911066581499898}
   - component: {fileID: 5469232807201834641}
   - component: {fileID: 8216083785939781613}
@@ -57,6 +58,19 @@ MonoBehaviour:
   animationParameter: {fileID: 1747911066581499898}
   director: {fileID: 4614482006976423406}
   recoveryItemController: {fileID: 5469232807201834641}
+--- !u!114 &3590943879548157592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5062621093894177797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e891d4ee815c40b459cf82de4a407666, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  avoidanceClip: {fileID: 0}
 --- !u!114 &1747911066581499898
 MonoBehaviour:
   m_ObjectHideFlags: 0
