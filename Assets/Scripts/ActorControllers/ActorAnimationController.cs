@@ -83,12 +83,7 @@ namespace ER.ActorControllers
             this.ChangeClip(clip);
             
             return this.UpdateAsObservable()
-                .DelayFrame(1)
-                .Where(_ =>
-                {
-                    var info = this.Animator.GetCurrentAnimatorStateInfo(0);
-                    return info.normalizedTime >= 1.0f;
-                })
+                .Where(_ => this.Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
                 .First()
                 .AsUnitObservable();
         }
