@@ -56,6 +56,10 @@ namespace ER.UIPresenters
                     this.stringBuilder.Append(actor.EquipmentController.IsLeftRequest);
                     this.stringBuilder.AppendLine();
 
+                    this.stringBuilder.Append("Clip = ");
+                    this.stringBuilder.Append(actor.AnimationController.OverrideController["Clip"].name);
+                    this.stringBuilder.AppendLine();
+
                     this.debugUIView.Text.SetText(this.stringBuilder.ToString());
                 });
         }

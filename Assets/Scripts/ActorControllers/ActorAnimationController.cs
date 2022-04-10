@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UniRx;
+using UniRx.Triggers;
 
 namespace ER.ActorControllers
 {
@@ -15,20 +16,19 @@ namespace ER.ActorControllers
         
         [SerializeField]
         private AnimationClip avoidanceClip = default;
-        
-        [SerializeField]
-        private AnimatorOverrideController overrideController;
-
-        private Animator animator;
 
         private const string OverrideClipName = "Clip";
 
+        public AnimatorOverrideController OverrideController { get; private set; }
+
+        public Animator Animator { get; private set; }
+
         private void Start()
         {
-            this.animator = this.GetComponent<Animator>();
-            this.overrideController = new AnimatorOverrideController();
-            this.overrideController.runtimeAnimatorController = this.animator.runtimeAnimatorController;
-            this.animator.runtimeAnimatorController = this.overrideController;
+            this.Animator = this.GetComponent<Animator>();
+            this.OverrideController = new AnimatorOverrideController();
+            this.OverrideController.runtimeAnimatorController = this.Animator.runtimeAnimatorController;
+            this.Animator.runtimeAnimatorController = this.OverrideController;
             this.ChangeClip(this.idleClip);
             
             var actor = this.GetComponent<Actor>();
@@ -77,23 +77,32 @@ namespace ER.ActorControllers
             //     })
             //     .AddTo(actor.Disposables);
         }
+        
+        public IObservable<Unit> PlayOneShotAsync(AnimationClip clip)
+        {
+            this.ChangeClip(clip);
+            
+            return this.UpdateAsObservable()
+                .DelayFrame(1)
+                .Where(_ =>
+                {
+                    var info = this.Animator.GetCurrentAnimatorStateInfo(0);
+                    return info.normalizedTime >= 1.0f;
+                })
+                .First()
+                .AsUnitObservable();
+        }
 
         private void ChangeClip(AnimationClip clip)
         {
-            var layerInfos = new AnimatorStateInfo[this.animator.layerCount];
-            for (var i = 0; i < this.animator.layerCount; i++)
+            this.OverrideController[OverrideClipName] = clip;
+
+            for (var i = 0; i < this.Animator.layerCount; i++)
             {
-                layerInfos[i] = this.animator.GetCurrentAnimatorStateInfo(i);
+                this.Animator.Play(this.Animator.GetCurrentAnimatorStateInfo(i).fullPathHash, i, 0.0f);
             }
             
-            Debug.Log(this.overrideController[OverrideClipName]);
-            this.overrideController[OverrideClipName] = clip;
-            this.animator.Update(0.0f);
-
-            for (var i = 0; i < this.animator.layerCount; i++)
-            {
-                this.animator.Play(layerInfos[i].fullPathHash, i, layerInfos[i].normalizedTime);
-            }
+            this.Animator.Update(0.0f);
         }
     }
 }

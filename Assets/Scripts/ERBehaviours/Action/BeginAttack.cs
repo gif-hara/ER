@@ -17,6 +17,9 @@ namespace ER.ERBehaviour
         private PlayableAsset playableAsset = default;
 
         [SerializeField]
+        private AnimationClip attackClip = default;
+
+        [SerializeField]
         private DirectorWrapMode wrapMode = DirectorWrapMode.None;
 
         [SerializeField]
@@ -29,24 +32,18 @@ namespace ER.ERBehaviour
         {
             var behaviourData = data.Cast<IActorHolder>();
             var equipmentController = behaviourData.Actor.EquipmentController.GetEquipmentController(this.handType);
-            var director = equipmentController.PlayableDirector;
             var actor = behaviourData.Actor;
-
-            director.extrapolationMode = this.wrapMode;
-            director.playableAsset = this.playableAsset;
-            director.SetGenericBinding("ActorAnimation", actor.Animator);
-            director.Play();
+            
+            actor.AnimationController.PlayOneShotAsync(this.attackClip)
+                .Subscribe(_ =>
+                {
+                    actor.StateController.ChangeRequest(ActorStateController.StateType.Movable);
+                })
+                .AddTo(equipmentController);
 
             equipmentController.Power = this.power;
 
             actor.StateController.ChangeRequest(ActorStateController.StateType.Attack);
-
-            director.OnStoppedAsObservable()
-            .Subscribe(_ =>
-            {
-                actor.StateController.ChangeRequest(ActorStateController.StateType.Movable);
-            })
-            .AddTo(equipmentController);
         }
     }
 }

@@ -38,6 +38,8 @@ namespace ER.ActorControllers
         public ActorInventoryController InventoryController { get; } = new ActorInventoryController();
         
         public ActorBodyController BodyController { get; private set; }
+        
+        public ActorAnimationController AnimationController { get; private set; }
 
         public ActorStateController StateController { get; } = new ActorStateController();
 
@@ -98,6 +100,7 @@ namespace ER.ActorControllers
             this.recoveryItemController.Setup(this);
             this.InventoryController.Setup(this);
             this.BodyController = this.GetComponent<ActorBodyController>();
+            this.AnimationController = this.GetComponent<ActorAnimationController>();
 
             this.OnDestroyAsObservable()
                 .Subscribe(_ =>

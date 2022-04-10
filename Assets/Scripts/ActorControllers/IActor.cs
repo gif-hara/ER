@@ -42,6 +42,8 @@ namespace ER.ActorControllers
         ActorInventoryController InventoryController { get; }
         
         ActorBodyController BodyController { get; }
+        
+        ActorAnimationController AnimationController { get; }
 
         IMessageBroker Broker { get; }
     }
