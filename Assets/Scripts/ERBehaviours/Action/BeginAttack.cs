@@ -33,16 +33,18 @@ namespace ER.ERBehaviour
             var behaviourData = data.Cast<IActorHolder>();
             var equipmentController = behaviourData.Actor.EquipmentController.GetEquipmentController(this.handType);
             var actor = behaviourData.Actor;
-            
+
+            actor.EquipmentController.BeginAttack(equipmentController);
+
             actor.AnimationController.PlayOneShotAsync(this.attackClip)
-                .Subscribe(_ =>
-                {
-                    actor.StateController.ChangeRequest(ActorStateController.StateType.Movable);
-                })
-                .AddTo(equipmentController);
+                 .Subscribe(_ =>
+                            {
+                                actor.EquipmentController.EndAttack();
+                                actor.StateController.ChangeRequest(ActorStateController.StateType.Movable);
+                            })
+                 .AddTo(equipmentController);
 
             equipmentController.Power = this.power;
-
             actor.StateController.ChangeRequest(ActorStateController.StateType.Attack);
         }
     }

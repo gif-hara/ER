@@ -60,12 +60,23 @@ namespace ER.EquipmentSystems
             this.disposables.Dispose();
         }
 
+        public void SetActiveColliderObject(bool isActive)
+        {
+            if (this.colliderObject == null)
+            {
+                return;
+            }
+            
+            this.colliderObject.SetActive(isActive);
+        }
+
         private void AttachInternal(Actor actor, string itemInstanceId)
         {
             this.Actor = actor;
             this.ItemInstanceId = itemInstanceId;
-            this.transform.localPosition = Vector3.zero;
-            this.transform.localRotation = Quaternion.identity;
+            var t = this.transform;
+            t.localPosition = Vector3.zero;
+            t.localRotation = Quaternion.identity;
             this.gameObject.SetLayerRecursive(GetLayerIndex(actor.gameObject.layer));
             var behaviourData = new EquipmentBehaviourData
             {
@@ -97,6 +108,16 @@ namespace ER.EquipmentSystems
                         i.Invoke(behaviourData, this.disposables);
                     }
                 });
+
+            actor.Broker.Receive<ActorEvent.OnChangedStateType>()
+                .Subscribe(x =>
+                {
+                    if (x.NextState == ActorStateController.StateType.Movable)
+                    {
+                        this.SetActiveColliderObject(false);
+                    }
+                })
+                .AddTo(this);
         }
         
         private static int GetLayerIndex(int ownerLayerIndex)

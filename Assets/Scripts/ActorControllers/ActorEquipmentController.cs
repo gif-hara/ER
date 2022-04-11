@@ -21,7 +21,12 @@ namespace ER.ActorControllers
         /// 左手の装備品
         /// </summary>
         public Hand LeftHand { get; } = new Hand();
-
+        
+        /// <summary>
+        /// 攻撃を行っている装備品
+        /// </summary>
+        public EquipmentController AttackingEquipmentController { get; private set; }
+        
         /// <summary>
         /// ガードを行っている装備品
         /// </summary>
@@ -94,6 +99,22 @@ namespace ER.ActorControllers
                     this.LeftHand.ChangeNext();
                 })
                 .AddTo(actor.Disposables);
+        }
+
+        /// <summary>
+        /// 攻撃を開始する
+        /// </summary>
+        public void BeginAttack(EquipmentController equipmentController)
+        {
+            this.AttackingEquipmentController = equipmentController;
+        }
+        
+        /// <summary>
+        /// 攻撃を終了する
+        /// </summary>
+        public void EndAttack()
+        {
+            this.AttackingEquipmentController = null;
         }
 
         /// <summary>

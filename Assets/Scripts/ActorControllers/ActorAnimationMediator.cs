@@ -1,3 +1,4 @@
+using ER.EquipmentSystems;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UniRx;
@@ -35,31 +36,32 @@ namespace ER.ActorControllers
         private void Awake()
         {
             actor.Broker.Receive<ActorEvent.OnChangedStateType>()
-                .Subscribe(x =>
-                {
-                    if (x.NextState == ActorStateController.StateType.Movable)
-                    {
-                        this.moveSpeedRate = 1.0f;
-                        this.invisible = false;
-                        this.advancedEntry = true;
-                        this.nextAttackIndex = 0;
-                    }
-
-                    if (x.NextState == ActorStateController.StateType.Guard)
-                    {
-                        this.moveSpeedRate = 0.5f;
-                        this.invisible = false;
-                        this.advancedEntry = true;
-                        this.nextAttackIndex = 0;
-                    }
-
-                    if (x.NextState == ActorStateController.StateType.UseRecoveryItem)
-                    {
-                        this.moveSpeedRate = 0.5f;
-                        this.invisible = false;
-                    }
-                })
-                .AddTo(actor.Disposables);
+                 .Subscribe(x =>
+                            {
+                                switch (x.NextState)
+                                {
+                                    case ActorStateController.StateType.Movable:
+                                        moveSpeedRate = 1.0f;
+                                        invisible = false;
+                                        advancedEntry = true;
+                                        nextAttackIndex = 0;
+                                        break;
+                                    case ActorStateController.StateType.Guard:
+                                        moveSpeedRate = 0.5f;
+                                        invisible = false;
+                                        advancedEntry = true;
+                                        nextAttackIndex = 0;
+                                        break;
+                                    case ActorStateController.StateType.UseRecoveryItem:
+                                        moveSpeedRate = 0.5f;
+                                        invisible = false;
+                                        break;
+                                    case ActorStateController.StateType.Attack:
+                                        this.advancedEntry = false;
+                                        break;
+                                }
+                            })
+                 .AddTo(actor.Disposables);
         }
 
         /// <summary>
@@ -70,7 +72,36 @@ namespace ER.ActorControllers
 #if UNITY_EDITOR
             Debug.Log("UseRecoveryItem");
 #endif
-            this.actor.StatusController.UseRecoveryItem();
+            actor.StatusController.UseRecoveryItem();
+        }
+
+        /// <summary>
+        /// 攻撃中の武器のコライダーオブジェクトの有効性を設定する
+        /// </summary>
+        public void SetActiveAttackingEquipmentColliderObject(int isActive)
+        {
+            if (!Application.isPlaying)
+            {
+                var c = this.GetComponentsInChildren<EquipmentController>();
+                foreach (var i in c)
+                {
+                    i.SetActiveColliderObject(isActive >= 1);
+                }
+            }
+            else
+            {
+                actor.EquipmentController.AttackingEquipmentController.SetActiveColliderObject(isActive >= 1);
+            }
+        }
+
+        public void CanBeNextAction()
+        {
+            this.advancedEntry = true;
+        }
+
+        public void SetNextAttackIndex(int index)
+        {
+            this.nextAttackIndex = index;
         }
     }
 }

@@ -272,7 +272,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5078142423875378304, guid: 6183565eed251a4469039bf658a61b11, type: 3}
       propertyPath: m_Name
-      value: Sword.001
+      value: Model.Sword.001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6183565eed251a4469039bf658a61b11, type: 3}
