@@ -14,13 +14,7 @@ namespace ER.ERBehaviour
     public sealed class BeginAttack : IAction
     {
         [SerializeField]
-        private PlayableAsset playableAsset = default;
-
-        [SerializeField]
         private AnimationClip attackClip = default;
-
-        [SerializeField]
-        private DirectorWrapMode wrapMode = DirectorWrapMode.None;
 
         [SerializeField]
         private float power = 1.0f;

@@ -47,12 +47,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playableDirector: {fileID: 4311177486490712205}
-  defaultPlayableAsset: {fileID: 11400000, guid: 5bb12ac1a5c5ecb459c48ed2137796a9, type: 2}
   behaviours:
   - trigger:
       id: 0
     action:
       id: 1
+  hitEffectPrefab: {fileID: 0}
+  colliderObject: {fileID: 0}
   references:
     version: 1
     00000000:
@@ -66,6 +67,7 @@ MonoBehaviour:
       type: {class: BeginGuard, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         playableAsset: {fileID: 11400000, guid: 43310a748f997d74eb474573a3bc3922, type: 2}
+        guardClip: {fileID: -2313666145021502641, guid: 43310a748f997d74eb474573a3bc3922, type: 2}
         wrapMode: 1
         handType: 0
     00000002:

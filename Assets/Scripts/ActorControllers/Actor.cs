@@ -22,9 +22,6 @@ namespace ER.ActorControllers
         private ActorAnimationMediator animationParameter = default;
 
         [SerializeField]
-        private PlayableDirector director = default;
-
-        [SerializeField]
         private ActorRecoveryItemController recoveryItemController = default;
 
         private MessageBroker broker = new MessageBroker();
@@ -42,8 +39,6 @@ namespace ER.ActorControllers
         public ActorAnimationController AnimationController { get; private set; }
 
         public ActorStateController StateController { get; } = new ActorStateController();
-
-        public ActorDirectorController DirectorController { get; } = new ActorDirectorController();
 
         public Animator Animator { get; private set; }
 
@@ -96,7 +91,6 @@ namespace ER.ActorControllers
             this.EquipmentController.Setup(this);
             this.MotionController = new ActorMotionController();
             this.MotionController.Setup(this, this.motionData);
-            this.DirectorController.Setup(this, this.director);
             this.recoveryItemController.Setup(this);
             this.InventoryController.Setup(this);
             this.BodyController = this.GetComponent<ActorBodyController>();

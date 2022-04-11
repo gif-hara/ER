@@ -87,6 +87,11 @@ namespace ER.ActorControllers
                        .AsUnitObservable();
         }
 
+        public void Play(AnimationClip clip)
+        {
+            this.ChangeClip(clip);
+        }
+
         private void ChangeClip(AnimationClip clip)
         {
             this.OverrideController[OverrideClipName] = clip;

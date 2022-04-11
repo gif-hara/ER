@@ -31,8 +31,6 @@ namespace ER.ActorControllers
 
         ActorStateController StateController { get; }
 
-        ActorDirectorController DirectorController { get; }
-
         ActorStatusController StatusController { get; }
 
         ActorInteractableStageGimmickController InteractableStageGimmickController { get; }

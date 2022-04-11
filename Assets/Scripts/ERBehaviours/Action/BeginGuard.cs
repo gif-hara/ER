@@ -14,10 +14,7 @@ namespace ER.ERBehaviour
     public sealed class BeginGuard : IAction
     {
         [SerializeField]
-        private PlayableAsset playableAsset = default;
-
-        [SerializeField]
-        private DirectorWrapMode wrapMode = default;
+        private AnimationClip guardClip = default;
 
         [SerializeField]
         private HandType handType = default;
@@ -26,13 +23,9 @@ namespace ER.ERBehaviour
         {
             var behaviourData = data.Cast<IActorHolder>();
             var equipmentController = behaviourData.Actor.EquipmentController.GetEquipmentController(this.handType);
-            var director = equipmentController.PlayableDirector;
             var actor = behaviourData.Actor;
 
-            director.extrapolationMode = this.wrapMode;
-            director.playableAsset = this.playableAsset;
-            director.SetGenericBinding("ActorAnimation", actor.Animator);
-            director.Play();
+            actor.AnimationController.Play(this.guardClip);
 
             actor.EquipmentController.BeginGuard(equipmentController);
             actor.StateController.ChangeRequest(ActorStateController.StateType.Guard);
@@ -40,7 +33,8 @@ namespace ER.ERBehaviour
             actor.Broker.Receive<ActorEvent.EndEquipment>()
                 .Where(x => x.HandType == HandType.Left)
                 .Take(1)
-                .TakeUntil(actor.Broker.Receive<ActorEvent.OnChangedStateType>().Where(x => x.NextState == ActorStateController.StateType.Attack || x.NextState == ActorStateController.StateType.Movable))
+                .TakeUntil(actor.Broker.Receive<ActorEvent.OnChangedStateType>()
+                    .Where(x => x.NextState == ActorStateController.StateType.Attack || x.NextState == ActorStateController.StateType.Movable))
                 .Subscribe(_ =>
                 {
                     actor.StateController.ChangeRequest(ActorStateController.StateType.Movable);
@@ -51,10 +45,7 @@ namespace ER.ERBehaviour
             actor.Broker.Receive<ActorEvent.OnChangedStateType>()
                 .Where(x => x.NextState == ActorStateController.StateType.Attack || x.NextState == ActorStateController.StateType.Movable)
                 .Take(1)
-                .Subscribe(_ =>
-                {
-                    actor.EquipmentController.EndGuard();
-                })
+                .Subscribe(_ => { actor.EquipmentController.EndGuard(); })
                 .AddTo(equipmentController)
                 .AddTo(actor.Disposables);
         }
