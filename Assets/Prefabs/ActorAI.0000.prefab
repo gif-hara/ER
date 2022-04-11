@@ -86,6 +86,7 @@ MonoBehaviour:
       type: {class: BeginAttack, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         playableAsset: {fileID: 11400000, guid: 97f895a63bc7e4bb19c47f224fdde690, type: 2}
+        attackClip: {fileID: 3671672473581511843, guid: 97f895a63bc7e4bb19c47f224fdde690, type: 2}
         wrapMode: 2
         power: 1
         handType: 1
@@ -179,6 +180,7 @@ MonoBehaviour:
       type: {class: BeginAttack, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         playableAsset: {fileID: 11400000, guid: 679b92cd0b950f740810daaaffbf0b5d, type: 2}
+        attackClip: {fileID: 3671672473581511843, guid: 679b92cd0b950f740810daaaffbf0b5d, type: 2}
         wrapMode: 2
         power: 1
         handType: 1
