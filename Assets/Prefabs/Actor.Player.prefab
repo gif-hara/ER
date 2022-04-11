@@ -87,11 +87,11 @@ PrefabInstance:
     - target: {fileID: 3590943879548157592, guid: fa424eeca9000434681b647bc0d889f7, type: 3}
       propertyPath: idleClip
       value: 
-      objectReference: {fileID: -2313666145021502641, guid: b787f63688c99734e9608ee32ac01c05, type: 2}
+      objectReference: {fileID: 7400000, guid: 4977433f687ec4f4a9856140d0154fdf, type: 2}
     - target: {fileID: 3590943879548157592, guid: fa424eeca9000434681b647bc0d889f7, type: 3}
       propertyPath: avoidanceClip
       value: 
-      objectReference: {fileID: -2313666145021502641, guid: c54bb4588527889499dbfb08e97751c4, type: 2}
+      objectReference: {fileID: 7400000, guid: 52edc8c8f63cfc04ba42e2252029be68, type: 2}
     - target: {fileID: 5062621093894177797, guid: fa424eeca9000434681b647bc0d889f7, type: 3}
       propertyPath: m_Name
       value: Actor.Player
