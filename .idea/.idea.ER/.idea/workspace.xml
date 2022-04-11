@@ -26,7 +26,7 @@
     <property name="rider.code.cleanup.on.save" value="true" />
     <property name="rider.code.cleanup.on.save.profile" value="Built-in: Reformat Code" />
     <property name="rider.run.widget.enabled.cache" value="false" />
-    <property name="settings.editor.selected.configurable" value="actions.on.save" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
