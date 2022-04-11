@@ -90,7 +90,7 @@ MonoBehaviour:
       type: {class: BeginAttack, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         playableAsset: {fileID: 11400000, guid: 17a72ceeb17734ddaa78a3fbf57c0d78, type: 2}
-        attackClip: {fileID: 0}
+        attackClip: {fileID: 3671672473581511843, guid: 17a72ceeb17734ddaa78a3fbf57c0d78, type: 2}
         wrapMode: 2
         power: 1
         handType: 1
@@ -180,9 +180,9 @@ PlayableDirector:
     value: {fileID: 6119873786565449434}
   - key: {fileID: -1935603194271161550, guid: dbed9ea1bb58d4ebc9664d94b81e39af, type: 2}
     value: {fileID: 0}
-  - key: {fileID: -3140158847642730933, guid: 17a72ceeb17734ddaa78a3fbf57c0d78, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 6817020702216351253}
-  - key: {fileID: 226853102563252438, guid: 17a72ceeb17734ddaa78a3fbf57c0d78, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 6119873786565449434}
   - key: {fileID: -1935603194271161550, guid: 17a72ceeb17734ddaa78a3fbf57c0d78, type: 2}
     value: {fileID: 0}
