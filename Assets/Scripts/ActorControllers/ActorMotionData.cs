@@ -15,15 +15,5 @@ namespace ER.ActorControllers
         /// 移動速度
         /// </summary>
         public float moveSpeed = default;
-
-        /// <summary>
-        /// 衝突用の半径
-        /// </summary>
-        public float radius = default;
-
-        /// <summary>
-        /// 回避を行う<see cref="PlayableAsset"/>
-        /// </summary>
-        public PlayableAsset avoidanceAsset = default;
     }
 }

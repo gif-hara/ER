@@ -114,8 +114,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   motionData:
     moveSpeed: 0
-    radius: 0
-    avoidanceAsset: {fileID: 11400000, guid: c54bb4588527889499dbfb08e97751c4, type: 2}
   animationParameter: {fileID: 1747911066581499898}
   recoveryItemController: {fileID: 5469232807201834641}
 --- !u!114 &3590943879548157592
