@@ -16,9 +16,6 @@ namespace ER.EquipmentSystems
     public sealed class EquipmentController : MonoBehaviour, IBehaviourData
     {
         [SerializeField]
-        private PlayableDirector playableDirector = default;
-
-        [SerializeField]
         public List<ERBehaviour.Behaviour> behaviours = default;
 
         [SerializeField]
@@ -43,8 +40,6 @@ namespace ER.EquipmentSystems
         public Item Item => this.Actor.InventoryController.Equipments[this.ItemInstanceId];
 
         public Actor Actor { get; private set; }
-
-        public PlayableDirector PlayableDirector => this.playableDirector;
 
         private CompositeDisposable disposables = new CompositeDisposable();
 
