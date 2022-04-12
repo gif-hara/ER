@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   records:
   - id: Weapon/Name010101
-    equipmentControllerPrefab: {fileID: 4608228154354743508, guid: b12d6f23289132a449f58ef17eff3410, type: 3}
+    equipmentControllerPrefab: {fileID: 2535734517464561581, guid: d1f389588f434164b903b06a48693755, type: 3}
     physics:
       minAttack: 32
       maxAttack: 100
@@ -48,7 +48,7 @@ MonoBehaviour:
       maxAttack: 100
       growthType: 0
   - id: Weapon/Name010102
-    equipmentControllerPrefab: {fileID: 4608228154354743508, guid: d1bb93f2e75dda7429a807007a634766, type: 3}
+    equipmentControllerPrefab: {fileID: 2535734517464561581, guid: cffd6974071761f42affbf4c54411408, type: 3}
     physics:
       minAttack: 43
       maxAttack: 100

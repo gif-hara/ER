@@ -19,6 +19,9 @@ namespace ER.EquipmentSystems
         public List<ERBehaviour.Behaviour> behaviours = default;
 
         [SerializeField]
+        private GameObject behaviourHolderParent = default;
+
+        [SerializeField]
         private PoolableEffect hitEffectPrefab = default;
 
         /// <summary>
@@ -42,6 +45,8 @@ namespace ER.EquipmentSystems
         public Actor Actor { get; private set; }
 
         private CompositeDisposable disposables = new CompositeDisposable();
+
+        private BehaviourHolder[] behaviourHolders;
 
         public EquipmentController Attach(Actor actor, string itemInstanceId, HandType handType)
         {
@@ -69,6 +74,7 @@ namespace ER.EquipmentSystems
         {
             this.Actor = actor;
             this.ItemInstanceId = itemInstanceId;
+            this.behaviourHolders = this.behaviourHolderParent.GetComponentsInChildren<BehaviourHolder>();
             var t = this.transform;
             t.localPosition = Vector3.zero;
             t.localRotation = Quaternion.identity;
@@ -98,7 +104,7 @@ namespace ER.EquipmentSystems
             this.UpdateAsObservable()
                 .Subscribe(_ =>
                 {
-                    foreach (var i in this.behaviours)
+                    foreach (var i in this.behaviourHolders)
                     {
                         i.Invoke(behaviourData, this.disposables);
                     }
