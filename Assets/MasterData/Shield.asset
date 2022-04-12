@@ -24,7 +24,7 @@ MonoBehaviour:
     holyCutRate: 0
     darkCutRate: 0
   - id: Shield/Name010102
-    equipmentControllerPrefab: {fileID: 4608228154354743508, guid: 7600be1bbd3bd1b4eae74c2992a5ce83, type: 3}
+    equipmentControllerPrefab: {fileID: 2535734517464561581, guid: bd2f2594148609e4ab019ff14538b352, type: 3}
     physicsCutRate: 1
     magicCutRate: 0
     fireCutRate: 0
