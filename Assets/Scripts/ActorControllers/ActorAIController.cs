@@ -1,6 +1,7 @@
 using ER.EquipmentSystems;
 using System;
 using System.Collections.Generic;
+using ER.ERBehaviour;
 using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -19,16 +20,16 @@ namespace ER.ActorControllers
         /// 初めに起動するAI
         /// </summary>
         [SerializeField]
-        private ActorAIElement initialAI = default;
+        private BehaviourHolder initialAI = default;
 
         [SerializeReference, SubclassSelector(typeof(IEquipmentSelector))]
         private IEquipmentSelector rightEquipmentSelector = default;
 
         private readonly CompositeDisposable disposables = new CompositeDisposable();
 
-        private ActorAIElement nextAI;
+        private BehaviourHolder nextAI;
 
-        private ActorAIElement currentAI;
+        private BehaviourHolder currentAI;
 
         private ActorAIBehaviourData behaviourData;
 
@@ -57,7 +58,7 @@ namespace ER.ActorControllers
         /// <summary>
         /// <paramref name="nextAI"/>を切り替えるリクエストを行う
         /// </summary>
-        public void ChangeRequest(ActorAIElement nextAI)
+        public void ChangeRequest(BehaviourHolder nextAI)
         {
             this.nextAI = nextAI;
             Assert.IsNotNull(this.nextAI);

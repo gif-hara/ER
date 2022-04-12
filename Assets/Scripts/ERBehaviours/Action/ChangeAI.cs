@@ -12,7 +12,7 @@ namespace ER.ERBehaviour
     public sealed class ChangeAI : IAction
     {
         [SerializeField]
-        private ActorAIElement nextAI = default;
+        private BehaviourHolder nextAI = default;
 
         public void Invoke(IBehaviourData data)
         {
