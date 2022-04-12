@@ -66,9 +66,7 @@ MonoBehaviour:
     00000001:
       type: {class: BeginGuard, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
-        playableAsset: {fileID: 11400000, guid: 43310a748f997d74eb474573a3bc3922, type: 2}
-        guardClip: {fileID: -2313666145021502641, guid: 43310a748f997d74eb474573a3bc3922, type: 2}
-        wrapMode: 1
+        guardClip: {fileID: 7400000, guid: 52a917451c50a79478c7fdb413f8ebc0, type: 2}
         handType: 0
     00000002:
       type: {class: CanNextAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}

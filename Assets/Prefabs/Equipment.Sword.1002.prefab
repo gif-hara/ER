@@ -47,7 +47,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playableDirector: {fileID: 4311177486490712205}
-  defaultPlayableAsset: {fileID: 11400000, guid: 0e92d3a4cc7d0ed41a6f70c84d5b23e5, type: 2}
   behaviours:
   - trigger:
       id: 0
@@ -75,8 +74,7 @@ MonoBehaviour:
     00000001:
       type: {class: BeginAttack, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
-        playableAsset: {fileID: 11400000, guid: 4e3dc0d37e76f884bb0ff92b825a8805, type: 2}
-        wrapMode: 2
+        attackClip: {fileID: 7400000, guid: 4427ead2df913ba4ead2accf078f0632, type: 2}
         power: 1
         handType: 1
     00000002:
@@ -89,8 +87,7 @@ MonoBehaviour:
     00000003:
       type: {class: BeginAttack, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
-        playableAsset: {fileID: 11400000, guid: 17a72ceeb17734ddaa78a3fbf57c0d78, type: 2}
-        wrapMode: 2
+        attackClip: {fileID: 7400000, guid: fa6f5de4cbf5414439a3ec61009a3937, type: 2}
         power: 1
         handType: 1
     00000004:
@@ -103,8 +100,7 @@ MonoBehaviour:
     00000005:
       type: {class: BeginAttack, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
-        playableAsset: {fileID: 11400000, guid: 1e6b2b8a85b50482e88ace4a752784eb, type: 2}
-        wrapMode: 2
+        attackClip: {fileID: 7400000, guid: 8e21c81411483ee4887e437eefbcc83c, type: 2}
         power: 1
         handType: 1
     00000006:
