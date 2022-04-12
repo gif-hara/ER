@@ -280,9 +280,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3683a2c2bbdeb14cb29e2023bcb8342, type: 3}
---- !u!1 &7366078816837907023 stripped
+--- !u!1 &939533287331548272 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 7928680854466448937, guid: f3683a2c2bbdeb14cb29e2023bcb8342, type: 3}
+  m_CorrespondingSourceObject: {fileID: 376085884468178966, guid: f3683a2c2bbdeb14cb29e2023bcb8342, type: 3}
   m_PrefabInstance: {fileID: 590469159835335782}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2072511302834540409
@@ -295,10 +295,10 @@ PrefabInstance:
     - target: {fileID: 4608228154354743508, guid: 7bbaf8aaf814e0e40a91e0d127146280, type: 3}
       propertyPath: colliderObject
       value: 
-      objectReference: {fileID: 7366078816837907023}
+      objectReference: {fileID: 939533287331548272}
     - target: {fileID: 4608228154354743509, guid: 7bbaf8aaf814e0e40a91e0d127146280, type: 3}
       propertyPath: m_Name
-      value: Equipment.Sword.1002_
+      value: Equipment.Sword.1002
       objectReference: {fileID: 0}
     - target: {fileID: 4608228154354743515, guid: 7bbaf8aaf814e0e40a91e0d127146280, type: 3}
       propertyPath: m_RootOrder

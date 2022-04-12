@@ -46,10 +46,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="18740">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="18740" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -62,24 +62,5 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/ActorControllers/ActorAnimationMediator.cs</url>
-          <line>84</line>
-          <properties documentPath="C:\Users\hkmp5\Documents\UnityProjects\ER\Assets\Scripts\ActorControllers\ActorAnimationMediator.cs" initialLine="83" containingFunctionPresentation="method 'SetActiveAttackingEquipmentColliderObject'">
-            <startOffsets>
-              <option value="2825" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2885" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
