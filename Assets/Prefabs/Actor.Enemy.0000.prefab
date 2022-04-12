@@ -124,6 +124,14 @@ PrefabInstance:
       propertyPath: motionData.moveSpeed
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 6359695851454936791, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: idleClip
+      value: 
+      objectReference: {fileID: 7400000, guid: 4977433f687ec4f4a9856140d0154fdf, type: 2}
+    - target: {fileID: 6359695851454936791, guid: a956312de110fd64caae24e5eb263503, type: 3}
+      propertyPath: avoidanceClip
+      value: 
+      objectReference: {fileID: 7400000, guid: 52edc8c8f63cfc04ba42e2252029be68, type: 2}
     - target: {fileID: 8760878665084209064, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: elements.Array.size
       value: 5
