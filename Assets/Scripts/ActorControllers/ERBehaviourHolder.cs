@@ -7,7 +7,7 @@ namespace ER.ActorControllers
     /// <summary>
     /// <see cref="Actor"/>のAI要素
     /// </summary>
-    public sealed class ActorAIElement : MonoBehaviour
+    public sealed class ERBehaviourHolder : MonoBehaviour
     {
         [SerializeField]
         private List<ERBehaviour.Behaviour> behaviours = default;
