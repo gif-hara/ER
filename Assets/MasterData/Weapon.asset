@@ -84,7 +84,7 @@ MonoBehaviour:
   - id: Weapon/Name010201
     equipmentControllerPrefab: {fileID: 2535734517464561581, guid: 00bcabdf2663a28459e2c7eff6a0e7e4, type: 3}
     physics:
-      minAttack: 68
+      minAttack: 43
       maxAttack: 100
       growthType: 0
     magic:
