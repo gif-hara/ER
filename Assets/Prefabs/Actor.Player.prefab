@@ -213,7 +213,7 @@ MonoBehaviour:
     00000000:
       type: {class: WeaponSelector, ns: ER.EquipmentSystems, asm: Assembly-CSharp}
       data:
-        weaponDataId: Weapon/Name010101
+        weaponDataId: Weapon/Name010201
     00000001:
       type: {class: ShieldSelector, ns: ER.EquipmentSystems, asm: Assembly-CSharp}
       data:

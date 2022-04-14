@@ -37,30 +37,30 @@ namespace ER.ActorControllers
         {
             actor.Broker.Receive<ActorEvent.OnChangedStateType>()
                  .Subscribe(x =>
-                            {
-                                switch (x.NextState)
-                                {
-                                    case ActorStateController.StateType.Movable:
-                                        moveSpeedRate = 1.0f;
-                                        invisible = false;
-                                        advancedEntry = true;
-                                        nextAttackIndex = 0;
-                                        break;
-                                    case ActorStateController.StateType.Guard:
-                                        moveSpeedRate = 0.5f;
-                                        invisible = false;
-                                        advancedEntry = true;
-                                        nextAttackIndex = 0;
-                                        break;
-                                    case ActorStateController.StateType.UseRecoveryItem:
-                                        moveSpeedRate = 0.5f;
-                                        invisible = false;
-                                        break;
-                                    case ActorStateController.StateType.Attack:
-                                        this.advancedEntry = false;
-                                        break;
-                                }
-                            })
+                 {
+                     switch (x.NextState)
+                     {
+                         case ActorStateController.StateType.Movable:
+                             moveSpeedRate = 1.0f;
+                             invisible = false;
+                             advancedEntry = true;
+                             nextAttackIndex = 0;
+                             break;
+                         case ActorStateController.StateType.Guard:
+                             moveSpeedRate = 0.5f;
+                             invisible = false;
+                             advancedEntry = true;
+                             nextAttackIndex = 0;
+                             break;
+                         case ActorStateController.StateType.UseRecoveryItem:
+                             moveSpeedRate = 0.5f;
+                             invisible = false;
+                             break;
+                         case ActorStateController.StateType.Attack:
+                             this.advancedEntry = false;
+                             break;
+                     }
+                 })
                  .AddTo(actor.Disposables);
         }
 

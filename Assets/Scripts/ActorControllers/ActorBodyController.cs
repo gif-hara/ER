@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Assertions;
+using UniRx;
 
 namespace ER.ActorControllers
 {
@@ -8,6 +9,9 @@ namespace ER.ActorControllers
     /// </summary>
     public sealed class ActorBodyController : MonoBehaviour
     {
+        [SerializeField]
+        private Actor actor = default;
+        
         /// <summary>
         /// モデルの親オブジェクト
         /// </summary>
@@ -27,6 +31,21 @@ namespace ER.ActorControllers
         private Transform rightHandParent = default;
 
         public Transform ModelParent => this.modelParent;
+
+        void Awake()
+        {
+            this.actor.Broker.Receive<ActorEvent.OnChangedStateType>()
+                .Subscribe(x =>
+                {
+                    switch (x.NextState)
+                    {
+                        case ActorStateController.StateType.Movable:
+                            this.ModelParent.localRotation = Quaternion.identity;
+                            break;
+                    }
+                })
+                .AddTo(this);
+        }
         
         public Transform GetHandParent(HandType handType)
         {

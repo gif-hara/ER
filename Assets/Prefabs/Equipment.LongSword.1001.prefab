@@ -1,78 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2862728794565110839
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4295710533712741583}
-  - component: {fileID: 8624717863551392166}
-  m_Layer: 0
-  m_Name: Attack.02
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4295710533712741583
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2862728794565110839}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 3915485935121525343}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8624717863551392166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2862728794565110839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48aabb49b00f5456f918fdae8f250caf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  behaviours:
-  - trigger:
-      id: 0
-    action:
-      id: 1
-  references:
-    version: 1
-    00000000:
-      type: {class: AndTrigger, ns: ER.ERBehaviour, asm: Assembly-CSharp}
-      data:
-        triggers:
-        - id: 2
-        - id: 3
-        - id: 4
-    00000001:
-      type: {class: BeginAttack, ns: ER.ERBehaviour, asm: Assembly-CSharp}
-      data:
-        attackClip: {fileID: 7400000, guid: fa6f5de4cbf5414439a3ec61009a3937, type: 2}
-        power: 1
-        handType: 1
-    00000002:
-      type: {class: OnBeginEquipment, ns: ER.ERBehaviour, asm: Assembly-CSharp}
-      data:
-        handType: 1
-    00000003:
-      type: {class: CanNextAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
-    00000004:
-      type: {class: IsMatchNextAttackIndex, ns: ER.ERBehaviour, asm: Assembly-CSharp}
-      data:
-        targetNextAttackIndex: 1
 --- !u!1 &3547768980249390287
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,7 +60,7 @@ MonoBehaviour:
     00000001:
       type: {class: BeginAttack, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
-        attackClip: {fileID: 7400000, guid: 4427ead2df913ba4ead2accf078f0632, type: 2}
+        attackClip: {fileID: 7400000, guid: cf7a761428f14504bb02941bc5dbf98b, type: 2}
         power: 1
         handType: 1
     00000002:
@@ -146,79 +73,6 @@ MonoBehaviour:
       type: {class: IsMatchNextAttackIndex, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         targetNextAttackIndex: 0
---- !u!1 &5035133663698547289
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2836552875806599482}
-  - component: {fileID: 1381817286490965382}
-  m_Layer: 0
-  m_Name: Attack.03
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2836552875806599482
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5035133663698547289}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 3915485935121525343}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1381817286490965382
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5035133663698547289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48aabb49b00f5456f918fdae8f250caf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  behaviours:
-  - trigger:
-      id: 0
-    action:
-      id: 1
-  references:
-    version: 1
-    00000000:
-      type: {class: AndTrigger, ns: ER.ERBehaviour, asm: Assembly-CSharp}
-      data:
-        triggers:
-        - id: 2
-        - id: 3
-        - id: 4
-    00000001:
-      type: {class: BeginAttack, ns: ER.ERBehaviour, asm: Assembly-CSharp}
-      data:
-        attackClip: {fileID: 7400000, guid: 8e21c81411483ee4887e437eefbcc83c, type: 2}
-        power: 1
-        handType: 1
-    00000002:
-      type: {class: OnBeginEquipment, ns: ER.ERBehaviour, asm: Assembly-CSharp}
-      data:
-        handType: 1
-    00000003:
-      type: {class: CanNextAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
-    00000004:
-      type: {class: IsMatchNextAttackIndex, ns: ER.ERBehaviour, asm: Assembly-CSharp}
-      data:
-        targetNextAttackIndex: 2
 --- !u!1001 &2072511302834540409
 PrefabInstance:
   m_ObjectHideFlags: 0

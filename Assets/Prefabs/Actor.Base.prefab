@@ -172,6 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d99d01789bfe2f24ea8b178bf5ac297d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actor: {fileID: 3240392672265994588}
   modelParent: {fileID: 7357518635729486462}
   leftHandParent: {fileID: 6855425007679106799}
   rightHandParent: {fileID: 5028946734680522978}
