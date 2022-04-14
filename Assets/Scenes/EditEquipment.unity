@@ -459,7 +459,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 655392272305158409, guid: cc5fbf05eea4b6446a4f4ee63a4831fa, type: 3}
       propertyPath: m_DynamicOccludee
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3474046909495799082, guid: cc5fbf05eea4b6446a4f4ee63a4831fa, type: 3}
       propertyPath: m_RootOrder
