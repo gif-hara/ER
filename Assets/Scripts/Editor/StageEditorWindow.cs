@@ -100,15 +100,7 @@ namespace ER.Editor
                     for (var x = -1; x <= 1; x++)
                     {
                         var index = new Vector3Int(this.editingIndex.x + x, this.editingIndex.y + y, this.editingIndex.z);
-                        var path = $"Assets/Prefabs/Stage.Chunk({index.x},{index.y},{index.z}).prefab";
-                        if (AssetDatabase.LoadAssetAtPath<StageChunk>(path) == null)
-                        {
-                            var basePath = "Assets/Prefabs/Stage.Chunk.Base.prefab";
-                            var basePrefab = (GameObject)PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>(basePath));
-                            PrefabUtility.SaveAsPrefabAssetAndConnect(basePrefab, path, InteractionMode.AutomatedAction);
-                            DestroyImmediate(basePrefab);
-                            Debug.Log(index);
-                        }
+                        CreateStageChunk(index);
                     }
                 }
 
@@ -120,6 +112,31 @@ namespace ER.Editor
                 if (EditorUtility.DisplayDialog("確認", "本当に削除しますか？", "OK", "CANCEL"))
                 {
                     AssetDatabase.DeleteAsset(AssetDatabase.GetAssetPath(this.editingStageChunk));
+                    this.CalculateStageIndexies();
+                }
+            }
+            
+            EditorGUILayout.LabelField("Add To...");
+            using (new GUILayout.HorizontalScope())
+            {
+                if (GUILayout.Button("Left"))
+                {
+                    this.CreateStageChunk(new Vector3Int(this.editingIndex.x -1, this.editingIndex.y, this.editingIndex.z));
+                    this.CalculateStageIndexies();
+                }
+                if (GUILayout.Button("Top"))
+                {
+                    this.CreateStageChunk(new Vector3Int(this.editingIndex.x, this.editingIndex.y + 1, this.editingIndex.z));
+                    this.CalculateStageIndexies();
+                }
+                if (GUILayout.Button("Right"))
+                {
+                    this.CreateStageChunk(new Vector3Int(this.editingIndex.x + 1, this.editingIndex.y, this.editingIndex.z));
+                    this.CalculateStageIndexies();
+                }
+                if (GUILayout.Button("Bottom"))
+                {
+                    this.CreateStageChunk(new Vector3Int(this.editingIndex.x, this.editingIndex.y - 1, this.editingIndex.z));
                     this.CalculateStageIndexies();
                 }
             }
@@ -135,6 +152,10 @@ namespace ER.Editor
                 EditorSceneManager.OpenScene("Assets/Scenes/EditStage.unity");
                 foreach (var i in SceneManager.GetActiveScene().GetRootGameObjects())
                 {
+                    if (i.name == "DontDestroyObject")
+                    {
+                        continue;
+                    }
                     DestroyImmediate(i);
                 }
 
@@ -152,6 +173,19 @@ namespace ER.Editor
             if (GUILayout.Button("Refresh"))
             {
                 this.CalculateStageIndexies();
+            }
+        }
+
+        private void CreateStageChunk(Vector3Int index)
+        {
+            var path = $"Assets/Prefabs/Stage.Chunk({index.x},{index.y},{index.z}).prefab";
+            if (AssetDatabase.LoadAssetAtPath<StageChunk>(path) == null)
+            {
+                var basePath = "Assets/Prefabs/Stage.Chunk.Base.prefab";
+                var basePrefab = (GameObject)PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>(basePath));
+                PrefabUtility.SaveAsPrefabAssetAndConnect(basePrefab, path, InteractionMode.AutomatedAction);
+                DestroyImmediate(basePrefab);
+                Debug.Log(index);
             }
         }
 
