@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 437184500628916406}
   m_Layer: 10
-  m_Name: Stage.Building.Miscellaneous.001
+  m_Name: Stage.Building.Rock.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 437184501019700279}
   - component: {fileID: 437184501019700280}
   - component: {fileID: 437184501019700281}
-  - component: {fileID: 3063132749794507653}
+  - component: {fileID: 2482104514263716886}
   m_Layer: 10
   m_Name: Closed Sprite Shape
   m_TagString: Untagged
@@ -110,8 +110,8 @@ SpriteShapeRenderer:
   m_ShapeTexture: {fileID: 2800000, guid: 5696a61f2be636e4cb4880ec988c34f1, type: 3}
   m_Sprites: []
   m_LocalAABB:
-    m_Center: {x: -0.01026392, y: 0.12952709, z: 0}
-    m_Extent: {x: 6.051116, y: 5.166526, z: 0}
+    m_Center: {x: 0.4069004, y: -0.32992887, z: 0}
+    m_Extent: {x: 4.7150416, y: 4.70707, z: 0}
 --- !u!114 &437184501019700281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Spline:
     m_IsOpenEnded: 0
     m_ControlPoints:
-    - position: {x: -6.010831, y: -2.270316, z: 0}
+    - position: {x: -4.308141, y: -2.810852, z: 0}
       leftTangent: {x: 0, y: 0, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
       mode: 0
@@ -137,7 +137,7 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-    - position: {x: -6.06138, y: 2.3321507, z: 0}
+    - position: {x: -4.0343685, y: 1.8726948, z: 0}
       leftTangent: {x: 0, y: 0, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
       mode: 0
@@ -147,7 +147,7 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-    - position: {x: -2.944137, y: 5.2796726, z: 0}
+    - position: {x: -3.2954857, y: 3.8202248, z: 0}
       leftTangent: {x: 0, y: 0, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
       mode: 0
@@ -157,7 +157,7 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-    - position: {x: 2.9191837, y: 5.296053, z: 0}
+    - position: {x: 1.1624405, y: 4.377141, z: 0}
       leftTangent: {x: 0, y: 0, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
       mode: 0
@@ -167,7 +167,7 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-    - position: {x: 6.024647, y: 2.2846906, z: 0}
+    - position: {x: 4.024944, y: 1.6728331, z: 0}
       leftTangent: {x: 0, y: 0, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
       mode: 0
@@ -177,7 +177,7 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-    - position: {x: 6.0408525, y: -2.2595034, z: 0}
+    - position: {x: 5.121941, y: -1.9892352, z: 0}
       leftTangent: {x: 0, y: 0, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
       mode: 0
@@ -197,7 +197,7 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-    - position: {x: -3.016872, y: -4.9855347, z: 0}
+    - position: {x: -1.8006653, y: -4.039596, z: 0}
       leftTangent: {x: 0, y: 0, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
       mode: 0
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_EnableTangents: 0
   m_GeometryCached: 0
   m_UTess2D: 0
---- !u!68 &3063132749794507653
+--- !u!68 &2482104514263716886
 EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -239,17 +239,17 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -6.010831, y: -2.270316}
-  - {x: -6.06138, y: 2.3321507}
-  - {x: -2.944137, y: 5.2796726}
-  - {x: 2.9191837, y: 5.296053}
-  - {x: 6.024647, y: 2.2846906}
-  - {x: 6.0408525, y: -2.2595034}
+  - {x: -4.308141, y: -2.810852}
+  - {x: -4.0343685, y: 1.8726948}
+  - {x: -3.2954857, y: 3.8202248}
+  - {x: 1.1624405, y: 4.377141}
+  - {x: 4.024944, y: 1.6502639}
+  - {x: 5.121941, y: -1.9892352}
   - {x: 2.9537807, y: -5.0369987}
-  - {x: -3.016872, y: -4.9855347}
-  - {x: -5.865347, y: -2.4022555}
-  - {x: -5.972686, y: -2.3049097}
-  - {x: -6.010831, y: -2.270316}
+  - {x: -1.8006653, y: -4.039596}
+  - {x: -4.1862965, y: -2.87056}
+  - {x: -4.276194, y: -2.826507}
+  - {x: -4.308141, y: -2.810852}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
