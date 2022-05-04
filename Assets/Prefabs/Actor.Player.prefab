@@ -200,7 +200,8 @@ MonoBehaviour:
   lookAtDistanceThreshold: 26
   lookAtAngleThreshold: 90
   addWeapons:
-  - Weapon/Name010102
+  - Weapon/Name010101
+  - Weapon/Name010201
   addShields:
   - Shield/Name010102
   addArmors:
