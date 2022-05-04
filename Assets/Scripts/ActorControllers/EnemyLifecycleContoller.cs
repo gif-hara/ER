@@ -34,25 +34,29 @@ namespace ER.ActorControllers
                     }
 
                     // 確率でアイテムドロップ
-                    var dropItems = new List<InteractableStageGimmickItem.Element>();
-                    foreach (var i in MasterDataActorDropItem.Instance.Table[this.actor.Id])
+                    var masterDataActorDropItem = MasterDataActorDropItem.Instance;
+                    if (masterDataActorDropItem.Table.ContainsKey(this.actor.Id))
                     {
-                        if (i.Lottery())
+                        var dropItems = new List<InteractableStageGimmickItem.Element>();
+                        foreach (var i in masterDataActorDropItem.Table[this.actor.Id])
                         {
-                            dropItems.Add(new InteractableStageGimmickItem.Element
+                            if (i.Lottery())
                             {
-                                itemId = i.ItemId,
-                                number = 1
-                            });
+                                dropItems.Add(new InteractableStageGimmickItem.Element
+                                {
+                                    itemId = i.ItemId,
+                                    number = 1
+                                });
+                            }
                         }
-                    }
-                    if (dropItems.Count > 0)
-                    {
-                        GameController.Instance.Broker.Publish(GameEvent.OnRequestItemSpawn.Get(
-                            this.actor.transform.position,
-                            dropItems,
-                            null
-                        ));
+                        if (dropItems.Count > 0)
+                        {
+                            GameController.Instance.Broker.Publish(GameEvent.OnRequestItemSpawn.Get(
+                                this.actor.transform.position,
+                                dropItems,
+                                null
+                                ));
+                        }
                     }
 
 
