@@ -7,10 +7,14 @@ using UnityEngine.Assertions;
 namespace ER.ActorControllers
 {
     /// <summary>
-    /// 
+    /// アクターのステータスを制御するクラス
     /// </summary>
     public sealed class ActorStatusController
     {
+        /// <summary>
+        /// 回復アイテム所持数
+        /// TODO: 動的に増やせるようにしたほうがいいかも
+        /// </summary>
         public const int RecoveryItemMax = 3;
 
         private IActor actor;
@@ -39,7 +43,7 @@ namespace ER.ActorControllers
 
         public int Experience => this.experience.Value;
 
-        private ReactiveProperty<int> recoveryItemNumber = new ReactiveProperty<int>(RecoveryItemMax);
+        private readonly ReactiveProperty<int> recoveryItemNumber = new ReactiveProperty<int>(RecoveryItemMax);
 
         public IObservable<int> RecoveryItemNumberAsObservable() => this.recoveryItemNumber;
 
@@ -51,10 +55,13 @@ namespace ER.ActorControllers
         {
             this.actor = actor;
             this.baseStatus = status;
+            
+            // 基本ステータスから初期化を行う
             this.hitPointMax.Value = this.baseStatus.hitPoint;
             this.hitPoint.Value = this.HitPointMax;
             this.experience.Value = this.baseStatus.experience;
 
+            // 相手の攻撃が当たったらダメージを受ける
             actor.Broker.Receive<ActorEvent.OnHitOpponentAttack>()
                 .Where(_ => this.CanTakeDamage())
                 .Subscribe(x =>
@@ -63,6 +70,7 @@ namespace ER.ActorControllers
                 })
                 .AddTo(actor.Disposables);
 
+            // リスポーン時に各種パラメータを設定する
             actor.Broker.Receive<ActorEvent.OnRespawned>()
                 .Subscribe(_ =>
                 {
@@ -71,10 +79,12 @@ namespace ER.ActorControllers
                     this.recoveryItemNumber.Value = RecoveryItemMax;
                 })
                 .AddTo(actor.Disposables);
-
+            
+            // チェックポイントに入ったら各種パラメータを設定する
             actor.Broker.Receive<ActorEvent.OnInteractedCheckPoint>()
                 .Subscribe(_ =>
                 {
+                    this.hitPoint.Value = this.HitPointMax;
                     this.recoveryItemNumber.Value = RecoveryItemMax;
                 })
                 .AddTo(actor.Disposables);
