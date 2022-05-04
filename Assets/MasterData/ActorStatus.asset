@@ -73,3 +73,33 @@ MonoBehaviour:
       holyCutRate: 0
       darkCutRate: 0
       experience: 100
+  - id: 20101
+    actorPrefab: {fileID: 9119910791474521852, guid: ad2b3094441456f438f9b0391f636d13, type: 3}
+    statusData:
+      name: Actor/Name020200
+      hitPoint: 100
+      physicsAttack: 38
+      magicAttack: 0
+      fireAttack: 0
+      earthAttack: 0
+      thunderAttack: 0
+      waterAttack: 0
+      holyAttack: 0
+      darkAttack: 0
+      physicsDefense: 38
+      magicDefense: 29
+      fireDefense: 30
+      earthDefense: 30
+      thunderDefense: 30
+      waterDefense: 30
+      holyDefense: 30
+      darkDefense: 30
+      physicsCutRate: 0
+      magicCutRate: 0
+      fireCutRate: 0
+      earthCutRate: 0
+      thunderCutRate: 0
+      waterCutRate: 0
+      holyCutRate: 0
+      darkCutRate: 0
+      experience: 100

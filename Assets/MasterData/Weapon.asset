@@ -183,3 +183,37 @@ MonoBehaviour:
       minAttack: 0
       maxAttack: 0
       growthType: 0
+  - id: Weapon/Name020201
+    equipmentControllerPrefab: {fileID: 2535734517464561581, guid: 00bcabdf2663a28459e2c7eff6a0e7e4, type: 3}
+    physics:
+      minAttack: 0
+      maxAttack: 0
+      growthType: 0
+    magic:
+      minAttack: 0
+      maxAttack: 0
+      growthType: 0
+    fire:
+      minAttack: 0
+      maxAttack: 0
+      growthType: 0
+    earth:
+      minAttack: 0
+      maxAttack: 0
+      growthType: 0
+    thunder:
+      minAttack: 0
+      maxAttack: 0
+      growthType: 0
+    water:
+      minAttack: 0
+      maxAttack: 0
+      growthType: 0
+    holy:
+      minAttack: 0
+      maxAttack: 0
+      growthType: 0
+    dark:
+      minAttack: 0
+      maxAttack: 0
+      growthType: 0

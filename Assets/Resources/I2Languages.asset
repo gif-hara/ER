@@ -247,6 +247,14 @@ MonoBehaviour:
       - 
       Flags: 0000
       Languages_Touch: []
+    - Term: Weapon/Name020201
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u30B0\u30EC\u30FC\u30C8\u30BD\u30FC\u30C9\uFF08\u6575\uFF09"
+      - 
+      Flags: 0000
+      Languages_Touch: []
     - Term: Shield/Name010101
       TermType: 0
       Description: 
@@ -366,7 +374,7 @@ MonoBehaviour:
     Google_WebServiceURL: https://script.google.com/macros/s/AKfycbyF0yeaJl5TfgY6r059oCUDjbulYEndJLFNq6Q7/exec
     Google_SpreadsheetKey: 1UKcNrFW7zKUH617RzHOCnP1JoEKPtbbJkPmgc0Hgkso
     Google_SpreadsheetName: I2Loc ER Localization
-    Google_LastUpdatedVersion: 1649945424999
+    Google_LastUpdatedVersion: 1651640175976
     Google_Password: change_this
     GoogleUpdateFrequency: 1
     GoogleInEditorCheckFrequency: 1
