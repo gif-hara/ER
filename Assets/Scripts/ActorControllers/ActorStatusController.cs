@@ -70,7 +70,6 @@ namespace ER.ActorControllers
                     this.TakeDamage(x.OpponentEquipmentController);
 
                     var knockbackVelocity = x.OpponentEquipmentController.transform.up * x.OpponentEquipmentController.KnockbackPower;
-                    Debug.Log($"{this.actor.gameObject.name} {knockbackVelocity}");
                     this.actor.MotionController.AddKnockback(knockbackVelocity);
                 })
                 .AddTo(actor.Disposables);

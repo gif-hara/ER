@@ -63,23 +63,4 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/ActorControllers/ActorStatusController.cs</url>
-          <line>72</line>
-          <properties documentPath="C:\Users\hkmp5\Documents\UnityProjects\ER\Assets\Scripts\ActorControllers\ActorStatusController.cs" initialLine="72" containingFunctionPresentation="lambda expression inside method 'Setup'">
-            <startOffsets>
-              <option value="2450" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2513" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
 </project>
