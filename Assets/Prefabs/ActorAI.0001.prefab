@@ -87,6 +87,8 @@ MonoBehaviour:
       data:
         attackClip: {fileID: 7400000, guid: 2a35d019580d7fe4aae92973a484dfab, type: 2}
         power: 1
+        knockBackAccumulate: 1
+        knockBackPower: 0
         handType: 1
     00000007:
       type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
@@ -179,6 +181,8 @@ MonoBehaviour:
       data:
         attackClip: {fileID: 7400000, guid: dab380fc36e2b3b4489829b12adbf91a, type: 2}
         power: 1
+        knockBackAccumulate: 1
+        knockBackPower: 0
         handType: 1
     00000007:
       type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
@@ -271,6 +275,8 @@ MonoBehaviour:
       data:
         attackClip: {fileID: 7400000, guid: 76ae05acd3f8f9c4392f37e01d105bbf, type: 2}
         power: 1
+        knockBackAccumulate: 1
+        knockBackPower: 0
         handType: 1
     00000007:
       type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
@@ -386,6 +392,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actor: {fileID: 0}
   initialAI: {fileID: 7775011032296511865}
+  onKnockBackedAI: {fileID: 7775011032296511865}
   rightEquipmentSelector:
     id: 0
   references:
