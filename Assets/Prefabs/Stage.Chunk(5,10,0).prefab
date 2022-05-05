@@ -1,11 +1,11 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &97690325070083255
+--- !u!1001 &4764480240637643404
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 8431127945787105823}
+    m_TransformParent: {fileID: 8051078138369240604}
     m_Modifications:
     - target: {fileID: 515335713502181670, guid: 6413931d914f59641a7cc78030687b86, type: 3}
       propertyPath: m_RootOrder
@@ -57,75 +57,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2055923182503753141, guid: 6413931d914f59641a7cc78030687b86, type: 3}
       propertyPath: m_LocalAABB.m_Center.y
-      value: 20.009506
+      value: 20.176163
       objectReference: {fileID: 0}
     - target: {fileID: 2055923182503753141, guid: 6413931d914f59641a7cc78030687b86, type: 3}
       propertyPath: m_LocalAABB.m_Extent.y
-      value: 20.009506
-      objectReference: {fileID: 0}
-    - target: {fileID: 7172348309188147057, guid: 6413931d914f59641a7cc78030687b86, type: 3}
-      propertyPath: m_Spline.m_ControlPoints.Array.data[0].position.x
-      value: 21.29779
-      objectReference: {fileID: 0}
-    - target: {fileID: 7172348309188147057, guid: 6413931d914f59641a7cc78030687b86, type: 3}
-      propertyPath: m_Spline.m_ControlPoints.Array.data[0].position.y
-      value: 10.013123
+      value: 20.176163
       objectReference: {fileID: 0}
     - target: {fileID: 7172348309188147057, guid: 6413931d914f59641a7cc78030687b86, type: 3}
       propertyPath: m_Spline.m_ControlPoints.Array.data[1].position.x
-      value: 10.82309
+      value: 6.8702545
       objectReference: {fileID: 0}
     - target: {fileID: 7172348309188147057, guid: 6413931d914f59641a7cc78030687b86, type: 3}
       propertyPath: m_Spline.m_ControlPoints.Array.data[1].position.y
-      value: 40.019012
+      value: 40.352325
       objectReference: {fileID: 0}
     - target: {fileID: 8525523417283908062, guid: 6413931d914f59641a7cc78030687b86, type: 3}
       propertyPath: m_Name
       value: Stage.Building.Wall.ClosedShape
       objectReference: {fileID: 0}
     - target: {fileID: 9193097152218121701, guid: 6413931d914f59641a7cc78030687b86, type: 3}
-      propertyPath: m_Points.Array.data[0].x
-      value: 21.29779
-      objectReference: {fileID: 0}
-    - target: {fileID: 9193097152218121701, guid: 6413931d914f59641a7cc78030687b86, type: 3}
-      propertyPath: m_Points.Array.data[0].y
-      value: 10.013123
-      objectReference: {fileID: 0}
-    - target: {fileID: 9193097152218121701, guid: 6413931d914f59641a7cc78030687b86, type: 3}
       propertyPath: m_Points.Array.data[1].x
-      value: 10.82309
+      value: 6.8702545
       objectReference: {fileID: 0}
     - target: {fileID: 9193097152218121701, guid: 6413931d914f59641a7cc78030687b86, type: 3}
       propertyPath: m_Points.Array.data[1].y
-      value: 40.019012
-      objectReference: {fileID: 0}
-    - target: {fileID: 9193097152218121701, guid: 6413931d914f59641a7cc78030687b86, type: 3}
-      propertyPath: m_Points.Array.data[4].x
-      value: 22.206581
-      objectReference: {fileID: 0}
-    - target: {fileID: 9193097152218121701, guid: 6413931d914f59641a7cc78030687b86, type: 3}
-      propertyPath: m_Points.Array.data[4].y
-      value: 9.526558
-      objectReference: {fileID: 0}
-    - target: {fileID: 9193097152218121701, guid: 6413931d914f59641a7cc78030687b86, type: 3}
-      propertyPath: m_Points.Array.data[5].x
-      value: 21.536072
-      objectReference: {fileID: 0}
-    - target: {fileID: 9193097152218121701, guid: 6413931d914f59641a7cc78030687b86, type: 3}
-      propertyPath: m_Points.Array.data[5].y
-      value: 9.885549
+      value: 40.352325
       objectReference: {fileID: 0}
     - target: {fileID: 9193097152218121701, guid: 6413931d914f59641a7cc78030687b86, type: 3}
       propertyPath: m_Points.Array.data[6].x
-      value: 21.29779
-      objectReference: {fileID: 0}
-    - target: {fileID: 9193097152218121701, guid: 6413931d914f59641a7cc78030687b86, type: 3}
-      propertyPath: m_Points.Array.data[6].y
-      value: 10.013123
+      value: -0.00000023841858
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6413931d914f59641a7cc78030687b86, type: 3}
---- !u!1001 &4888929734335955562
+--- !u!1001 &6440914288891367017
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -134,7 +98,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3952354535895392372, guid: 2546e3a53baad8148bf7434a53a5ea5d, type: 3}
       propertyPath: m_Name
-      value: Stage.Chunk(6,8,0)
+      value: Stage.Chunk(5,10,0)
       objectReference: {fileID: 0}
     - target: {fileID: 3952354535895392373, guid: 2546e3a53baad8148bf7434a53a5ea5d, type: 3}
       propertyPath: m_RootOrder
@@ -182,8 +146,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2546e3a53baad8148bf7434a53a5ea5d, type: 3}
---- !u!4 &8431127945787105823 stripped
+--- !u!4 &8051078138369240604 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3952354535895392373, guid: 2546e3a53baad8148bf7434a53a5ea5d, type: 3}
-  m_PrefabInstance: {fileID: 4888929734335955562}
+  m_PrefabInstance: {fileID: 6440914288891367017}
   m_PrefabAsset: {fileID: 0}
