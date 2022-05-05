@@ -68,9 +68,6 @@ namespace ER.ActorControllers
                 .Subscribe(x =>
                 {
                     this.TakeDamage(x.OpponentEquipmentController);
-                    
-                    var knockBackVelocity = x.OpponentEquipmentController.transform.up * x.OpponentEquipmentController.KnockbackPower;
-                    this.actor.MotionController.AddKnockBack(knockBackVelocity);
                 })
                 .AddTo(actor.Disposables);
 
@@ -117,6 +114,10 @@ namespace ER.ActorControllers
             return this.RecoveryItemNumber > 0;
         }
 
+        /// <summary>
+        /// 攻撃を受けた武器をもとにダメージを受ける
+        /// </summary>
+        /// <param name="equipmentController"></param>
         private void TakeDamage(EquipmentController equipmentController)
         {
             if (this.isAlreadyDead)
@@ -130,10 +131,21 @@ namespace ER.ActorControllers
                 this.actor,
                 equipmentController.Power
                 );
-            TakeDamage(damage);
+            TakeDamageRaw(damage);
+            
+            // ダメージ計算後、死亡していない場合は諸々の処理を行う
+            if (!this.isAlreadyDead)
+            {
+                // 武器に設定されているノックバックを適用する
+                var knockBackVelocity = equipmentController.transform.up * equipmentController.KnockbackPower;
+                this.actor.MotionController.AddKnockBack(knockBackVelocity);
+            }
         }
 
-        private void TakeDamage(int damage)
+        /// <summary>
+        /// ダメージを受ける
+        /// </summary>
+        private void TakeDamageRaw(int damage)
         {
             if (this.isAlreadyDead)
             {
