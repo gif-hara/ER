@@ -63,4 +63,23 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/GameController.cs</url>
+          <line>65</line>
+          <properties documentPath="C:\Users\hkmp5\Documents\UnityProjects\ER\Assets\Scripts\GameController.cs" initialLine="65" containingFunctionPresentation="method 'GetPlayerStartPosition'">
+            <startOffsets>
+              <option value="1950" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2017" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
 </project>

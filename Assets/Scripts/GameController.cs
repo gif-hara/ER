@@ -50,14 +50,36 @@ namespace ER
             Instantiate(gameCameraControllerPrefab);
             var masterDataActorStatus = MasterDataActorStatus.Get(playerActorStatusId);
             var player = masterDataActorStatus.actorPrefab.Spawn(
-                this.playerSpawnPoint.position,
-                this.playerSpawnPoint.localRotation,
+                this.GetPlayerStartPosition(),
+                this.GetPlayerStartRotation(),
                 this.playerActorStatusId
                 );
 
             this.Broker.Publish(GameEvent.OnRequestOpenInputTutorial.Get());
             
             this.IsGameReady.Value = true;
+        }
+
+        private Vector3 GetPlayerStartPosition()
+        {
+            var sceneContext = SceneContext.GetOrNull<GameSceneContext>();
+            if (sceneContext != null && sceneContext.canOverrideStartTransform)
+            {
+                return sceneContext.startPosition;
+            }
+
+            return this.playerSpawnPoint.position;
+        }
+
+        private Quaternion GetPlayerStartRotation()
+        {
+            var sceneContext = SceneContext.GetOrNull<GameSceneContext>();
+            if (sceneContext != null && sceneContext.canOverrideStartTransform)
+            {
+                return sceneContext.startRotation;
+            }
+
+            return this.playerSpawnPoint.localRotation;
         }
     }
 }
