@@ -59,6 +59,11 @@ namespace ER.ActorControllers
                          case ActorStateController.StateType.Attack:
                              this.advancedEntry = false;
                              break;
+                         case ActorStateController.StateType.KnockBack:
+                             moveSpeedRate = 0.0f;
+                             invisible = false;
+                             advancedEntry = false;
+                             break;
                      }
                  })
                  .AddTo(actor.Disposables);

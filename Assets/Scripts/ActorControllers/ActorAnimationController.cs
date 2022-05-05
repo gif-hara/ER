@@ -39,6 +39,11 @@ namespace ER.ActorControllers
                                 {
                                     this.ChangeClip(this.idleClip);
                                 }
+
+                                if (x.NextState == ActorStateController.StateType.KnockBack)
+                                {
+                                    this.ChangeClip(this.idleClip);
+                                }
                             })
                  .AddTo(actor)
                  .AddTo(this);

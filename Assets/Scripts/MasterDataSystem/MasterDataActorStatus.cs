@@ -30,6 +30,7 @@ namespace ER.MasterDataSystem
                 Actor actorPrefab,
                 string name,
                 int hitPoint,
+                int knockBackEndurance,
                 int physicsAttack,
                 int magicAttack,
                 int fireAttack,
@@ -63,6 +64,7 @@ namespace ER.MasterDataSystem
                 {
                     name = name,
                     hitPoint = hitPoint,
+                    knockBackEndurance = knockBackEndurance,
                     physicsAttack = physicsAttack,
                     magicAttack = magicAttack,
                     fireAttack = fireAttack,
@@ -118,6 +120,7 @@ namespace ER.MasterDataSystem
             public string PrefabName;
             public string Name;
             public string HitPoint;
+            public string KnockBackEndurance;
             public string PhysicsAttack;
             public string MagicAttack;
             public string FireAttack;
@@ -149,6 +152,7 @@ namespace ER.MasterDataSystem
                 this.GetActorPrefab(),
                 $"Actor/{this.Name}",
                 int.Parse(this.HitPoint),
+                int.Parse(this.KnockBackEndurance),
                 int.Parse(this.PhysicsAttack),
                 int.Parse(this.MagicAttack),
                 int.Parse(this.FireAttack),

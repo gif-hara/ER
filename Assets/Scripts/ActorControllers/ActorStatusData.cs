@@ -16,6 +16,14 @@ namespace ER.ActorControllers
 
         public int hitPoint = default;
 
+        /// <summary>
+        /// ノックバック耐久値
+        /// </summary>
+        /// <remarks>
+        /// 基本的にダメージ量が蓄積されて、この値を超えた場合にノックバックするようになる
+        /// </remarks>
+        public int knockBackEndurance = default;
+
         public int physicsAttack = default;
 
         public int magicAttack = default;

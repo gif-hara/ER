@@ -28,13 +28,25 @@ namespace ER.ActorControllers
 
         private readonly ReactiveProperty<int> hitPoint = new ReactiveProperty<int>();
 
+        private readonly ReactiveProperty<int> knockBackEnduranceMax = new ReactiveProperty<int>();
+        
+        private readonly ReactiveProperty<int> knockBackEndurance = new ReactiveProperty<int>();
+
         public IObservable<int> HitPointMaxAsObservable() => this.hitPointMax;
 
         public IObservable<int> HitPointAsObservable() => this.hitPoint;
 
+        public IObservable<int> KnockBackEnduranceMaxAsObservable() => this.knockBackEnduranceMax;
+        
+        public IObservable<int> KnockBackEnduranceAsObservable() => this.knockBackEndurance;
+
         public int HitPointMax => this.hitPointMax.Value;
 
         public int HitPoint => this.hitPoint.Value;
+
+        public int KnockBackEnduranceMax => this.knockBackEnduranceMax.Value;
+        
+        public int KnockBackEndurance => this.knockBackEndurance.Value;
 
         public float HitPointRate => (float)this.HitPoint / this.HitPointMax;
 
@@ -60,6 +72,8 @@ namespace ER.ActorControllers
             // 基本ステータスから初期化を行う
             this.hitPointMax.Value = this.baseStatus.hitPoint;
             this.hitPoint.Value = this.HitPointMax;
+            this.knockBackEnduranceMax.Value = this.baseStatus.knockBackEndurance;
+            this.knockBackEndurance.Value = 0;
             this.experience.Value = this.baseStatus.experience;
 
             // 相手の攻撃が当たったらダメージを受ける
@@ -137,8 +151,27 @@ namespace ER.ActorControllers
             if (!this.isAlreadyDead)
             {
                 // 武器に設定されているノックバックを適用する
-                var knockBackVelocity = equipmentController.transform.up * equipmentController.KnockbackPower;
+                var knockBackVelocity = equipmentController.transform.up * equipmentController.KnockbBackPower;
                 this.actor.MotionController.AddKnockBack(knockBackVelocity);
+                
+                // ノックバックが起こるか計算する
+                {
+                    var knockBackEndurance = this.knockBackEndurance.Value;
+                    knockBackEndurance += Mathf.FloorToInt(damage * equipmentController.KnockBackAccumulate);
+                
+                    // 耐久値が超えた場合はノックバック状態になる
+                    if (knockBackEndurance >= this.KnockBackEnduranceMax)
+                    {
+                        // 固定のノックバック値を加算する
+                        knockBackVelocity = equipmentController.transform.up * 20;
+                        this.actor.MotionController.AddKnockBack(knockBackVelocity);
+
+                        this.actor.StateController.ChangeRequest(ActorStateController.StateType.KnockBack);
+                        knockBackEndurance = 0;
+                    }
+
+                    this.knockBackEndurance.Value = knockBackEndurance;
+                }
             }
         }
 

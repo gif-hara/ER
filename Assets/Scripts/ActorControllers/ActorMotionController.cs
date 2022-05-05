@@ -72,6 +72,8 @@ namespace ER.ActorControllers
                     {
                         this.EndLookAt();
                     }
+                    
+                    this.knockBackVelocity = Vector2.zero;
                 })
                 .AddTo(actor.Disposables);
 
@@ -79,6 +81,23 @@ namespace ER.ActorControllers
                 .Subscribe(x =>
                 {
                     this.CheckPoint = x.CheckPoint.transform.position;
+                })
+                .AddTo(actor.Disposables);
+
+            actor.Broker.Receive<ActorEvent.OnChangedStateType>()
+                .Subscribe(x =>
+                {
+                    if (x.NextState == ActorStateController.StateType.KnockBack)
+                    {
+                        // ノックバック値が無くなったら移動可能になる
+                        this.actor.gameObject.UpdateAsObservable()
+                            .TakeUntil(this.actor.Broker.Receive<ActorEvent.OnChangedStateType>())
+                            .Where(_ => this.knockBackVelocity.sqrMagnitude <= 0)
+                            .Subscribe(_ =>
+                            {
+                                this.actor.StateController.ChangeRequest(ActorStateController.StateType.Movable);
+                            });
+                    }
                 })
                 .AddTo(actor.Disposables);
         }

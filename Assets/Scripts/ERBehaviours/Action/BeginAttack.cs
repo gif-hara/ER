@@ -23,6 +23,12 @@ namespace ER.ERBehaviour
         private float power = 1.0f;
 
         /// <summary>
+        /// ノックバック蓄積値の係数
+        /// </summary>
+        [SerializeField]
+        private float knockBackAccumulate = 1.0f;
+
+        /// <summary>
         /// ノックバックの威力
         /// </summary>
         [SerializeField]
@@ -48,7 +54,8 @@ namespace ER.ERBehaviour
                  .AddTo(equipmentController);
 
             equipmentController.Power = this.power;
-            equipmentController.KnockbackPower = this.knockBackPower;
+            equipmentController.KnockBackAccumulate = this.knockBackAccumulate;
+            equipmentController.KnockbBackPower = this.knockBackPower;
             actor.StateController.ChangeRequest(ActorStateController.StateType.Attack);
         }
     }

@@ -36,9 +36,14 @@ namespace ER.EquipmentSystems
         public float Power { get; set; }
         
         /// <summary>
+        /// ノックバック蓄積値の係数
+        /// </summary>
+        public float KnockBackAccumulate { get; set; }
+        
+        /// <summary>
         /// 攻撃した際のノックバックの威力
         /// </summary>
-        public float KnockbackPower { get; set; }
+        public float KnockbBackPower { get; set; }
 
         public string ItemInstanceId { get; private set; }
 
