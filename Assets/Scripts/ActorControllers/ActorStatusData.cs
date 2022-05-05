@@ -73,15 +73,6 @@ namespace ER.ActorControllers
         public float darkCutRate = default;
         
         /// <summary>
-        /// ノックバックの減衰率
-        /// </summary>
-        /// <remarks>
-        /// <c>1.0f</c>で全くノックバックしなくなります
-        /// </remarks>
-        [Range(-1.0f, 1.0f)]
-        public float knockbackCutRate = default;
-
-        /// <summary>
         /// 経験値
         /// </summary>
         public int experience;

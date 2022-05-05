@@ -27,7 +27,7 @@ namespace ER.ActorControllers
         /// <summary>
         /// ノックバックによる移動量
         /// </summary>
-        private Vector2 knockbackVelocity;
+        private Vector2 knockBackVelocity;
 
         /// <summary>
         /// 向いている方向
@@ -108,9 +108,9 @@ namespace ER.ActorControllers
         /// <summary>
         /// ノックバック移動量を加算する
         /// </summary>
-        public void AddKnockback(Vector2 velocity)
+        public void AddKnockBack(Vector2 velocity)
         {
-            this.knockbackVelocity += velocity;
+            this.knockBackVelocity += velocity;
         }
 
         /// <summary>
@@ -162,19 +162,19 @@ namespace ER.ActorControllers
             var velocity =
                 (this.moveDirection * Time.deltaTime * this.motionData.moveSpeed * actor.AnimationParameter.moveSpeedRate)
                 + this.rawVelocity
-                + this.knockbackVelocity * Time.deltaTime;
+                + this.knockBackVelocity * Time.deltaTime;
             var t = this.actor.transform;
             this.actor.Rigidbody2D.MovePosition(new Vector2(t.position.x, t.position.y) + velocity);
             this.moveDirection = Vector2.zero;
             this.rawVelocity = Vector2.zero;
 
-            if (this.knockbackVelocity.magnitude >= 0.1f)
+            if (this.knockBackVelocity.magnitude >= 0.1f)
             {
-                this.knockbackVelocity -= this.knockbackVelocity.normalized * Time.deltaTime * 30.0f;
+                this.knockBackVelocity -= this.knockBackVelocity.normalized * Time.deltaTime * 30.0f;
             }
             else
             {
-                this.knockbackVelocity = Vector2.zero;
+                this.knockBackVelocity = Vector2.zero;
             }
         }
 

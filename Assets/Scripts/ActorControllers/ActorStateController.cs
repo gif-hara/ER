@@ -18,6 +18,7 @@ namespace ER.ActorControllers
             Avoidance,
             Guard,
             UseRecoveryItem,
+            KnockBack,
         }
 
         private StateController<StateType> stateController = new StateController<StateType>(StateType.Invalid);

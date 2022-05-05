@@ -26,7 +26,7 @@ namespace ER.ERBehaviour
         /// ノックバックの威力
         /// </summary>
         [SerializeField]
-        private float knockbackPower = default;
+        private float knockBackPower = default;
         
         [SerializeField]
         private HandType handType = HandType.Right;
@@ -48,7 +48,7 @@ namespace ER.ERBehaviour
                  .AddTo(equipmentController);
 
             equipmentController.Power = this.power;
-            equipmentController.KnockbackPower = this.knockbackPower;
+            equipmentController.KnockbackPower = this.knockBackPower;
             actor.StateController.ChangeRequest(ActorStateController.StateType.Attack);
         }
     }

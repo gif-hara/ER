@@ -68,9 +68,9 @@ namespace ER.ActorControllers
                 .Subscribe(x =>
                 {
                     this.TakeDamage(x.OpponentEquipmentController);
-
-                    var knockbackVelocity = x.OpponentEquipmentController.transform.up * x.OpponentEquipmentController.KnockbackPower;
-                    this.actor.MotionController.AddKnockback(knockbackVelocity);
+                    
+                    var knockBackVelocity = x.OpponentEquipmentController.transform.up * x.OpponentEquipmentController.KnockbackPower;
+                    this.actor.MotionController.AddKnockBack(knockBackVelocity);
                 })
                 .AddTo(actor.Disposables);
 
