@@ -1,0 +1,532 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2375870346497763666
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8235826530762173901}
+  - component: {fileID: 5405623781290818235}
+  m_Layer: 0
+  m_Name: Attack.02
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8235826530762173901
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2375870346497763666}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4988239245626438203}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5405623781290818235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2375870346497763666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48aabb49b00f5456f918fdae8f250caf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviours:
+  - trigger:
+      id: 0
+    action:
+      id: 1
+  - trigger:
+      id: 2
+    action:
+      id: 3
+  references:
+    version: 1
+    00000000:
+      type: {class: AndTrigger, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        triggers:
+        - id: 4
+        - id: 5
+    00000001:
+      type: {class: SequenceAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        actions:
+        - id: 6
+        - id: 7
+    00000002:
+      type: {class: DistancePlayer, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        distanceThreshold: 10
+        isIn: 0
+    00000003:
+      type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        nextAI: {fileID: 4321658293369840856}
+    00000004:
+      type: {class: CanNextAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+    00000005:
+      type: {class: ActorState, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        stateType: 2
+        isMatch: 1
+    00000006:
+      type: {class: BeginAttack, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        attackClip: {fileID: 7400000, guid: 0f6427f7f42bce24c982ecb0ef85baee, type: 2}
+        power: 1
+        handType: 1
+    00000007:
+      type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        nextAI: {fileID: 8097593678614477027}
+--- !u!1 &2718724686943471241
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6080876158974836222}
+  - component: {fileID: 7012669081198722674}
+  m_Layer: 0
+  m_Name: Attack.01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6080876158974836222
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2718724686943471241}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4988239245626438203}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7012669081198722674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2718724686943471241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48aabb49b00f5456f918fdae8f250caf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviours:
+  - trigger:
+      id: 0
+    action:
+      id: 1
+  - trigger:
+      id: 2
+    action:
+      id: 3
+  references:
+    version: 1
+    00000000:
+      type: {class: AndTrigger, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        triggers:
+        - id: 4
+        - id: 5
+    00000001:
+      type: {class: SequenceAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        actions:
+        - id: 6
+        - id: 7
+    00000002:
+      type: {class: DistancePlayer, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        distanceThreshold: 10
+        isIn: 0
+    00000003:
+      type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        nextAI: {fileID: 4321658293369840856}
+    00000004:
+      type: {class: CanNextAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+    00000005:
+      type: {class: ActorState, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        stateType: 1
+        isMatch: 1
+    00000006:
+      type: {class: BeginAttack, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        attackClip: {fileID: 7400000, guid: 211bdf3f0cd79c04188f8169a1b5eaf9, type: 2}
+        power: 1
+        handType: 1
+    00000007:
+      type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        nextAI: {fileID: 5405623781290818235}
+--- !u!1 &3375993876247219781
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5229333428634950036}
+  - component: {fileID: 8097593678614477027}
+  m_Layer: 0
+  m_Name: Attack.03
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5229333428634950036
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3375993876247219781}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4988239245626438203}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8097593678614477027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3375993876247219781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48aabb49b00f5456f918fdae8f250caf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviours:
+  - trigger:
+      id: 0
+    action:
+      id: 1
+  - trigger:
+      id: 2
+    action:
+      id: 3
+  references:
+    version: 1
+    00000000:
+      type: {class: AndTrigger, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        triggers:
+        - id: 4
+        - id: 5
+    00000001:
+      type: {class: SequenceAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        actions:
+        - id: 6
+        - id: 7
+    00000002:
+      type: {class: DistancePlayer, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        distanceThreshold: 10
+        isIn: 0
+    00000003:
+      type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        nextAI: {fileID: 4321658293369840856}
+    00000004:
+      type: {class: CanNextAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+    00000005:
+      type: {class: ActorState, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        stateType: 2
+        isMatch: 1
+    00000006:
+      type: {class: BeginAttack, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        attackClip: {fileID: 7400000, guid: 0cc2dacd17d105c4bb45110c170ac758, type: 2}
+        power: 1
+        handType: 1
+    00000007:
+      type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        nextAI: {fileID: 4321658293369840856}
+--- !u!1 &4418002660766649390
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3358016901872351121}
+  - component: {fileID: 7775011032296511865}
+  m_Layer: 0
+  m_Name: Idle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3358016901872351121
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4418002660766649390}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4988239245626438203}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7775011032296511865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4418002660766649390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48aabb49b00f5456f918fdae8f250caf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviours:
+  - trigger:
+      id: 0
+    action:
+      id: 1
+  references:
+    version: 1
+    00000000:
+      type: {class: DistancePlayer, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        distanceThreshold: 15
+        isIn: 1
+    00000001:
+      type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        nextAI: {fileID: 5483397063029894191}
+--- !u!1 &5505275077421206325
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4988239245626438203}
+  - component: {fileID: 8166717016945869330}
+  m_Layer: 0
+  m_Name: ActorAI.0002
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4988239245626438203
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5505275077421206325}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3358016901872351121}
+  - {fileID: 3155840147896290871}
+  - {fileID: 4648654794383708831}
+  - {fileID: 6080876158974836222}
+  - {fileID: 8235826530762173901}
+  - {fileID: 5229333428634950036}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8166717016945869330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5505275077421206325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec5fc63732bdd594cb85a72f14f3a36d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actor: {fileID: 0}
+  initialAI: {fileID: 7775011032296511865}
+  rightEquipmentSelector:
+    id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: WeaponSelector, ns: ER.EquipmentSystems, asm: Assembly-CSharp}
+      data:
+        weaponDataId: Weapon/Name020301
+--- !u!1 &7136252245139185895
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3155840147896290871}
+  - component: {fileID: 5483397063029894191}
+  m_Layer: 0
+  m_Name: BeginLookAtPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3155840147896290871
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7136252245139185895}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4988239245626438203}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5483397063029894191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7136252245139185895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48aabb49b00f5456f918fdae8f250caf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviours:
+  - trigger:
+      id: 0
+    action:
+      id: 1
+  references:
+    version: 1
+    00000000:
+      type: {class: EveryUpdate, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+    00000001:
+      type: {class: SequenceAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        actions:
+        - id: 2
+        - id: 3
+    00000002:
+      type: {class: LookAtActor, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        actorType: 1
+    00000003:
+      type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        nextAI: {fileID: 4321658293369840856}
+--- !u!1 &7977677344987378303
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4648654794383708831}
+  - component: {fileID: 4321658293369840856}
+  m_Layer: 0
+  m_Name: ChasePlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4648654794383708831
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7977677344987378303}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4988239245626438203}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4321658293369840856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7977677344987378303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48aabb49b00f5456f918fdae8f250caf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviours:
+  - trigger:
+      id: 0
+    action:
+      id: 1
+  - trigger:
+      id: 2
+    action:
+      id: 3
+  references:
+    version: 1
+    00000000:
+      type: {class: EveryUpdate, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+    00000001:
+      type: {class: ActorMove, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        offsetAngle: 0
+        moveSpeed: 1
+    00000002:
+      type: {class: DistancePlayer, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        distanceThreshold: 3
+        isIn: 1
+    00000003:
+      type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        nextAI: {fileID: 7012669081198722674}
