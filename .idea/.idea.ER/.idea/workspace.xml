@@ -46,10 +46,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="1292">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="1292" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -67,17 +67,17 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/GameController.cs</url>
-          <line>65</line>
-          <properties documentPath="C:\Users\hkmp5\Documents\UnityProjects\ER\Assets\Scripts\GameController.cs" initialLine="65" containingFunctionPresentation="method 'GetPlayerStartPosition'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/ActorControllers/ActorStatusController.cs</url>
+          <line>72</line>
+          <properties documentPath="C:\Users\hkmp5\Documents\UnityProjects\ER\Assets\Scripts\ActorControllers\ActorStatusController.cs" initialLine="72" containingFunctionPresentation="lambda expression inside method 'Setup'">
             <startOffsets>
-              <option value="1950" />
+              <option value="2450" />
             </startOffsets>
             <endOffsets>
-              <option value="2017" />
+              <option value="2513" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="1" />
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

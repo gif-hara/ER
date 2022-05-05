@@ -4879,7 +4879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa339a7ba7d84744b8f48a9fceb9e805, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpawnPoint: {fileID: 51203329}
+  playerSpawnPoint: {fileID: 894316996}
 --- !u!1001 &1673762405
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -34,6 +34,11 @@ namespace ER.EquipmentSystems
         /// 攻撃した際のダメージ係数
         /// </summary>
         public float Power { get; set; }
+        
+        /// <summary>
+        /// 攻撃した際のノックバックの威力
+        /// </summary>
+        public float KnockbackPower { get; set; }
 
         public string ItemInstanceId { get; private set; }
 

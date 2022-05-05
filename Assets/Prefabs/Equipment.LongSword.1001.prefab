@@ -62,6 +62,7 @@ MonoBehaviour:
       data:
         attackClip: {fileID: 7400000, guid: 803f89d49e09b5f4d88b204bbc96ee7b, type: 2}
         power: 1
+        knockbackPower: 0
         handType: 1
     00000002:
       type: {class: OnBeginEquipment, ns: ER.ERBehaviour, asm: Assembly-CSharp}
@@ -135,6 +136,7 @@ MonoBehaviour:
       data:
         attackClip: {fileID: 7400000, guid: cf7a761428f14504bb02941bc5dbf98b, type: 2}
         power: 1
+        knockbackPower: 20
         handType: 1
     00000002:
       type: {class: OnBeginEquipment, ns: ER.ERBehaviour, asm: Assembly-CSharp}
@@ -208,6 +210,7 @@ MonoBehaviour:
       data:
         attackClip: {fileID: 7400000, guid: 7c5bfd0d66263e641a0dcc7892b4b8c6, type: 2}
         power: 1
+        knockbackPower: 0
         handType: 1
     00000002:
       type: {class: OnBeginEquipment, ns: ER.ERBehaviour, asm: Assembly-CSharp}

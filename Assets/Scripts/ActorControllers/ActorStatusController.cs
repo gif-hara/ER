@@ -1,6 +1,7 @@
 using ER.EquipmentSystems;
 using System;
 using UniRx;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -67,6 +68,10 @@ namespace ER.ActorControllers
                 .Subscribe(x =>
                 {
                     this.TakeDamage(x.OpponentEquipmentController);
+
+                    var knockbackVelocity = x.OpponentEquipmentController.transform.up * x.OpponentEquipmentController.KnockbackPower;
+                    Debug.Log($"{this.actor.gameObject.name} {knockbackVelocity}");
+                    this.actor.MotionController.AddKnockback(knockbackVelocity);
                 })
                 .AddTo(actor.Disposables);
 
