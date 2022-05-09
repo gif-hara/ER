@@ -500,7 +500,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2055923182503753141, guid: 6413931d914f59641a7cc78030687b86, type: 3}
       propertyPath: m_DynamicOccludee
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2055923182503753141, guid: 6413931d914f59641a7cc78030687b86, type: 3}
       propertyPath: m_LocalAABB.m_Center.x
@@ -894,6 +894,10 @@ PrefabInstance:
     - target: {fileID: 437184500628916407, guid: d07fc45beeaf36d4d9d63f8e2fa6ca4c, type: 3}
       propertyPath: m_Name
       value: Stage.Building.Miscellaneous.003
+      objectReference: {fileID: 0}
+    - target: {fileID: 437184501019700280, guid: d07fc45beeaf36d4d9d63f8e2fa6ca4c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 437184501019700280, guid: d07fc45beeaf36d4d9d63f8e2fa6ca4c, type: 3}
       propertyPath: m_DynamicOccludee
