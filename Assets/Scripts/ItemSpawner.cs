@@ -3,6 +3,7 @@ using ER.StageControllers;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UniRx;
+using UnityEngine.Playables;
 
 namespace ER
 {
@@ -22,13 +23,14 @@ namespace ER
             GameController.Instance.Broker.Receive<GameEvent.OnRequestItemSpawn>()
             .Subscribe(x =>
             {
-                var item = Instantiate(this.itemPrefab, x.SpawnPoint, Quaternion.identity, this.stageController.CurrentStageChunk.transform);
+                var (spawnPoint, elements, onAcquiredItemAction) = x;
+                var item = Instantiate(this.itemPrefab, spawnPoint, Quaternion.identity, this.stageController.CurrentStageChunk.transform);
                 item.Setup(this.stageController);
-                item.Setup(x.Elements);
+                item.Setup(elements);
                 item.OnAddedItemAsObservable()
                     .Subscribe(_ =>
                     {
-                        x.OnAcquiredItemAction?.Invoke();
+                        onAcquiredItemAction?.Invoke();
                     })
                     .AddTo(this);
             })

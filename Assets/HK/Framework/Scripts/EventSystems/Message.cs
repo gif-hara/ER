@@ -37,6 +37,11 @@
 
             return cache;
         }
+
+        public void Deconstruct(out P1 param1)
+        {
+            param1 = this.param1;
+        }
     }
 
     public abstract class Message<E, P1, P2> : Message
@@ -57,6 +62,12 @@
             cache.param2 = param2;
 
             return cache;
+        }
+
+        public void Deconstruct(out P1 param1, out P2 param2)
+        {
+            param1 = this.param1;
+            param2 = this.param2;
         }
     }
 
@@ -81,6 +92,13 @@
             cache.param3 = param3;
 
             return cache;
+        }
+
+        public void Deconstruct(out P1 param1, out P2 param2, out P3 param3)
+        {
+            param1 = this.param1;
+            param2 = this.param2;
+            param3 = this.param3;
         }
     }
 
@@ -108,6 +126,14 @@
             cache.param4 = param4;
 
             return cache;
+        }
+
+        public void Deconstruct(out P1 param1, out P2 param2, out P3 param3, out P4 param4)
+        {
+            param1 = this.param1;
+            param2 = this.param2;
+            param3 = this.param3;
+            param4 = this.param4;
         }
     }
 }
