@@ -178,10 +178,10 @@ namespace ER
                 this.leftEquipmentSelectors[i].Attach(this.actor, i);
             }
 
-            var headItem = this.actor.InventoryController.AddEquipment(this.headMasterDataId);
-            var torsoItem = this.actor.InventoryController.AddEquipment(this.torsoMasterDataId);
-            var armItem = this.actor.InventoryController.AddEquipment(this.armMasterDataId);
-            var legItem = this.actor.InventoryController.AddEquipment(this.legMasterDataId);
+            var headItem = this.actor.InventoryController.AddEquipment(this.headMasterDataId, false);
+            var torsoItem = this.actor.InventoryController.AddEquipment(this.torsoMasterDataId, false);
+            var armItem = this.actor.InventoryController.AddEquipment(this.armMasterDataId, false);
+            var legItem = this.actor.InventoryController.AddEquipment(this.legMasterDataId, false);
 
             this.actor.EquipmentController.SetArmorItem(ArmorType.Head, headItem.InstanceId);
             this.actor.EquipmentController.SetArmorItem(ArmorType.Torso, torsoItem.InstanceId);
@@ -190,17 +190,17 @@ namespace ER
 
             foreach (var i in this.addWeapons)
             {
-                this.actor.InventoryController.AddEquipment(i);
+                this.actor.InventoryController.AddEquipment(i, false);
             }
 
             foreach (var i in this.addShields)
             {
-                this.actor.InventoryController.AddEquipment(i);
+                this.actor.InventoryController.AddEquipment(i, false);
             }
 
             foreach (var i in this.addArmors)
             {
-                this.actor.InventoryController.AddEquipment(i);
+                this.actor.InventoryController.AddEquipment(i, false);
             }
         }
 

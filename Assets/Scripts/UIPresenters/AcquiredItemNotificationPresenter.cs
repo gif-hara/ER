@@ -34,7 +34,10 @@ namespace ER.UIPresenters
             actor.Broker.Receive<ActorEvent.OnAcquiredItem>()
                 .Subscribe(x =>
                 {
-                    this.acquiredItemNotificationUIView.CreateElement($"{x.MasterDataItem.LocalizedName} *{x.Number}");
+                    if (x.IsShowUI)
+                    {
+                        this.acquiredItemNotificationUIView.CreateElement($"{x.MasterDataItem.LocalizedName} *{x.Number}");
+                    }
                 })
                 .AddTo(actor.Disposables)
                 .AddTo(this);

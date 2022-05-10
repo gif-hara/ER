@@ -29,7 +29,7 @@ namespace ER.StageControllers
         {
             foreach (var i in this.elements)
             {
-                actor.InventoryController.AddItem(i.itemId, i.number);
+                actor.InventoryController.AddItem(i.itemId, i.number, true);
             }
             this.onAddedItemSubject.OnNext(Unit.Default);
             Destroy(this.gameObject);

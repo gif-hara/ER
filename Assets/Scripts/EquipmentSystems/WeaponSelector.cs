@@ -18,7 +18,7 @@ namespace ER.EquipmentSystems
 
         public void Attach(Actor actor, int index)
         {
-            var item = actor.InventoryController.AddEquipment(this.weaponDataId);
+            var item = actor.InventoryController.AddEquipment(this.weaponDataId, false);
             var masterDataWeapon = MasterDataWeapon.Get(item.ItemId);
             actor.EquipmentController.RightHand.Attach(index, masterDataWeapon.EquipmentControllerPrefab, item.InstanceId);
         }

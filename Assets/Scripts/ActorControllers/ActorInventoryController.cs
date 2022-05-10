@@ -43,16 +43,16 @@ namespace ER.ActorControllers
         /// <summary>
         /// <paramref name="itemId"/>を<paramref name="number"/>の数だけ追加する
         /// </summary>
-        public void AddItem(string itemId, int number)
+        public void AddItem(string itemId, int number, bool isShowUI)
         {
             var masterDataItem = MasterDataItem.Get(itemId);
             if (masterDataItem.Category.IsEquipment())
             {
-                AddEquipments(masterDataItem, number);
+                AddEquipments(masterDataItem, number, isShowUI);
             }
             else if (masterDataItem.Category == ItemCategory.Valuable)
             {
-                AddValuables(masterDataItem, number);
+                AddValuables(masterDataItem, number, isShowUI);
             }
             else
             {
@@ -63,7 +63,7 @@ namespace ER.ActorControllers
         /// <summary>
         /// 装備品を追加する
         /// </summary>
-        public Item AddEquipment(MasterDataItem.Record masterDataItem)
+        public Item AddEquipment(MasterDataItem.Record masterDataItem, bool isShowUI)
         {
             Assert.IsTrue(masterDataItem.Category.IsEquipment(), $"{masterDataItem.Id}は装備品ではありません");
 
@@ -74,7 +74,7 @@ namespace ER.ActorControllers
                 this.WeaponLevelDatabase.Add(item.InstanceId, new WeaponLevelData());
             }
 
-            this.actor.Broker.Publish(ActorEvent.OnAcquiredItem.Get(masterDataItem, 1));
+            this.actor.Broker.Publish(ActorEvent.OnAcquiredItem.Get(masterDataItem, 1, isShowUI));
 
             return item;
         }
@@ -82,15 +82,15 @@ namespace ER.ActorControllers
         /// <summary>
         /// 装備品を追加する
         /// </summary>
-        public Item AddEquipment(string itemid)
+        public Item AddEquipment(string itemid, bool isShowUI)
         {
-            return AddEquipment(MasterDataItem.Get(itemid));
+            return AddEquipment(MasterDataItem.Get(itemid), isShowUI);
         }
 
         /// <summary>
         /// 貴重品を追加する
         /// </summary>
-        private void AddValuables(MasterDataItem.Record masterDataItem, int number)
+        private void AddValuables(MasterDataItem.Record masterDataItem, int number, bool isShowUI)
         {
             Assert.AreEqual(masterDataItem.Category, ItemCategory.Valuable);
 
@@ -103,19 +103,19 @@ namespace ER.ActorControllers
 
             this.Valuables[itemId].AddNumber(number);
 
-            this.actor.Broker.Publish(ActorEvent.OnAcquiredItem.Get(masterDataItem, number));
+            this.actor.Broker.Publish(ActorEvent.OnAcquiredItem.Get(masterDataItem, number, isShowUI));
         }
 
         /// <summary>
         /// <paramref name="number"/>の数だけ装備品を追加する
         /// </summary>
-        private void AddEquipments(MasterDataItem.Record masterDataItem, int number)
+        private void AddEquipments(MasterDataItem.Record masterDataItem, int number, bool isShowUI)
         {
             Assert.IsTrue(masterDataItem.Category.IsEquipment(), $"{masterDataItem.Id}は装備品ではありません");
 
             for (var i = 0; i < number; i++)
             {
-                this.AddEquipment(masterDataItem);
+                this.AddEquipment(masterDataItem, isShowUI);
             }
         }
         

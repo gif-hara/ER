@@ -207,7 +207,7 @@ namespace ER.ActorControllers
         /// <summary>
         /// アイテムを獲得した際のメッセージ
         /// </summary>
-        public class OnAcquiredItem : Message<OnAcquiredItem, MasterDataItem.Record, int>
+        public class OnAcquiredItem : Message<OnAcquiredItem, MasterDataItem.Record, int, bool>
         {
             /// <summary>
             /// 獲得したアイテムのマスターデータ
@@ -218,6 +218,11 @@ namespace ER.ActorControllers
             /// 獲得した数
             /// </summary>
             public int Number => this.param2;
+
+            /// <summary>
+            /// 獲得したことをUIに表示するか
+            /// </summary>
+            public bool IsShowUI => this.param3;
         }
     }
 }
