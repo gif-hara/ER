@@ -961,7 +961,23 @@ PrefabInstance:
       propertyPath: m_Points.Array.data[31].y
       value: 0.0000016656122
       objectReference: {fileID: 0}
+    - target: {fileID: 2080344134456705040, guid: aad86716dde630d40a20219183abbb9d, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5302417776914463962, guid: aad86716dde630d40a20219183abbb9d, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6435523027953398521, guid: aad86716dde630d40a20219183abbb9d, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8240274142429802036, guid: aad86716dde630d40a20219183abbb9d, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8441653763525703452, guid: aad86716dde630d40a20219183abbb9d, type: 3}
       propertyPath: m_DynamicOccludee
       value: 0
       objectReference: {fileID: 0}
@@ -3045,6 +3061,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 839259587034966588, guid: 617cbc803a133be48bbf1dd0032e067e, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041783962133157140, guid: 617cbc803a133be48bbf1dd0032e067e, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2924304952388199118, guid: 617cbc803a133be48bbf1dd0032e067e, type: 3}
       propertyPath: m_DynamicOccludee
       value: 0
@@ -5245,7 +5269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa339a7ba7d84744b8f48a9fceb9e805, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpawnPoint: {fileID: 1665981415}
+  playerSpawnPoint: {fileID: 51203329}
 --- !u!1 &1665981414
 GameObject:
   m_ObjectHideFlags: 0
@@ -5270,7 +5294,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1665981414}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 33.9, y: 107.7, z: 0}
+  m_LocalPosition: {x: 19.6, y: 27.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 985515702}
