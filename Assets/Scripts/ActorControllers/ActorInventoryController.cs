@@ -118,5 +118,29 @@ namespace ER.ActorControllers
                 this.AddEquipment(masterDataItem);
             }
         }
+        
+        /// <summary>
+        /// 貴重品の所持数を返す
+        /// </summary>
+        public int GetValuableNumber(string itemId)
+        {
+            return !this.Valuables.ContainsKey(itemId) ? 0 : this.Valuables[itemId].Number;
+        }
+        
+        /// <summary>
+        /// 攻撃力上昇系の貴重品の所持数を返す
+        /// </summary>
+        public int GetAttackValuableNumber(AttackAttributeType attackAttributeType)
+        {
+            return this.GetValuableNumber(ValuableItemUtility.GetAttackId(attackAttributeType));
+        }
+        
+        /// <summary>
+        /// 防御力上昇系の貴重品の所持数を返す
+        /// </summary>
+        public int GetDefenseValuableNumber(AttackAttributeType attackAttributeType)
+        {
+            return this.GetValuableNumber(ValuableItemUtility.GetDefenseId(attackAttributeType));
+        }
     }
 }

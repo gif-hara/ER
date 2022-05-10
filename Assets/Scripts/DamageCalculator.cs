@@ -38,16 +38,20 @@ namespace ER
             AttackAttributeType attackAttributeType
             )
         {
+            const int ValuableItemRate = 2;
+            
             var weaponItem = attackerWeapon.Item;
             var masterDataWeapon = weaponItem.MasterDataItem.ToWeapon();
             var weaponLevelData = attacker.InventoryController.WeaponLevelDatabase[weaponItem.InstanceId];
             var weaponAttack = masterDataWeapon.GetAttackElement(attackAttributeType).Evaluate(weaponLevelData.GetRate(attackAttributeType));
             var attack =
                 attacker.StatusController.BaseStatus.GetAttack(attackAttributeType)
+                + attacker.InventoryController.GetAttackValuableNumber(attackAttributeType) * ValuableItemRate
                 + weaponAttack;
             var defense =
                 defenser.StatusController.BaseStatus.GetDefense(attackAttributeType)
-                + defenser.EquipmentController.GetDefense(attackAttributeType);
+                + defenser.EquipmentController.GetDefense(attackAttributeType)
+                + defenser.InventoryController.GetDefenseValuableNumber(attackAttributeType) * ValuableItemRate;
             var cutRate = defenser.StatusController.BaseStatus.GetCutRate(attackAttributeType);
 
             defense = defense == 0 ? 1 : defense;
