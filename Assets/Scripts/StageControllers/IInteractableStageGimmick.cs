@@ -13,5 +13,10 @@ namespace ER.StageControllers
         /// 対話を開始する
         /// </summary>
         void BeginInteract(Actor actor);
+        
+        /// <summary>
+        /// ナビゲーション用のローカライズ済みメッセージを返す
+        /// </summary>
+        string LocalizedNavigationMessage { get; }
     }
 }

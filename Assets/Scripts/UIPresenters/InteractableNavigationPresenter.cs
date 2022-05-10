@@ -32,6 +32,20 @@ namespace ER.UIPresenters
 
         private void RegisterActorEvent(Actor actor)
         {
+            actor.Broker.Receive<ActorEvent.OnEnterInteractableStageGimmick>()
+                .Subscribe(x =>
+                {
+                    this.interactableNavigationUIView.Message = x.Gimmick.LocalizedNavigationMessage;
+                    this.interactableNavigationUIView.AnimationController.Play(true);
+                })
+                .AddTo(this);
+
+            actor.Broker.Receive<ActorEvent.OnExitInteractableStageGimmick>()
+                .Subscribe(_ =>
+                {
+                    this.interactableNavigationUIView.AnimationController.Play(false);
+                })
+                .AddTo(this);
         }
     }
 }

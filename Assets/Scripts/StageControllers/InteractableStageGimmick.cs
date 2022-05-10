@@ -12,6 +12,11 @@ namespace ER.StageControllers
     public abstract class InteractableStageGimmick : MonoBehaviour, IInteractableStageGimmick
     {
         public abstract void BeginInteract(Actor actor);
+        
+        public abstract string LocalizedNavigationMessage
+        {
+            get;
+        }
 
         public void Setup(StageController stageController)
         {

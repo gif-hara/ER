@@ -35,6 +35,8 @@ namespace ER.StageControllers
             Destroy(this.gameObject);
         }
 
+        public override string LocalizedNavigationMessage => ScriptLocalization.Common.PickUp;
+
         [Serializable]
         public class Element
         {

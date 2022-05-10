@@ -1,4 +1,5 @@
 using ER.ActorControllers;
+using I2.Loc;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -13,5 +14,6 @@ namespace ER.StageControllers
         {
             actor.Broker.Publish(ActorEvent.OnInteractedCheckPoint.Get(this, true));
         }
+        public override string LocalizedNavigationMessage => ScriptLocalization.Common.Rest;
     }
 }

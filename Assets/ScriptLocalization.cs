@@ -42,6 +42,8 @@ namespace I2.Loc
 			public static string Empty 		{ get{ return LocalizationManager.GetTranslation ("Common/Empty"); } }
 			public static string Equipment 		{ get{ return LocalizationManager.GetTranslation ("Common/Equipment"); } }
 			public static string Inventory 		{ get{ return LocalizationManager.GetTranslation ("Common/Inventory"); } }
+			public static string PickUp 		{ get{ return LocalizationManager.GetTranslation ("Common/PickUp"); } }
+			public static string Rest 		{ get{ return LocalizationManager.GetTranslation ("Common/Rest"); } }
 			public static string ShieldInformation 		{ get{ return LocalizationManager.GetTranslation ("Common/ShieldInformation"); } }
 			public static string System 		{ get{ return LocalizationManager.GetTranslation ("Common/System"); } }
 			public static string WeaponInformation 		{ get{ return LocalizationManager.GetTranslation ("Common/WeaponInformation"); } }
@@ -125,6 +127,8 @@ namespace I2.Loc
 		    public const string Empty = "Common/Empty";
 		    public const string Equipment = "Common/Equipment";
 		    public const string Inventory = "Common/Inventory";
+		    public const string PickUp = "Common/PickUp";
+		    public const string Rest = "Common/Rest";
 		    public const string ShieldInformation = "Common/ShieldInformation";
 		    public const string System = "Common/System";
 		    public const string WeaponInformation = "Common/WeaponInformation";
