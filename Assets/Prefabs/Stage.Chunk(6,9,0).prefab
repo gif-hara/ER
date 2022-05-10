@@ -119,7 +119,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2055923182503753141, guid: 6413931d914f59641a7cc78030687b86, type: 3}
       propertyPath: m_LocalAABB.m_Center.x
-      value: 20.000002
+      value: 19.979647
       objectReference: {fileID: 0}
     - target: {fileID: 2055923182503753141, guid: 6413931d914f59641a7cc78030687b86, type: 3}
       propertyPath: m_LocalAABB.m_Center.y
@@ -127,7 +127,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2055923182503753141, guid: 6413931d914f59641a7cc78030687b86, type: 3}
       propertyPath: m_LocalAABB.m_Extent.x
-      value: 20.000002
+      value: 20.020357
       objectReference: {fileID: 0}
     - target: {fileID: 2055923182503753141, guid: 6413931d914f59641a7cc78030687b86, type: 3}
       propertyPath: m_LocalAABB.m_Extent.y
@@ -171,11 +171,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7172348309188147057, guid: 6413931d914f59641a7cc78030687b86, type: 3}
       propertyPath: m_Spline.m_ControlPoints.Array.data[2].position.x
-      value: 0.25372314
+      value: -0.04071045
       objectReference: {fileID: 0}
     - target: {fileID: 7172348309188147057, guid: 6413931d914f59641a7cc78030687b86, type: 3}
       propertyPath: m_Spline.m_ControlPoints.Array.data[2].position.y
-      value: 28.050262
+      value: 28.077026
       objectReference: {fileID: 0}
     - target: {fileID: 7172348309188147057, guid: 6413931d914f59641a7cc78030687b86, type: 3}
       propertyPath: m_Spline.m_ControlPoints.Array.data[3].position.x
@@ -235,11 +235,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9193097152218121701, guid: 6413931d914f59641a7cc78030687b86, type: 3}
       propertyPath: m_Points.Array.data[2].x
-      value: 0.25372314
+      value: -0.04071045
       objectReference: {fileID: 0}
     - target: {fileID: 9193097152218121701, guid: 6413931d914f59641a7cc78030687b86, type: 3}
       propertyPath: m_Points.Array.data[2].y
-      value: 28.050262
+      value: 28.077026
       objectReference: {fileID: 0}
     - target: {fileID: 9193097152218121701, guid: 6413931d914f59641a7cc78030687b86, type: 3}
       propertyPath: m_Points.Array.data[3].x
