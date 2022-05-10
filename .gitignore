@@ -64,3 +64,4 @@ masterdata_sheet_url.txt
 .DS_Store
 Assets/Plugins/Editor.meta
 .idea*
+UserSettings*
