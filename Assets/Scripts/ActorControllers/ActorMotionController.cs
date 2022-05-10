@@ -57,6 +57,7 @@ namespace ER.ActorControllers
             this.actor = actor;
             this.motionData = motionData;
             this.CheckPoint = this.actor.transform.position;
+            this.angle = actor.transform.eulerAngles.z;
             actor.gameObject.UpdateAsObservable()
                 .Subscribe(_ =>
                 {
