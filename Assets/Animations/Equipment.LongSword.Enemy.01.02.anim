@@ -1088,24 +1088,17 @@ AnimationClip:
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.016666668
-    functionName: SetActiveAttackingEquipmentColliderObject
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
   - time: 1.3166667
-    functionName: SetActiveAttackingEquipmentColliderObject
+    functionName: SetActiveEquipmentCollider
     data: 
-    objectReferenceParameter: {fileID: 0}
+    objectReferenceParameter: {fileID: 11400000, guid: 9546fef0b229c0d409c395d78049e2ea, type: 2}
     floatParameter: 0
     intParameter: 1
     messageOptions: 0
   - time: 1.4
-    functionName: SetActiveAttackingEquipmentColliderObject
+    functionName: SetActiveEquipmentCollider
     data: 
-    objectReferenceParameter: {fileID: 0}
+    objectReferenceParameter: {fileID: 11400000, guid: 13355c0856868a34d9d62e6249fa8350, type: 2}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0

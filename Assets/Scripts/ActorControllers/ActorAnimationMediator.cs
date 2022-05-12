@@ -1,4 +1,5 @@
 using ER.EquipmentSystems;
+using ER.ERBehaviour;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UniRx;
@@ -83,19 +84,19 @@ namespace ER.ActorControllers
         /// <summary>
         /// 攻撃中の武器のコライダーオブジェクトの有効性を設定する
         /// </summary>
-        public void SetActiveAttackingEquipmentColliderObject(int isActive)
+        public void SetActiveEquipmentCollider(SetActiveEquipmentColliderData data)
         {
             if (!Application.isPlaying)
             {
                 var c = this.GetComponentsInChildren<EquipmentController>();
                 foreach (var i in c)
                 {
-                    i.SetActiveColliderObject(isActive >= 1);
+                    i.SetActiveColliderObject(data.isActive);
                 }
             }
             else
             {
-                actor.EquipmentController.AttackingEquipmentController.SetActiveColliderObject(isActive >= 1);
+                actor.EquipmentController.AttackingEquipmentController.SetActiveColliderObject(data.isActive);
             }
         }
 
@@ -107,6 +108,12 @@ namespace ER.ActorControllers
         public void SetNextAttackIndex(int index)
         {
             this.nextAttackIndex = index;
+        }
+
+
+        public void Test(object a)
+        {
+            
         }
     }
 }
