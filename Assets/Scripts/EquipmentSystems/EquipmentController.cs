@@ -109,7 +109,7 @@ namespace ER.EquipmentSystems
                     }
                 }
             })
-            .AddTo(this.disposables);
+            .AddTo(this);
 
             this.UpdateAsObservable()
                 .Subscribe(_ =>
