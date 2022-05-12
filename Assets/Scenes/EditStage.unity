@@ -955,11 +955,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1519040727916860897, guid: aad86716dde630d40a20219183abbb9d, type: 3}
       propertyPath: m_Points.Array.data[31].x
-      value: -0.0000002682209
+      value: -0.0000002605179
       objectReference: {fileID: 0}
     - target: {fileID: 1519040727916860897, guid: aad86716dde630d40a20219183abbb9d, type: 3}
       propertyPath: m_Points.Array.data[31].y
-      value: 0.0000016656122
+      value: 0.000001665621
       objectReference: {fileID: 0}
     - target: {fileID: 2080344134456705040, guid: aad86716dde630d40a20219183abbb9d, type: 3}
       propertyPath: m_DynamicOccludee
@@ -5269,7 +5269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa339a7ba7d84744b8f48a9fceb9e805, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpawnPoint: {fileID: 51203329}
+  playerSpawnPoint: {fileID: 894316996}
 --- !u!1 &1665981414
 GameObject:
   m_ObjectHideFlags: 0

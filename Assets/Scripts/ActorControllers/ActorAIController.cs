@@ -31,6 +31,9 @@ namespace ER.ActorControllers
         [SerializeReference, SubclassSelector(typeof(IEquipmentSelector))]
         private IEquipmentSelector rightEquipmentSelector = default;
 
+        [SerializeReference, SubclassSelector(typeof(IEquipmentSelector))]
+        private IEquipmentSelector leftEquipmentSelector = default;
+
         private readonly CompositeDisposable disposables = new CompositeDisposable();
 
         private BehaviourHolder nextAI;
@@ -53,7 +56,8 @@ namespace ER.ActorControllers
                 .AddTo(this.actor.Disposables);
             
             this.ChangeRequest(this.initialAI);
-            this.rightEquipmentSelector.Attach(this.actor, 0);
+            this.rightEquipmentSelector?.Attach(this.actor, 0);
+            this.leftEquipmentSelector?.Attach(this.actor, 0);
 
             this.behaviourData = new ActorAIBehaviourData
             {

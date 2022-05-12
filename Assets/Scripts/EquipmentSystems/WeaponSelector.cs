@@ -16,11 +16,14 @@ namespace ER.EquipmentSystems
         [SerializeField, TermsPopup("Weapon/")]
         private string weaponDataId = default;
 
+        [SerializeField]
+        private HandType handType = HandType.Right;
+
         public void Attach(Actor actor, int index)
         {
             var item = actor.InventoryController.AddEquipment(this.weaponDataId, false);
             var masterDataWeapon = MasterDataWeapon.Get(item.ItemId);
-            actor.EquipmentController.RightHand.Attach(index, masterDataWeapon.EquipmentControllerPrefab, item.InstanceId);
+            actor.EquipmentController.GetHand(this.handType).Attach(index, masterDataWeapon.EquipmentControllerPrefab, item.InstanceId);
         }
     }
 }

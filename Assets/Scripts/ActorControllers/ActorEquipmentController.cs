@@ -1,7 +1,8 @@
+using System;
 using ER.EquipmentSystems;
 using UnityEngine.Assertions;
 using UniRx;
-using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace ER.ActorControllers
 {
@@ -131,6 +132,23 @@ namespace ER.ActorControllers
         public void EndGuard()
         {
             this.GuardingEquipmentController = null;
+        }
+        
+        /// <summary>
+        /// <paramref name="handType"/>から対応した<see cref="Hand"/>を返す
+        /// </summary>
+        public Hand GetHand(HandType handType)
+        {
+            switch (handType)
+            {
+                case HandType.Left:
+                    return this.LeftHand;
+                case HandType.Right:
+                    return this.RightHand;
+                default:
+                    Assert.IsTrue(false, $"{handType}は未対応です");
+                    return null;
+            }
         }
 
         /// <summary>
