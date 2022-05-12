@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1632667046878282237
+--- !u!1001 &2720524762280598238
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5505275077421206325, guid: 84fdd85d03cb71347adf6db22112eaca, type: 3}
       propertyPath: m_Name
-      value: ActorAI.0003
+      value: ActorAI.Boss.0000
       objectReference: {fileID: 0}
     - target: {fileID: 8166717016945869330, guid: 84fdd85d03cb71347adf6db22112eaca, type: 3}
       propertyPath: actor
@@ -114,7 +114,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3446870888645774410, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: m_Name
-      value: Actor.Enemy.0003
+      value: Actor.Boss.0000
       objectReference: {fileID: 0}
     - target: {fileID: 5003387275646208275, guid: a956312de110fd64caae24e5eb263503, type: 3}
       propertyPath: statusData.physical

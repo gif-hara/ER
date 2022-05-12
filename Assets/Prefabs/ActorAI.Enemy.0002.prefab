@@ -352,7 +352,7 @@ GameObject:
   - component: {fileID: 4988239245626438203}
   - component: {fileID: 8166717016945869330}
   m_Layer: 0
-  m_Name: ActorAI.0003
+  m_Name: ActorAI.Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -395,20 +395,12 @@ MonoBehaviour:
   onKnockBackedAI: {fileID: 7775011032296511865}
   rightEquipmentSelector:
     id: 0
-  leftEquipmentSelector:
-    id: 1
   references:
     version: 1
     00000000:
       type: {class: WeaponSelector, ns: ER.EquipmentSystems, asm: Assembly-CSharp}
       data:
-        weaponDataId: Weapon/Name020201
-        handType: 1
-    00000001:
-      type: {class: WeaponSelector, ns: ER.EquipmentSystems, asm: Assembly-CSharp}
-      data:
-        weaponDataId: Weapon/Name020201
-        handType: 0
+        weaponDataId: Weapon/Name020301
 --- !u!1 &7136252245139185895
 GameObject:
   m_ObjectHideFlags: 0

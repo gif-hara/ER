@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4988239245626438203}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5405623781290818235
 MonoBehaviour:
@@ -123,7 +123,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4988239245626438203}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7012669081198722674
 MonoBehaviour:
@@ -217,7 +217,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4988239245626438203}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8097593678614477027
 MonoBehaviour:
@@ -352,7 +352,7 @@ GameObject:
   - component: {fileID: 4988239245626438203}
   - component: {fileID: 8166717016945869330}
   m_Layer: 0
-  m_Name: ActorAI.0002
+  m_Name: ActorAI.Boss.0000
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -372,6 +372,7 @@ Transform:
   - {fileID: 3358016901872351121}
   - {fileID: 3155840147896290871}
   - {fileID: 4648654794383708831}
+  - {fileID: 4222880082798423676}
   - {fileID: 6080876158974836222}
   - {fileID: 8235826530762173901}
   - {fileID: 5229333428634950036}
@@ -395,12 +396,20 @@ MonoBehaviour:
   onKnockBackedAI: {fileID: 7775011032296511865}
   rightEquipmentSelector:
     id: 0
+  leftEquipmentSelector:
+    id: 1
   references:
     version: 1
     00000000:
       type: {class: WeaponSelector, ns: ER.EquipmentSystems, asm: Assembly-CSharp}
       data:
-        weaponDataId: Weapon/Name020301
+        weaponDataId: Weapon/Name020201
+        handType: 1
+    00000001:
+      type: {class: WeaponSelector, ns: ER.EquipmentSystems, asm: Assembly-CSharp}
+      data:
+        weaponDataId: Weapon/Name020201
+        handType: 0
 --- !u!1 &7136252245139185895
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,4 +545,61 @@ MonoBehaviour:
     00000003:
       type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
-        nextAI: {fileID: 7012669081198722674}
+        nextAI: {fileID: 1287942616404901899}
+--- !u!1 &8819567342436179915
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4222880082798423676}
+  - component: {fileID: 1287942616404901899}
+  m_Layer: 0
+  m_Name: Observation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4222880082798423676
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8819567342436179915}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4988239245626438203}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1287942616404901899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8819567342436179915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48aabb49b00f5456f918fdae8f250caf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviours:
+  - trigger:
+      id: 0
+    action:
+      id: 1
+  references:
+    version: 1
+    00000000:
+      type: {class: EveryUpdate, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+    00000001:
+      type: {class: ActorMove, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        offsetAngle: 90
+        moveSpeed: 1
