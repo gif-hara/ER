@@ -1,13 +1,10 @@
 using ER.ActorControllers;
-using System;
-using UniRx;
 using UnityEngine;
-using UnityEngine.Assertions;
 
 namespace ER.ERBehaviour
 {
     /// <summary>
-    /// 
+    /// 指定されたAIに切り替える
     /// </summary>
     public sealed class ChangeAI : IAction
     {
