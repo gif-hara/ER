@@ -291,9 +291,7 @@ namespace ER.ActorControllers
             /// </summary>
             public void Swap(int source, int target)
             {
-                var tempEquipmentController = this.equipmentHolders[source];
-                this.equipmentHolders[source] = this.equipmentHolders[target];
-                this.equipmentHolders[target] = tempEquipmentController;
+                (this.equipmentHolders[source], this.equipmentHolders[target]) = (this.equipmentHolders[target], this.equipmentHolders[source]);
 
                 // 今装備しているインデックスとsourceが一致している場合はインデックスも更新する
                 if (this.currentIndex == source)
