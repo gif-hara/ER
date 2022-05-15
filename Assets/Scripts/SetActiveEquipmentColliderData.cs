@@ -9,8 +9,24 @@ namespace ER.ActorControllers
     [CreateAssetMenu(menuName = "ER/SetActiveEquipmentColliderData")]
     public sealed class SetActiveEquipmentColliderData : ScriptableObject
     {
-        public int colliderId;
-
+        /// <summary>
+        /// どのハンドタイプを設定するか
+        /// </summary>
+        public HandType handType;
+        
+        /// <summary>
+        /// 有効にするか
+        /// </summary>
         public bool isActive;
+
+        /// <summary>
+        /// ダメージ係数
+        /// </summary>
+        public float power = 1.0f;
+
+        /// <summary>
+        /// ノックバック蓄積値の係数
+        /// </summary>
+        public float knockBackAccumulate = 1.0f;
     }
 }

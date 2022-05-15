@@ -88,16 +88,14 @@ namespace ER.ActorControllers
         {
             if (!Application.isPlaying)
             {
-                var c = this.GetComponentsInChildren<EquipmentController>();
-                foreach (var i in c)
-                {
-                    i.SetActiveColliderObject(data.isActive);
-                }
+                return;
             }
-            else
-            {
-                actor.EquipmentController.AttackingEquipmentController.SetActiveColliderObject(data.isActive);
-            }
+
+            actor
+                .EquipmentController
+                .GetHand(data.handType)
+                .CurrentEquipmentController
+                .SetupCollider(data.isActive, data.power, data.knockBackAccumulate);
         }
 
         public void CanBeNextAction()

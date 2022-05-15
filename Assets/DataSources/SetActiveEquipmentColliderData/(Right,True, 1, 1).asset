@@ -10,7 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c43789dd08acff54597f983ebd8a6244, type: 3}
-  m_Name: (0,False)
+  m_Name: (Right,True, 1, 1)
   m_EditorClassIdentifier: 
-  colliderId: 0
-  isActive: 0
+  handType: 1
+  isActive: 1
+  power: 1
+  knockBackAccumulate: 1

@@ -40,11 +40,6 @@ namespace ER.EquipmentSystems
         /// </summary>
         public float KnockBackAccumulate { get; set; }
         
-        /// <summary>
-        /// 攻撃した際のノックバックの威力
-        /// </summary>
-        public float KnockbBackPower { get; set; }
-
         public string ItemInstanceId { get; private set; }
 
         /// <summary>
@@ -70,7 +65,7 @@ namespace ER.EquipmentSystems
             this.disposables.Dispose();
         }
 
-        public void SetActiveColliderObject(bool isActive)
+        public void SetupCollider(bool isActive, float power, float knockBackAccumulate)
         {
             if (this.colliderObject == null)
             {
@@ -78,6 +73,8 @@ namespace ER.EquipmentSystems
             }
             
             this.colliderObject.SetActive(isActive);
+            this.Power = power;
+            this.KnockBackAccumulate = knockBackAccumulate;
         }
 
         private void AttachInternal(Actor actor, string itemInstanceId)
@@ -125,7 +122,7 @@ namespace ER.EquipmentSystems
                 {
                     if (x.NextState == ActorStateController.StateType.Movable)
                     {
-                        this.SetActiveColliderObject(false);
+                        this.SetupCollider(false, 0.0f, 0.0f);
                     }
                 })
                 .AddTo(this);

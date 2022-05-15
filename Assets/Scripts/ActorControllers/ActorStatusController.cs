@@ -150,10 +150,6 @@ namespace ER.ActorControllers
             // ダメージ計算後、死亡していない場合は諸々の処理を行う
             if (!this.isAlreadyDead)
             {
-                // 武器に設定されているノックバックを適用する
-                var knockBackVelocity = equipmentController.transform.up * equipmentController.KnockbBackPower;
-                this.actor.MotionController.AddKnockBack(knockBackVelocity);
-                
                 // ノックバックが起こるか計算する
                 {
                     var knockBackEndurance = this.knockBackEndurance.Value;
@@ -163,7 +159,7 @@ namespace ER.ActorControllers
                     if (knockBackEndurance >= this.KnockBackEnduranceMax)
                     {
                         // 固定のノックバック値を加算する
-                        knockBackVelocity = equipmentController.transform.up * 20;
+                        var　knockBackVelocity = equipmentController.transform.up * 20;
                         this.actor.MotionController.AddKnockBack(knockBackVelocity);
 
                         this.actor.StateController.ChangeRequest(ActorStateController.StateType.KnockBack);
