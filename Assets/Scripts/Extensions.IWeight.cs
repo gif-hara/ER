@@ -26,7 +26,7 @@ namespace ER
             var random = Random.Range(0, max);
             foreach (var i in self)
             {
-                if (current >= random && random < (current + i.Weight))
+                if (current <= random && random < (current + i.Weight))
                 {
                     return i;
                 }
