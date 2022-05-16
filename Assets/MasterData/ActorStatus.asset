@@ -141,8 +141,8 @@ MonoBehaviour:
     actorPrefab: {fileID: 9119910791474521852, guid: f9ddf1f6484ebd44eb5e53f526077ead, type: 3}
     statusData:
       name: Actor/Name020200
-      hitPoint: 100
-      knockBackEndurance: 30
+      hitPoint: 870
+      knockBackEndurance: 1000
       physicsAttack: 38
       magicAttack: 0
       fireAttack: 0

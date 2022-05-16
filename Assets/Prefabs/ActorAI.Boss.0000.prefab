@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4988239245626438203}
   m_RootOrder: 10
@@ -45,49 +46,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behaviours:
   - trigger:
-      id: 0
+      rid: 0
     action:
-      id: 1
+      rid: 1
   - trigger:
-      id: 2
+      rid: 2
     action:
-      id: 3
+      rid: 3
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: AndTrigger, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         triggers:
-        - id: 4
-        - id: 5
-    00000001:
+        - rid: 4
+        - rid: 5
+    - rid: 1
       type: {class: SequenceAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         actions:
-        - id: 6
-        - id: 7
-    00000002:
+        - rid: 6
+        - rid: 7
+    - rid: 2
       type: {class: DistancePlayer, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
-        distanceThreshold: 10
+        distanceThreshold: 20
         isIn: 0
-    00000003:
+    - rid: 3
       type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         nextAI: {fileID: 4321658293369840856}
-    00000004:
+    - rid: 4
       type: {class: CanNextAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
-    00000005:
+    - rid: 5
       type: {class: ActorState, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         stateType: 1
         isMatch: 1
-    00000006:
+    - rid: 6
       type: {class: BeginAttack, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         attackClip: {fileID: 7400000, guid: b0e51d9b1c600614ca6d7316f819cffd, type: 2}
         handType: 1
-    00000007:
+    - rid: 7
       type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         nextAI: {fileID: 4592836705942194921}
@@ -118,6 +120,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4988239245626438203}
   m_RootOrder: 6
@@ -136,49 +139,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behaviours:
   - trigger:
-      id: 0
+      rid: 0
     action:
-      id: 1
+      rid: 1
   - trigger:
-      id: 2
+      rid: 2
     action:
-      id: 3
+      rid: 3
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: AndTrigger, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         triggers:
-        - id: 4
-        - id: 5
-    00000001:
+        - rid: 4
+        - rid: 5
+    - rid: 1
       type: {class: SequenceAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         actions:
-        - id: 6
-        - id: 7
-    00000002:
+        - rid: 6
+        - rid: 7
+    - rid: 2
       type: {class: DistancePlayer, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
-        distanceThreshold: 10
+        distanceThreshold: 20
         isIn: 0
-    00000003:
+    - rid: 3
       type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         nextAI: {fileID: 4321658293369840856}
-    00000004:
+    - rid: 4
       type: {class: CanNextAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
-    00000005:
+    - rid: 5
       type: {class: ActorState, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         stateType: 2
         isMatch: 1
-    00000006:
+    - rid: 6
       type: {class: BeginAttack, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         attackClip: {fileID: 7400000, guid: 741134417af740b4a91ca6bf2edbef96, type: 2}
         handType: 1
-    00000007:
+    - rid: 7
       type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         nextAI: {fileID: 8097593678614477027}
@@ -209,6 +213,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4988239245626438203}
   m_RootOrder: 5
@@ -227,49 +232,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behaviours:
   - trigger:
-      id: 0
+      rid: 0
     action:
-      id: 1
+      rid: 1
   - trigger:
-      id: 2
+      rid: 2
     action:
-      id: 3
+      rid: 3
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: AndTrigger, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         triggers:
-        - id: 4
-        - id: 5
-    00000001:
+        - rid: 4
+        - rid: 5
+    - rid: 1
       type: {class: SequenceAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         actions:
-        - id: 6
-        - id: 7
-    00000002:
+        - rid: 6
+        - rid: 7
+    - rid: 2
       type: {class: DistancePlayer, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
-        distanceThreshold: 10
+        distanceThreshold: 20
         isIn: 0
-    00000003:
+    - rid: 3
       type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         nextAI: {fileID: 4321658293369840856}
-    00000004:
+    - rid: 4
       type: {class: CanNextAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
-    00000005:
+    - rid: 5
       type: {class: ActorState, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         stateType: 1
         isMatch: 1
-    00000006:
+    - rid: 6
       type: {class: BeginAttack, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         attackClip: {fileID: 7400000, guid: 15513a89187dce644b44f542cca0fe57, type: 2}
         handType: 1
-    00000007:
+    - rid: 7
       type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         nextAI: {fileID: 5405623781290818235}
@@ -300,6 +306,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4988239245626438203}
   m_RootOrder: 4
@@ -318,33 +325,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behaviours:
   - trigger:
-      id: 0
+      rid: 0
     action:
-      id: 1
+      rid: 1
   - trigger:
-      id: 2
+      rid: 2
     action:
-      id: 3
+      rid: 3
   - trigger:
-      id: 4
+      rid: 4
     action:
-      id: 5
+      rid: 5
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: EveryUpdate, ns: ER.ERBehaviour, asm: Assembly-CSharp}
-    00000001:
+    - rid: 1
       type: {class: ActorMove, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         offsetAngle: -90
         moveSpeed: 0.4
-    00000002:
+    - rid: 2
       type: {class: TimerRandom, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         minSeconds: 0.5
         maxSeconds: 1
         oneShot: 1
-    00000003:
+    - rid: 3
       type: {class: ChangeAIFromWeight, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         nextAIInfos:
@@ -352,12 +360,16 @@ MonoBehaviour:
           weight: 50
         - nextAI: {fileID: 7012669081198722674}
           weight: 50
-    00000004:
+        - nextAI: {fileID: 5041518764578056990}
+          weight: 50
+        - nextAI: {fileID: 737219257743114797}
+          weight: 50
+    - rid: 4
       type: {class: DistancePlayer, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         distanceThreshold: 10
         isIn: 0
-    00000005:
+    - rid: 5
       type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         nextAI: {fileID: 4321658293369840856}
@@ -388,6 +400,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4988239245626438203}
   m_RootOrder: 7
@@ -406,49 +419,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behaviours:
   - trigger:
-      id: 0
+      rid: 0
     action:
-      id: 1
+      rid: 1
   - trigger:
-      id: 2
+      rid: 2
     action:
-      id: 3
+      rid: 3
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: AndTrigger, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         triggers:
-        - id: 4
-        - id: 5
-    00000001:
+        - rid: 4
+        - rid: 5
+    - rid: 1
       type: {class: SequenceAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         actions:
-        - id: 6
-        - id: 7
-    00000002:
+        - rid: 6
+        - rid: 7
+    - rid: 2
       type: {class: DistancePlayer, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
-        distanceThreshold: 10
+        distanceThreshold: 20
         isIn: 0
-    00000003:
+    - rid: 3
       type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         nextAI: {fileID: 4321658293369840856}
-    00000004:
+    - rid: 4
       type: {class: CanNextAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
-    00000005:
+    - rid: 5
       type: {class: ActorState, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         stateType: 2
         isMatch: 1
-    00000006:
+    - rid: 6
       type: {class: BeginAttack, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         attackClip: {fileID: 7400000, guid: b65098e902f5d4444ad6f4adf33299c3, type: 2}
         handType: 1
-    00000007:
+    - rid: 7
       type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         nextAI: {fileID: 1008291945908175711}
@@ -479,6 +493,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4988239245626438203}
   m_RootOrder: 9
@@ -497,49 +512,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behaviours:
   - trigger:
-      id: 0
+      rid: 0
     action:
-      id: 1
+      rid: 1
   - trigger:
-      id: 2
+      rid: 2
     action:
-      id: 3
+      rid: 3
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: AndTrigger, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         triggers:
-        - id: 4
-        - id: 5
-    00000001:
+        - rid: 4
+        - rid: 5
+    - rid: 1
       type: {class: SequenceAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         actions:
-        - id: 6
-        - id: 7
-    00000002:
+        - rid: 6
+        - rid: 7
+    - rid: 2
       type: {class: DistancePlayer, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
-        distanceThreshold: 10
+        distanceThreshold: 20
         isIn: 0
-    00000003:
+    - rid: 3
       type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         nextAI: {fileID: 4321658293369840856}
-    00000004:
+    - rid: 4
       type: {class: CanNextAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
-    00000005:
+    - rid: 5
       type: {class: ActorState, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         stateType: 1
         isMatch: 1
-    00000006:
+    - rid: 6
       type: {class: BeginAttack, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         attackClip: {fileID: 7400000, guid: a84ef5c6f6018924aa93edb0213494bc, type: 2}
         handType: 1
-    00000007:
+    - rid: 7
       type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         nextAI: {fileID: 7997140977304229474}
@@ -570,6 +586,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4988239245626438203}
   m_RootOrder: 8
@@ -588,49 +605,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behaviours:
   - trigger:
-      id: 0
+      rid: 0
     action:
-      id: 1
+      rid: 1
   - trigger:
-      id: 2
+      rid: 2
     action:
-      id: 3
+      rid: 3
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: AndTrigger, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         triggers:
-        - id: 4
-        - id: 5
-    00000001:
+        - rid: 4
+        - rid: 5
+    - rid: 1
       type: {class: SequenceAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         actions:
-        - id: 6
-        - id: 7
-    00000002:
+        - rid: 6
+        - rid: 7
+    - rid: 2
       type: {class: DistancePlayer, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
-        distanceThreshold: 10
+        distanceThreshold: 20
         isIn: 0
-    00000003:
+    - rid: 3
       type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         nextAI: {fileID: 4321658293369840856}
-    00000004:
+    - rid: 4
       type: {class: CanNextAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
-    00000005:
+    - rid: 5
       type: {class: ActorState, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         stateType: 2
         isMatch: 1
-    00000006:
+    - rid: 6
       type: {class: BeginAttack, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         attackClip: {fileID: 7400000, guid: 465d1381ea4530a47a22072dbb71fc3e, type: 2}
         handType: 1
-    00000007:
+    - rid: 7
       type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         nextAI: {fileID: 4321658293369840856}
@@ -661,6 +679,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4988239245626438203}
   m_RootOrder: 0
@@ -679,20 +698,114 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behaviours:
   - trigger:
-      id: 0
+      rid: 0
     action:
-      id: 1
+      rid: 1
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: DistancePlayer, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         distanceThreshold: 15
         isIn: 1
-    00000001:
+    - rid: 1
       type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         nextAI: {fileID: 5483397063029894191}
+--- !u!1 &4646544089838144507
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7761962878762479290}
+  - component: {fileID: 737219257743114797}
+  m_Layer: 0
+  m_Name: Attack.03.01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7761962878762479290
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4646544089838144507}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4988239245626438203}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &737219257743114797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4646544089838144507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48aabb49b00f5456f918fdae8f250caf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviours:
+  - trigger:
+      rid: 0
+    action:
+      rid: 1
+  - trigger:
+      rid: 2
+    action:
+      rid: 3
+  references:
+    version: 2
+    RefIds:
+    - rid: 0
+      type: {class: AndTrigger, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        triggers:
+        - rid: 4
+        - rid: 5
+    - rid: 1
+      type: {class: SequenceAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        actions:
+        - rid: 6
+        - rid: 7
+    - rid: 2
+      type: {class: DistancePlayer, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        distanceThreshold: 20
+        isIn: 0
+    - rid: 3
+      type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        nextAI: {fileID: 4321658293369840856}
+    - rid: 4
+      type: {class: CanNextAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+    - rid: 5
+      type: {class: ActorState, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        stateType: 1
+        isMatch: 1
+    - rid: 6
+      type: {class: BeginAttack, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        attackClip: {fileID: 7400000, guid: 9e24d3f5828328443a2c49574fb52314, type: 2}
+        handType: 1
+    - rid: 7
+      type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        nextAI: {fileID: 4321658293369840856}
 --- !u!1 &5505275077421206325
 GameObject:
   m_ObjectHideFlags: 0
@@ -720,6 +833,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3358016901872351121}
   - {fileID: 3155840147896290871}
@@ -733,6 +847,7 @@ Transform:
   - {fileID: 1859312827697661367}
   - {fileID: 4195486470231650429}
   - {fileID: 7008582178819497234}
+  - {fileID: 7761962878762479290}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -752,17 +867,18 @@ MonoBehaviour:
   initialAI: {fileID: 7775011032296511865}
   onKnockBackedAI: {fileID: 7775011032296511865}
   rightEquipmentSelector:
-    id: 0
+    rid: 0
   leftEquipmentSelector:
-    id: 1
+    rid: 1
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: WeaponSelector, ns: ER.EquipmentSystems, asm: Assembly-CSharp}
       data:
         weaponDataId: Weapon/Name020201
         handType: 1
-    00000001:
+    - rid: 1
       type: {class: WeaponSelector, ns: ER.EquipmentSystems, asm: Assembly-CSharp}
       data:
         weaponDataId: Weapon/Name020201
@@ -794,6 +910,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4988239245626438203}
   m_RootOrder: 1
@@ -812,24 +929,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behaviours:
   - trigger:
-      id: 0
+      rid: 0
     action:
-      id: 1
+      rid: 1
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: EveryUpdate, ns: ER.ERBehaviour, asm: Assembly-CSharp}
-    00000001:
+    - rid: 1
       type: {class: SequenceAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         actions:
-        - id: 2
-        - id: 3
-    00000002:
+        - rid: 2
+        - rid: 3
+    - rid: 2
       type: {class: LookAtActor, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         actorType: 1
-    00000003:
+    - rid: 3
       type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         nextAI: {fileID: 4321658293369840856}
@@ -860,6 +978,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4988239245626438203}
   m_RootOrder: 2
@@ -878,28 +997,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behaviours:
   - trigger:
-      id: 0
+      rid: 0
     action:
-      id: 1
+      rid: 1
   - trigger:
-      id: 2
+      rid: 2
     action:
-      id: 3
+      rid: 3
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: EveryUpdate, ns: ER.ERBehaviour, asm: Assembly-CSharp}
-    00000001:
+    - rid: 1
       type: {class: ActorMove, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         offsetAngle: 0
         moveSpeed: 1
-    00000002:
+    - rid: 2
       type: {class: DistancePlayer, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         distanceThreshold: 3
         isIn: 1
-    00000003:
+    - rid: 3
       type: {class: ChangeAIFromWeight, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         nextAIInfos:
@@ -910,6 +1030,8 @@ MonoBehaviour:
         - nextAI: {fileID: 7012669081198722674}
           weight: 250
         - nextAI: {fileID: 5041518764578056990}
+          weight: 250
+        - nextAI: {fileID: 737219257743114797}
           weight: 250
 --- !u!1 &8814061721920778497
 GameObject:
@@ -938,6 +1060,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4988239245626438203}
   m_RootOrder: 11
@@ -956,49 +1079,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behaviours:
   - trigger:
-      id: 0
+      rid: 0
     action:
-      id: 1
+      rid: 1
   - trigger:
-      id: 2
+      rid: 2
     action:
-      id: 3
+      rid: 3
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: AndTrigger, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         triggers:
-        - id: 4
-        - id: 5
-    00000001:
+        - rid: 4
+        - rid: 5
+    - rid: 1
       type: {class: SequenceAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         actions:
-        - id: 6
-        - id: 7
-    00000002:
+        - rid: 6
+        - rid: 7
+    - rid: 2
       type: {class: DistancePlayer, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
-        distanceThreshold: 10
+        distanceThreshold: 20
         isIn: 0
-    00000003:
+    - rid: 3
       type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         nextAI: {fileID: 4321658293369840856}
-    00000004:
+    - rid: 4
       type: {class: CanNextAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
-    00000005:
+    - rid: 5
       type: {class: ActorState, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         stateType: 1
         isMatch: 1
-    00000006:
+    - rid: 6
       type: {class: BeginAttack, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         attackClip: {fileID: 7400000, guid: 5e30597c3a1f5c24fb66b75816f60434, type: 2}
         handType: 1
-    00000007:
+    - rid: 7
       type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         nextAI: {fileID: 4321658293369840856}
@@ -1029,6 +1153,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4988239245626438203}
   m_RootOrder: 3
@@ -1047,33 +1172,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behaviours:
   - trigger:
-      id: 0
+      rid: 0
     action:
-      id: 1
+      rid: 1
   - trigger:
-      id: 2
+      rid: 2
     action:
-      id: 3
+      rid: 3
   - trigger:
-      id: 4
+      rid: 4
     action:
-      id: 5
+      rid: 5
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: EveryUpdate, ns: ER.ERBehaviour, asm: Assembly-CSharp}
-    00000001:
+    - rid: 1
       type: {class: ActorMove, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         offsetAngle: 90
         moveSpeed: 0.4
-    00000002:
+    - rid: 2
       type: {class: TimerRandom, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         minSeconds: 0.5
         maxSeconds: 1
         oneShot: 1
-    00000003:
+    - rid: 3
       type: {class: ChangeAIFromWeight, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         nextAIInfos:
@@ -1081,12 +1207,16 @@ MonoBehaviour:
           weight: 50
         - nextAI: {fileID: 7012669081198722674}
           weight: 50
-    00000004:
+        - nextAI: {fileID: 5041518764578056990}
+          weight: 50
+        - nextAI: {fileID: 737219257743114797}
+          weight: 50
+    - rid: 4
       type: {class: DistancePlayer, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         distanceThreshold: 10
         isIn: 0
-    00000005:
+    - rid: 5
       type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         nextAI: {fileID: 4321658293369840856}
