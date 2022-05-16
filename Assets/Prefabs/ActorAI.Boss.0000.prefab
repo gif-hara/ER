@@ -1,5 +1,96 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &41687251302230501
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4195486470231650429}
+  - component: {fileID: 7997140977304229474}
+  m_Layer: 0
+  m_Name: Attack.02.02
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4195486470231650429
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41687251302230501}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4988239245626438203}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7997140977304229474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41687251302230501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48aabb49b00f5456f918fdae8f250caf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviours:
+  - trigger:
+      id: 0
+    action:
+      id: 1
+  - trigger:
+      id: 2
+    action:
+      id: 3
+  references:
+    version: 1
+    00000000:
+      type: {class: AndTrigger, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        triggers:
+        - id: 4
+        - id: 5
+    00000001:
+      type: {class: SequenceAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        actions:
+        - id: 6
+        - id: 7
+    00000002:
+      type: {class: DistancePlayer, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        distanceThreshold: 10
+        isIn: 0
+    00000003:
+      type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        nextAI: {fileID: 4321658293369840856}
+    00000004:
+      type: {class: CanNextAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+    00000005:
+      type: {class: ActorState, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        stateType: 1
+        isMatch: 1
+    00000006:
+      type: {class: BeginAttack, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        attackClip: {fileID: 7400000, guid: b0e51d9b1c600614ca6d7316f819cffd, type: 2}
+        handType: 1
+    00000007:
+      type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        nextAI: {fileID: 4592836705942194921}
 --- !u!1 &2375870346497763666
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,7 +102,7 @@ GameObject:
   - component: {fileID: 8235826530762173901}
   - component: {fileID: 5405623781290818235}
   m_Layer: 0
-  m_Name: Attack.02
+  m_Name: Attack.01.02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -102,7 +193,7 @@ GameObject:
   - component: {fileID: 6080876158974836222}
   - component: {fileID: 7012669081198722674}
   m_Layer: 0
-  m_Name: Attack.01
+  m_Name: Attack.01.01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -234,6 +325,10 @@ MonoBehaviour:
       id: 2
     action:
       id: 3
+  - trigger:
+      id: 4
+    action:
+      id: 5
   references:
     version: 1
     00000000:
@@ -242,12 +337,12 @@ MonoBehaviour:
       type: {class: ActorMove, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         offsetAngle: -90
-        moveSpeed: 0.2
+        moveSpeed: 0.4
     00000002:
       type: {class: TimerRandom, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
-        minSeconds: 1
-        maxSeconds: 3
+        minSeconds: 0.5
+        maxSeconds: 1
         oneShot: 1
     00000003:
       type: {class: ChangeAIFromWeight, ns: ER.ERBehaviour, asm: Assembly-CSharp}
@@ -257,6 +352,15 @@ MonoBehaviour:
           weight: 50
         - nextAI: {fileID: 7012669081198722674}
           weight: 50
+    00000004:
+      type: {class: DistancePlayer, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        distanceThreshold: 10
+        isIn: 0
+    00000005:
+      type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        nextAI: {fileID: 4321658293369840856}
 --- !u!1 &3375993876247219781
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,7 +372,7 @@ GameObject:
   - component: {fileID: 5229333428634950036}
   - component: {fileID: 8097593678614477027}
   m_Layer: 0
-  m_Name: Attack.03
+  m_Name: Attack.01.03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -348,6 +452,97 @@ MonoBehaviour:
       type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         nextAI: {fileID: 1008291945908175711}
+--- !u!1 &3689427143471015022
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1859312827697661367}
+  - component: {fileID: 5041518764578056990}
+  m_Layer: 0
+  m_Name: Attack.02.01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1859312827697661367
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3689427143471015022}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4988239245626438203}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5041518764578056990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3689427143471015022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48aabb49b00f5456f918fdae8f250caf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviours:
+  - trigger:
+      id: 0
+    action:
+      id: 1
+  - trigger:
+      id: 2
+    action:
+      id: 3
+  references:
+    version: 1
+    00000000:
+      type: {class: AndTrigger, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        triggers:
+        - id: 4
+        - id: 5
+    00000001:
+      type: {class: SequenceAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        actions:
+        - id: 6
+        - id: 7
+    00000002:
+      type: {class: DistancePlayer, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        distanceThreshold: 10
+        isIn: 0
+    00000003:
+      type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        nextAI: {fileID: 4321658293369840856}
+    00000004:
+      type: {class: CanNextAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+    00000005:
+      type: {class: ActorState, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        stateType: 1
+        isMatch: 1
+    00000006:
+      type: {class: BeginAttack, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        attackClip: {fileID: 7400000, guid: a84ef5c6f6018924aa93edb0213494bc, type: 2}
+        handType: 1
+    00000007:
+      type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        nextAI: {fileID: 7997140977304229474}
 --- !u!1 &4084055100268434044
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,7 +554,7 @@ GameObject:
   - component: {fileID: 2953906666129845039}
   - component: {fileID: 1008291945908175711}
   m_Layer: 0
-  m_Name: Attack.04
+  m_Name: Attack.01.04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -535,6 +730,9 @@ Transform:
   - {fileID: 8235826530762173901}
   - {fileID: 5229333428634950036}
   - {fileID: 2953906666129845039}
+  - {fileID: 1859312827697661367}
+  - {fileID: 4195486470231650429}
+  - {fileID: 7008582178819497234}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -710,7 +908,100 @@ MonoBehaviour:
         - nextAI: {fileID: 1391849869765556252}
           weight: 50
         - nextAI: {fileID: 7012669081198722674}
-          weight: 150
+          weight: 250
+        - nextAI: {fileID: 5041518764578056990}
+          weight: 250
+--- !u!1 &8814061721920778497
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7008582178819497234}
+  - component: {fileID: 4592836705942194921}
+  m_Layer: 0
+  m_Name: Attack.02.03
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7008582178819497234
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8814061721920778497}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4988239245626438203}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4592836705942194921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8814061721920778497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48aabb49b00f5456f918fdae8f250caf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviours:
+  - trigger:
+      id: 0
+    action:
+      id: 1
+  - trigger:
+      id: 2
+    action:
+      id: 3
+  references:
+    version: 1
+    00000000:
+      type: {class: AndTrigger, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        triggers:
+        - id: 4
+        - id: 5
+    00000001:
+      type: {class: SequenceAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        actions:
+        - id: 6
+        - id: 7
+    00000002:
+      type: {class: DistancePlayer, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        distanceThreshold: 10
+        isIn: 0
+    00000003:
+      type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        nextAI: {fileID: 4321658293369840856}
+    00000004:
+      type: {class: CanNextAction, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+    00000005:
+      type: {class: ActorState, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        stateType: 1
+        isMatch: 1
+    00000006:
+      type: {class: BeginAttack, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        attackClip: {fileID: 7400000, guid: 5e30597c3a1f5c24fb66b75816f60434, type: 2}
+        handType: 1
+    00000007:
+      type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        nextAI: {fileID: 4321658293369840856}
 --- !u!1 &8819567342436179915
 GameObject:
   m_ObjectHideFlags: 0
@@ -763,6 +1054,10 @@ MonoBehaviour:
       id: 2
     action:
       id: 3
+  - trigger:
+      id: 4
+    action:
+      id: 5
   references:
     version: 1
     00000000:
@@ -771,12 +1066,12 @@ MonoBehaviour:
       type: {class: ActorMove, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
         offsetAngle: 90
-        moveSpeed: 0.2
+        moveSpeed: 0.4
     00000002:
       type: {class: TimerRandom, ns: ER.ERBehaviour, asm: Assembly-CSharp}
       data:
-        minSeconds: 1
-        maxSeconds: 3
+        minSeconds: 0.5
+        maxSeconds: 1
         oneShot: 1
     00000003:
       type: {class: ChangeAIFromWeight, ns: ER.ERBehaviour, asm: Assembly-CSharp}
@@ -786,3 +1081,12 @@ MonoBehaviour:
           weight: 50
         - nextAI: {fileID: 7012669081198722674}
           weight: 50
+    00000004:
+      type: {class: DistancePlayer, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        distanceThreshold: 10
+        isIn: 0
+    00000005:
+      type: {class: ChangeAI, ns: ER.ERBehaviour, asm: Assembly-CSharp}
+      data:
+        nextAI: {fileID: 4321658293369840856}
