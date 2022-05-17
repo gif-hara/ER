@@ -159,7 +159,7 @@ namespace ER.ActorControllers
                     if (knockBackEndurance >= this.KnockBackEnduranceMax)
                     {
                         // 固定のノックバック値を加算する
-                        var　knockBackVelocity = equipmentController.transform.up * 20;
+                        var　knockBackVelocity = equipmentController.transform.up * 10;
                         this.actor.MotionController.AddKnockBack(knockBackVelocity);
 
                         this.actor.StateController.ChangeRequest(ActorStateController.StateType.KnockBack);

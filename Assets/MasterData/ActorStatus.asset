@@ -17,7 +17,7 @@ MonoBehaviour:
     actorPrefab: {fileID: 4763258836534807601, guid: d4d76e2c587d4724ab5a9601e4eb3ca1, type: 3}
     statusData:
       name: Actor/Name010101
-      hitPoint: 100
+      hitPoint: 124
       knockBackEndurance: 5
       physicsAttack: 0
       magicAttack: 0
@@ -48,9 +48,9 @@ MonoBehaviour:
     actorPrefab: {fileID: 9119910791474521852, guid: 67df0cd4baa71fe4ca1bef38d82a3659, type: 3}
     statusData:
       name: Actor/Name020101
-      hitPoint: 100
-      knockBackEndurance: 30
-      physicsAttack: 38
+      hitPoint: 80
+      knockBackEndurance: 40
+      physicsAttack: 26
       magicAttack: 0
       fireAttack: 0
       earthAttack: 0
@@ -79,9 +79,9 @@ MonoBehaviour:
     actorPrefab: {fileID: 9119910791474521852, guid: ad2b3094441456f438f9b0391f636d13, type: 3}
     statusData:
       name: Actor/Name020102
-      hitPoint: 100
-      knockBackEndurance: 30
-      physicsAttack: 38
+      hitPoint: 80
+      knockBackEndurance: 40
+      physicsAttack: 26
       magicAttack: 0
       fireAttack: 0
       earthAttack: 0
@@ -110,9 +110,9 @@ MonoBehaviour:
     actorPrefab: {fileID: 9119910791474521852, guid: 791174cb6d42ace49a4de0a268a0fa2a, type: 3}
     statusData:
       name: Actor/Name020103
-      hitPoint: 100
-      knockBackEndurance: 30
-      physicsAttack: 38
+      hitPoint: 80
+      knockBackEndurance: 40
+      physicsAttack: 26
       magicAttack: 0
       fireAttack: 0
       earthAttack: 0
@@ -141,9 +141,9 @@ MonoBehaviour:
     actorPrefab: {fileID: 9119910791474521852, guid: f9ddf1f6484ebd44eb5e53f526077ead, type: 3}
     statusData:
       name: Actor/Name030100
-      hitPoint: 870
-      knockBackEndurance: 1000
-      physicsAttack: 38
+      hitPoint: 512
+      knockBackEndurance: 400
+      physicsAttack: 27
       magicAttack: 0
       fireAttack: 0
       earthAttack: 0
