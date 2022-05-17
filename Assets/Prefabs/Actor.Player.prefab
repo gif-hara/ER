@@ -89,25 +89,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa424eeca9000434681b647bc0d889f7, type: 3}
---- !u!1 &2927439076797843816 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5062621093894177797, guid: fa424eeca9000434681b647bc0d889f7, type: 3}
-  m_PrefabInstance: {fileID: 7990038141800303981}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4763258836534807601 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3240392672265994588, guid: fa424eeca9000434681b647bc0d889f7, type: 3}
-  m_PrefabInstance: {fileID: 7990038141800303981}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2927439076797843816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff35d0a4550b95a4797ac46549b6380c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &646681530448301843 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7357518635729486462, guid: fa424eeca9000434681b647bc0d889f7, type: 3}
+  m_PrefabInstance: {fileID: 7990038141800303981}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2927439076797843816 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5062621093894177797, guid: fa424eeca9000434681b647bc0d889f7, type: 3}
   m_PrefabInstance: {fileID: 7990038141800303981}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &-3043488384475693730
@@ -125,9 +114,9 @@ MonoBehaviour:
   actor: {fileID: 4763258836534807601}
   angleThreshold: 0.1
   rightEquipmentSelectors:
-  - id: 0
+  - rid: 0
   leftEquipmentSelectors:
-  - id: 1
+  - rid: 1
   headMasterDataId: ArmorHead/Name010101
   torsoMasterDataId: ArmorTorso/Name010101
   armMasterDataId: ArmorArm/Name010101
@@ -143,13 +132,14 @@ MonoBehaviour:
   - ArmorLeg/Name010102
   - ArmorTorso/Name010102
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: WeaponSelector, ns: ER.EquipmentSystems, asm: Assembly-CSharp}
       data:
-        weaponDataId: Weapon/Name010201
+        weaponDataId: Weapon/Name010101
         handType: 1
-    00000001:
+    - rid: 1
       type: {class: ShieldSelector, ns: ER.EquipmentSystems, asm: Assembly-CSharp}
       data:
         shieldDataId: Shield/Name010101
@@ -167,6 +157,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actor: {fileID: 4763258836534807601}
   deadEffectPrefab: {fileID: -5151209227141963588, guid: 519dc49837fc1f14aa054b2604960239, type: 3}
+--- !u!114 &4763258836534807601 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3240392672265994588, guid: fa424eeca9000434681b647bc0d889f7, type: 3}
+  m_PrefabInstance: {fileID: 7990038141800303981}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2927439076797843816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff35d0a4550b95a4797ac46549b6380c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8232704996996176968
 PrefabInstance:
   m_ObjectHideFlags: 0

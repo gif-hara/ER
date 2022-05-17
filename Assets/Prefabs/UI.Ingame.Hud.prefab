@@ -32,6 +32,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6608144709058283313}
   - {fileID: 7017539510325614670}
@@ -121,7 +122,7 @@ PlayableDirector:
     m_References: []
 --- !u!95 &8320901902338477079
 Animator:
-  serializedVersion: 3
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -134,6 +135,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -903,6 +905,10 @@ PrefabInstance:
     - target: {fileID: 1627335193785021457, guid: 8e73a367fd151f44ebf730562d8b600b, type: 3}
       propertyPath: m_Name
       value: UI.Debug
+      objectReference: {fileID: 0}
+    - target: {fileID: 1627335193785021457, guid: 8e73a367fd151f44ebf730562d8b600b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8542527915840084807, guid: 8e73a367fd151f44ebf730562d8b600b, type: 3}
       propertyPath: m_Pivot.x

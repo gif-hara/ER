@@ -61,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2055923182503753141, guid: 6413931d914f59641a7cc78030687b86, type: 3}
       propertyPath: m_LocalAABB.m_Center.y
-      value: 20.000002
+      value: 35.463394
       objectReference: {fileID: 0}
     - target: {fileID: 2055923182503753141, guid: 6413931d914f59641a7cc78030687b86, type: 3}
       propertyPath: m_LocalAABB.m_Extent.x
@@ -69,7 +69,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2055923182503753141, guid: 6413931d914f59641a7cc78030687b86, type: 3}
       propertyPath: m_LocalAABB.m_Extent.y
-      value: 20.000002
+      value: 4.5366077
       objectReference: {fileID: 0}
     - target: {fileID: 7172348309188147057, guid: 6413931d914f59641a7cc78030687b86, type: 3}
       propertyPath: m_Spline.m_ControlPoints.Array.data[0].position.x
@@ -101,7 +101,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9193097152218121701, guid: 6413931d914f59641a7cc78030687b86, type: 3}
       propertyPath: m_Points.Array.data[0].x
-      value: -8.851038e-18
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9193097152218121701, guid: 6413931d914f59641a7cc78030687b86, type: 3}
       propertyPath: m_Points.Array.data[0].y
@@ -141,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9193097152218121701, guid: 6413931d914f59641a7cc78030687b86, type: 3}
       propertyPath: m_Points.Array.data[6].x
-      value: 0.000000016271194
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9193097152218121701, guid: 6413931d914f59641a7cc78030687b86, type: 3}
       propertyPath: m_Points.Array.data[6].y
@@ -268,7 +268,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2055923182503753141, guid: 6413931d914f59641a7cc78030687b86, type: 3}
       propertyPath: m_LocalAABB.m_Center.x
-      value: 20.088882
+      value: 31.997467
       objectReference: {fileID: 0}
     - target: {fileID: 2055923182503753141, guid: 6413931d914f59641a7cc78030687b86, type: 3}
       propertyPath: m_LocalAABB.m_Center.y
@@ -276,7 +276,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2055923182503753141, guid: 6413931d914f59641a7cc78030687b86, type: 3}
       propertyPath: m_LocalAABB.m_Extent.x
-      value: 20.088882
+      value: 8.180298
       objectReference: {fileID: 0}
     - target: {fileID: 2055923182503753141, guid: 6413931d914f59641a7cc78030687b86, type: 3}
       propertyPath: m_LocalAABB.m_Extent.y
@@ -436,6 +436,67 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6413931d914f59641a7cc78030687b86, type: 3}
+--- !u!1001 &6119145023719402454
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8139590550643307372}
+    m_Modifications:
+    - target: {fileID: 657117828284441884, guid: ea341b812338cfe45a9e8d9d75c91ead, type: 3}
+      propertyPath: m_Name
+      value: Stage.Gimmick.ActorSpawnOnSetup
+      objectReference: {fileID: 0}
+    - target: {fileID: 5080786863182183036, guid: ea341b812338cfe45a9e8d9d75c91ead, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5080786863182183036, guid: ea341b812338cfe45a9e8d9d75c91ead, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 33.244354
+      objectReference: {fileID: 0}
+    - target: {fileID: 5080786863182183036, guid: ea341b812338cfe45a9e8d9d75c91ead, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 35.88217
+      objectReference: {fileID: 0}
+    - target: {fileID: 5080786863182183036, guid: ea341b812338cfe45a9e8d9d75c91ead, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5080786863182183036, guid: ea341b812338cfe45a9e8d9d75c91ead, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5080786863182183036, guid: ea341b812338cfe45a9e8d9d75c91ead, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5080786863182183036, guid: ea341b812338cfe45a9e8d9d75c91ead, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5080786863182183036, guid: ea341b812338cfe45a9e8d9d75c91ead, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5080786863182183036, guid: ea341b812338cfe45a9e8d9d75c91ead, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5080786863182183036, guid: ea341b812338cfe45a9e8d9d75c91ead, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5080786863182183036, guid: ea341b812338cfe45a9e8d9d75c91ead, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132403566962195079, guid: ea341b812338cfe45a9e8d9d75c91ead, type: 3}
+      propertyPath: actorStatusId
+      value: 20100
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ea341b812338cfe45a9e8d9d75c91ead, type: 3}
 --- !u!1001 &7118878811791777405
 PrefabInstance:
   m_ObjectHideFlags: 0

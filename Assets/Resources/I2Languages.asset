@@ -379,8 +379,32 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - "\u30B4\u30D6\u30EA\u30F3"
-      - 
+      - "\u8D64\u306E\u5263\u58EB"
+      - Red Swordman
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Actor/Name020102
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u8D64\u306E\u5927\u5263\u58EB"
+      - Red Great Swordman
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Actor/Name020103
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u8D64\u306E\u69CD\u58EB"
+      - Red Spearman
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Actor/Name030100
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u5929\u7FD4\u3051\u308B\u9BAE\u8840\u3001\u30A6\u30A9\u30ED\u30FC\u30DC\u30C3\u30C8"
+      - Wollowbot, the Soar Blood
       Flags: 0000
       Languages_Touch: []
     CaseInsensitiveTerms: 0
@@ -398,7 +422,7 @@ MonoBehaviour:
     Google_WebServiceURL: https://script.google.com/macros/s/AKfycbyF0yeaJl5TfgY6r059oCUDjbulYEndJLFNq6Q7/exec
     Google_SpreadsheetKey: 1UKcNrFW7zKUH617RzHOCnP1JoEKPtbbJkPmgc0Hgkso
     Google_SpreadsheetName: I2Loc ER Localization
-    Google_LastUpdatedVersion: 1652192689770
+    Google_LastUpdatedVersion: 1652798015076
     Google_Password: change_this
     GoogleUpdateFrequency: 1
     GoogleInEditorCheckFrequency: 1
