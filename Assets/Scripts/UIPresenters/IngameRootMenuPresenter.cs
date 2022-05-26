@@ -1,12 +1,8 @@
-using ER.ActorControllers;
 using ER.UIViews;
 using I2.Loc;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using UniRx;
-using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.EventSystems;
@@ -63,7 +59,8 @@ namespace ER.UIPresenters
                     {
                         GameController.Instance.Broker.Publish(GameEvent.OnRequestOpenChangeEquipment.Get());
                     })
-                    .AddTo(e.Button);
+                    .AddTo(e.Button)
+                    .AddTo(this.disposables);
                 },
                 e =>
                 {
@@ -73,7 +70,8 @@ namespace ER.UIPresenters
                     {
                         Debug.Log("TODO");
                     })
-                    .AddTo(e.Button);
+                    .AddTo(e.Button)
+                    .AddTo(this.disposables);
                 },
                 e =>
                 {
@@ -83,7 +81,8 @@ namespace ER.UIPresenters
                     {
                         Debug.Log("TODO");
                     })
-                    .AddTo(e.Button);
+                    .AddTo(e.Button)
+                    .AddTo(this.disposables);
                 },
             };
         }
