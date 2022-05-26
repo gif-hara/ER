@@ -24,7 +24,9 @@ namespace ER.ERBehaviour
             if (this.disposable == null)
             {
                 var actor = data.Cast<IActorHolder>().Actor;
+                var equipmentController = data.Cast<IEquipmentControllerHolder>().EquipmentController;
                 this.disposable = actor.Broker.Receive<ActorEvent.BeginEquipment>()
+                    .Where(_ => equipmentController.isActiveAndEnabled)
                     .Where(x => x.HandType == this.handType)
                     .Subscribe(_ => this.evaluate = true);
             }

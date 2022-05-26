@@ -1,12 +1,9 @@
 using ER.ActorControllers;
 using ER.ERBehaviour;
-using System;
-using System.Collections.Generic;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.Assertions;
-using UnityEngine.Playables;
 
 namespace ER.EquipmentSystems
 {
@@ -15,9 +12,6 @@ namespace ER.EquipmentSystems
     /// </summary>
     public sealed class EquipmentController : MonoBehaviour, IBehaviourData
     {
-        [SerializeField]
-        public List<ERBehaviour.Behaviour> behaviours = default;
-
         [SerializeField]
         private GameObject behaviourHolderParent = default;
 
@@ -109,6 +103,7 @@ namespace ER.EquipmentSystems
             .AddTo(this);
 
             this.UpdateAsObservable()
+                .Where(_ => this.isActiveAndEnabled)
                 .Subscribe(_ =>
                 {
                     foreach (var i in this.behaviourHolders)
