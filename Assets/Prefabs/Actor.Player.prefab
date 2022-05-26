@@ -124,13 +124,8 @@ MonoBehaviour:
   lookAtDistanceThreshold: 26
   lookAtAngleThreshold: 90
   addWeapons: []
-  addShields:
-  - Shield/Name010102
-  addArmors:
-  - ArmorArm/Name010102
-  - ArmorHead/Name010102
-  - ArmorLeg/Name010102
-  - ArmorTorso/Name010102
+  addShields: []
+  addArmors: []
   references:
     version: 2
     RefIds:
