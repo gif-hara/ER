@@ -93,7 +93,7 @@ namespace ER.UIPresenters
             {
                 e =>
                 {
-                    e.Label.text = "装備強化";
+                    e.Label.text = ScriptLocalization.Common.EquipmentUpgrade;
                     e.Button.OnClickAsObservable()
                     .Subscribe(_ =>
                     {
@@ -103,7 +103,7 @@ namespace ER.UIPresenters
                 },
                 e =>
                 {
-                    e.Label.text = "加護強化";
+                    e.Label.text = ScriptLocalization.Common.DivineUpgrade;
                     e.Button.OnClickAsObservable()
                     .Subscribe(_ =>
                     {
@@ -113,7 +113,7 @@ namespace ER.UIPresenters
                 },
                 e =>
                 {
-                    e.Label.text = "セーブ";
+                    e.Label.text = ScriptLocalization.Common.Save;
                     e.Button.OnClickAsObservable()
                     .Subscribe(_ =>
                     {

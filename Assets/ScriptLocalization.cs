@@ -9,7 +9,10 @@ namespace I2.Loc
 		{
 			public static string Name010101 		{ get{ return LocalizationManager.GetTranslation ("Actor/Name010101"); } }
 			public static string Name020101 		{ get{ return LocalizationManager.GetTranslation ("Actor/Name020101"); } }
+			public static string Name020102 		{ get{ return LocalizationManager.GetTranslation ("Actor/Name020102"); } }
+			public static string Name020103 		{ get{ return LocalizationManager.GetTranslation ("Actor/Name020103"); } }
 			public static string Name020200 		{ get{ return LocalizationManager.GetTranslation ("Actor/Name020200"); } }
+			public static string Name030100 		{ get{ return LocalizationManager.GetTranslation ("Actor/Name030100"); } }
 		}
 
 		public static class ArmorArm
@@ -39,11 +42,24 @@ namespace I2.Loc
 		public static class Common
 		{
 			public static string ArmorInformaiton 		{ get{ return LocalizationManager.GetTranslation ("Common/ArmorInformaiton"); } }
+			public static string Attack 		{ get{ return LocalizationManager.GetTranslation ("Common/Attack"); } }
+			public static string Cancel 		{ get{ return LocalizationManager.GetTranslation ("Common/Cancel"); } }
+			public static string Cornering 		{ get{ return LocalizationManager.GetTranslation ("Common/Cornering"); } }
+			public static string Decide 		{ get{ return LocalizationManager.GetTranslation ("Common/Decide"); } }
+			public static string DivineUpgrade 		{ get{ return LocalizationManager.GetTranslation ("Common/DivineUpgrade"); } }
 			public static string Empty 		{ get{ return LocalizationManager.GetTranslation ("Common/Empty"); } }
 			public static string Equipment 		{ get{ return LocalizationManager.GetTranslation ("Common/Equipment"); } }
+			public static string EquipmentUpgrade 		{ get{ return LocalizationManager.GetTranslation ("Common/EquipmentUpgrade"); } }
+			public static string Guard 		{ get{ return LocalizationManager.GetTranslation ("Common/Guard"); } }
 			public static string Inventory 		{ get{ return LocalizationManager.GetTranslation ("Common/Inventory"); } }
+			public static string Menu 		{ get{ return LocalizationManager.GetTranslation ("Common/Menu"); } }
+			public static string Move 		{ get{ return LocalizationManager.GetTranslation ("Common/Move"); } }
+			public static string OperationTutorial 		{ get{ return LocalizationManager.GetTranslation ("Common/OperationTutorial"); } }
 			public static string PickUp 		{ get{ return LocalizationManager.GetTranslation ("Common/PickUp"); } }
+			public static string Recovery 		{ get{ return LocalizationManager.GetTranslation ("Common/Recovery"); } }
 			public static string Rest 		{ get{ return LocalizationManager.GetTranslation ("Common/Rest"); } }
+			public static string Save 		{ get{ return LocalizationManager.GetTranslation ("Common/Save"); } }
+			public static string Search 		{ get{ return LocalizationManager.GetTranslation ("Common/Search"); } }
 			public static string ShieldInformation 		{ get{ return LocalizationManager.GetTranslation ("Common/ShieldInformation"); } }
 			public static string System 		{ get{ return LocalizationManager.GetTranslation ("Common/System"); } }
 			public static string WeaponInformation 		{ get{ return LocalizationManager.GetTranslation ("Common/WeaponInformation"); } }
@@ -94,7 +110,10 @@ namespace I2.Loc
 		{
 		    public const string Name010101 = "Actor/Name010101";
 		    public const string Name020101 = "Actor/Name020101";
+		    public const string Name020102 = "Actor/Name020102";
+		    public const string Name020103 = "Actor/Name020103";
 		    public const string Name020200 = "Actor/Name020200";
+		    public const string Name030100 = "Actor/Name030100";
 		}
 
 		public static class ArmorArm
@@ -124,11 +143,24 @@ namespace I2.Loc
 		public static class Common
 		{
 		    public const string ArmorInformaiton = "Common/ArmorInformaiton";
+		    public const string Attack = "Common/Attack";
+		    public const string Cancel = "Common/Cancel";
+		    public const string Cornering = "Common/Cornering";
+		    public const string Decide = "Common/Decide";
+		    public const string DivineUpgrade = "Common/DivineUpgrade";
 		    public const string Empty = "Common/Empty";
 		    public const string Equipment = "Common/Equipment";
+		    public const string EquipmentUpgrade = "Common/EquipmentUpgrade";
+		    public const string Guard = "Common/Guard";
 		    public const string Inventory = "Common/Inventory";
+		    public const string Menu = "Common/Menu";
+		    public const string Move = "Common/Move";
+		    public const string OperationTutorial = "Common/OperationTutorial";
 		    public const string PickUp = "Common/PickUp";
+		    public const string Recovery = "Common/Recovery";
 		    public const string Rest = "Common/Rest";
+		    public const string Save = "Common/Save";
+		    public const string Search = "Common/Search";
 		    public const string ShieldInformation = "Common/ShieldInformation";
 		    public const string System = "Common/System";
 		    public const string WeaponInformation = "Common/WeaponInformation";

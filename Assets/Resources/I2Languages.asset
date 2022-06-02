@@ -178,6 +178,30 @@ MonoBehaviour:
       - Move
       Flags: 0000
       Languages_Touch: []
+    - Term: Common/EquipmentUpgrade
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u88C5\u5099\u5F37\u5316\uFF08\u672A\u5B9F\u88C5\uFF09"
+      - Upgrade Equipment(Not Implement)
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Common/DivineUpgrade
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u52A0\u8B77\u5F37\u5316\uFF08\u672A\u5B9F\u88C5\uFF09"
+      - Upgrade Divine(Not Implement)
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Common/Save
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u30BB\u30FC\u30D6\uFF08\u672A\u5B9F\u88C5\uFF09"
+      - Save(Not Implement)
+      Flags: 0000
+      Languages_Touch: []
     - Term: ValuableItem/Name010101
       TermType: 0
       Description: 
@@ -505,7 +529,7 @@ MonoBehaviour:
     Google_WebServiceURL: https://script.google.com/macros/s/AKfycbyF0yeaJl5TfgY6r059oCUDjbulYEndJLFNq6Q7/exec
     Google_SpreadsheetKey: 1UKcNrFW7zKUH617RzHOCnP1JoEKPtbbJkPmgc0Hgkso
     Google_SpreadsheetName: I2Loc ER Localization
-    Google_LastUpdatedVersion: 1654177165518
+    Google_LastUpdatedVersion: 1654178425166
     Google_Password: change_this
     GoogleUpdateFrequency: 1
     GoogleInEditorCheckFrequency: 1
