@@ -2,6 +2,7 @@ using UnityEngine;
 using UniRx;
 using UniRx.Triggers;
 using ER.ActorControllers;
+using UnityEngine.InputSystem;
 
 namespace ER.UIPresenters
 {
@@ -19,6 +20,7 @@ namespace ER.UIPresenters
             Inventory,
             CheckPointMenu,
             InputTutorial,
+            ThankYouForPlaying,
         }
 
         [SerializeField]
@@ -45,6 +47,9 @@ namespace ER.UIPresenters
         [SerializeField]
         private InventoryPresenter inventoryPresenter = default;
 
+        [SerializeField]
+        private UIAnimationController thankYouForPlayingAnimationController = default;
+
         private UIAnimationController currentRoot;
 
         private StateController<StateType> stateController;
@@ -61,6 +66,7 @@ namespace ER.UIPresenters
             this.changeEquipmentAnimationController.PlayImmediate(false);
             this.inventoryAnimationController.PlayImmediate(false);
             this.inputTutorialAnimationController.PlayImmediate(false);
+            this.thankYouForPlayingAnimationController.PlayImmediate(false);
 
             this.stateController = new StateController<StateType>(StateType.Invalid);
             this.stateController.Set(StateType.Hud, this.OnEnterHud, null);
@@ -69,6 +75,7 @@ namespace ER.UIPresenters
             this.stateController.Set(StateType.Inventory, this.OnEnterInventory, this.OnExitInventory);
             this.stateController.Set(StateType.CheckPointMenu, this.OnEnterCheckPointMenu, this.OnExitCheckPointMenu);
             this.stateController.Set(StateType.InputTutorial, this.OnEnterInputTutorial, null);
+            this.stateController.Set(StateType.ThankYouForPlaying, this.OnEnterThankYouForPlaying, null);
             this.stateController.ChangeRequest(StateType.Hud);
 
             GameController.Instance.Broker.Receive<GameEvent.OnRequestOpenIngameMenu>()
@@ -100,6 +107,13 @@ namespace ER.UIPresenters
                 .Subscribe(_ =>
                 {
                     this.stateController.ChangeRequest(StateType.InputTutorial);
+                })
+                .AddTo(this);
+
+            GameController.Instance.Broker.Receive<GameEvent.OnRequestOpenThankYouForPlaying>()
+                .Subscribe(_ =>
+                {
+                    this.stateController.ChangeRequest(StateType.ThankYouForPlaying);
                 })
                 .AddTo(this);
 
@@ -220,6 +234,12 @@ namespace ER.UIPresenters
                 .AddTo(this.stateController.StateDisposables);
             
             this.ChangeCurrentRoot(this.inputTutorialAnimationController);
+        }
+
+        private void OnEnterThankYouForPlaying(StateType prev)
+        {
+            EnableUIInputAction();
+            this.ChangeCurrentRoot(this.thankYouForPlayingAnimationController);
         }
 
         private void EnableUIInputAction()

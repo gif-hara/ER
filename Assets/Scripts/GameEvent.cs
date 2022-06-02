@@ -89,5 +89,12 @@ namespace ER
         public class OnRequestOpenInputTutorial : Message<OnRequestOpenInputTutorial>
         {
         }
+
+        /// <summary>
+        /// "Thank you for Playing"UIの表示をリクエストするメッセージ
+        /// </summary>
+        public class OnRequestOpenThankYouForPlaying : Message<OnRequestOpenThankYouForPlaying>
+        {
+        }
     }
 }
