@@ -53,6 +53,7 @@
     <type fullname="ER.UIViews.LockonReticleUIView" preserve="all" />
     <type fullname="ER.UIViews.MenuButtonElement" preserve="all" />
     <type fullname="ER.UIViews.PlayerStatusUIView" preserve="all" />
+    <type fullname="I2.Loc.Localize" preserve="all" />
     <type fullname="ER.ActorControllers.ActorMotionData" preserve="nothing" serialized="true" />
     <type fullname="ER.ActorControllers.ActorStatusData" preserve="nothing" serialized="true" />
     <type fullname="ER.ERBehaviour.ActorMove" preserve="nothing" serialized="true" />
@@ -70,6 +71,7 @@
     <type fullname="ER.ERBehaviour.IsMatchNextAttackIndex" preserve="nothing" serialized="true" />
     <type fullname="ER.ERBehaviour.LookAtActor" preserve="nothing" serialized="true" />
     <type fullname="ER.ERBehaviour.OnBeginEquipment" preserve="nothing" serialized="true" />
+    <type fullname="ER.ERBehaviour.PublishOnRequestOpenThankYouForPlaying" preserve="nothing" serialized="true" />
     <type fullname="ER.ERBehaviour.SequenceAction" preserve="nothing" serialized="true" />
     <type fullname="ER.ERBehaviour.TimerRandom" preserve="nothing" serialized="true" />
     <type fullname="ER.EquipmentSystems.ShieldSelector" preserve="nothing" serialized="true" />
@@ -82,6 +84,7 @@
     <type fullname="ER.MasterDataSystem.MasterDataWeapon/Record" preserve="nothing" serialized="true" />
     <type fullname="ER.StageControllers.InteractableStageGimmickItem/Element" preserve="nothing" serialized="true" />
     <type fullname="ER.UIViews.PlayerStatusUIView/HandStatus" preserve="nothing" serialized="true" />
+    <type fullname="I2.Loc.EventCallback" preserve="nothing" serialized="true" />
   </assembly>
   <assembly fullname="Cinemachine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="Cinemachine.CinemachineBrain" preserve="all" />
@@ -158,6 +161,7 @@
     <type fullname="UnityEngine.TrailRenderer" preserve="all" />
     <type fullname="UnityEngine.Transform" preserve="all" />
     <type fullname="UnityEngine.Events.PersistentCallGroup" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Events.UnityEvent" preserve="nothing" serialized="true" />
     <type fullname="UnityEngine.RectOffset" preserve="nothing" serialized="true" />
   </assembly>
   <assembly fullname="UnityEngine.DirectorModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
