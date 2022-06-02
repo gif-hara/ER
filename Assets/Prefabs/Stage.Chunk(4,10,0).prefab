@@ -894,6 +894,26 @@ PrefabInstance:
       propertyPath: actorStatusId
       value: 30100
       objectReference: {fileID: 0}
+    - target: {fileID: 7132403566962195079, guid: ea341b812338cfe45a9e8d9d75c91ead, type: 3}
+      propertyPath: managedReferences[-2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132403566962195079, guid: ea341b812338cfe45a9e8d9d75c91ead, type: 3}
+      propertyPath: onDeadActions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132403566962195079, guid: ea341b812338cfe45a9e8d9d75c91ead, type: 3}
+      propertyPath: onDeadActions.Array.data[0]
+      value: 4657355392648740865
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132403566962195079, guid: ea341b812338cfe45a9e8d9d75c91ead, type: 3}
+      propertyPath: managedReferences[4657355392648740865]
+      value: Assembly-CSharp ER.ERBehaviour.PublishOnRequestOpenThankYouForPlaying
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132403566962195079, guid: ea341b812338cfe45a9e8d9d75c91ead, type: 3}
+      propertyPath: managedReferences[4657355392648740865].delaySeconds
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea341b812338cfe45a9e8d9d75c91ead, type: 3}
 --- !u!1001 &8858104345597611675
